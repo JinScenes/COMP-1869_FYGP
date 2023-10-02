@@ -5,9 +5,10 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Stats")]
     [Tooltip("How fast the player is able to move")]
-    [SerializeField, Range(0, 20)]
-    private float speed;
+    [Range(0, 20)] public float speed;
+    [Range(0, 1)] public float movementSmoothness;
 
+    private Vector3 currentVel;
     private Vector2 leftStickInput;
     private Vector2 rightStickInput;
 
@@ -45,8 +46,8 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerMovement()
     {
-        Vector3 vel = new Vector3(leftStickInput.x, 0, leftStickInput.y) * speed;
-        rb.velocity = new Vector3(vel.x, rb.velocity.y, vel.z);
+        Vector3 targetVelocity = new Vector3(leftStickInput.x, 0, leftStickInput.y) * speed;
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref currentVel, movementSmoothness);
     }
 
     private void PlayerRotation()

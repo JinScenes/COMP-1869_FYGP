@@ -547,6 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  movementSmoothness: 0.15
 --- !u!54 &1118178863
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -825,6 +826,7 @@ GameObject:
   - component: {fileID: 2061858398}
   - component: {fileID: 2061858400}
   - component: {fileID: 2061858397}
+  - component: {fileID: 2061858401}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -914,6 +916,24 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061858396}
   m_Enabled: 1
+--- !u!114 &2061858401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061858396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babc146bdb9a8384eb593bb9fef72a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1118178861}
+  lerpSpeed: 5
+  smoothZoomTime: 0.5
+  targetOrthographicSize: 5
+  cameraOffset: {x: 0, y: 4.407443, z: 0}
+  rotationAngles: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
