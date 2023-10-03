@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d6850c5f69c9642864be8683676fa1, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  gunModel: {fileID: 919132149155446097, guid: 5e0e9bf8a9c0d434290da7950844f6aa, type: 3}
+  gunModel: {fileID: 4559701832784666115, guid: 008e7caa57665db498b248cdabad1e7e, type: 3}
   gunSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  maxAmmo: 10
-  firerate: 1
-  reload: {fileID: -2653128793843731477, guid: 5e0e9bf8a9c0d434290da7950844f6aa, type: 3}
-  fire: {fileID: 1988171045948695719, guid: 5e0e9bf8a9c0d434290da7950844f6aa, type: 3}
+  maxAmmo: 30
+  firerate: 0.2
+  reload: {fileID: 0}
+  fire: {fileID: 0}

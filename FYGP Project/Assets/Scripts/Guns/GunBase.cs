@@ -13,15 +13,17 @@ public class GunBase : MonoBehaviour
     [SerializeField] GameObject projectilePrefab;
 
 
-    [SerializeField] float projectileSpeed = 10f;
-    [SerializeField] float fireRate = 0.2f;
+    private float projectileSpeed = 10f;
+    private float FireRate = 0.2f;
     public float range = 100f;
-    [SerializeField] int maxAmmo = 30;
-    [SerializeField] float reloadTime = 1.5f;
+    private int MaxAmmo = 30;
+    private float reloadTime = 1.5f;
     
     protected int currentAmmo;
     private bool isReloading = false;
     private float nextFireTime = 0f;
+
+    [SerializeField] GunData NewData;
     #endregion
 
     #region Generic Functions
@@ -29,7 +31,8 @@ public class GunBase : MonoBehaviour
 
     private void Start()
     {
-        currentAmmo = maxAmmo;
+        currentAmmo = MaxAmmo;
+        Initialize(NewData);
     }
 
     private void Update()
@@ -50,7 +53,7 @@ public class GunBase : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && Time.time >= nextFireTime)
         {
-            nextFireTime = Time.time + 1f / fireRate;
+            nextFireTime = Time.time + 1f / FireRate;
             Fire();
         }
     }
@@ -74,7 +77,7 @@ public class GunBase : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        currentAmmo = maxAmmo;
+        currentAmmo = MaxAmmo;
         isReloading = false;
         Debug.Log("Reloaded");
     }
@@ -93,7 +96,7 @@ public class GunBase : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit, range))
             {
-                // Handle hitscan hit logic here (e.g., deal damage, apply effects)
+                
                 print(hit.transform.name);
                 Debug.DrawLine(ray.origin, hit.point, Color.red, 0.1f);
             }
@@ -122,15 +125,36 @@ public class GunBase : MonoBehaviour
 
     #region Scriptable object Loading
 
+     GameObject GunModel;
+     Sprite GunSprite;
+    
+     AnimationClip AnimFire,AnimReload;
 
-   public class scriptableObjectLoader: MonoBehaviour
+    public void Initialize(GunData gunData)
     {
-        public GunData newGunData;
-        
+        GunModel = gunData.gunModel;
+        GunSprite = gunData.gunSprite;
+        MaxAmmo = gunData.maxAmmo;
+        FireRate = gunData.firerate;
+        AnimFire = gunData.fire;
+        AnimReload = gunData.reload;
+
+        print(GunModel);
+        print(GunSprite);
+        print(MaxAmmo.ToString());
+        print(FireRate.ToString());
+
+        GameObject instGun = Instantiate(GunModel, transform.position, Quaternion.identity);
+        instGun.transform.Rotate(new Vector3(0f, -90f,0f));
+
 
     }
 
 
+    #endregion
+
+    #region Damage
+   
     #endregion
 
 }
