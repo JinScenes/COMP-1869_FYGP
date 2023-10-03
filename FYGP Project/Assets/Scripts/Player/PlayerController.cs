@@ -1,80 +1,50 @@
-using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Player Stats")]
-    [Tooltip("How fast the player is able to move")]
-    [Range(0, 20)] public float speed;
-    [Range(0, 1)] public float movementSmoothness;
+    [SerializeField, Range(0, 20)]
+    private float speed;
 
-    private Vector3 currentVel;
-    private Vector2 leftJoystickInput;
-    private Vector2 rightJoystickInput;
-
-    private Rigidbody rb;
-
-    private PlayerControls input;
-    private InputAction movementAction;
-    private InputAction rotationAction;
+    private GamepadInput controllerInput;
 
     private void Awake()
     {
-        input = new PlayerControls();
-        rb = GetComponent<Rigidbody>();
-
-        //INPUT MOVEMENT CALLBACK
-        input.Player.Movement.performed += ctx => leftJoystickInput = ctx.ReadValue<Vector2>();
-        input.Player.Movement.canceled += ctx => leftJoystickInput = Vector2.zero;
-
-        //INPUT ROTATION CALLBACK
-        input.Player.Rotation.performed += ctx => rightJoystickInput = ctx.ReadValue<Vector2>();
-    }
-
-    private void FixedUpdate()
-    {
-        PlayerMovement();
+        controllerInput = GetComponent<GamepadInput>();
     }
 
     private void Update()
     {
-        PlayerRotation();
-        UpdateGamepad();
+        HandleMovement();
+        HandleRotation();
+        CheckShooting();
     }
 
-    private void UpdateGamepad()
+    private void CheckShooting()
     {
-        leftJoystickInput = input.Player.Movement.ReadValue<Vector2>();
-        rightJoystickInput = input.Player.Rotation.ReadValue<Vector2>();
-    }
-
-    private void PlayerMovement()
-    {
-        Vector3 targetVelocity = new Vector3(leftJoystickInput.x, 0, leftJoystickInput.y) * speed;
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref currentVel, movementSmoothness);
-    }
-
-    private void PlayerRotation()
-    {
-        if(rightJoystickInput.magnitude > 0.1f)
+        if (controllerInput.ShootValue > 0.5f)
         {
-            float angle = Mathf.Atan2(rightJoystickInput.x, rightJoystickInput.y) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, angle, 0);
+            Shoot();
         }
     }
 
-    private void OnEnable()
+    private void Shoot()
     {
-        movementAction = input.Player.Movement;
-        movementAction.Enable();
-
-        rotationAction = input.Player.Rotation;
-        rotationAction.Enable();
+        //Add Shooting Function
     }
 
-    private void OnDisable()
+    private void HandleMovement()
     {
-        movementAction.Disable();
-        rotationAction.Disable();
+        Vector3 moveDirection = new Vector3(controllerInput.CurrentMovementInput.x, 0, controllerInput.CurrentMovementInput.y);
+        Vector3 moveOffset = moveDirection * speed * Time.deltaTime;
+        transform.position += moveOffset;
+    }
+
+    private void HandleRotation()
+    {
+        if (controllerInput.CurrentRotationInput.sqrMagnitude > 0.01f)
+        {
+            float angle = Mathf.Atan2(controllerInput.CurrentRotationInput.x, controllerInput.CurrentRotationInput.y) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, angle, 0);
+        }
     }
 }

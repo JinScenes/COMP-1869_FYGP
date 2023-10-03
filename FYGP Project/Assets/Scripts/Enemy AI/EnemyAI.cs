@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine;
-using Unity.VisualScripting;
+using UnityEditor;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
@@ -53,7 +54,7 @@ public class EnemyAI : MonoBehaviour
     /// KEY COMPONENTS
     /// </summary>
 
-    private Transform playerTransform;
+    private List<Transform> playerTransforms;
     private Transform originPos;
     private NavMeshAgent navMesh;
     private Slider healthBarUI;
@@ -64,16 +65,16 @@ public class EnemyAI : MonoBehaviour
     /// </summary>
 
     [Header("AI Stats"),
-    Tooltip("The name of the player's gameobject"),
+    Tooltip("The player's layermask"),
+    SerializeField] private LayerMask playerMask;
+
+    [Tooltip("The name of the player's gameobject"),
     SerializeField] private string playerObjectName;
 
     [Tooltip("The origin point of the zombie's attacking point"),
     SerializeField] private Transform attackPoint;
 
-    [Tooltip("The player's layermask"),
-    SerializeField] private LayerMask playerMask;
-
-    [Range(0, 200), Tooltip("The enemy's health value")]
+    [Space(25), Range(0, 200), Tooltip("The enemy's health value")]
     public float health;
 
     [Range(0, 100), Tooltip("The requirement to trigger the enemy to switch movement states")]
@@ -97,6 +98,12 @@ public class EnemyAI : MonoBehaviour
     [Range(0, 1), Tooltip("The minimum time for the next step")]
     public float minStepInterval;
 
+    [Range(0f, 5f), Tooltip("The minimum interval for playing groan noise"),
+    SerializeField] private float minGroanInterval;
+
+    [Range(0f, 20f), Tooltip("The maximum interval for playing groan noise"),
+    SerializeField] private float maxGroanInterval;
+
     /// <summary>
     /// AUDIO
     /// </summary>
@@ -108,12 +115,6 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private string[] deathAudioNames;
     [SerializeField] private string[] hitAudioNames;
-
-    [Range(0f, 5f), Tooltip("The minimum interval for playing groan noise"),
-    SerializeField] private float minGroanInterval;
-
-    [Range(0f, 20f), Tooltip("The maximum interval for playing groan noise"),
-    SerializeField] private float maxGroanInterval;
 
     /// <summary>
     /// BOOLEAN CHECK
@@ -150,7 +151,8 @@ public class EnemyAI : MonoBehaviour
             HearingRange();
             AttackDistanceChecker();
             //AIHealth();
-            CheckDistance();
+            VisualisePlayer();
+            GetClosestPlayer();
             AngleSights();
             WithinRange();
             GroanAudio();
@@ -168,7 +170,13 @@ public class EnemyAI : MonoBehaviour
         originPos = transform.Find("Pos").GetComponent<Transform>();
         navMesh = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        playerTransform = GameObject.Find("Player").transform;
+        playerTransforms = new List<Transform>();
+        for (int i = 1; i <= 4; i++)
+        {
+            var player = GameObject.Find($"Player{i}");
+            if (player != null) playerTransforms.Add(player.transform);
+        }
+
         nextGroanTime = Time.time + Random.Range(minGroanInterval, maxGroanInterval);
         randomDestroy = Random.Range(5f, 8f);
         canHit = false;
@@ -256,8 +264,14 @@ public class EnemyAI : MonoBehaviour
         {
             if (IsMove == true)
             {
+                Transform closestPlayer = GetClosestPlayer();
+                if (closestPlayer == null)
+                {
+                    return;
+                }
+
                 navMesh.speed = 1.5f;
-                navMesh.destination = playerTransform.position;
+                navMesh.destination = closestPlayer.position;
                 anim.SetBool("Walk", true);
 
                 if (timeSinceLastStep >= minStepInterval)
@@ -276,6 +290,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+
 
     private void DeathFunction()
     {
@@ -300,14 +315,34 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void CheckDistance()
+
+    private Transform GetClosestPlayer()
     {
-        distanceToPlayer = Vector3.Distance(playerTransform.position, transform.position);
+        float closestDistance = float.MaxValue;
+        Transform closestPlayer = null;
+
+        foreach (var playerTransform in playerTransforms)
+        {
+            float currentDistance = Vector3.Distance(playerTransform.position, transform.position);
+            if (currentDistance < closestDistance)
+            {
+                closestDistance = currentDistance;
+                closestPlayer = playerTransform;
+            }
+        }
+
+        return closestPlayer;
     }
 
     private void AngleSights()
     {
-        Vector3 targetDir = playerTransform.position - transform.position;
+        Transform closestPlayer = GetClosestPlayer();
+        if (closestPlayer == null)
+        {
+            return;
+        }
+
+        Vector3 targetDir = closestPlayer.position - transform.position;
         float angle = Vector3.Angle(targetDir, transform.forward);
 
         if (angle < 45f && distanceToPlayer < 10f && canSee == true)
@@ -318,13 +353,16 @@ public class EnemyAI : MonoBehaviour
 
     private void LookAtTarget()
     {
-        if (health > 0f)
+        Transform closestPlayer = GetClosestPlayer();
+        if (closestPlayer == null || health <= 0f)
         {
-            var rotation = Quaternion.LookRotation(playerTransform.position - transform.position);
-            rotation.x = 0;
-            rotation.z = 0;
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * lookAtSpeed);
+            return;
         }
+
+        var rotation = Quaternion.LookRotation(closestPlayer.position - transform.position);
+        rotation.x = 0;
+        rotation.z = 0;
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * lookAtSpeed);
     }
 
     private IEnumerator TimeToDestroy()
@@ -439,9 +477,14 @@ public class EnemyAI : MonoBehaviour
     private void VisualisePlayer()
     {
         RaycastHit hit;
+        Transform closestPlayer = GetClosestPlayer();
+        if (closestPlayer == null)
+        {
+            return;
+        }
+
         Vector3 fromPos = originPos.transform.position;
-        Vector3 toPos = new Vector3(playerTransform.transform.position.x, playerTransform.transform.position.y + 1,
-            playerTransform.transform.position.z);
+        Vector3 toPos = new Vector3(closestPlayer.position.x, closestPlayer.position.y + 1, closestPlayer.position.z);
         Vector3 dir = toPos - fromPos;
 
         Debug.DrawRay(originPos.position, dir, Color.cyan);
@@ -452,12 +495,13 @@ public class EnemyAI : MonoBehaviour
             {
                 canSee = true;
             }
-            if(hit.transform.gameObject.name != playerObjectName)
+            else
             {
                 canSee = false;
             }
         }
     }
+
 
     private void GroanAudio()
     {
