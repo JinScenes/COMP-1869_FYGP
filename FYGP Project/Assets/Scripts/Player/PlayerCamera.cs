@@ -1,8 +1,15 @@
+using UnityEngine.InputSystem;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
+using System;
+using UnityEditor.Build.Player;
 
 public class PlayerCamera : MonoBehaviour
 {
     [Header("Camera Variables")]
+    public int playerIndex = 0;
+
     public Transform playerTransform;
 
     [Header("Camera Stats")]
@@ -16,42 +23,115 @@ public class PlayerCamera : MonoBehaviour
 
     private Camera cam;
 
+    public static Action<int, Transform> OnPlayerSpawn;
+
     private void Awake()
     {
-        cam = GetComponent<Camera>();
+        VariableComponents();
+    }
 
-        if (playerTransform == null)
-        {
-            playerTransform = GameObject.Find("Player").transform;
-        }
+    private void Start()
+    {
+        StartCoroutine(InitializePlayerInputManager());
     }
 
     private void LateUpdate()
     {
-        FollowPlayer();
-        Zooming();
+        if (playerTransform != null)
+        {
+            FollowPlayer();
+            Zooming();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (PlayerInputManager.instance)
+        {
+            PlayerInputManager.instance.onPlayerJoined -= OnPlayerJoined;
+        }
+    }
+
+    private void VariableComponents()
+    {
+        cam = GetComponent<Camera>();
+        PlayerManagerInstanceInitialiser();
+        var players = GameObject.FindGameObjectsWithTag("Player");
+        var matchingPlayer = players.FirstOrDefault(p => 
+        p.GetComponent<PlayerInput>()?.playerIndex == playerIndex);
+
+        if (matchingPlayer != null)
+        {
+            playerTransform = matchingPlayer.transform;
+            matchingPlayer.GetComponent<PlayerInput>().camera = cam;
+        }
+    }
+
+    private void PlayerManagerInstanceInitialiser()
+    {
+        if (PlayerInputManager.instance != null)
+        {
+            PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
+        }
+        else
+        {
+            Debug.LogWarning("PlayerInputManager instance is not set");
+        }
+    }
+
+    private IEnumerator InitializePlayerInputManager()
+    {
+        yield return new WaitForSeconds(0.1f);
+        PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
+    }
+
+    private void OnPlayerJoined(PlayerInput playerInput)
+    {
+        if (playerInput.playerIndex == playerIndex)
+        {
+            playerInput.camera = cam;
+
+            var players = GameObject.FindGameObjectsWithTag("Player");
+            var matchingPlayer = players.FirstOrDefault(p =>
+            p.GetComponent<PlayerInput>().playerIndex == playerIndex);
+
+            if (matchingPlayer != null)
+            {
+                playerTransform = matchingPlayer.transform;
+            }
+        }
+    }
+
+    private void HandlePlayerSpawn(int spawnedPlayerIndex, Transform spawnedPlayerTransform)
+    {
+        if (spawnedPlayerIndex == playerIndex)
+        {
+            playerTransform = spawnedPlayerTransform;
+            spawnedPlayerTransform.GetComponent<PlayerInput>().camera = cam;
+        }
     }
 
     private void FollowPlayer()
     {
-        if (playerTransform != null)
-        {
-            Vector3 desiredPos = playerTransform.position + cameraOffset;
-            desiredPos.z = transform.position.z;
-
-            transform.position = Vector3.Lerp(transform.position, desiredPos, lerpSpeed * Time.deltaTime);
-        }
-        else
-        {
-            Debug.LogError("The camera requires a player gameobject to follow");
-        }
+        Vector3 desiredPos = playerTransform.position + cameraOffset;
+        desiredPos.z = transform.position.z;
+        transform.position = Vector3.Lerp(transform.position, desiredPos, lerpSpeed * Time.deltaTime);
     }
 
     private void Zooming()
     {
-        float newOrthoSize = Mathf.SmoothDamp(Camera.main.orthographicSize, 
+        float newOrthoSize = Mathf.SmoothDamp(Camera.main.orthographicSize,
             targetOrthographicSize, ref currentVelocityZoom, smoothZoomTime);
-
         cam.orthographicSize = newOrthoSize;
+    }
+
+    private void OnEnable()
+    {
+        OnPlayerSpawn += HandlePlayerSpawn;
+    }
+
+    private void OnDisable()
+    {
+        OnPlayerSpawn -= HandlePlayerSpawn;
     }
 }

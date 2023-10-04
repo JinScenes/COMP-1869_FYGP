@@ -1,6 +1,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerInput))]
 public class GamepadInput : MonoBehaviour
 {
     public Vector2 CurrentMovementInput { get; private set; }
@@ -8,11 +9,14 @@ public class GamepadInput : MonoBehaviour
 
     private PlayerInput playerInput;
 
+    public int playerIndex { get; private set; }
+
     public float ShootValue { get; private set; }
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        playerIndex = playerInput.playerIndex;
 
         //MOVEMENT ACTION
         playerInput.actions["Movement"].performed += ctx => CurrentMovementInput = ctx.ReadValue<Vector2>();
@@ -35,6 +39,7 @@ public class GamepadInput : MonoBehaviour
 
     private void InputUpdater()
     {
+        //UPDATING ACTIONS
         CurrentMovementInput = playerInput.actions["Movement"].ReadValue<Vector2>();
         CurrentRotationInput = playerInput.actions["Rotation"].ReadValue<Vector2>();
     }

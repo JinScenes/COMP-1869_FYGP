@@ -3,10 +3,8 @@ using System.Collections;
 using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEditor;
 
 [RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(Animator))]
 public class EnemyAI : MonoBehaviour
 {
     [Header("AI States")]
@@ -58,7 +56,6 @@ public class EnemyAI : MonoBehaviour
     private Transform originPos;
     private NavMeshAgent navMesh;
     private Slider healthBarUI;
-    private Animator anim;
 
     /// <summary>
     /// AI VARIABLES
@@ -140,13 +137,13 @@ public class EnemyAI : MonoBehaviour
     {
         StartingsStates();
         VariableSetup();
+        StartCoroutine(UpdatePlayerList());
     }
     private void Update()
     {
         if (!isDead)
         {
-            //anim.SetLayerWeight(anim.GetLayerIndex("UpperBody"), 1);
-
+            FetchPlayers();
             ReadyBoolSwitch();
             HearingRange();
             AttackDistanceChecker();
@@ -156,6 +153,7 @@ public class EnemyAI : MonoBehaviour
             AngleSights();
             WithinRange();
             GroanAudio();
+            CheckAttack();
 
             //ENUM STATES
             MovementFunction();
@@ -164,16 +162,27 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void FetchPlayers()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        playerTransforms.Clear();
+
+        foreach (GameObject player in players)
+        {
+            playerTransforms.Add(player.transform);
+        }
+    }
+
+
     private void VariableSetup()
     {
         //healthBarUI = transform.Find("HealthBar_Canvas/Slider").GetComponent<Slider>();
         originPos = transform.Find("Pos").GetComponent<Transform>();
         navMesh = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
         playerTransforms = new List<Transform>();
         for (int i = 1; i <= 4; i++)
         {
-            var player = GameObject.Find($"Player{i}");
+            var player = GameObject.Find("Player(Clone)");
             if (player != null) playerTransforms.Add(player.transform);
         }
 
@@ -262,34 +271,31 @@ public class EnemyAI : MonoBehaviour
     {
         if (numberMovement == 0)
         {
-            if (IsMove == true)
+            if (IsMove && !IsPlayerInAttackRange())
             {
                 Transform closestPlayer = GetClosestPlayer();
                 if (closestPlayer == null)
                 {
                     return;
                 }
-
                 navMesh.speed = 1.5f;
                 navMesh.destination = closestPlayer.position;
-                anim.SetBool("Walk", true);
 
                 if (timeSinceLastStep >= minStepInterval)
                 {
-                    //AUDIO MANAGER
+                    // AUDIO MANAGER
                     timeSinceLastStep = 0f;
                 }
 
                 timeSinceLastStep += Time.deltaTime;
             }
-
-            if (IsMove == false)
+            else
             {
-                anim.SetBool("Walk", false);
                 navMesh.speed = 0;
             }
         }
     }
+
 
 
     private void DeathFunction()
@@ -315,6 +321,14 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private IEnumerator UpdatePlayerList()
+    {
+        while (true)
+        {
+            FetchPlayers();
+            yield return new WaitForSeconds(5f);
+        }
+    }
 
     private Transform GetClosestPlayer()
     {
@@ -386,12 +400,8 @@ public class EnemyAI : MonoBehaviour
 
     private void DuringDeath()
     {
-        anim.SetBool("Attack", false);
-        anim.SetBool("Death", true);
         int RandomDeath = Random.Range(1, 5);
-        anim.SetInteger("Death_Int", RandomDeath);
         this.GetComponent<NavMeshAgent>().enabled = false;
-        anim.enabled = false;
         healthBarUI.gameObject.SetActive(false);
 
         if (numberDestroy == 0)
@@ -408,29 +418,26 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private bool IsPlayerInAttackRange()
+    {
+        Collider[] hitPlayers = Physics.OverlapSphere(attackPoint.position, attackRange, playerMask);
+        return hitPlayers.Length > 0;
+    }
+
     private void CheckAttack()
     {
-        Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerMask);
-
-        foreach(Collider player in hitPlayer)
+        if (IsPlayerInAttackRange())
         {
-            if(Time.time >= nextAttackTime)
+            if (Time.time >= nextAttackTime)
             {
-                anim.SetBool("Attack", true);
-                //ATTACKING AUDIO
-                //PLAYER HEALTH SYSTEM
                 IsMove = false;
                 lookAtSpeed = 2f;
+                nextAttackTime = Time.time + 1f / attackRate;
             }
-            else
-            {
-                anim.SetBool("Attack", false);
-                if (canHit == true)
-                {
-                    IsMove = true;
-                    lookAtSpeed = 3f;
-                }
-            }
+        }
+        else
+        {
+            IsMove = true;
         }
     }
 

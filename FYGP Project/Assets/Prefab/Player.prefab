@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2846758566295821204}
   - component: {fileID: 1036889816294998514}
   m_Layer: 3
-  m_Name: Player1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 3e6fe446dc51e2f4b8d512191e951d79, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -161,7 +161,39 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 673a4364-c8e2-4bd2-98f1-3e16c93b3a3e
+    m_ActionName: Player/Movement[/DualShock4GamepadHID/leftStick,/XInputControllerWindows1/leftStick,/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1c24372e-8925-48e9-98a5-a4d919fd2a07
+    m_ActionName: Player/Rotation[/DualShock4GamepadHID/rightStick,/XInputControllerWindows1/rightStick,/XInputControllerWindows/rightStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6f2e51d3-8d11-4a19-a273-cf594155651f
+    m_ActionName: Player/D-Pad[/DualShock4GamepadHID/dpad/up,/XInputControllerWindows1/dpad/up,/XInputControllerWindows/dpad/up,/DualShock4GamepadHID/dpad/down,/XInputControllerWindows1/dpad/down,/XInputControllerWindows/dpad/down,/DualShock4GamepadHID/dpad/left,/XInputControllerWindows1/dpad/left,/XInputControllerWindows/dpad/left,/DualShock4GamepadHID/dpad/right,/XInputControllerWindows1/dpad/right,/XInputControllerWindows/dpad/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 434a7da1-51f5-4d2d-a696-1636a4d93fb0
+    m_ActionName: Player/ShoulderButtons[/DualShock4GamepadHID/leftShoulder,/XInputControllerWindows1/leftShoulder,/XInputControllerWindows/leftShoulder,/DualShock4GamepadHID/rightShoulder,/XInputControllerWindows1/rightShoulder,/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 40361e09-6cb3-469c-b0b0-94c0a67112cc
+    m_ActionName: Player/TriggerButtons[/DualShock4GamepadHID/leftTrigger,/XInputControllerWindows1/leftTrigger,/XInputControllerWindows/leftTrigger,/DualShock4GamepadHID/rightTrigger,/XInputControllerWindows1/rightTrigger,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 81633d34-f4e2-4ebe-b3b2-507aafeb6228
+    m_ActionName: Player/PositiveButtons[/DualShock4GamepadHID/select,/XInputControllerWindows1/select,/XInputControllerWindows/select,/DualShock4GamepadHID/start,/XInputControllerWindows1/start,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f4e9df1-22e0-49bb-9033-e86bc9789ecf
+    m_ActionName: Player/TouchpadButton[/DualShock4GamepadHID/touchpadButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0d4dfddb-1873-4b73-bf5e-559478389122
+    m_ActionName: Player/MainButtons[/DualShock4GamepadHID/buttonNorth,/XInputControllerWindows1/buttonNorth,/XInputControllerWindows/buttonNorth,/DualShock4GamepadHID/buttonEast,/XInputControllerWindows1/buttonEast,/XInputControllerWindows/buttonEast,/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows1/buttonSouth,/XInputControllerWindows/buttonSouth,/DualShock4GamepadHID/buttonWest,/XInputControllerWindows1/buttonWest,/XInputControllerWindows/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
