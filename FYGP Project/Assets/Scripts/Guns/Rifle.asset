@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81d6850c5f69c9642864be8683676fa1, type: 3}
-  m_Name: Pistol
+  m_Name: Rifle
   m_EditorClassIdentifier: 
-  displayName: Pistol
+  displayName: Rifle
   icon: {fileID: 0}
   canStack: 1
-  gunModel: {fileID: 4559701832784666115, guid: 008e7caa57665db498b248cdabad1e7e, type: 3}
-  maxAmmo: 30
-  firerate: 1.07
-  reload: {fileID: 0}
-  fire: {fileID: 0}
-  gunSpawn: {fileID: 0}
+  gunModel: {fileID: 4604870828857605036, guid: 2d40c4542ca5fa9409074e6c2bb54de1, type: 3}
+  maxAmmo: 24
+  firerate: 10.48
+  reload: {fileID: -1407466678795768306, guid: 7b492790d36c0f0489d2c9e90e865048, type: 3}
+  fire: {fileID: -382410650019994693, guid: 7b492790d36c0f0489d2c9e90e865048, type: 3}

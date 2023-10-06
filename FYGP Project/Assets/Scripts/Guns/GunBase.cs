@@ -6,22 +6,27 @@ using UnityEngine;
 public class GunBase : MonoBehaviour
 {
     #region Variables
+
+
     public enum FireMode { Hitscan, Projectile }
 
     [SerializeField] FireMode fireMode = FireMode.Hitscan;
     public Transform firePoint;
     [SerializeField] GameObject projectilePrefab;
+    [SerializeField] Transform gunSpawn;
 
-
+    [Tooltip("Configurable Variables"),Space(5)]
     private float projectileSpeed = 10f;
-    private float FireRate = 0.2f;
+    [SerializeField] float FireRate = 1f;
     public float range = 100f;
     private int MaxAmmo = 30;
     private float reloadTime = 1.5f;
-    
+
+
+    private bool allowFire;
     protected int currentAmmo;
     private bool isReloading = false;
-    private float nextFireTime = 0f;
+    public float nextFireTime = 0f;
 
     [SerializeField] GunData NewData;
     #endregion
@@ -37,36 +42,43 @@ public class GunBase : MonoBehaviour
 
     private void Update()
     {
+        
+
+        /*if (currentAmmo <= 0)
+        {
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                
+            }
+        }*/
+
+       /* if (Input.GetKey(KeyCode.Mouse0) )
+        {
+            nextFireTime = Time.time + 1f / FireRate;
+            Fire();
+        }*/
+    }
+
+    public void Fire()
+    {
         if (isReloading)
         {
             return;
         }
 
-        if (currentAmmo <= 0)
-        {
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                StartCoroutine(Reload());
-                return;
-            }
-        }
-
-        if (Input.GetKey(KeyCode.Mouse0) && Time.time >= nextFireTime)
-        {
-            nextFireTime = Time.time + 1f / FireRate;
-            Fire();
-        }
-    }
-
-    void Fire()
-    {
         if (fireMode == FireMode.Hitscan)
         {
             ShootHitscan();
         }
-        else if (fireMode == FireMode.Projectile)
+        else if (fireMode == FireMode.Projectile && Time.time >= nextFireTime)
         {
+            nextFireTime = Time.time + 1f / FireRate;
             LaunchProjectile();
+        } else if(currentAmmo <= 0)
+        {
+            StartCoroutine(Reload());
+            return;
+
         }
     }
 
@@ -114,6 +126,7 @@ public class GunBase : MonoBehaviour
         if (rb != null)
         {
             rb.velocity = firePoint.forward * projectileSpeed;
+            
         }
         else
         {
@@ -126,26 +139,27 @@ public class GunBase : MonoBehaviour
     #region Scriptable object Loading
 
      GameObject GunModel;
-     Sprite GunSprite;
+     
     
      AnimationClip AnimFire,AnimReload;
 
-    public void Initialize(GunData gunData)
+     void Initialize(GunData gunData)
     {
         GunModel = gunData.gunModel;
-        GunSprite = gunData.gunSprite;
+        
         MaxAmmo = gunData.maxAmmo;
         FireRate = gunData.firerate;
         AnimFire = gunData.fire;
         AnimReload = gunData.reload;
 
         print(GunModel);
-        print(GunSprite);
+        
         print(MaxAmmo.ToString());
         print(FireRate.ToString());
 
-        GameObject instGun = Instantiate(GunModel, transform.position, Quaternion.identity);
-        instGun.transform.Rotate(new Vector3(0f, -90f,0f));
+        GameObject instGun = Instantiate(GunModel, gunSpawn.position, Quaternion.identity);
+        instGun.transform.SetParent(gunSpawn);
+        instGun.transform.Rotate(new Vector3(0f, 180f,0f));
 
 
     }
