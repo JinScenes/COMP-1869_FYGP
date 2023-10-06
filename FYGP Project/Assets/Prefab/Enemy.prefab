@@ -303,7 +303,7 @@ MonoBehaviour:
   loudness: 8.4
   damage: 6
   sightRange: 3
-  attackRange: 1.63
+  attackRange: 0.55
   attackRate: 0.315
   detectionRange: 4.97
   minStepInterval: 0.137
