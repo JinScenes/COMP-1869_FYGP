@@ -1064,7 +1064,7 @@ MonoBehaviour:
         m_Action: Join
         m_Flags: 0
       m_Flags: 0
-    m_Reference: {fileID: -3558793742504761013, guid: 3e6fe446dc51e2f4b8d512191e951d79, type: 3}
+    m_Reference: {fileID: -6265707474447949522, guid: 3e6fe446dc51e2f4b8d512191e951d79, type: 3}
   m_PlayerPrefab: {fileID: 3925136280284502299, guid: d1fd953ca8bcae043946c62b8fe82b9b, type: 3}
   m_SplitScreen: 1
   m_MaintainAspectRatioInSplitScreen: 0
@@ -1359,9 +1359,10 @@ SceneRoots:
   - {fileID: 578776469}
   - {fileID: 1679678596}
   - {fileID: 162223826}
-  - {fileID: 1262107909}
   - {fileID: 410259897}
+  - {fileID: 1262107909}
   - {fileID: 1158581269}
+  - {fileID: 1961918683}
   - {fileID: 339901866}
   - {fileID: 9013408223813116044}
   - {fileID: 994908696}
@@ -1370,4 +1371,3 @@ SceneRoots:
   - {fileID: 1282596683}
   - {fileID: 1951932997}
   - {fileID: 286934696}
-  - {fileID: 1961918683}

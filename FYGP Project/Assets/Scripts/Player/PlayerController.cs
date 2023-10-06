@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckShooting()
     {
-        if (controllerInput.ShootValue > 0.5f)
+        if (controllerInput.RightTrigger > 0.5f)
         {
             ShootingFunction();
         }
@@ -83,8 +83,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector3 moveDirection = new Vector3(controllerInput.CurrentMovementInput.x, 0, 
-            controllerInput.CurrentMovementInput.y);
+        Vector3 moveDirection = new Vector3(controllerInput.MovementInput.x, 0, 
+            controllerInput.MovementInput.y);
 
         Vector3 moveOffset = moveDirection * speed * Time.deltaTime;
         transform.position += moveOffset;
@@ -92,10 +92,10 @@ public class PlayerController : MonoBehaviour
 
     private void HandleRotation()
     {
-        if (controllerInput.CurrentRotationInput.sqrMagnitude > 0.01f)
+        if (controllerInput.RotationInput.sqrMagnitude > 0.01f)
         {
-            float angle = Mathf.Atan2(controllerInput.CurrentRotationInput.x, 
-                controllerInput.CurrentRotationInput.y) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(controllerInput.RotationInput.x, 
+                controllerInput.RotationInput.y) * Mathf.Rad2Deg;
 
             transform.rotation = Quaternion.Euler(0, angle, 0);
         }
