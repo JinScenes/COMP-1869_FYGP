@@ -1,76 +1,101 @@
 using UnityEngine.InputSystem;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(GamepadInput))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Player Stats")]
-    [Tooltip("How fast the player is able to move")]
-    [Range(0, 20)] public float speed;
-    [Range(0, 1)] public float movementSmoothness;
+    [SerializeField, Range(0, 20)]
+    private float speed;
 
-    private Vector3 currentVel;
-    private Vector2 leftStickInput;
-    private Vector2 rightStickInput;
-
-    private Rigidbody rb;
-
-    private PlayerControls input;
-    private InputAction movementAction;
-    private InputAction rotationAction;
+    private GamepadInput controllerInput;
 
     private void Awake()
     {
-        input = new PlayerControls();
-        rb = GetComponent<Rigidbody>();
+        VariableComponents();
+        AnnouncePlayerSpawn();
+    }
 
-        //INPUT MOVEMENT CALLBACK
-        input.Player.Movement.performed += ctx => leftStickInput = ctx.ReadValue<Vector2>();
-        input.Player.Movement.canceled += ctx => leftStickInput = Vector2.zero;
-
-        //INPUT ROTATION CALLBACK
-        input.Player.Rotation.performed += ctx => rightStickInput = ctx.ReadValue<Vector2>();
+    private void Start()
+    {
+        AssignPlayerCamera();
+        StartCoroutine(ActivatePlayerInput());
     }
 
     private void Update()
     {
-        PlayerMovement();
-        PlayerRotation();
-        UpdateController();
+        HandleMovement();
+        HandleRotation();
+        CheckShooting();
     }
 
-    private void UpdateController()
+    private void VariableComponents()
     {
-        leftStickInput = input.Player.Movement.ReadValue<Vector2>();
-        rightStickInput = input.Player.Rotation.ReadValue<Vector2>();
+        controllerInput = GetComponent<GamepadInput>();
+        GetComponent<PlayerInput>().camera = FindPlayerCamera();
     }
 
-    private void PlayerMovement()
+    private void CheckShooting()
     {
-        Vector3 targetVelocity = new Vector3(leftStickInput.x, 0, leftStickInput.y) * speed;
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref currentVel, movementSmoothness);
-    }
-
-    private void PlayerRotation()
-    {
-        if(rightStickInput.magnitude > 0.1f)
+        if (controllerInput.ShootValue > 0.5f)
         {
-            float angle = Mathf.Atan2(rightStickInput.x, rightStickInput.y) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, angle, 0);
+            ShootingFunction();
         }
     }
 
-    private void OnEnable()
+    private Camera FindPlayerCamera()
     {
-        movementAction = input.Player.Movement;
-        movementAction.Enable();
+        var playerCam = FindObjectsOfType<PlayerCamera>().FirstOrDefault(cam => cam.playerIndex 
+        == controllerInput.GetPlayerIndex());
 
-        rotationAction = input.Player.Rotation;
-        rotationAction.Enable();
+        return playerCam ? playerCam.GetComponent<Camera>() : null;
     }
 
-    private void OnDisable()
+    private IEnumerator ActivatePlayerInput()
     {
-        movementAction.Disable();
-        rotationAction.Disable();
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<PlayerInput>().enabled = true;
+    }
+
+    private void AssignPlayerCamera()
+    {
+        var playerCam = FindObjectsOfType<PlayerCamera>().FirstOrDefault(cam => cam.playerIndex 
+        == controllerInput.GetPlayerIndex());
+
+        if (playerCam != null && playerCam.GetComponent<Camera>())
+        {
+            GetComponent<PlayerInput>().camera = playerCam.GetComponent<Camera>();
+        }
+    }
+
+    private void ShootingFunction()
+    {
+        //Add Shooting Function
+    }
+    private void AnnouncePlayerSpawn()
+    {
+        PlayerCamera.OnPlayerSpawn?.Invoke(GetComponent<PlayerInput>().playerIndex, transform);
+    }
+
+    private void HandleMovement()
+    {
+        Vector3 moveDirection = new Vector3(controllerInput.CurrentMovementInput.x, 0, 
+            controllerInput.CurrentMovementInput.y);
+
+        Vector3 moveOffset = moveDirection * speed * Time.deltaTime;
+        transform.position += moveOffset;
+    }
+
+    private void HandleRotation()
+    {
+        if (controllerInput.CurrentRotationInput.sqrMagnitude > 0.01f)
+        {
+            float angle = Mathf.Atan2(controllerInput.CurrentRotationInput.x, 
+                controllerInput.CurrentRotationInput.y) * Mathf.Rad2Deg;
+
+            transform.rotation = Quaternion.Euler(0, angle, 0);
+        }
     }
 }
