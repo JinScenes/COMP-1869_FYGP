@@ -25,14 +25,10 @@ public class PlayerCamera : MonoBehaviour
 
     public static Action<int, Transform> OnPlayerSpawn;
 
-    private void Awake()
-    {
-        VariableComponents();
-    }
-
     private void Start()
     {
         StartCoroutine(InitializePlayerInputManager());
+        VariableComponents();
     }
 
     private void LateUpdate()
