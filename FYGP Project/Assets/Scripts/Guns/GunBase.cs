@@ -7,7 +7,6 @@ public class GunBase : MonoBehaviour
 {
     #region Variables
 
-
     public enum FireMode { Hitscan, Projectile }
 
     [SerializeField] FireMode fireMode = FireMode.Hitscan;
@@ -15,7 +14,7 @@ public class GunBase : MonoBehaviour
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform gunSpawn;
 
-    [Tooltip("Configurable Variables"),Space(5)]
+    [Tooltip("Configurable Variables"), Space(5)]
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float FireRate = 1f;
     [SerializeField] float range = 100f;
@@ -36,27 +35,15 @@ public class GunBase : MonoBehaviour
 
     private void Start()
     {
+        gamepadInput = GetComponentInParent<GamepadInput>();
+
         currentAmmo = MaxAmmo;
         Initialize(NewData);
     }
 
     private void Update()
     {
-        
 
-        /*if (currentAmmo <= 0)
-        {
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                
-            }
-        }*/
-
-       /* if (Input.GetKey(KeyCode.Mouse0) )
-        {
-            nextFireTime = Time.time + 1f / FireRate;
-            Fire();
-        }*/
     }
 
     public void Fire()
@@ -74,7 +61,9 @@ public class GunBase : MonoBehaviour
         {
             nextFireTime = Time.time + 1f / FireRate;
             LaunchProjectile();
-        } else if(currentAmmo <= 0)
+            print("Firemethod being called");
+        }
+        else if (currentAmmo <= 0)
         {
             StartCoroutine(Reload());
             return;
@@ -99,22 +88,19 @@ public class GunBase : MonoBehaviour
     #region Hitscan Code
     protected virtual void ShootHitscan()
     {
-        Camera mainCamera = Camera.main;
+        Vector3 shootDirection = firePoint.forward;
 
-        if (mainCamera != null)
+        Ray ray = new Ray(firePoint.position, shootDirection);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, range))
         {
-            Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-            Ray ray = mainCamera.ScreenPointToRay(screenCenter);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, range))
-            {
-                
-                print(hit.transform.name);
-                Debug.DrawLine(ray.origin, hit.point, Color.red, 0.1f);
-            }
+            print(hit.transform.name);
+            Debug.DrawLine(ray.origin, hit.point, Color.red, 0.1f);
         }
+
         currentAmmo--;
     }
+
     #endregion
 
     #region Projectile Code
@@ -126,51 +112,47 @@ public class GunBase : MonoBehaviour
         if (rb != null)
         {
             rb.velocity = firePoint.forward * projectileSpeed;
-            
+
         }
         else
         {
             Debug.LogWarning("ProjectilePrefab does not have a Rigidbody component.");
         }
+
         currentAmmo--;
     }
     #endregion
 
     #region Scriptable object Loading
 
-     GameObject GunModel;
-     
-    
-     AnimationClip AnimFire,AnimReload;
+    GameObject GunModel;
+    Quaternion currentOffset;
+    AnimationClip AnimFire, AnimReload;
 
-     void Initialize(GunData gunData)
+    void Initialize(GunData gunData)
     {
         GunModel = gunData.gunModel;
-        
+        currentOffset = gunData.rotationOffset;
         MaxAmmo = gunData.maxAmmo;
         FireRate = gunData.firerate;
         AnimFire = gunData.fire;
         AnimReload = gunData.reload;
 
         print(GunModel);
-        
+
         print(MaxAmmo.ToString());
         print(FireRate.ToString());
 
-        GameObject instGun = Instantiate(GunModel, gunSpawn.position, Quaternion.identity);
+        GameObject instGun = Instantiate(GunModel, gunSpawn.position, currentOffset);
         instGun.transform.SetParent(gunSpawn);
-        instGun.transform.Rotate(new Vector3(0f, 180f,0f));
+        instGun.transform.Rotate(new Vector3(0f, 180f, 0f));
 
 
     }
 
-
-    #endregion
-
-    #region Damage
-   
-    #endregion
-
 }
+#endregion
 
+#region Damage
 
+#endregion

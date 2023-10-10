@@ -147,7 +147,7 @@ public class EnemyAI : MonoBehaviour
             ReadyBoolSwitch();
             HearingRange();
             AttackDistanceChecker();
-            //AIHealth();
+            AIHealth();
             VisualisePlayer();
             GetClosestPlayer();
             AngleSights();
@@ -304,7 +304,7 @@ public class EnemyAI : MonoBehaviour
         {
             //DEATH AUDIO
             isDead = true;
-
+            DuringDeath();
         }
     }
 
@@ -402,7 +402,7 @@ public class EnemyAI : MonoBehaviour
     {
         int RandomDeath = Random.Range(1, 5);
         this.GetComponent<NavMeshAgent>().enabled = false;
-        healthBarUI.gameObject.SetActive(false);
+        //healthBarUI.gameObject.SetActive(false);
 
         if (numberDestroy == 0)
         {
@@ -460,7 +460,7 @@ public class EnemyAI : MonoBehaviour
 
     public void AIHealth()
     {
-        healthBarUI.value = health / 100;
+        //healthBarUI.value = health / 100;
 
         if (health > 0)
         {
