@@ -7,9 +7,10 @@ using UnityEngine;
 [RequireComponent(typeof(GamepadInput))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField, Range(0, 20)]
-    private float speed;
+    [Range(0, 20),
+    SerializeField] private float speed;
 
+    public GameObject gunRef;
     private GamepadInput controllerInput;
 
     private void Awake()
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
     private void ShootingFunction()
     {
-        //Add Shooting Function
+        gunRef.GetComponent<GunBase>().Fire();
     }
     private void AnnouncePlayerSpawn()
     {
