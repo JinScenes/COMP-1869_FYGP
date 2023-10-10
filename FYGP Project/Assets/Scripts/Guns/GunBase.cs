@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+//using Unity.VisualScripting;
 using UnityEngine;
 
 public class GunBase : MonoBehaviour
@@ -16,17 +16,17 @@ public class GunBase : MonoBehaviour
     [SerializeField] Transform gunSpawn;
 
     [Tooltip("Configurable Variables"),Space(5)]
-    private float projectileSpeed = 10f;
+    [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float FireRate = 1f;
-    public float range = 100f;
-    private int MaxAmmo = 30;
-    private float reloadTime = 1.5f;
+    [SerializeField] float range = 100f;
+    [SerializeField] int MaxAmmo = 30;
+    [SerializeField] float reloadTime = 1.5f;
 
 
-    private bool allowFire;
+    [SerializeField] bool allowFire;
     protected int currentAmmo;
-    private bool isReloading = false;
-    public float nextFireTime = 0f;
+    [SerializeField] bool isReloading = false;
+    [SerializeField] float nextFireTime = 0f;
 
     [SerializeField] GunData NewData;
     #endregion
