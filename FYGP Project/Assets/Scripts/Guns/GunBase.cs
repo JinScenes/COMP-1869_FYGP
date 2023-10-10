@@ -35,8 +35,6 @@ public class GunBase : MonoBehaviour
 
     private void Start()
     {
-        gamepadInput = GetComponentInParent<GamepadInput>();
-
         currentAmmo = MaxAmmo;
         Initialize(NewData);
     }

@@ -46,7 +46,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""D-Pad"",
+                    ""name"": ""D-Pad Up"",
                     ""type"": ""Button"",
                     ""id"": ""6f2e51d3-8d11-4a19-a273-cf594155651f"",
                     ""expectedControlType"": ""Button"",
@@ -55,7 +55,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ShoulderButtons"",
+                    ""name"": ""D-Pad Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""4f899540-d8c5-4efe-a9c9-f313ca4df9fd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""D-Pad Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""8397a9fd-9193-4220-8443-b3e637e87e29"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""D-Pad Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""eef74457-38d6-4004-81a7-fe0db4d5d782"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left Shoulder Button"",
                     ""type"": ""Button"",
                     ""id"": ""434a7da1-51f5-4d2d-a696-1636a4d93fb0"",
                     ""expectedControlType"": ""Button"",
@@ -64,7 +91,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""TriggerButtons"",
+                    ""name"": ""Right Shoulder Button"",
+                    ""type"": ""Button"",
+                    ""id"": ""f960d313-990a-44a1-8c5a-c11333cf49c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left Trigger"",
                     ""type"": ""Button"",
                     ""id"": ""40361e09-6cb3-469c-b0b0-94c0a67112cc"",
                     ""expectedControlType"": ""Button"",
@@ -73,9 +109,27 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PositiveButtons"",
+                    ""name"": ""Right Trigger"",
+                    ""type"": ""Button"",
+                    ""id"": ""1b2f3857-8b3b-40b7-b771-4dd1beab7225"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select Button"",
                     ""type"": ""Button"",
                     ""id"": ""81633d34-f4e2-4ebe-b3b2-507aafeb6228"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start Button"",
+                    ""type"": ""Button"",
+                    ""id"": ""71a1b220-78d8-4d5b-8f47-75d0e271f49a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -91,9 +145,54 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MainButtons"",
+                    ""name"": ""North"",
                     ""type"": ""Button"",
                     ""id"": ""0d4dfddb-1873-4b73-bf5e-559478389122"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""East"",
+                    ""type"": ""Button"",
+                    ""id"": ""90fba2b5-5612-4623-9d1f-41bf802dc5a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""South"",
+                    ""type"": ""Button"",
+                    ""id"": ""576739f1-0ca5-4562-980d-820b09be6733"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""West"",
+                    ""type"": ""Button"",
+                    ""id"": ""9541499f-1c6d-4407-8532-ed7d0fe7ebee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left Stick Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""b866581b-046c-457b-beb9-91850ca96355"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right Stick Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b7354c1-6a5a-4517-97c5-799e994137a9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -130,40 +229,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""D-Pad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""dc693d36-e7a6-4b3c-b0eb-fe9ae3dea5e1"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""D-Pad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bd1c6cc4-641d-4f9d-84d6-902f83d3ada8"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""D-Pad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""272459c5-9f47-41ae-9709-f5d3b5170d92"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""D-Pad"",
+                    ""action"": ""D-Pad Up"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -174,18 +240,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShoulderButtons"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6bdecc0a-0893-4a1b-981c-6a5894294b47"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShoulderButtons"",
+                    ""action"": ""Left Shoulder Button"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -196,18 +251,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""TriggerButtons"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""af09e229-cd43-4755-a894-d913f7749523"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TriggerButtons"",
+                    ""action"": ""Left Trigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -218,18 +262,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PositiveButtons"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""80f5dfd1-6014-4d8e-bded-c63dfad48c83"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PositiveButtons"",
+                    ""action"": ""Select Button"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -251,40 +284,128 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MainButtons"",
+                    ""action"": ""North"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""9c2f40f5-bbe5-4fc9-abe5-ce9aef1d6789"",
+                    ""id"": ""3f8e338f-414f-43e8-944d-b9cdd6ed3093"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left Stick Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86ca9a26-4c9e-4dc0-8122-bcccb3ce7739"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""D-Pad Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""272459c5-9f47-41ae-9709-f5d3b5170d92"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""D-Pad Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd1c6cc4-641d-4f9d-84d6-902f83d3ada8"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""D-Pad Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bdecc0a-0893-4a1b-981c-6a5894294b47"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right Shoulder Button"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""98c998d0-e4cc-45a6-b8c7-aab19be6602c"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right Trigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b6acddec-1849-4028-a437-1cb93aae7aae"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start Button"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""663bc6c3-53ca-4665-a38e-cfaa29c13cc9"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MainButtons"",
+                    ""action"": ""East"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""065fd98c-3f42-43c6-b026-b73a28654e7f"",
+                    ""id"": ""022e23b4-b9c7-4b1d-a4bb-33ae00ea7b7e"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MainButtons"",
+                    ""action"": ""South"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7d6b7eab-0c69-47d4-a0aa-e302b751dc82"",
+                    ""id"": ""228931e9-02dd-4e03-b401-c48b370807be"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MainButtons"",
+                    ""action"": ""West"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a885600-2b88-4309-a08a-061d186050ce"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right Stick Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -297,12 +418,23 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Rotation = m_Player.FindAction("Rotation", throwIfNotFound: true);
-        m_Player_DPad = m_Player.FindAction("D-Pad", throwIfNotFound: true);
-        m_Player_ShoulderButtons = m_Player.FindAction("ShoulderButtons", throwIfNotFound: true);
-        m_Player_TriggerButtons = m_Player.FindAction("TriggerButtons", throwIfNotFound: true);
-        m_Player_PositiveButtons = m_Player.FindAction("PositiveButtons", throwIfNotFound: true);
+        m_Player_DPadUp = m_Player.FindAction("D-Pad Up", throwIfNotFound: true);
+        m_Player_DPadRight = m_Player.FindAction("D-Pad Right", throwIfNotFound: true);
+        m_Player_DPadLeft = m_Player.FindAction("D-Pad Left", throwIfNotFound: true);
+        m_Player_DPadDown = m_Player.FindAction("D-Pad Down", throwIfNotFound: true);
+        m_Player_LeftShoulderButton = m_Player.FindAction("Left Shoulder Button", throwIfNotFound: true);
+        m_Player_RightShoulderButton = m_Player.FindAction("Right Shoulder Button", throwIfNotFound: true);
+        m_Player_LeftTrigger = m_Player.FindAction("Left Trigger", throwIfNotFound: true);
+        m_Player_RightTrigger = m_Player.FindAction("Right Trigger", throwIfNotFound: true);
+        m_Player_SelectButton = m_Player.FindAction("Select Button", throwIfNotFound: true);
+        m_Player_StartButton = m_Player.FindAction("Start Button", throwIfNotFound: true);
         m_Player_TouchpadButton = m_Player.FindAction("TouchpadButton", throwIfNotFound: true);
-        m_Player_MainButtons = m_Player.FindAction("MainButtons", throwIfNotFound: true);
+        m_Player_North = m_Player.FindAction("North", throwIfNotFound: true);
+        m_Player_East = m_Player.FindAction("East", throwIfNotFound: true);
+        m_Player_South = m_Player.FindAction("South", throwIfNotFound: true);
+        m_Player_West = m_Player.FindAction("West", throwIfNotFound: true);
+        m_Player_LeftStickDown = m_Player.FindAction("Left Stick Down", throwIfNotFound: true);
+        m_Player_RightStickDown = m_Player.FindAction("Right Stick Down", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -366,24 +498,46 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Rotation;
-    private readonly InputAction m_Player_DPad;
-    private readonly InputAction m_Player_ShoulderButtons;
-    private readonly InputAction m_Player_TriggerButtons;
-    private readonly InputAction m_Player_PositiveButtons;
+    private readonly InputAction m_Player_DPadUp;
+    private readonly InputAction m_Player_DPadRight;
+    private readonly InputAction m_Player_DPadLeft;
+    private readonly InputAction m_Player_DPadDown;
+    private readonly InputAction m_Player_LeftShoulderButton;
+    private readonly InputAction m_Player_RightShoulderButton;
+    private readonly InputAction m_Player_LeftTrigger;
+    private readonly InputAction m_Player_RightTrigger;
+    private readonly InputAction m_Player_SelectButton;
+    private readonly InputAction m_Player_StartButton;
     private readonly InputAction m_Player_TouchpadButton;
-    private readonly InputAction m_Player_MainButtons;
+    private readonly InputAction m_Player_North;
+    private readonly InputAction m_Player_East;
+    private readonly InputAction m_Player_South;
+    private readonly InputAction m_Player_West;
+    private readonly InputAction m_Player_LeftStickDown;
+    private readonly InputAction m_Player_RightStickDown;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Rotation => m_Wrapper.m_Player_Rotation;
-        public InputAction @DPad => m_Wrapper.m_Player_DPad;
-        public InputAction @ShoulderButtons => m_Wrapper.m_Player_ShoulderButtons;
-        public InputAction @TriggerButtons => m_Wrapper.m_Player_TriggerButtons;
-        public InputAction @PositiveButtons => m_Wrapper.m_Player_PositiveButtons;
+        public InputAction @DPadUp => m_Wrapper.m_Player_DPadUp;
+        public InputAction @DPadRight => m_Wrapper.m_Player_DPadRight;
+        public InputAction @DPadLeft => m_Wrapper.m_Player_DPadLeft;
+        public InputAction @DPadDown => m_Wrapper.m_Player_DPadDown;
+        public InputAction @LeftShoulderButton => m_Wrapper.m_Player_LeftShoulderButton;
+        public InputAction @RightShoulderButton => m_Wrapper.m_Player_RightShoulderButton;
+        public InputAction @LeftTrigger => m_Wrapper.m_Player_LeftTrigger;
+        public InputAction @RightTrigger => m_Wrapper.m_Player_RightTrigger;
+        public InputAction @SelectButton => m_Wrapper.m_Player_SelectButton;
+        public InputAction @StartButton => m_Wrapper.m_Player_StartButton;
         public InputAction @TouchpadButton => m_Wrapper.m_Player_TouchpadButton;
-        public InputAction @MainButtons => m_Wrapper.m_Player_MainButtons;
+        public InputAction @North => m_Wrapper.m_Player_North;
+        public InputAction @East => m_Wrapper.m_Player_East;
+        public InputAction @South => m_Wrapper.m_Player_South;
+        public InputAction @West => m_Wrapper.m_Player_West;
+        public InputAction @LeftStickDown => m_Wrapper.m_Player_LeftStickDown;
+        public InputAction @RightStickDown => m_Wrapper.m_Player_RightStickDown;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -399,24 +553,57 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Rotation.started += instance.OnRotation;
             @Rotation.performed += instance.OnRotation;
             @Rotation.canceled += instance.OnRotation;
-            @DPad.started += instance.OnDPad;
-            @DPad.performed += instance.OnDPad;
-            @DPad.canceled += instance.OnDPad;
-            @ShoulderButtons.started += instance.OnShoulderButtons;
-            @ShoulderButtons.performed += instance.OnShoulderButtons;
-            @ShoulderButtons.canceled += instance.OnShoulderButtons;
-            @TriggerButtons.started += instance.OnTriggerButtons;
-            @TriggerButtons.performed += instance.OnTriggerButtons;
-            @TriggerButtons.canceled += instance.OnTriggerButtons;
-            @PositiveButtons.started += instance.OnPositiveButtons;
-            @PositiveButtons.performed += instance.OnPositiveButtons;
-            @PositiveButtons.canceled += instance.OnPositiveButtons;
+            @DPadUp.started += instance.OnDPadUp;
+            @DPadUp.performed += instance.OnDPadUp;
+            @DPadUp.canceled += instance.OnDPadUp;
+            @DPadRight.started += instance.OnDPadRight;
+            @DPadRight.performed += instance.OnDPadRight;
+            @DPadRight.canceled += instance.OnDPadRight;
+            @DPadLeft.started += instance.OnDPadLeft;
+            @DPadLeft.performed += instance.OnDPadLeft;
+            @DPadLeft.canceled += instance.OnDPadLeft;
+            @DPadDown.started += instance.OnDPadDown;
+            @DPadDown.performed += instance.OnDPadDown;
+            @DPadDown.canceled += instance.OnDPadDown;
+            @LeftShoulderButton.started += instance.OnLeftShoulderButton;
+            @LeftShoulderButton.performed += instance.OnLeftShoulderButton;
+            @LeftShoulderButton.canceled += instance.OnLeftShoulderButton;
+            @RightShoulderButton.started += instance.OnRightShoulderButton;
+            @RightShoulderButton.performed += instance.OnRightShoulderButton;
+            @RightShoulderButton.canceled += instance.OnRightShoulderButton;
+            @LeftTrigger.started += instance.OnLeftTrigger;
+            @LeftTrigger.performed += instance.OnLeftTrigger;
+            @LeftTrigger.canceled += instance.OnLeftTrigger;
+            @RightTrigger.started += instance.OnRightTrigger;
+            @RightTrigger.performed += instance.OnRightTrigger;
+            @RightTrigger.canceled += instance.OnRightTrigger;
+            @SelectButton.started += instance.OnSelectButton;
+            @SelectButton.performed += instance.OnSelectButton;
+            @SelectButton.canceled += instance.OnSelectButton;
+            @StartButton.started += instance.OnStartButton;
+            @StartButton.performed += instance.OnStartButton;
+            @StartButton.canceled += instance.OnStartButton;
             @TouchpadButton.started += instance.OnTouchpadButton;
             @TouchpadButton.performed += instance.OnTouchpadButton;
             @TouchpadButton.canceled += instance.OnTouchpadButton;
-            @MainButtons.started += instance.OnMainButtons;
-            @MainButtons.performed += instance.OnMainButtons;
-            @MainButtons.canceled += instance.OnMainButtons;
+            @North.started += instance.OnNorth;
+            @North.performed += instance.OnNorth;
+            @North.canceled += instance.OnNorth;
+            @East.started += instance.OnEast;
+            @East.performed += instance.OnEast;
+            @East.canceled += instance.OnEast;
+            @South.started += instance.OnSouth;
+            @South.performed += instance.OnSouth;
+            @South.canceled += instance.OnSouth;
+            @West.started += instance.OnWest;
+            @West.performed += instance.OnWest;
+            @West.canceled += instance.OnWest;
+            @LeftStickDown.started += instance.OnLeftStickDown;
+            @LeftStickDown.performed += instance.OnLeftStickDown;
+            @LeftStickDown.canceled += instance.OnLeftStickDown;
+            @RightStickDown.started += instance.OnRightStickDown;
+            @RightStickDown.performed += instance.OnRightStickDown;
+            @RightStickDown.canceled += instance.OnRightStickDown;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -427,24 +614,57 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Rotation.started -= instance.OnRotation;
             @Rotation.performed -= instance.OnRotation;
             @Rotation.canceled -= instance.OnRotation;
-            @DPad.started -= instance.OnDPad;
-            @DPad.performed -= instance.OnDPad;
-            @DPad.canceled -= instance.OnDPad;
-            @ShoulderButtons.started -= instance.OnShoulderButtons;
-            @ShoulderButtons.performed -= instance.OnShoulderButtons;
-            @ShoulderButtons.canceled -= instance.OnShoulderButtons;
-            @TriggerButtons.started -= instance.OnTriggerButtons;
-            @TriggerButtons.performed -= instance.OnTriggerButtons;
-            @TriggerButtons.canceled -= instance.OnTriggerButtons;
-            @PositiveButtons.started -= instance.OnPositiveButtons;
-            @PositiveButtons.performed -= instance.OnPositiveButtons;
-            @PositiveButtons.canceled -= instance.OnPositiveButtons;
+            @DPadUp.started -= instance.OnDPadUp;
+            @DPadUp.performed -= instance.OnDPadUp;
+            @DPadUp.canceled -= instance.OnDPadUp;
+            @DPadRight.started -= instance.OnDPadRight;
+            @DPadRight.performed -= instance.OnDPadRight;
+            @DPadRight.canceled -= instance.OnDPadRight;
+            @DPadLeft.started -= instance.OnDPadLeft;
+            @DPadLeft.performed -= instance.OnDPadLeft;
+            @DPadLeft.canceled -= instance.OnDPadLeft;
+            @DPadDown.started -= instance.OnDPadDown;
+            @DPadDown.performed -= instance.OnDPadDown;
+            @DPadDown.canceled -= instance.OnDPadDown;
+            @LeftShoulderButton.started -= instance.OnLeftShoulderButton;
+            @LeftShoulderButton.performed -= instance.OnLeftShoulderButton;
+            @LeftShoulderButton.canceled -= instance.OnLeftShoulderButton;
+            @RightShoulderButton.started -= instance.OnRightShoulderButton;
+            @RightShoulderButton.performed -= instance.OnRightShoulderButton;
+            @RightShoulderButton.canceled -= instance.OnRightShoulderButton;
+            @LeftTrigger.started -= instance.OnLeftTrigger;
+            @LeftTrigger.performed -= instance.OnLeftTrigger;
+            @LeftTrigger.canceled -= instance.OnLeftTrigger;
+            @RightTrigger.started -= instance.OnRightTrigger;
+            @RightTrigger.performed -= instance.OnRightTrigger;
+            @RightTrigger.canceled -= instance.OnRightTrigger;
+            @SelectButton.started -= instance.OnSelectButton;
+            @SelectButton.performed -= instance.OnSelectButton;
+            @SelectButton.canceled -= instance.OnSelectButton;
+            @StartButton.started -= instance.OnStartButton;
+            @StartButton.performed -= instance.OnStartButton;
+            @StartButton.canceled -= instance.OnStartButton;
             @TouchpadButton.started -= instance.OnTouchpadButton;
             @TouchpadButton.performed -= instance.OnTouchpadButton;
             @TouchpadButton.canceled -= instance.OnTouchpadButton;
-            @MainButtons.started -= instance.OnMainButtons;
-            @MainButtons.performed -= instance.OnMainButtons;
-            @MainButtons.canceled -= instance.OnMainButtons;
+            @North.started -= instance.OnNorth;
+            @North.performed -= instance.OnNorth;
+            @North.canceled -= instance.OnNorth;
+            @East.started -= instance.OnEast;
+            @East.performed -= instance.OnEast;
+            @East.canceled -= instance.OnEast;
+            @South.started -= instance.OnSouth;
+            @South.performed -= instance.OnSouth;
+            @South.canceled -= instance.OnSouth;
+            @West.started -= instance.OnWest;
+            @West.performed -= instance.OnWest;
+            @West.canceled -= instance.OnWest;
+            @LeftStickDown.started -= instance.OnLeftStickDown;
+            @LeftStickDown.performed -= instance.OnLeftStickDown;
+            @LeftStickDown.canceled -= instance.OnLeftStickDown;
+            @RightStickDown.started -= instance.OnRightStickDown;
+            @RightStickDown.performed -= instance.OnRightStickDown;
+            @RightStickDown.canceled -= instance.OnRightStickDown;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -466,11 +686,22 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
-        void OnDPad(InputAction.CallbackContext context);
-        void OnShoulderButtons(InputAction.CallbackContext context);
-        void OnTriggerButtons(InputAction.CallbackContext context);
-        void OnPositiveButtons(InputAction.CallbackContext context);
+        void OnDPadUp(InputAction.CallbackContext context);
+        void OnDPadRight(InputAction.CallbackContext context);
+        void OnDPadLeft(InputAction.CallbackContext context);
+        void OnDPadDown(InputAction.CallbackContext context);
+        void OnLeftShoulderButton(InputAction.CallbackContext context);
+        void OnRightShoulderButton(InputAction.CallbackContext context);
+        void OnLeftTrigger(InputAction.CallbackContext context);
+        void OnRightTrigger(InputAction.CallbackContext context);
+        void OnSelectButton(InputAction.CallbackContext context);
+        void OnStartButton(InputAction.CallbackContext context);
         void OnTouchpadButton(InputAction.CallbackContext context);
-        void OnMainButtons(InputAction.CallbackContext context);
+        void OnNorth(InputAction.CallbackContext context);
+        void OnEast(InputAction.CallbackContext context);
+        void OnSouth(InputAction.CallbackContext context);
+        void OnWest(InputAction.CallbackContext context);
+        void OnLeftStickDown(InputAction.CallbackContext context);
+        void OnRightStickDown(InputAction.CallbackContext context);
     }
 }
