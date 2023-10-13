@@ -2,6 +2,8 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEditor.Rendering.LookDev;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(GamepadInput))]
@@ -12,15 +14,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject gunRef;
     private GamepadInput controllerInput;
 
-    private void Awake()
-    {
-
-        VariableComponents();
-        AnnouncePlayerSpawn();
-    }
-
     private void Start()
     {
+        VariableComponents();
+        AnnouncePlayerSpawn();
         AssignPlayerCamera();
         StartCoroutine(ActivatePlayerInput());
     }
@@ -30,6 +27,9 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         HandleRotation();
         CheckShooting();
+
+        Debug.Log("Player " + GetComponent<PlayerInput>().playerIndex + " announcing spawn.");
+
     }
 
     private void VariableComponents()

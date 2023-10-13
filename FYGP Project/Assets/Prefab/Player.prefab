@@ -359,6 +359,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   gunRef: {fileID: 2216582859822329882}
+  cameras:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8750189888384081813
 GameObject:
   m_ObjectHideFlags: 0

@@ -122,8 +122,8 @@ public class EnemyAI : MonoBehaviour
     private float timeSinceLastStep;
     private float distanceToPlayer;
     private float nextGroanTime;
-    private float randomDestroy;
     private float readyTime;
+    private float randomDestroy;
 
     [HideInInspector] public bool IsMove;
     [HideInInspector] public bool Spawn;
@@ -157,9 +157,10 @@ public class EnemyAI : MonoBehaviour
 
             //ENUM STATES
             MovementFunction();
-            DeathFunction();
             //HealthUIFunction();
         }
+        
+        DeathFunction();
     }
 
     private void FetchPlayers()
@@ -300,11 +301,11 @@ public class EnemyAI : MonoBehaviour
 
     private void DeathFunction()
     {
-        if (health < 0f)
+        if (health <= 0f)
         {
             //DEATH AUDIO
-            isDead = true;
             DuringDeath();
+            isDead = true;
         }
     }
 
@@ -382,7 +383,7 @@ public class EnemyAI : MonoBehaviour
     private IEnumerator TimeToDestroy()
     {
         yield return new WaitForSeconds(randomDestroy);
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     private void WithinRange()

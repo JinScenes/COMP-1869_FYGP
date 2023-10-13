@@ -299,7 +299,7 @@ MonoBehaviour:
     m_Bits: 8
   playerObjectName: Player(Clone)
   attackPoint: {fileID: 7849338349342435137}
-  health: 75
+  health: 100
   loudness: 8.4
   damage: 6
   sightRange: 3

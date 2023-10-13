@@ -3,7 +3,6 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using System;
-using UnityEditor.Build.Player;
 
 public class PlayerCamera : MonoBehaviour
 {
@@ -18,6 +17,9 @@ public class PlayerCamera : MonoBehaviour
     [Range(0, 10)] public float targetOrthographicSize;
 
     private float currentVelocityZoom = 0f;
+    private float joinButtonCooldown = 0.5f;
+    private float lastJoinButtonPressTime = 0f;
+
     public Vector3 cameraOffset;
     public Vector3 rotationAngles;
 
@@ -37,6 +39,9 @@ public class PlayerCamera : MonoBehaviour
         {
             FollowPlayer();
             Zooming();
+
+            Debug.Log("Camera " + playerIndex + " received spawn announcement for player " + playerIndex);
+
         }
     }
 
@@ -110,7 +115,7 @@ public class PlayerCamera : MonoBehaviour
     private void FollowPlayer()
     {
         Vector3 desiredPos = playerTransform.position + cameraOffset;
-        desiredPos.z = transform.position.z;
+        //desiredPos.z = transform.position.z;
         transform.position = Vector3.Lerp(transform.position, desiredPos, lerpSpeed * Time.deltaTime);
     }
 
@@ -119,6 +124,11 @@ public class PlayerCamera : MonoBehaviour
         float newOrthoSize = Mathf.SmoothDamp(Camera.main.orthographicSize,
             targetOrthographicSize, ref currentVelocityZoom, smoothZoomTime);
         cam.orthographicSize = newOrthoSize;
+    }
+
+    private void OnJoinButton()
+    {
+
     }
 
     private void OnEnable()
