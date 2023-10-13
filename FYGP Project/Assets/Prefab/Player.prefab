@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 9125637163404957108}
   - component: {fileID: 2846758566295821204}
   - component: {fileID: 1036889816294998514}
+  - component: {fileID: -6897409939247806058}
+  - component: {fileID: 8870401425019402303}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -194,6 +196,50 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 0d4dfddb-1873-4b73-bf5e-559478389122
     m_ActionName: Player/MainButtons[/DualShock4GamepadHID/buttonNorth,/XInputControllerWindows1/buttonNorth,/XInputControllerWindows/buttonNorth,/DualShock4GamepadHID/buttonEast,/XInputControllerWindows1/buttonEast,/XInputControllerWindows/buttonEast,/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows1/buttonSouth,/XInputControllerWindows/buttonSouth,/DualShock4GamepadHID/buttonWest,/XInputControllerWindows1/buttonWest,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4f899540-d8c5-4efe-a9c9-f313ca4df9fd
+    m_ActionName: Player/D-Pad Right
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8397a9fd-9193-4220-8443-b3e637e87e29
+    m_ActionName: Player/D-Pad Left
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eef74457-38d6-4004-81a7-fe0db4d5d782
+    m_ActionName: Player/D-Pad Down
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f960d313-990a-44a1-8c5a-c11333cf49c9
+    m_ActionName: Player/Right Shoulder Button
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1b2f3857-8b3b-40b7-b771-4dd1beab7225
+    m_ActionName: Player/Right Trigger
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 71a1b220-78d8-4d5b-8f47-75d0e271f49a
+    m_ActionName: Player/Start Button
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 90fba2b5-5612-4623-9d1f-41bf802dc5a2
+    m_ActionName: Player/East
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 576739f1-0ca5-4562-980d-820b09be6733
+    m_ActionName: Player/South
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9541499f-1c6d-4407-8532-ed7d0fe7ebee
+    m_ActionName: Player/West
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b866581b-046c-457b-beb9-91850ca96355
+    m_ActionName: Player/Left Stick Down
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9b7354c1-6a5a-4517-97c5-799e994137a9
+    m_ActionName: Player/Right Stick Down
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -224,6 +270,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!114 &-6897409939247806058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925136280284502299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e14e697f99964d48b77bec90438eb92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  addInven: {fileID: 0}
+--- !u!114 &8870401425019402303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925136280284502299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8bafeb47034db4f8c0225548230b24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8750189888384081813
 GameObject:
   m_ObjectHideFlags: 0
