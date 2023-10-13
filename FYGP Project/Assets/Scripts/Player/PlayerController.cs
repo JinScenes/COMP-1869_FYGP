@@ -9,11 +9,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField, Range(0, 20)]
     private float speed;
-
+    [SerializeField] private GameObject gunRef;
     private GamepadInput controllerInput;
 
     private void Awake()
     {
+
         VariableComponents();
         AnnouncePlayerSpawn();
     }
@@ -72,7 +73,8 @@ public class PlayerController : MonoBehaviour
 
     private void ShootingFunction()
     {
-        //Add Shooting Function
+
+        gunRef.GetComponent<GunBase>().Fire();
     }
     private void AnnouncePlayerSpawn()
     {
