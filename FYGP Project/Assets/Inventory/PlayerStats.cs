@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[CreateAssetMenu]
 public class PlayerStats
 {
     /* private int playerIndex;
@@ -65,8 +64,8 @@ public class L_AmmoLoot : ItemData
     public int ammountStack = 5;
 }
 
-[CreateAssetMenu]
-public class Gun : ItemData
-{
-    public int coolthing;
-}
+//[CreateAssetMenu]
+//public class Gun : ItemData
+//{
+//    public int coolthing;
+//}

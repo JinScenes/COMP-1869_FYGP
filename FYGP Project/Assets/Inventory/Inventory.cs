@@ -33,13 +33,27 @@ public class Inventory
 
     }
 
+    public int FindFreeIndex()
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i] == null)
+            {
+                return i;
+            }
+        }
+
+        Debug.LogError("Could not find a free index in inventory!");
+        return 6;
+    }
+
     private bool AddItem(ItemData itemData)
     {
         if (GetCount() < maxInventorySlots)
         {
             InventoryItem newItem = new InventoryItem(itemData);
 
-            int newIndex = GetCount();
+            int newIndex = FindFreeIndex();
             inventory[newIndex] = newItem;
             itemDictionary.Add(newIndex, newItem);
 
@@ -96,14 +110,53 @@ public class Inventory
 
         //Debug.Log($"Inventory has {GetCount()} instances");
     }
-    public void RemoveFromIndex(int indexToRemove)
+
+    public void RemoveFromIndex(int index)
     {
-        if (inventory[indexToRemove]!= null)
+        InventoryItem item = inventory[index];
+        if (item != null)
         {
-            inventory[indexToRemove] = null;
-            itemDictionary.Remove(indexToRemove);
+            item.RemoveFromStack();
+            if (item.stackSize == 0)
+            {
+                inventory[index] = null;
+                itemDictionary.Remove(index);
+            }
         }
+
+        inventoryUI.UpdateAll(this);
+
+
     }
+
+    public void RemoveFromIndex(int index, int Amount)
+    {
+        InventoryItem item = inventory[index];
+        if (item != null)
+        {
+            for (int i = 0; i < Amount; i++)
+            {
+                if (item != null)
+                {
+                    item.RemoveFromStack();
+                    if (item.stackSize == 0)
+                    {
+                        inventory[index] = null;
+                        itemDictionary.Remove(index);
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+           
+        }
+        inventoryUI.UpdateAll(this);
+
+    }
+
     public void Remove(ItemData itemData)
     {
         //InventoryItem item = FindItem(itemData);
@@ -117,5 +170,43 @@ public class Inventory
         //        itemdictionary.remove(itemdata);
         //    }
         //}
+
+        inventoryUI.UpdateAll(this);
+
+    }
+
+    public void DropItem(int index, Vector3 dropLocation)
+    {
+        InventoryItem item = inventory[index];
+        if (item != null)
+        {
+            Debug.Log($"Attempting to drop item {item.itemData.displayName}");
+            GameObject.Instantiate(Resources.Load(item.itemData.name), dropLocation, Quaternion.identity);
+            RemoveFromIndex(index);
+
+        }
+    }
+
+    public void Consume(int index)
+    {
+        InventoryItem item = inventory[index];
+        if (item != null && item.itemData.consumable == true)
+        {
+            string itemName = item.itemData.name;
+            Debug.Log(itemName);
+          if (itemName == "Medkit")
+            {
+                Debug.Log("+100 HP");
+            } else if(itemName == "Coke")
+            {
+                Debug.Log("You feel sick..");
+            }
+
+            RemoveFromIndex(index);
+        }
+        else
+        {
+            Debug.Log("Item is not consumable or null");
+        }
     }
 }

@@ -20,6 +20,14 @@ public class Loot : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider touched)
+    {
+        ICollectable collectable = touched.gameObject.GetComponent<ICollectable>();
+        if (collectable != null)
+        {
+            collectable.Collect(playerStats);
+        }
+    }
     // Update is called once per frame
     void Update()
     {

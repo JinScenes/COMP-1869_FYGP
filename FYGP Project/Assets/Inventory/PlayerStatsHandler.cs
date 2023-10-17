@@ -9,6 +9,7 @@ public class PlayerStatsHandler : MonoBehaviour
 
 
     public PlayerStats playerStats = new PlayerStats();
+    public Inventory playerInventory;
     public int playerIndex;
 
     public GameEvent addInven;
@@ -17,6 +18,7 @@ public class PlayerStatsHandler : MonoBehaviour
     void Start()
     {
         playerIndex = GetComponent<GamepadInput>().playerIndex;
+        playerInventory = playerStats.inventory;
         print("Got player index" + playerIndex);
         //addInven.Raise(this, player1.inventory);
     }

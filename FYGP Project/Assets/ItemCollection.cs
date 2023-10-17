@@ -20,6 +20,7 @@ public class ItemCollection : MonoBehaviour, ICollectable
             } else
             {
                 Debug.Log("Player could not pick up so not removed!");
+                collected = false;
             }
             
         }
