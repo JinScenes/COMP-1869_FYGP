@@ -106,10 +106,18 @@ public class GamepadInput : MonoBehaviour
     private void D_Pad()
     {
         //D-PAD
-        playerInput.actions["D-Pad Up"].performed += ctx => DPadInput = Vector2.up;
-        playerInput.actions["D-Pad Down"].performed += ctx => DPadInput = Vector2.down;
-        playerInput.actions["D-Pad Left"].performed += ctx => DPadInput = Vector2.left;
-        playerInput.actions["D-Pad Right"].performed += ctx => DPadInput = Vector2.right;
+        playerInput.actions["D-Pad Up"].started += ctx => DPadInput = Vector2.up;
+        playerInput.actions["D-Pad Up"].canceled += ctx => DPadInput = Vector2.zero;
+
+        playerInput.actions["D-Pad Down"].started += ctx => DPadInput = Vector2.down;
+        playerInput.actions["D-Pad Down"].canceled += ctx => DPadInput = Vector2.zero;
+
+        playerInput.actions["D-Pad Left"].started += ctx => DPadInput = Vector2.left;
+        playerInput.actions["D-Pad Left"].canceled += ctx => DPadInput = Vector2.zero;
+
+        playerInput.actions["D-Pad Right"].started += ctx => DPadInput = Vector2.right;
+        playerInput.actions["D-Pad Right"].canceled += ctx => DPadInput = Vector2.zero;
+
     }
 
     private void ShoulderButtons()
