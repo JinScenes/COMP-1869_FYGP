@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         HandleRotation();
         CheckShooting();
 
-        Debug.Log("Player " + GetComponent<PlayerInput>().playerIndex + " announcing spawn.");
+        //Debug.Log("Player " + GetComponent<PlayerInput>().playerIndex + " announcing spawn.");
 
     }
 

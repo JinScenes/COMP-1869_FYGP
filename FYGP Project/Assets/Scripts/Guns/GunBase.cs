@@ -136,10 +136,10 @@ public class GunBase : MonoBehaviour
         AnimFire = gunData.fire;
         AnimReload = gunData.reload;
 
-        print(GunModel);
+        //print(GunModel);
 
-        print(MaxAmmo.ToString());
-        print(FireRate.ToString());
+        //print(MaxAmmo.ToString());
+        //print(FireRate.ToString());
 
         GameObject instGun = Instantiate(GunModel, gunSpawn.position, currentOffset);
         instGun.transform.SetParent(gunSpawn);

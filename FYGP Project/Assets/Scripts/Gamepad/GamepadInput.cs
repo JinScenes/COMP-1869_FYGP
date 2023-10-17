@@ -1,9 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
-using UnityEngine.InputSystem.Android;
-using System.Collections;
 
-[RequireComponent(typeof(PlayerInput))]
 public class GamepadInput : MonoBehaviour
 {
     //CONTROLLER ID (TO INDICATE WHICH PLAYER IS WHO)
