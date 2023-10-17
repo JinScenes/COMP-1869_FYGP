@@ -4,6 +4,7 @@ using TMPro.EditorUtilities;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public class InventoryUI 
 {
@@ -15,23 +16,21 @@ public class InventoryUI
     
     public void UpdateAll(Inventory inventoryRef)
     {
-        Debug.Log("UI CAlled");
-        for (int i = 0; i < inventoryRef.inventory.Count; i++)
+        Transform InvenUI = GameObject.Find($"Inventory{playerIndex}").transform;
+        for (int i = 0; i < inventoryRef.GetCount(); i++)
         {
-            Transform InvenUI = GameObject.Find($"Inventory{0}").transform;
+            // Get objects
             GameObject SlotToUpdate = InvenUI.transform.Find($"Slot{i}").gameObject;
-            //GameObject newThing = SlotToUpdate.transform.Find("Stack").gameObject;
             TextMeshProUGUI StackUI = SlotToUpdate.transform.Find("Stack").gameObject.GetComponent<TextMeshProUGUI>();
 
+            // Get item references
             InventoryItem invenItem = inventoryRef.inventory[i];
             ItemData itemData = invenItem.itemData;
 
-            Debug.Log($"Found {itemData.displayName} with stack {invenItem.stackSize}");
-
+            // Update UI
             SlotToUpdate.GetComponent<Image>().sprite = itemData.icon;
             StackUI.text = invenItem.stackSize.ToString();
-            //SlotToUpdate.
-            //inventoryRef.inventory[i]
+       
         }
     }
 }

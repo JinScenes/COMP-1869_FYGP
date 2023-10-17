@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: DAMN
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  displayName: 
-  icon: {fileID: 0}
-  canStack: 1
+  displayName: Medpack
+  icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  canStack: 0

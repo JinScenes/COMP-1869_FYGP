@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerStatsHandler : MonoBehaviour
 {
@@ -20,5 +21,13 @@ public class PlayerStatsHandler : MonoBehaviour
         //addInven.Raise(this, player1.inventory);
     }
 
+    private void Update()
+    {
+        //int obj = playerStats.inventory.GetCount();
+        //if(obj > 0)
+        //{
+        //    print(obj);
+        //}
+    }
 
 }

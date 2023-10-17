@@ -14,8 +14,14 @@ public class ItemCollection : MonoBehaviour, ICollectable
             collected = true;
             //print("Locally heard the collect");
             PlayerStats playerStats = plrStats as PlayerStats;
-            playerStats.inventory.Add(item);
-            Destroy(gameObject);
+            if (playerStats.inventory.Add(item))
+            {
+                Destroy(gameObject);
+            } else
+            {
+                Debug.Log("Player could not pick up so not removed!");
+            }
+            
         }
      
     }
