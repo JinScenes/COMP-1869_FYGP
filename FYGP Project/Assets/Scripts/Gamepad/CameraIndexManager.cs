@@ -1,45 +1,65 @@
-using System.Collections;
-using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using System.Collections;
+using System;
 
 public class CameraIndexManager : MonoBehaviour
 {
-    public GameObject[] cameraGameObjects;
+    [SerializeField] private GameObject playerCamera;
+    private PlayerInputManager playerInputManager;
 
-    private IEnumerator Start()
+    public static Action<int, Transform> OnPlayerSpawn;
+
+    private void Awake()
     {
-        yield return null;
-        PlayerInputManager.instance.onPlayerJoined += HandlePlayerJoined;
+        VarSetups();
+        StartCoroutine(InitializePlayerInputManager());
+        PlayerManagerInstanceInitialiser();
+    }
 
-        for (int i = 1; i < cameraGameObjects.Length; i++)
+    private void VarSetups()
+    {
+        playerInputManager = GetComponent<PlayerInputManager>();
+    }
+
+    private void OnDestroy()
+    {
+        if (PlayerInputManager.instance)
         {
-            cameraGameObjects[i].SetActive(false);
+            PlayerInputManager.instance.onPlayerJoined -= OnPlayerJoined;
         }
+    }
+
+    private void PlayerManagerInstanceInitialiser()
+    {
+        if (PlayerInputManager.instance != null)
+        {
+            PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
+        }
+        else
+        {
+            Debug.LogWarning("PlayerInputManager instance is not set");
+        }
+    }
+
+    private IEnumerator InitializePlayerInputManager()
+    {
+        yield return new WaitForSeconds(0.1f);
+        PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
+    }
+
+    private void OnPlayerJoined(PlayerInput playerInput)
+    {
+        OnPlayerSpawn?.Invoke(playerInput.playerIndex, playerInput.transform);
     }
 
     private void OnEnable()
     {
-        PlayerInputManager.instance.onPlayerJoined += HandlePlayerJoined;
+        playerInputManager.onPlayerJoined += OnPlayerJoined;
     }
 
     private void OnDisable()
     {
-        PlayerInputManager.instance.onPlayerJoined -= HandlePlayerJoined;
-    }
-
-
-    private void HandlePlayerJoined(PlayerInput playerInput)
-    {
-        Debug.Log("Player joined with index: " + playerInput.playerIndex);
-
-        int playerIndex = playerInput.playerIndex;
-        if (playerIndex < cameraGameObjects.Length)
-        {
-            cameraGameObjects[playerIndex].SetActive(true);
-        }
-        else
-        {
-            Debug.LogWarning("Camera for player index " + playerIndex + " not set up!");
-        }
+        playerInputManager.onPlayerJoined -= OnPlayerJoined;
     }
 }

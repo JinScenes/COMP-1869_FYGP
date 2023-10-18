@@ -1,9 +1,8 @@
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using UnityEditor.Rendering.LookDev;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(GamepadInput))]
@@ -14,11 +13,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject gunRef;
     private GamepadInput controllerInput;
 
+    private List<GameObject> previouslyHitObjects = new List<GameObject>();
+
+
     private void Start()
     {
         VariableComponents();
         AnnouncePlayerSpawn();
-        AssignPlayerCamera();
         StartCoroutine(ActivatePlayerInput());
     }
 
@@ -27,15 +28,12 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         HandleRotation();
         CheckShooting();
-
-        //Debug.Log("Player " + GetComponent<PlayerInput>().playerIndex + " announcing spawn.");
-
+        HandleObstruction();
     }
 
     private void VariableComponents()
     {
         controllerInput = GetComponent<GamepadInput>();
-        GetComponent<PlayerInput>().camera = FindPlayerCamera();
     }
 
     private void CheckShooting()
@@ -46,39 +44,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private Camera FindPlayerCamera()
-    {
-        var playerCam = FindObjectsOfType<PlayerCamera>().FirstOrDefault(cam => cam.playerIndex 
-        == controllerInput.GetPlayerIndex());
-
-        return playerCam ? playerCam.GetComponent<Camera>() : null;
-    }
-
     private IEnumerator ActivatePlayerInput()
     {
         yield return new WaitForSeconds(0.1f);
         GetComponent<PlayerInput>().enabled = true;
     }
 
-    private void AssignPlayerCamera()
-    {
-        var playerCam = FindObjectsOfType<PlayerCamera>().FirstOrDefault(cam => cam.playerIndex 
-        == controllerInput.GetPlayerIndex());
-
-        if (playerCam != null && playerCam.GetComponent<Camera>())
-        {
-            GetComponent<PlayerInput>().camera = playerCam.GetComponent<Camera>();
-        }
-    }
-
     private void ShootingFunction()
     {
-
         gunRef.GetComponent<GunBase>().Fire();
     }
+
     private void AnnouncePlayerSpawn()
     {
-        PlayerCamera.OnPlayerSpawn?.Invoke(GetComponent<PlayerInput>().playerIndex, transform);
+        CameraIndexManager.OnPlayerSpawn?.Invoke(GetComponent<PlayerInput>().playerIndex, transform);
     }
 
     private void HandleMovement()
@@ -98,6 +77,51 @@ public class PlayerController : MonoBehaviour
                 controllerInput.RotationInput.y) * Mathf.Rad2Deg;
 
             transform.rotation = Quaternion.Euler(0, angle, 0);
+        }
+    }
+
+    private void HandleObstruction()
+    {
+        Vector3 direction = (transform.position - Camera.main.transform.position).normalized;
+        float distance = Vector3.Distance(Camera.main.transform.position, transform.position);
+        RaycastHit[] hits;
+
+        hits = Physics.RaycastAll(Camera.main.transform.position, direction, distance);
+        Debug.DrawRay(Camera.main.transform.position, direction * distance, Color.red);
+
+        List<GameObject> currentHitObjects = new List<GameObject>();
+
+        foreach (RaycastHit hit in hits)
+        {
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("ObstructingWalls"))
+            {
+                Debug.Log("Hit object: " + hit.collider.gameObject.name);
+                ChangeTransparency(hit.collider.gameObject, 0.5f);
+                currentHitObjects.Add(hit.collider.gameObject);
+            }
+        }
+
+        foreach (GameObject obj in previouslyHitObjects)
+        {
+            if (!currentHitObjects.Contains(obj))
+            {
+                ChangeTransparency(obj, 1f);
+            }
+        }
+
+        previouslyHitObjects = currentHitObjects;
+    }
+
+    private void ChangeTransparency(GameObject obj, float alpha)
+    {
+        Renderer renderer = obj.GetComponent<Renderer>();
+
+        if (renderer != null)
+        {
+            Debug.Log("Changing transparency of " + obj.name + " to " + alpha);
+            Color color = renderer.material.color;
+            color.a = alpha;
+            renderer.material.color = color;
         }
     }
 }

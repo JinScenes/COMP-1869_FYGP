@@ -1,136 +1,64 @@
-using UnityEngine.InputSystem;
-using System.Collections;
-using System.Linq;
 using UnityEngine;
-using System;
+using System.Collections.Generic;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [Header("Camera Variables")]
-    public int playerIndex = 0;
+    [Header("Camera Settings")]
+    [Range(0, 10), SerializeField] private float lerpSpeed = 1f;
+    [Range(0, 1), SerializeField] private float smoothTime = 0.3f;
+    [SerializeField] private Vector3 cameraOffset = new Vector3(0, 0, -10);
 
-    public Transform playerTransform;
+    private List<Transform> playerTransforms = new List<Transform>();
+    private Vector3 lastAveragePosition;
+    private Vector3 currentVelocity;
 
-    [Header("Camera Stats")]
-    [Range(0, 10)] public float lerpSpeed;
-    [Range(0, 1)] public float smoothZoomTime;
-    [Range(0, 10)] public float targetOrthographicSize;
-
-    private float currentVelocityZoom = 0f;
-
-    public Vector3 cameraOffset;
-    public Vector3 rotationAngles;
-
-    private Camera cam;
-
-    public static Action<int, Transform> OnPlayerSpawn;
-
-    private void Start()
+    private void Awake()
     {
-        StartCoroutine(InitializePlayerInputManager());
-        VariableComponents();
+        CameraIndexManager.OnPlayerSpawn += AddPlayerTransform;
     }
 
     private void LateUpdate()
     {
-        if (playerTransform != null)
+        MoveCameraBasedOnPlayers();
+    }
+
+    public void AddPlayerTransform(int index, Transform playerTransform)
+    {
+        if (!playerTransforms.Contains(playerTransform))
         {
-            FollowPlayer();
-            Zooming();
-
-            //Debug.Log("Camera " + playerIndex + " received spawn announcement for player " + playerIndex);
-
+            playerTransforms.Add(playerTransform);
         }
     }
 
-    private void OnDestroy()
+    private void MoveCameraBasedOnPlayers()
     {
-        if (PlayerInputManager.instance)
+        if (playerTransforms.Count == 0) return;
+
+        Vector3 sumOfPositions = Vector3.zero;
+        Vector3 averagePosition;
+        int movingRight = 0, movingLeft = 0, movingUp = 0, movingDown = 0;
+
+        foreach (var player in playerTransforms)
         {
-            PlayerInputManager.instance.onPlayerJoined -= OnPlayerJoined;
+            sumOfPositions += player.position;
+
+            Vector3 moveDirection = (player.position - lastAveragePosition).normalized;
+            if (moveDirection.x > 0.1f) movingRight++;
+            if (moveDirection.x < -0.1f) movingLeft++;
+            if (moveDirection.y > 0.1f) movingUp++;
+            if (moveDirection.y < -0.1f) movingDown++;
         }
+
+        averagePosition = sumOfPositions / playerTransforms.Count;
+
+        if (movingRight > playerTransforms.Count / 2) averagePosition.x += 1;
+        if (movingLeft > playerTransforms.Count / 2) averagePosition.x -= 1;
+        if (movingUp > playerTransforms.Count / 2) averagePosition.y += 1;
+        if (movingDown > playerTransforms.Count / 2) averagePosition.y -= 1;
+
+        transform.position = Vector3.SmoothDamp(transform.position, averagePosition + cameraOffset, ref currentVelocity, smoothTime);
+
+        lastAveragePosition = averagePosition;
     }
 
-    private void VariableComponents()
-    {
-        cam = GetComponent<Camera>();
-        PlayerManagerInstanceInitialiser();
-        var players = GameObject.FindGameObjectsWithTag("Player");
-        var matchingPlayer = players.FirstOrDefault(player => 
-        player.GetComponent<PlayerInput>()?.playerIndex == playerIndex);
-
-        if (matchingPlayer != null)
-        {
-            playerTransform = matchingPlayer.transform;
-            matchingPlayer.GetComponent<PlayerInput>().camera = cam;
-        }
-    }
-
-    private void PlayerManagerInstanceInitialiser()
-    {
-        if (PlayerInputManager.instance != null)
-        {
-            PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
-        }
-        else
-        {
-            Debug.LogWarning("PlayerInputManager instance is not set");
-        }
-    }
-
-    private IEnumerator InitializePlayerInputManager()
-    {
-        yield return new WaitForSeconds(0.1f);
-        PlayerInputManager.instance.onPlayerJoined += OnPlayerJoined;
-    }
-
-    private void OnPlayerJoined(PlayerInput playerInput)
-    {
-        if (playerInput.playerIndex == playerIndex)
-        {
-            cam.gameObject.SetActive(true);
-            playerInput.camera = cam;
-
-            var players = GameObject.FindGameObjectsWithTag("Player");
-            var matchingPlayer = players.FirstOrDefault(player =>
-            player.GetComponent<PlayerInput>().playerIndex == playerIndex);
-
-            if (matchingPlayer != null)
-            {
-                playerTransform = matchingPlayer.transform;
-            }
-        }
-    }
-
-    private void HandlePlayerSpawn(int spawnedPlayerIndex, Transform spawnedPlayerTransform)
-    {
-        if (spawnedPlayerIndex == playerIndex)
-        {
-            playerTransform = spawnedPlayerTransform;
-            spawnedPlayerTransform.GetComponent<PlayerInput>().camera = cam;
-        }
-    }
-
-    private void FollowPlayer()
-    {
-        Vector3 desiredPos = playerTransform.position + cameraOffset;
-        transform.position = Vector3.Lerp(transform.position, desiredPos, lerpSpeed * Time.deltaTime);
-    }
-
-    private void Zooming()
-    {
-        float newOrthoSize = Mathf.SmoothDamp(Camera.main.orthographicSize,
-            targetOrthographicSize, ref currentVelocityZoom, smoothZoomTime);
-        cam.orthographicSize = newOrthoSize;
-    }
-
-    private void OnEnable()
-    {
-        OnPlayerSpawn += HandlePlayerSpawn;
-    }
-
-    private void OnDisable()
-    {
-        OnPlayerSpawn -= HandlePlayerSpawn;
-    }
 }
