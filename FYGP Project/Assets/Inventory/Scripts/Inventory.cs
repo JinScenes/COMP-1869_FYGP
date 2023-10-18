@@ -16,7 +16,12 @@ public class Inventory
     public InventoryItem[] inventory = new InventoryItem[4];
     private Dictionary<int, InventoryItem> itemDictionary = new Dictionary<int, InventoryItem>();
 
-    private InventoryUI inventoryUI = new InventoryUI(0);
+    private InventoryUI inventoryUI;
+
+    public Inventory(InventoryUI inventoryUI)
+    {
+        this.inventoryUI = inventoryUI;
+    }
     
     public int GetCount()
     {
@@ -173,6 +178,23 @@ public class Inventory
 
         inventoryUI.UpdateAll(this);
 
+    }
+
+
+    public void DropItem(int index, Transform playerTransform)
+    {
+        InventoryItem item = inventory[index];
+        if (item != null)
+        {
+            float dropDistance = 1.5f;
+
+            Vector3 dropLocation = playerTransform.position + playerTransform.forward * dropDistance;
+            Debug.Log($"Attempting to drop item {item.itemData.displayName}");
+            
+            GameObject.Instantiate(Resources.Load(item.itemData.name), dropLocation, Quaternion.identity);
+            RemoveFromIndex(index);
+
+        }
     }
 
     public void DropItem(int index, Vector3 dropLocation)

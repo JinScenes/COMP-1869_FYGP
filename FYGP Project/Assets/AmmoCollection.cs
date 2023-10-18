@@ -5,8 +5,10 @@ using UnityEngine;
 public class AmmoCollection : MonoBehaviour, ICollectable
 {
 
-    public ItemData item;
-    public bool collected;
+    public LootAmmo ammo;
+    public int amount = 5;
+
+    private bool collected;
 
     public void Collect(object plrStats)
     {
@@ -15,28 +17,29 @@ public class AmmoCollection : MonoBehaviour, ICollectable
             collected = true;
             PlayerStats playerStats = plrStats as PlayerStats;
 
-            if (item.GetType() == typeof(S_AmmoLoot))
+            if (ammo.GetType() == typeof(LootAmmo))
             {
-                S_AmmoLoot ammo = (S_AmmoLoot) item;
+                LootAmmo item = (LootAmmo)this.ammo;
+                switch (item.ammoType)
+                {
+                    case AmmoType.SmallAmmo:
+                        playerStats.playerAmmo.smallAmmo.ammount += amount;
+                        break;
+                    case AmmoType.MediumAmmo:
+                        playerStats.playerAmmo.mediumAmmo.ammount += amount;
+                        break;
+                    case AmmoType.LargeAmmo:
+                        playerStats.playerAmmo.largeAmmo.ammount += amount;
+                        break;
+                    default:
+                        break;
+                }
 
-                playerStats.playerAmmo.smallAmmo.ammo += Random.Range(ammo.ammountStack, ammo.ammountStack + 10);
-                print("SMALL AMMO AMT: " + playerStats.playerAmmo.smallAmmo.ammo);
-            } 
-            else if (item.GetType() == typeof(M_AmmoLoot))
-            {
-                M_AmmoLoot ammo = (M_AmmoLoot)item;
 
-                playerStats.playerAmmo.mediumAmmo.ammo += Random.Range(ammo.ammountStack, ammo.ammountStack + 10);
-                print("SMALL MID AMT: " + playerStats.playerAmmo.mediumAmmo.ammo);
+                print($"Added to player {item.ammoType} + {amount}!");
             }
-            else if (item.GetType() == typeof(L_AmmoLoot))
-            {
-                L_AmmoLoot ammo = (L_AmmoLoot)item;
 
-                playerStats.playerAmmo.largeAmmo.ammo += Random.Range(ammo.ammountStack, ammo.ammountStack + 10);
-                print("LARGE AMMO AMT: " + playerStats.playerAmmo.largeAmmo.ammo);
-            }
-                Destroy(gameObject);
+            Destroy(gameObject);
         }
 
     }

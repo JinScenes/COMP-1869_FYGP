@@ -8,7 +8,6 @@ public class InventoryInput : MonoBehaviour
 {
 
     public int selection = 0;
-    private float dropDistance = 5;
     private Inventory playerInventory;
 
     private GamepadInput controllerInput;
@@ -98,8 +97,7 @@ public class InventoryInput : MonoBehaviour
             else if (controllerInput.DPadInput == Vector2.down)
             {
                 StartInputTimer();
-                Vector3 itemDropLocation = transform.position + transform.forward;
-                playerInventory.DropItem(Selection, itemDropLocation);
+                playerInventory.DropItem(Selection, transform);
             }
         }
       

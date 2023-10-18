@@ -6,6 +6,7 @@ public class Loot : MonoBehaviour
 {
     public PlayerStats playerStats;
 
+    // Needs to wait for playerstats to insitailise
     private void Start()
     {
         playerStats = GetComponent<PlayerStatsHandler>().playerStats;

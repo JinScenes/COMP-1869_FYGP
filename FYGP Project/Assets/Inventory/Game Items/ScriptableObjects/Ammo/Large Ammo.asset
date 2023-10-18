@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: New S_Ammo Loot
-  m_EditorClassIdentifier: Assembly-CSharp::S_AmmoLoot
-  displayName: 
-  icon: {fileID: 0}
-  canStack: 1
-  ammountStack: 6
+  m_Script: {fileID: 11500000, guid: 2e49bbec2e1cd1648806db1d9f862570, type: 3}
+  m_Name: Large Ammo
+  m_EditorClassIdentifier: Assembly-CSharp::LootAmmo
+  ammoType: 2

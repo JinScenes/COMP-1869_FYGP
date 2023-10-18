@@ -8,28 +8,22 @@ public class PlayerStatsHandler : MonoBehaviour
 {
 
 
-    public PlayerStats playerStats = new PlayerStats();
+    public PlayerStats playerStats;
     public Inventory playerInventory;
     public int playerIndex;
 
     public GameEvent addInven;
 
 
-    void Start()
+    // Awake because some scripts will need this on Start()
+    void Awake()
     {
         playerIndex = GetComponent<GamepadInput>().playerIndex;
+        playerStats = new PlayerStats(playerIndex);
         playerInventory = playerStats.inventory;
-        print("Got player index" + playerIndex);
+        //print("Got player index" + playerIndex);
         //addInven.Raise(this, player1.inventory);
     }
 
-    private void Update()
-    {
-        //int obj = playerStats.inventory.GetCount();
-        //if(obj > 0)
-        //{
-        //    print(obj);
-        //}
-    }
 
 }
