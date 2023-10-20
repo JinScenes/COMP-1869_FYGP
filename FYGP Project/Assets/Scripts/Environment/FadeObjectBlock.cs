@@ -22,6 +22,17 @@ public class FadeObjectBlock : MonoBehaviour
 
     private void Start()
     {
+        VarsSetup();
+        StartCoroutine(CheckForObjects());
+    }
+
+    private void VarsSetup()
+    {
+        if (cam == null)
+        {
+            cam = FindObjectOfType<Camera>();
+        }
+
         StartCoroutine(CheckForObjects());
     }
 
