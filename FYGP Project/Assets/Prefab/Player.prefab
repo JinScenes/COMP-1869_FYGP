@@ -375,7 +375,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 128
-  target: {fileID: 2277545799100556371}
+  targets:
+  - {fileID: 2277545799100556371}
   cam: {fileID: 0}
   fadedAlpha: 0.33
   retainShadows: 1

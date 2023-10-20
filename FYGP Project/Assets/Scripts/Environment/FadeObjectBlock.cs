@@ -1,13 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class FadeObjectBlock : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private Transform target;
+    [SerializeField] private List<Transform> targets = new List<Transform>();
     [SerializeField] private Camera cam;
     [SerializeField] private float fadedAlpha = 0.33f;
     [SerializeField] private bool retainShadows = true;
@@ -26,6 +25,11 @@ public class FadeObjectBlock : MonoBehaviour
         VarsSetup();
     }
 
+    private void Update()
+    {
+        
+    }
+
     private void VarsSetup()
     {
         cam = FindObjectOfType<Camera>();
@@ -36,36 +40,38 @@ public class FadeObjectBlock : MonoBehaviour
     {
         while (true)
         {
-            int p_hits = Physics.RaycastNonAlloc(cam.transform.position, (target.transform.position + targetPositionOffset 
-                - cam.transform.position).normalized, hits, Vector3.Distance(cam.transform.position, 
-                target.transform.position + targetPositionOffset), layerMask);
-
-            if (p_hits > 0)
+            foreach (Transform target in targets)
             {
-                for (int i = 0; i < p_hits; i++)
-                {
-                    Fading fadingObj = GetFadingObjectFromHit(hits[i]);
+                int p_hits = Physics.RaycastNonAlloc(cam.transform.position, (target.position + targetPositionOffset
+                    - cam.transform.position).normalized, hits, Vector3.Distance(cam.transform.position,
+                    target.position + targetPositionOffset), layerMask);
 
-                    if (fadingObj != null && !objectsBlockingView.Contains(fadingObj))
+                if (p_hits > 0)
+                {
+                    for (int i = 0; i < p_hits; i++)
                     {
-                        if (runningCoroutines.ContainsKey(fadingObj))
+                        Fading fadingObj = GetFadingObjectFromHit(hits[i]);
+
+                        if (fadingObj != null && !objectsBlockingView.Contains(fadingObj))
                         {
-                            if (runningCoroutines[fadingObj] != null)
+                            if (runningCoroutines.ContainsKey(fadingObj))
                             {
-                                StopCoroutine(runningCoroutines[fadingObj]);
+                                if (runningCoroutines[fadingObj] != null)
+                                {
+                                    StopCoroutine(runningCoroutines[fadingObj]);
+                                }
+
+                                runningCoroutines.Remove(fadingObj);
                             }
 
-                            runningCoroutines.Remove(fadingObj);
+                            runningCoroutines.Add(fadingObj, StartCoroutine(FadeObjectOut(fadingObj)));
+                            objectsBlockingView.Add(fadingObj);
                         }
-
-                        runningCoroutines.Add(fadingObj, StartCoroutine(FadeObjectOut(fadingObj)));
-                        objectsBlockingView.Add(fadingObj);
                     }
                 }
             }
 
             FadeObjectsNoLongerBeingHit();
-
             ClearHits();
 
             yield return null;
