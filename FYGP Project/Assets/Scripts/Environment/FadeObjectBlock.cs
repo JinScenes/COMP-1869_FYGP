@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class FadeObjectBlock : MonoBehaviour
@@ -22,6 +23,12 @@ public class FadeObjectBlock : MonoBehaviour
 
     private void Start()
     {
+        VarsSetup();
+    }
+
+    private void VarsSetup()
+    {
+        cam = FindObjectOfType<Camera>();
         StartCoroutine(CheckForObjects());
     }
 
