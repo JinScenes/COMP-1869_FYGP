@@ -47,8 +47,11 @@ public class PlayerCamera : MonoBehaviour
         foreach (var player in playerTransforms)
         {
             sumOfPositions += player.position;
-            if (player.position.y > topmostPlayer.y) topmostPlayer = player.position;
-            if (player.position.y < bottommostPlayer.y) bottommostPlayer = player.position;
+            if (player.position.y > topmostPlayer.y) topmostPlayer 
+                    = player.position;
+
+            if (player.position.y < bottommostPlayer.y) bottommostPlayer 
+                    = player.position;
         }
 
         Vector3 averagePosition = sumOfPositions / playerTransforms.Count;
@@ -62,7 +65,9 @@ public class PlayerCamera : MonoBehaviour
             averagePosition = bottommostPlayer;
         }
 
-        transform.position = Vector3.SmoothDamp(transform.position, averagePosition + cameraOffset, ref currentVelocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, 
+            averagePosition + cameraOffset, ref currentVelocity, smoothTime);
+
         lastAveragePosition = averagePosition;
     }
 }

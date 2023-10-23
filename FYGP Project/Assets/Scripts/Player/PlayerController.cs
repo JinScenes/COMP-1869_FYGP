@@ -66,16 +66,18 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector3 moveDirection = new Vector3(controllerInput.MovementInput.x, 0, controllerInput.MovementInput.y);
-        Vector3 moveOffset = moveDirection * speed * Time.deltaTime;
-        Vector3 newPosition = transform.position + moveOffset;
-        Vector3 viewPos = Camera.main.WorldToViewportPoint(newPosition);
+        Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 
+            0, controllerInput.MovementInput.y);
+
+        Vector3 moveOffset = moveDir * speed * Time.deltaTime;
+        Vector3 newPos = transform.position + moveOffset;
+        Vector3 viewPos = Camera.main.WorldToViewportPoint(newPos);
 
         viewPos.x = Mathf.Clamp(viewPos.x, 0.05f, 0.95f);
         viewPos.y = Mathf.Clamp(viewPos.y, 0.05f, 0.95f);
 
-        newPosition = Camera.main.ViewportToWorldPoint(viewPos);
-        transform.position = newPosition;
+        newPos = Camera.main.ViewportToWorldPoint(viewPos);
+        transform.position = newPos;
 
         RestrictMovementWithinCameraView();
     }
