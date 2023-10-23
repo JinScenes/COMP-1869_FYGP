@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     private void AnnouncePlayerSpawn()
     {
-        CameraIndexManager.OnPlayerSpawn?.Invoke(GetComponent<PlayerInput>().playerIndex, transform);
+        GamepadInputManager.OnPlayerSpawn?.Invoke(GetComponent<PlayerInput>().playerIndex, transform);
     }
 
     private void HandleMovement()

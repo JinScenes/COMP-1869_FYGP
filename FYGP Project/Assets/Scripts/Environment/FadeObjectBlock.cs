@@ -1,3 +1,4 @@
+using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ public class FadeObjectBlock : MonoBehaviour
 
     [Header("Read Only Data")]
     [SerializeField]
+
+    private TransformManager transformManager;
     private List<Fading> objectsBlockingView = new List<Fading>();
     private Dictionary<Fading, Coroutine> runningCoroutines = new Dictionary<Fading, Coroutine>();
 
@@ -25,14 +28,25 @@ public class FadeObjectBlock : MonoBehaviour
         VarsSetup();
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void VarsSetup()
     {
         cam = FindObjectOfType<Camera>();
+        transformManager = FindObjectOfType<TransformManager>();
+
+        if(transformManager != null)
+        {
+            List<Transform> allPlayers = transformManager.GetAllPlayers();
+            foreach (Transform player in allPlayers)
+            {
+                if (player != this.transform)
+                {
+                    AddPlayerToTargets(player);
+                }
+            }
+
+            transformManager.onNewPlayerRegistered += NewPlayedJoined; 
+        }
+
         StartCoroutine(CheckForObjects());
     }
 
@@ -75,6 +89,22 @@ public class FadeObjectBlock : MonoBehaviour
             ClearHits();
 
             yield return null;
+        }
+    }
+
+    public void AddPlayerToTargets(Transform playerTransform)
+    {
+        if (!targets.Contains(playerTransform))
+        {
+            targets.Add(playerTransform);
+        }
+    }
+
+    private void NewPlayedJoined(Transform newPlayerTransform)
+    {
+        if (newPlayerTransform != this.transform)
+        {
+            AddPlayerToTargets(newPlayerTransform);
         }
     }
 
@@ -222,5 +252,13 @@ public class FadeObjectBlock : MonoBehaviour
     private Fading GetFadingObjectFromHit(RaycastHit hit)
     {
         return hit.collider != null ? hit.collider.GetComponent<Fading>() : null;
+    }
+
+    private void OnDestroy()
+    {
+        if (transformManager != null)
+        {
+            transformManager.onNewPlayerRegistered -= NewPlayedJoined;
+        }
     }
 }

@@ -14,7 +14,7 @@ public class PlayerCamera : MonoBehaviour
 
     private void Awake()
     {
-        CameraIndexManager.OnPlayerSpawn += AddPlayerTransform;
+        GamepadInputManager.OnPlayerSpawn += AddPlayerTransform;
     }
 
     private void LateUpdate()

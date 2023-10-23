@@ -3,10 +3,15 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System;
 
-public class CameraIndexManager : MonoBehaviour
+public class GamepadInputManager : MonoBehaviour
 {
-    [SerializeField] private GameObject playerCamera;
+    public GameObject playerCamera;
+    public Transform[] spawnPoints;
+
+    private TransformManager transformManager;
     private PlayerInputManager playerInputManager;
+
+    private int currentPlayerCount = 0;
 
     public static Action<int, Transform> OnPlayerSpawn;
 
@@ -19,6 +24,7 @@ public class CameraIndexManager : MonoBehaviour
 
     private void VarSetups()
     {
+        transformManager = GetComponent<TransformManager>();
         playerInputManager = GetComponent<PlayerInputManager>();
     }
 
@@ -50,6 +56,27 @@ public class CameraIndexManager : MonoBehaviour
 
     private void OnPlayerJoined(PlayerInput playerInput)
     {
+        if (currentPlayerCount < spawnPoints.Length)
+        {
+            playerInput.transform.position = spawnPoints[currentPlayerCount].position;
+            currentPlayerCount++;
+        }
+        else
+        {
+            Debug.LogWarning("All spawn points are occupied!");
+
+        }
+
+        if (transformManager)
+        {
+            transformManager.RegisterPlayer(playerInput.gameObject);
+        }
+        else
+        {
+            Debug.LogWarning("TransformManager not set in GamepadInputManager");
+
+        }
+
         OnPlayerSpawn?.Invoke(playerInput.playerIndex, playerInput.transform);
     }
 
