@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2327199945815766672}
   - component: {fileID: 8381572143303706702}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CarBlockade2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 5715302787093226617}
   - component: {fileID: 2827761948772268748}
   - component: {fileID: 7519348291737450544}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CarBlockade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 7311754539936248921}
   - component: {fileID: 652261591078413481}
   - component: {fileID: 3825039028725638012}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NormalCar1_BackWheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 5610931649425871077}
   - component: {fileID: 1613956893657493047}
   - component: {fileID: 6672127219378297493}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NormalCar1_FrontRightWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8722600552096758119}
   - component: {fileID: 6856088530147486297}
-  m_Layer: 0
+  - component: {fileID: 4715800640776776882}
+  m_Layer: 7
   m_Name: HouseGroup4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,6 +361,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.4053879, y: 6.0359316, z: 10.842276}
   m_Center: {x: 0.20556259, y: 2.5179658, z: -4.921138}
+--- !u!114 &4715800640776776882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3342256281710499089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331f0d01fefd8a446a9cdd73fb118bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers: []
+  materials: []
+  pos: {x: 0, y: 0, z: 0}
+  initialAlpha: 0
 --- !u!1 &4153585188755067430
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +389,8 @@ GameObject:
   - component: {fileID: 691361903534818827}
   - component: {fileID: 2343302575486342935}
   - component: {fileID: 2693408338857933860}
-  m_Layer: 0
+  - component: {fileID: 8567810429860773667}
+  m_Layer: 7
   m_Name: StartingBuildings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,6 +479,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.0367126, y: 5.922744, z: 3.5073986}
   m_Center: {x: -1.5183563, y: 2.461372, z: 9.5781355}
+--- !u!114 &8567810429860773667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153585188755067430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331f0d01fefd8a446a9cdd73fb118bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers: []
+  materials: []
+  pos: {x: 0, y: 0, z: 0}
+  initialAlpha: 0
 --- !u!1 &4957762231193453370
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2774192018736546443}
   - component: {fileID: 9219585708350782221}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NormalCar1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +562,8 @@ GameObject:
   m_Component:
   - component: {fileID: 585591587515194352}
   - component: {fileID: 6194818978801021206}
-  m_Layer: 0
+  - component: {fileID: 3625976961697072959}
+  m_Layer: 7
   m_Name: HouseGroup2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,6 +609,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.2886353, y: 3.624762, z: 7.449893}
   m_Center: {x: 0.014278412, y: 1.312381, z: 3.2249465}
+--- !u!114 &3625976961697072959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009598421687949937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331f0d01fefd8a446a9cdd73fb118bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers: []
+  materials: []
+  pos: {x: 0, y: 0, z: 0}
+  initialAlpha: 0
 --- !u!1 &6480050907376886744
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +636,7 @@ GameObject:
   - component: {fileID: 5714929063135334316}
   - component: {fileID: 286331206084298867}
   - component: {fileID: 3545155059633460123}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: STREET
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,8 +749,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 52.238663, y: 0.4190192, z: 45.927734}
-  m_Center: {x: -8.9012985, y: -0.2904904, z: 11.194946}
+  m_Size: {x: 52.238667, y: 0.73077464, z: 45.927734}
+  m_Center: {x: -8.901299, y: 0.06701386, z: 11.194947}
 --- !u!114 &3545155059633460123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,7 +769,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 190
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -729,7 +780,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.033333335
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 63d994603ac2d9f468960d1fe3fdfccc, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 4eba805c9cdd4ab459ff77c98fecd75a, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &7738721054218170993
 GameObject:
@@ -742,7 +793,7 @@ GameObject:
   - component: {fileID: 8609050597623495766}
   - component: {fileID: 2611452376433131989}
   - component: {fileID: 1229280196034354536}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NormalCar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,7 +881,7 @@ GameObject:
   - component: {fileID: 440463615505034607}
   - component: {fileID: 685991191014422848}
   - component: {fileID: 7759914581574748990}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NormalCar1_FrontLeftWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,7 +964,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9151188787931871401}
   - component: {fileID: 947582950990229228}
-  m_Layer: 0
+  - component: {fileID: 1411389511405700916}
+  m_Layer: 7
   m_Name: HouseGroup5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -965,6 +1017,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.9931908, y: 4.177028, z: 30.628635}
   m_Center: {x: 0.9965954, y: 1.8812902, z: 11.590746}
+--- !u!114 &1411389511405700916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8509928207493021700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331f0d01fefd8a446a9cdd73fb118bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers: []
+  materials: []
+  pos: {x: 0, y: 0, z: 0}
+  initialAlpha: 0
 --- !u!1 &9022422929438637684
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,7 +1042,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2618356069414544418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Map1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -991,7 +1059,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 47.89, y: 0.526, z: 26.98}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.7159, y: 1.7159, z: 1.7159}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7959611344512860544}
@@ -1019,7 +1087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2923178926333642506}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HouseGroup3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1125,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4793831195033381957}
   - component: {fileID: 3980329743716618778}
-  m_Layer: 0
+  - component: {fileID: 5552600875248805494}
+  m_Layer: 7
   m_Name: HouseGroup1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1104,6 +1173,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.806694, y: 4.0652366, z: 10.743351}
   m_Center: {x: -1.5032158, y: 1.5326183, z: -4.8716755}
+--- !u!114 &5552600875248805494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119651718889502275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331f0d01fefd8a446a9cdd73fb118bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers: []
+  materials: []
+  pos: {x: 0, y: 0, z: 0}
+  initialAlpha: 0
 --- !u!1001 &100811457986996555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1168,9 +1253,29 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6853752496455571983, guid: 93f20d8f8bf0f9e44b13e2091803cc84, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2973597147790454449, guid: 93f20d8f8bf0f9e44b13e2091803cc84, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 840082892460313207, guid: 93f20d8f8bf0f9e44b13e2091803cc84, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 93f20d8f8bf0f9e44b13e2091803cc84, type: 3}
       propertyPath: m_Name
       value: NormalCar1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93f20d8f8bf0f9e44b13e2091803cc84, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826441437919939773, guid: 93f20d8f8bf0f9e44b13e2091803cc84, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1250,6 +1355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Straight (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1315,6 +1424,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: dd8e66ba26ff7784ca06ba438ac72f23, type: 3}
       propertyPath: m_Name
       value: 2Story_Wide_2Doors (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd8e66ba26ff7784ca06ba438ac72f23, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1394,6 +1507,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1471,6 +1588,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1550,6 +1671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1627,6 +1752,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1706,6 +1835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (72)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1783,6 +1916,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (62)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1862,6 +1999,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1939,6 +2080,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
       propertyPath: m_Name
       value: Street_Straight (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2018,6 +2163,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2096,6 +2245,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2Story_Wide (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3071baf709c977b448a0be09950dc66b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2170,9 +2323,29 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7577157442010290811, guid: a6d97ca0dc4454f44841ae455c49a5e3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4449241569627442135, guid: a6d97ca0dc4454f44841ae455c49a5e3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a6d97ca0dc4454f44841ae455c49a5e3, type: 3}
       propertyPath: m_Name
       value: NormalCar2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a6d97ca0dc4454f44841ae455c49a5e3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698918172101536541, guid: a6d97ca0dc4454f44841ae455c49a5e3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2786733526305945106, guid: a6d97ca0dc4454f44841ae455c49a5e3, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2252,6 +2425,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (45)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2329,6 +2506,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2408,6 +2589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2485,6 +2670,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
       propertyPath: m_Name
       value: Street_Straight (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2564,6 +2753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2641,6 +2834,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ee67e982be0a5124a8f2426f876a4735, type: 3}
       propertyPath: m_Name
       value: 4Story_Wide_2Doors_Roof (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ee67e982be0a5124a8f2426f876a4735, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2720,6 +2917,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Straight (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2798,6 +2999,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Straight (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2864,6 +3069,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2Story_Wide_2Doors (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd8e66ba26ff7784ca06ba438ac72f23, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2871,6 +3080,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd8e66ba26ff7784ca06ba438ac72f23, type: 3}
       insertIndex: -1
       addedObject: {fileID: 897734921473125062}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dd8e66ba26ff7784ca06ba438ac72f23, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2257916478884391658}
   m_SourcePrefab: {fileID: 100100000, guid: dd8e66ba26ff7784ca06ba438ac72f23, type: 3}
 --- !u!1 &1718210489087886561 stripped
 GameObject:
@@ -2898,6 +3110,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.06827825, y: 0.02255297, z: 0.027479451}
   m_Center: {x: 0, y: -0.00050346495, z: 0.013582215}
+--- !u!114 &2257916478884391658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718210489087886561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331f0d01fefd8a446a9cdd73fb118bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers: []
+  materials: []
+  pos: {x: 0, y: 0, z: 0}
+  initialAlpha: 0
 --- !u!4 &2059165352907988571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd8e66ba26ff7784ca06ba438ac72f23, type: 3}
@@ -2970,6 +3198,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d02d0c169106fb040b82052bdbe97b32, type: 3}
       propertyPath: m_Name
       value: 2Story_2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d02d0c169106fb040b82052bdbe97b32, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3049,6 +3281,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Straight (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3126,6 +3362,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 15ce480da92aeb0428f760d1fb53a1fa, type: 3}
       propertyPath: m_Name
       value: House1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 15ce480da92aeb0428f760d1fb53a1fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3205,6 +3445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3282,6 +3526,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3361,6 +3609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3435,9 +3687,29 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -3863748496279866402, guid: ba540f8d753614e47938adba95c26989, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1729590623476944591, guid: ba540f8d753614e47938adba95c26989, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 58407126505912872, guid: ba540f8d753614e47938adba95c26989, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ba540f8d753614e47938adba95c26989, type: 3}
       propertyPath: m_Name
       value: Cop
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba540f8d753614e47938adba95c26989, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707080767332816008, guid: ba540f8d753614e47938adba95c26989, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3500,6 +3772,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9397498baf1dd644da91bfc1346c8331, type: 3}
       propertyPath: m_Name
       value: 2Story_Sidehouse_Mat (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9397498baf1dd644da91bfc1346c8331, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3579,6 +3855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_3Way_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4432e124f6295da45b65088477b08221, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3656,6 +3936,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3735,6 +4019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4Story_Wide_2Doors_Roof
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ee67e982be0a5124a8f2426f876a4735, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3812,6 +4100,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d02d0c169106fb040b82052bdbe97b32, type: 3}
       propertyPath: m_Name
       value: 2Story_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d02d0c169106fb040b82052bdbe97b32, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3891,6 +4183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2Story_Wide_2Doors
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dd8e66ba26ff7784ca06ba438ac72f23, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3968,6 +4264,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4047,6 +4347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2Story_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d02d0c169106fb040b82052bdbe97b32, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4125,6 +4429,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2Story_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d02d0c169106fb040b82052bdbe97b32, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4145,7 +4453,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ba290588f12d31247b39107b80236da9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.47410393
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba290588f12d31247b39107b80236da9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4153,23 +4461,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba290588f12d31247b39107b80236da9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.84488535
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba290588f12d31247b39107b80236da9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5000007
+      value: 0.0000020712612
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba290588f12d31247b39107b80236da9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5000008
+      value: -0.0000020787118
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba290588f12d31247b39107b80236da9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.49999925
+      value: 0.7071067
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba290588f12d31247b39107b80236da9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.49999928
+      value: 0.7071069
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba290588f12d31247b39107b80236da9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4181,7 +4489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba290588f12d31247b39107b80236da9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: ba290588f12d31247b39107b80236da9, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4190,6 +4498,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ba290588f12d31247b39107b80236da9, type: 3}
       propertyPath: m_Name
       value: 2Story_Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba290588f12d31247b39107b80236da9, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4210,6 +4522,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ba290588f12d31247b39107b80236da9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1206441823390316432}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ba290588f12d31247b39107b80236da9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 663669590645980499}
   m_SourcePrefab: {fileID: 100100000, guid: ba290588f12d31247b39107b80236da9, type: 3}
 --- !u!4 &3953818384624177343 stripped
 Transform:
@@ -4326,6 +4641,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.006091287, y: 0.00293751, z: 0.012955953}
   m_Center: {x: -0.005299906, y: -0.007551522, z: 0.006418238}
+--- !u!114 &663669590645980499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437479894261074437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331f0d01fefd8a446a9cdd73fb118bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers: []
+  materials: []
+  pos: {x: 0, y: 0, z: 0}
+  initialAlpha: 0
 --- !u!1001 &3728488052866589984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4381,6 +4712,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0eec1c9b54410034c8278fd9e876693a, type: 3}
       propertyPath: m_Name
       value: 1Story_GableRoof
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0eec1c9b54410034c8278fd9e876693a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4460,6 +4795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4538,6 +4877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (08)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4603,6 +4946,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4ac92c4f924caef42a3cb18bcb003fc9, type: 3}
       propertyPath: m_Name
       value: 2Story_Columns
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ac92c4f924caef42a3cb18bcb003fc9, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4682,6 +5029,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4759,6 +5110,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4838,6 +5193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4916,6 +5275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Curve (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44077604b0f528948bda2bd36ba48bfb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4981,6 +5344,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 058c9ce124d4ada4e96f78198b12e22c, type: 3}
       propertyPath: m_Name
       value: 1Story_RoundRoof
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 058c9ce124d4ada4e96f78198b12e22c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5060,6 +5427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5137,6 +5508,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (69)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5216,6 +5591,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5293,6 +5672,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
       propertyPath: m_Name
       value: Street_Straight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5372,6 +5755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (66)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5449,6 +5836,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5528,6 +5919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (60)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5606,6 +6001,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5671,6 +6070,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3071baf709c977b448a0be09950dc66b, type: 3}
       propertyPath: m_Name
       value: 2Story_Wide
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3071baf709c977b448a0be09950dc66b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5750,6 +6153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5828,6 +6235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5905,6 +6316,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
       propertyPath: m_Name
       value: Street_Straight (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5988,6 +6403,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4Story_Center
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0577adc30f952154980fed7e63dc61a9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6065,6 +6484,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6144,6 +6567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building2_Large
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 61eccda99ae6d38489de9d6b8c31f53e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6151,6 +6578,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61eccda99ae6d38489de9d6b8c31f53e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9145875932209777243}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61eccda99ae6d38489de9d6b8c31f53e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5860762527372712399}
   m_SourcePrefab: {fileID: 100100000, guid: 61eccda99ae6d38489de9d6b8c31f53e, type: 3}
 --- !u!1 &4618560808992105817 stripped
 GameObject:
@@ -6178,6 +6608,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.031705573, y: 0.044389606, z: 0.022572482}
   m_Center: {x: 0.00053928257, y: -0.00000000199597, z: 0.011157216}
+--- !u!114 &5860762527372712399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4618560808992105817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331f0d01fefd8a446a9cdd73fb118bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers: []
+  materials: []
+  pos: {x: 0, y: 0, z: 0}
+  initialAlpha: 0
 --- !u!4 &5427888930843508707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 61eccda99ae6d38489de9d6b8c31f53e, type: 3}
@@ -6251,6 +6697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3Story_Slim_Mat
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b22ef76da3f09fd41ba20f53cb63d17b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6316,6 +6766,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8cbf3fbdf6200724397e5bf8a3e79216, type: 3}
       propertyPath: m_Name
       value: 2Story_GableRoof
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8cbf3fbdf6200724397e5bf8a3e79216, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6395,6 +6849,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1Story
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 138803ee6c9428d4a9303c2d38d4ecca, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6461,6 +6919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4Story_Wide_2Doors_Roof (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ee67e982be0a5124a8f2426f876a4735, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6468,6 +6930,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ee67e982be0a5124a8f2426f876a4735, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4523653810241031451}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ee67e982be0a5124a8f2426f876a4735, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4686568422102283143}
   m_SourcePrefab: {fileID: 100100000, guid: ee67e982be0a5124a8f2426f876a4735, type: 3}
 --- !u!4 &6233108801070823515 stripped
 Transform:
@@ -6500,6 +6965,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.06827825, y: 0.026963228, z: 0.0568346}
   m_Center: {x: 0, y: -0.002708586, z: 0.028171495}
+--- !u!114 &4686568422102283143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6758675721643598561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331f0d01fefd8a446a9cdd73fb118bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers: []
+  materials: []
+  pos: {x: 0, y: 0, z: 0}
+  initialAlpha: 0
 --- !u!1001 &6011485405644325984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6564,9 +7045,29 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8236667193759551346, guid: 458a22cffda782244bbb0283cf6727cf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -7062923976779109505, guid: 458a22cffda782244bbb0283cf6727cf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -894679203148458699, guid: 458a22cffda782244bbb0283cf6727cf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 458a22cffda782244bbb0283cf6727cf, type: 3}
       propertyPath: m_Name
       value: Taxi
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 458a22cffda782244bbb0283cf6727cf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187763976473509416, guid: 458a22cffda782244bbb0283cf6727cf, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6646,6 +7147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (55)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6723,6 +7228,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (46)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6802,6 +7311,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6879,6 +7392,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6664eac1cfae162469ba649f0f1f2a1e, type: 3}
       propertyPath: m_Name
       value: Building3_Small
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6664eac1cfae162469ba649f0f1f2a1e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6958,6 +7475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7035,6 +7556,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4c2f1d5d258364044bb14752f095effc, type: 3}
       propertyPath: m_Name
       value: 4Story_Mat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4c2f1d5d258364044bb14752f095effc, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7114,6 +7639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7184,9 +7713,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5008074201149760816, guid: fbe69514b5167df4dab4dbc8c343641f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fbe69514b5167df4dab4dbc8c343641f, type: 3}
       propertyPath: m_Name
       value: Cop_SUV
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fbe69514b5167df4dab4dbc8c343641f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815900156647082707, guid: fbe69514b5167df4dab4dbc8c343641f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051803110935272756, guid: fbe69514b5167df4dab4dbc8c343641f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9181562877442937152, guid: fbe69514b5167df4dab4dbc8c343641f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7266,6 +7815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (52)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7343,6 +7896,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7422,6 +7979,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7487,6 +8048,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 99cb8b2aa4c67f5409f2e6646432be9f, type: 3}
       propertyPath: m_Name
       value: 2Story_Sidehouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 99cb8b2aa4c67f5409f2e6646432be9f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7566,6 +8131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Straight (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7643,6 +8212,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cd66d6ed787528b45bb2868f8dbd5fc6, type: 3}
       propertyPath: m_Name
       value: 2Story_GableRoof_Mat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cd66d6ed787528b45bb2868f8dbd5fc6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7722,6 +8295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (53)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7799,6 +8376,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7878,6 +8459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2Story_Center
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ef0e799b0b7960469aa5685a57dc2cc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7956,6 +8541,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (47)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8030,9 +8619,29 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1683433373455059139, guid: 780207531af84194f8348c96e8dcfc14, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -755185241860426685, guid: 780207531af84194f8348c96e8dcfc14, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 780207531af84194f8348c96e8dcfc14, type: 3}
       propertyPath: m_Name
       value: SUV
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 780207531af84194f8348c96e8dcfc14, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493117798010638100, guid: 780207531af84194f8348c96e8dcfc14, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567934141543178872, guid: 780207531af84194f8348c96e8dcfc14, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8111,6 +8720,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8194,6 +8807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4Story_Center (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0577adc30f952154980fed7e63dc61a9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8271,6 +8888,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
       propertyPath: m_Name
       value: Street_Straight (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8350,6 +8971,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Straight (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8427,6 +9052,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
       propertyPath: m_Name
       value: Street_Straight (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8506,6 +9135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8583,6 +9216,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 94bd9494949c1834f8f10968ef71fd49, type: 3}
       propertyPath: m_Name
       value: 2Story_Center_Mat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 94bd9494949c1834f8f10968ef71fd49, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8662,6 +9299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (09)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8739,6 +9380,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
       propertyPath: m_Name
       value: Street_Straight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8818,6 +9463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Straight (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8896,6 +9545,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8962,6 +9615,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2Story_Center (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ef0e799b0b7960469aa5685a57dc2cc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9023,6 +9680,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cd66d6ed787528b45bb2868f8dbd5fc6, type: 3}
       propertyPath: m_Name
       value: 2Story_GableRoof_Mat (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cd66d6ed787528b45bb2868f8dbd5fc6, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9102,6 +9763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Straight (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9167,6 +9832,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0eec1c9b54410034c8278fd9e876693a, type: 3}
       propertyPath: m_Name
       value: 1Story_GableRoof (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0eec1c9b54410034c8278fd9e876693a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9238,9 +9907,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1315558572735458585, guid: 698d8d5322ceb38458dce380432b8c96, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 698d8d5322ceb38458dce380432b8c96, type: 3}
       propertyPath: m_Name
       value: SportsCar
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 698d8d5322ceb38458dce380432b8c96, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187708677117875917, guid: 698d8d5322ceb38458dce380432b8c96, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335008364073142675, guid: 698d8d5322ceb38458dce380432b8c96, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964439310635614934, guid: 698d8d5322ceb38458dce380432b8c96, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9320,6 +10009,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Curve
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44077604b0f528948bda2bd36ba48bfb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9397,6 +10090,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9476,6 +10173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9554,6 +10255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Straight (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9615,6 +10320,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 706ae182f82a6a940af4a23f5598bb32, type: 3}
       propertyPath: m_Name
       value: 2Story_Stairs_Mat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 706ae182f82a6a940af4a23f5598bb32, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9694,6 +10403,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Empty (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9771,6 +10484,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
       propertyPath: m_Name
       value: Street_Straight (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0998f46ae176ff742b88f170e2e73017, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9850,6 +10567,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Street_Curve (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 44077604b0f528948bda2bd36ba48bfb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9927,6 +10648,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
       propertyPath: m_Name
       value: Street_Empty (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae85013a810a26e46a74c811a36fab01, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

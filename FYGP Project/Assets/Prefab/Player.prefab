@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  playerHeightOffset: 0.5
   gunRef: {fileID: 2216582859822329882}
 --- !u!114 &2414527904058510173
 MonoBehaviour:
@@ -382,7 +383,7 @@ MonoBehaviour:
   retainShadows: 1
   targetPositionOffset: {x: 0, y: 1, z: 0}
   fadeSpeed: 1
-  objectsBlockingView: []
+  transformManager: {fileID: 0}
 --- !u!1 &8750189888384081813
 GameObject:
   m_ObjectHideFlags: 0

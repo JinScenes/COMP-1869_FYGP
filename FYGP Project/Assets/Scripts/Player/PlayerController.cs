@@ -8,11 +8,13 @@ using UnityEngine;
 [RequireComponent(typeof(GamepadInput))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField, Range(0, 20)]
-    private float speed;
-    [SerializeField] private GameObject gunRef;
-    private GamepadInput controllerInput;
+    [SerializeField, Range(0, 20)] private float speed;
+    [SerializeField, Range(0, 10)] private float playerHeightOffset;
 
+    [SerializeField] private GameObject gunRef;
+
+    private GamepadInput controllerInput;
+    private PlayerCamera playerCamera;
     private List<GameObject> previouslyHitObjects = new List<GameObject>();
 
 
@@ -29,11 +31,13 @@ public class PlayerController : MonoBehaviour
         HandleRotation();
         CheckShooting();
         HandleObstruction();
+        EnsureGrounded();
     }
 
     private void VariableComponents()
     {
         controllerInput = GetComponent<GamepadInput>();
+        playerCamera = FindObjectOfType<PlayerCamera>();
     }
 
     private void CheckShooting()
@@ -62,18 +66,27 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector3 moveDirection = new Vector3(controllerInput.MovementInput.x, 0, 
-            controllerInput.MovementInput.y);
-
+        Vector3 moveDirection = new Vector3(controllerInput.MovementInput.x, 0, controllerInput.MovementInput.y);
         Vector3 moveOffset = moveDirection * speed * Time.deltaTime;
-        transform.position += moveOffset;
+        Vector3 newPosition = transform.position + moveOffset;
+        Vector3 viewPos = Camera.main.WorldToViewportPoint(newPosition);
+
+        viewPos.x = Mathf.Clamp(viewPos.x, 0.05f, 0.95f);
+        viewPos.y = Mathf.Clamp(viewPos.y, 0.05f, 0.95f);
+
+        newPosition = Camera.main.ViewportToWorldPoint(viewPos);
+        transform.position = newPosition;
+
+        RestrictMovementWithinCameraView();
     }
+
+
 
     private void HandleRotation()
     {
         if (controllerInput.RotationInput.sqrMagnitude > 0.01f)
         {
-            float angle = Mathf.Atan2(controllerInput.RotationInput.x, 
+            float angle = Mathf.Atan2(controllerInput.RotationInput.x,
                 controllerInput.RotationInput.y) * Mathf.Rad2Deg;
 
             transform.rotation = Quaternion.Euler(0, angle, 0);
@@ -95,7 +108,7 @@ public class PlayerController : MonoBehaviour
         {
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("ObstructingWalls"))
             {
-                Debug.Log("Hit object: " + hit.collider.gameObject.name);
+                //Debug.Log("Hit object: " + hit.collider.gameObject.name);
                 ChangeTransparency(hit.collider.gameObject, 0.5f);
                 currentHitObjects.Add(hit.collider.gameObject);
             }
@@ -118,10 +131,32 @@ public class PlayerController : MonoBehaviour
 
         if (renderer != null)
         {
-            Debug.Log("Changing transparency of " + obj.name + " to " + alpha);
+            //Debug.Log("Changing transparency of " + obj.name + " to " + alpha);
             Color color = renderer.material.color;
             color.a = alpha;
             renderer.material.color = color;
+        }
+    }
+
+    private void RestrictMovementWithinCameraView()
+    {
+        Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
+
+        viewPos.x = Mathf.Clamp(viewPos.x, playerCamera.leftBoundaryOffset, 
+            1 - playerCamera.rightBoundaryOffset);
+
+        viewPos.y = Mathf.Clamp(viewPos.y, playerCamera.bottomBoundaryOffset, 
+            1 - playerCamera.topBoundaryOffset);
+
+        transform.position = Camera.main.ViewportToWorldPoint(viewPos);
+    }
+    private void EnsureGrounded()
+    {
+        RaycastHit hit; 
+
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 2f))
+        {
+            transform.position = hit.point + Vector3.up * playerHeightOffset;
         }
     }
 }
