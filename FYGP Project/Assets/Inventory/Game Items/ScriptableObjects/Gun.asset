@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Pew
   icon: {fileID: 21300000, guid: f60b6966b2eb46744a6379df0ebb24df, type: 3}
-  canStack: 1
+  canStack: 0
   consumable: 0

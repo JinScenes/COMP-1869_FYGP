@@ -17,10 +17,10 @@ public class PlayerStats
 
     public InventoryUI UIHandle;
 
-    public PlayerStats(int playerIndex)
+    public PlayerStats(int playerIndex, ItemData weightItem)
     {
         UIHandle = new InventoryUI(playerIndex);
-        inventory = new Inventory(UIHandle);
+        inventory = new Inventory(UIHandle, weightItem);
         playerAmmo = new PlayerAmmo(UIHandle);
     }
 }

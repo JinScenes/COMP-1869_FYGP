@@ -14,14 +14,16 @@ public class Inventory
 {
     private int maxInventorySlots = 4;
     private int maxStack = 4;
+    private ItemData weightItem;
     public InventoryItem[] inventory = new InventoryItem[4];
     private Dictionary<int, InventoryItem> itemDictionary = new Dictionary<int, InventoryItem>();
 
     private InventoryUI inventoryUI;
 
-    public Inventory(InventoryUI inventoryUI)
+    public Inventory(InventoryUI inventoryUI, ItemData weightItem)
     {
         this.inventoryUI = inventoryUI;
+        this.weightItem = weightItem;
     }
     
     public int GetCount()
@@ -52,10 +54,29 @@ public class Inventory
         Debug.LogError("Could not find a free index in inventory!");
         return 6;
     }
+    private bool isItemAGun(ItemData itemData)
+    {
+        return itemData.GetType() == typeof(GunData);
+    }
+    private void AddWeight(InventoryItem gunInventoryItem)
+    {
+        Debug.Log("Adding gun weight");
+        ItemData weight = weightItem;
+
+        InventoryItem newItem = new InventoryItem(weight);
+
+        int newIndex = FindFreeIndex();
+        gunInventoryItem.weightIndex = newIndex;
+        inventory[newIndex] = newItem;
+
+        Debug.Log("Set weight index to " + newIndex);
+
+        itemDictionary.Add(newIndex, newItem);
+    }
 
     private bool AddItem(ItemData itemData)
     {
-        bool isAGun = itemData.GetType() == typeof(GunData);
+        bool isAGun = isItemAGun(itemData);
 
         if (GetCount() + (isAGun ? 1 : 0) < maxInventorySlots)
         {
@@ -64,6 +85,10 @@ public class Inventory
             int newIndex = FindFreeIndex();
             inventory[newIndex] = newItem;
             itemDictionary.Add(newIndex, newItem);
+
+            if (isAGun){
+                AddWeight(newItem);
+            }
 
             //Debug.Log($"{itemData.displayName} has now been added to the inventory");
             inventoryUI.UpdateAll(this);
@@ -231,12 +256,22 @@ public class Inventory
 
     }
 
+    public void HandleGunDrop(InventoryItem gunItem)
+    {
+        Debug.Log($"Attempting to remove weight from index ({gunItem.weightIndex})");
+        RemoveFromIndex(gunItem.weightIndex);
+    }
+
 
     public void DropItem(int index, Transform playerTransform)
     {
         InventoryItem item = inventory[index];
-        if (item != null)
+        if (item != null && item.itemData != weightItem)
         {
+            if (isItemAGun(item.itemData))
+            {
+                HandleGunDrop(item);
+            }
             float dropDistance = 1.5f;
 
             Vector3 dropLocation = playerTransform.position + playerTransform.forward * dropDistance;
@@ -251,8 +286,13 @@ public class Inventory
     public void DropItem(int index, Vector3 dropLocation)
     {
         InventoryItem item = inventory[index];
-        if (item != null)
+        if (item != null && item.itemData != weightItem)
         {
+            if (isItemAGun(item.itemData))
+            {
+                HandleGunDrop(item);
+            }
+
             Debug.Log($"Attempting to drop item {item.itemData.displayName}");
             GameObject.Instantiate(Resources.Load(item.itemData.name), dropLocation, Quaternion.identity);
             RemoveFromIndex(index);

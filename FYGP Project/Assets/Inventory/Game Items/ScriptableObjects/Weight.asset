@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4276ee452ac0a894c8cb9898f807de53, type: 3}
   m_Name: Weight
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  displayName: Medkit
-  icon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-  canStack: 1
+  displayName: Weight
+  icon: {fileID: 21300000, guid: 5c7b429f5506c7243b8cf75a8c16df2e, type: 3}
+  canStack: 0
   consumable: 0
