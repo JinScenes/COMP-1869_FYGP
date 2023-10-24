@@ -1,3 +1,6 @@
+using Unity.VisualScripting;
+using UnityEngine;
+
 public class E_Health
 {
     EnemyFSM enemy;
@@ -11,6 +14,11 @@ public class E_Health
     {
         AIHealth();
         HealthUIFunction();
+    }
+
+    public float GetHealth()
+    {
+        return enemy.health;
     }
 
     private void HealthUIFunction()
@@ -32,7 +40,6 @@ public class E_Health
             enemy.attackModule.CheckAttack();
         }
     }
-
 
     public void EnemyDamage(float damage)
     {

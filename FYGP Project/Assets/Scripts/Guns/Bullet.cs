@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -11,18 +8,18 @@ public class Bullet : MonoBehaviour
     {
         if (other.transform.CompareTag("Enemy"))
         {
-            GameObject enemy = other.gameObject;
-            if (enemy.GetComponent<EnemyAI>().health <= 0)
+            EnemyFSM enemyFSM = other.gameObject.GetComponent<EnemyFSM>();
+
+            if (enemyFSM.healthModule.IsDead())
             {
                 Debug.Log("dead");
                 return;
             }
-            else if(enemy.GetComponent<EnemyAI>().health > 0)
+            else
             {
                 Debug.Log("EnemyHit");
-                enemy.GetComponent<EnemyAI>().EnemyDamage(bDamage);
+                enemyFSM.healthModule.EnemyDamage(bDamage);
             }
         }
     }
-  
 }
