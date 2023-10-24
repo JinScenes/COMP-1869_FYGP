@@ -13,6 +13,7 @@ using static UnityEditor.Progress;
 public class Inventory
 {
     private int maxInventorySlots = 4;
+    private int maxStack = 4;
     public InventoryItem[] inventory = new InventoryItem[4];
     private Dictionary<int, InventoryItem> itemDictionary = new Dictionary<int, InventoryItem>();
 
@@ -54,7 +55,9 @@ public class Inventory
 
     private bool AddItem(ItemData itemData)
     {
-        if (GetCount() < maxInventorySlots)
+        bool isAGun = itemData.GetType() == typeof(GunData);
+
+        if (GetCount() + (isAGun ? 1 : 0) < maxInventorySlots)
         {
             InventoryItem newItem = new InventoryItem(itemData);
 
@@ -62,7 +65,7 @@ public class Inventory
             inventory[newIndex] = newItem;
             itemDictionary.Add(newIndex, newItem);
 
-            Debug.Log($"{itemData.displayName} has now been added to the inventory");
+            //Debug.Log($"{itemData.displayName} has now been added to the inventory");
             inventoryUI.UpdateAll(this);
             return true;
         } else
@@ -79,16 +82,45 @@ public class Inventory
         {
             if(item.Value.itemData == itemData)
             {
-                Debug.Log($"Found {item.Value.itemData.displayName} in inventory!");
+                //Debug.Log($"Found {item.Value.itemData.displayName} in inventory!");
                 return item.Value;
             }
             //Debug.Log("This");
         }
 
-        Debug.Log($"Did not find {itemData.displayName} in inventory!");
+        //Debug.Log($"Did not find {itemData.displayName} in inventory!");
 
         return null;
     }
+
+    private InventoryItem FindItemThatsStackable(ItemData itemData)
+    {
+        foreach (KeyValuePair<int, InventoryItem> item in itemDictionary)
+        {
+            InventoryItem itemValue = item.Value;
+
+            if (itemValue.itemData == itemData)
+            {
+                //Debug.Log($"Found {item.Value.itemData.displayName} in inventory!");
+                if(itemValue.stackSize < maxStack)
+                {
+                    //Debug.Log($"Found {itemValue.itemData.displayName} in inventory and its stackable! ({itemValue.stackSize})");
+                    return itemValue;
+                }
+                else
+                {
+                    continue;
+                }
+               
+            }
+            //Debug.Log("This");
+        }
+
+        //Debug.Log($"Did not find a stackable {itemData.displayName} in inventory, returning null");
+
+        return null;
+    }
+
     public bool Add(ItemData itemData)
     {
         // If Item is in inventory
@@ -98,14 +130,33 @@ public class Inventory
             // If item can stack, add a stack
             if (item.itemData.canStack)
             {
-                item.AddToStack();
-                Debug.Log($"INVENTORY : {itemData.displayName} total stack is now {item.stackSize}");
-                inventoryUI.UpdateAll(this);
-                return true;
+                if (item.stackSize >= maxStack)
+                {
+                    InventoryItem stackableItem = FindItemThatsStackable(itemData);
+                    if(stackableItem != null)
+                    {
+                        stackableItem.AddToStack();
+                        inventoryUI.UpdateAll(this);
+                        return true;
+                    }
+                    else
+                    {
+                        return AddItem(itemData);
+                    }
+                    
+                }
+                else
+                {
+                    item.AddToStack();
+                    //Debug.Log($"INVENTORY : {itemData.displayName} total stack is now {item.stackSize}");
+                    inventoryUI.UpdateAll(this);
+                    return true;
+                }
+              
 
             // if an item can't stack, attempt to add
             } else  {
-                Debug.Log("Item can't stack, attempt to create new instance");
+                //Debug.Log("Item can't stack, attempt to create new instance");
                 return AddItem(itemData);
             }
         // Add Item to inventory bc it is not in inventory
@@ -215,15 +266,16 @@ public class Inventory
         if (item != null && item.itemData.consumable == true)
         {
             string itemName = item.itemData.name;
-            Debug.Log(itemName);
-          if (itemName == "Medkit")
+            switch (itemName)
             {
-                Debug.Log("+100 HP");
-            } else if(itemName == "Coke")
-            {
-                Debug.Log("You feel sick..");
+                case "Medkit":
+                    Debug.Log("+100 HP");
+                    break;
+                default:
+                    Debug.LogWarning($"Consumable item {itemName} is not in the switch list");
+                    break;
             }
-
+       
             RemoveFromIndex(index);
         }
         else

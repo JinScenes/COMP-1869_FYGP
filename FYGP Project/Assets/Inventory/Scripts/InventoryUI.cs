@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class InventoryUI 
 {
@@ -13,11 +14,43 @@ public class InventoryUI
     private Transform InvenUI;
     private Transform AmmoHUD;
 
+    public void SetUIPosition(int playerIndex,Transform newInventoryUI)
+    {
+        Debug.Log("Setting pos!");
+        switch (playerIndex)
+        {
+            case 0:
+                newInventoryUI.GetComponent<RectTransform>().localPosition = new Vector3(-221.6f, -134.7f, 0);
+                break;
+            case 1:
+                newInventoryUI.GetComponent<RectTransform>().localPosition = new Vector3(83, 147, 0);
+                break;
+            case 2:
+                newInventoryUI.GetComponent<RectTransform>().localPosition = new Vector3(-221.6f, 147, 0);
+                break;
+            case 3:
+                newInventoryUI.GetComponent<RectTransform>().localPosition = new Vector3(83, 147, 0);
+                break;
+            default:
+                break;
+        }
+        
+    }
+
     public InventoryUI(int playerIndex)
     {
         this.playerIndex = playerIndex;
 
-        InvenUI = GameObject.Find($"Inventory{playerIndex}").transform;
+        // Create a new inventory UI object for player
+        Object newInven = GameObject.Instantiate(Resources.Load("InventoryUITemplate"), GameObject.Find("Canvas").transform);
+        newInven.name = $"Inventory{playerIndex}";
+        InvenUI = ((GameObject)newInven).transform;
+
+        SetUIPosition(playerIndex, InvenUI);
+
+
+        // Set Player Index label
+        InvenUI.Find("PlayerIndex Label").GetComponent<TextMeshProUGUI>().text = $"Player {playerIndex+1}";
         AmmoHUD = InvenUI.transform.Find("AmmoHUD");
     }
 

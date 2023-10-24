@@ -11,7 +11,7 @@ public class PlayerStats
     public Inventory inventory;
     public PlayerAmmo playerAmmo;
   
-    public int currency;
+    public static int currency;
     public float health;
     public float speed;
 
