@@ -6,7 +6,7 @@ using UnityEngine;
 public class GunBase : MonoBehaviour
 {
     #region Variables
-
+    [SerializeField] GunHolder inv;
 
     public enum FireMode { Hitscan, Projectile }
 
@@ -29,20 +29,26 @@ public class GunBase : MonoBehaviour
     [SerializeField] float nextFireTime = 0f;
 
     [SerializeField] GunData NewData;
+
+
+
+    public Transform gunPosition; 
+    //private GameObject currentGunObject;
     #endregion
 
     #region Generic Functions
 
 
     private void Start()
-    {
+    {   
+        inv = gameObject.GetComponentInParent<GunHolder>();
         currentAmmo = MaxAmmo;
-        Initialize(NewData);
+        //Initialize(NewData);
     }
 
     private void Update()
     {
-        
+
 
         /*if (currentAmmo <= 0)
         {
@@ -52,11 +58,17 @@ public class GunBase : MonoBehaviour
             }
         }*/
 
-       /* if (Input.GetKey(KeyCode.Mouse0) )
+        /* if (Input.GetKey(KeyCode.Mouse0) )
+         {
+             nextFireTime = Time.time + 1f / FireRate;
+             Fire();
+         }*/
+        print(inv.equippedGun);
+        if (inv.equippedGun != NewData && inv.equippedGun != null  )
         {
-            nextFireTime = Time.time + 1f / FireRate;
-            Fire();
-        }*/
+            NewData = inv.equippedGun;
+            Initialize(NewData);
+        }
     }
 
     public void Fire()
@@ -66,11 +78,8 @@ public class GunBase : MonoBehaviour
             return;
         }
 
-        if (fireMode == FireMode.Hitscan)
-        {
-            ShootHitscan();
-        }
-        else if (fireMode == FireMode.Projectile && Time.time >= nextFireTime)
+       
+        else if (Time.time >= nextFireTime)
         {
             nextFireTime = Time.time + 1f / FireRate;
             LaunchProjectile();
@@ -125,7 +134,7 @@ public class GunBase : MonoBehaviour
 
         if (rb != null)
         {
-            rb.velocity = firePoint.forward * projectileSpeed;
+            rb.velocity = -firePoint.forward * projectileSpeed;
             
         }
         else
@@ -138,28 +147,28 @@ public class GunBase : MonoBehaviour
 
     #region Scriptable object Loading
 
-     GameObject GunModel;
-     
-    
+        GameObject GunModel;
+
+
      AnimationClip AnimFire,AnimReload;
 
-     void Initialize(GunData gunData)
+    void Initialize(GunData gunData)
     {
-        GunModel = gunData.gunModel;
-        
+        GunModel = gunData.gunPrefab;
+
         MaxAmmo = gunData.maxAmmo;
         FireRate = gunData.firerate;
         AnimFire = gunData.fire;
         AnimReload = gunData.reload;
-
+        projectilePrefab = gunData.ammoType;
         print(GunModel);
-        
+
         print(MaxAmmo.ToString());
         print(FireRate.ToString());
 
         GameObject instGun = Instantiate(GunModel, gunSpawn.position, Quaternion.identity);
         instGun.transform.SetParent(gunSpawn);
-        instGun.transform.Rotate(new Vector3(0f, 180f,0f));
+        instGun.transform.Rotate(new Vector3(0f, 180f, 0f));
 
 
     }
@@ -168,8 +177,9 @@ public class GunBase : MonoBehaviour
     #endregion
 
     #region Damage
-   
+
     #endregion
+
 
 }
 
