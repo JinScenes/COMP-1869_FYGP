@@ -271,6 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  gunRef: {fileID: 0}
 --- !u!114 &-6897409939247806058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85b20a4ada06c644bfc20343afcf732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selection: 0
 --- !u!1 &8750189888384081813
 GameObject:
   m_ObjectHideFlags: 0
