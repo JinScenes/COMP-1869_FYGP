@@ -8,6 +8,7 @@ public class InventoryItem
 
     public ItemData itemData;
     public int stackSize = 1;
+    public int weightIndex;
 
     // On Constructor call set itemData
     public InventoryItem(ItemData itemData)
