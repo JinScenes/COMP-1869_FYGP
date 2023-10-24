@@ -144,8 +144,6 @@ public class GunBase : MonoBehaviour
         GameObject instGun = Instantiate(GunModel, gunSpawn.position, currentOffset);
         instGun.transform.SetParent(gunSpawn);
         instGun.transform.Rotate(new Vector3(0f, 180f, 0f));
-
-
     }
 
 }
