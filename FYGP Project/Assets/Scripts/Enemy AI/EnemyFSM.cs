@@ -20,6 +20,7 @@ public class EnemyFSM : MonoBehaviour
 
     [Header("Common Variables")]
     [Range(0, 200)] public float health;
+    [Range(0, 10)] public float speed;
     [Range(0, 100)] public float loudness;
     [Range(0, 100)] public float damage;
     [Range(0, 10)] public float sightRange;

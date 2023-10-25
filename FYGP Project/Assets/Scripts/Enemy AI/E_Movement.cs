@@ -31,7 +31,7 @@ public class E_Movement
                 {
                     return;
                 }
-                enemy.navMesh.speed = 1.5f;
+                enemy.navMesh.speed = enemy.speed;
                 enemy.navMesh.destination = closestPlayer.position;
 
                 if (enemy.timeSinceLastStep >= enemy.minStepInterval)
