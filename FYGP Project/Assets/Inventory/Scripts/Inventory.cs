@@ -300,27 +300,45 @@ public class Inventory
         }
     }
 
-    public void Consume(int index)
+    public void Consume(int index, GunHolder gunHolder)
     {
         InventoryItem item = inventory[index];
-        if (item != null && item.itemData.consumable == true)
+        if (item != null)
         {
-            string itemName = item.itemData.name;
-            switch (itemName)
+            if (isItemAGun(item.itemData))
             {
-                case "Medkit":
-                    Debug.Log("+100 HP");
-                    break;
-                default:
-                    Debug.LogWarning($"Consumable item {itemName} is not in the switch list");
-                    break;
+                // Swap guns
+                GunData currentlyEquippedGun = gunHolder.equippedGun;
+                gunHolder.equippedGun = item.itemData as GunData;
+
+                if (currentlyEquippedGun != null)
+                {
+                    // Place currently equipped gun back to inventory
+                    Add(currentlyEquippedGun);
+                }
+
+                RemoveFromIndex(index);
             }
-       
-            RemoveFromIndex(index);
-        }
-        else
-        {
-            Debug.Log("Item is not consumable or null");
+            else if (item.itemData.consumable == true)
+            {
+                string itemName = item.itemData.name;
+
+                switch (itemName)
+                {
+                    case "Medkit":
+                        Debug.Log("+100 HP");
+                        break;
+                    default:
+                        Debug.LogWarning($"Consumable item {itemName} is not in the switch list");
+                        break;
+                }
+
+                RemoveFromIndex(index);
+            }
+            else
+            {
+                Debug.Log("Item is not consumable or null");
+            }
         }
     }
 }

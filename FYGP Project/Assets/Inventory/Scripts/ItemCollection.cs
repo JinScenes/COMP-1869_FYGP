@@ -10,13 +10,13 @@ public class ItemCollection : MonoBehaviour, ICollectable
     private GunHolder gunholder;
     private GunData gun;
     private bool collected;
-
+    private bool equppefull;
 
     private void Start()
     {
         if(isGun == true)
         {
-            //gunholder = gameObject.GetComponent<GunHolder>();
+            gunholder = gameObject.GetComponent<GunHolder>();
             GDT = gameObject.GetComponent<GunDataTransmiitter>();
             gun = GDT.HeldGun;
         }
@@ -28,35 +28,17 @@ public class ItemCollection : MonoBehaviour, ICollectable
             collected = true;
             PlayerStats playerStats = plrStats as PlayerStats;
 
-
-
-
-
-            if (!isGun)
+            if (isGun)
             {
-                if (playerStats.inventory.Add(item))
-                {
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    Debug.Log("Player could not pick up so not removed!");
-                    collected = false;
-                }
+                // Simply add the gun to the player's inventory.
+                playerStats.inventory.Add(gun);
+                Destroy(gameObject);
+            }
+            else
+            {
+                // Handle collection of other item types if needed.
+                // For now, I'm leaving it blank.
             }
         }
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (isGun)
-        {
-            if (other.GetComponent<GunHolder>().equippedGun == null)
-            {
-                other.GetComponent<GunHolder>().equippedGun = gun;
-            }
-        }
-        
     }
 }
