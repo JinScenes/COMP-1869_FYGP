@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -6897409939247806058}
   - component: {fileID: 8870401425019402303}
   - component: {fileID: -3762369630850294765}
+  - component: {fileID: 7684766328792628636}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -34,14 +35,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3925136280284502299}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.98294824, z: 0, w: 0.18388285}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.18, y: 1, z: -0.02}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6810803869887363195}
+  - {fileID: 2906784696772930813}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 158.808, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3030588595713116126
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -271,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  gunRef: {fileID: 0}
+  gunRef: {fileID: 7064307165186188835}
 --- !u!114 &-6897409939247806058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e14e697f99964d48b77bec90438eb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory:
+    gunBase: {fileID: 2665637513138450411}
   playerIndex: 0
   weightItem: {fileID: 11400000, guid: 3444206ceaab67f4bb4f4db78f3878e6, type: 2}
   addInven: {fileID: 0}
@@ -312,6 +316,107 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selection: 0
+--- !u!114 &7684766328792628636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925136280284502299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4052e758ad8e14f4797fff51e48cf5a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5879646302308247235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5161532608062770549}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5161532608062770549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5879646302308247235}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2906784696772930813}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7064307165186188835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2906784696772930813}
+  - component: {fileID: 2665637513138450411}
+  m_Layer: 0
+  m_Name: GunHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2906784696772930813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7064307165186188835}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.98294824, z: -0, w: 0.18388285}
+  m_LocalPosition: {x: -0.86, y: 0, z: 0}
+  m_LocalScale: {x: 1.9999989, y: 1, z: 1.9999989}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5161532608062770549}
+  m_Father: {fileID: 2277545799100556371}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2665637513138450411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7064307165186188835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942b24614542d2c4ca7757ec2f59bf22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireMode: 0
+  firePoint: {fileID: 5161532608062770549}
+  projectilePrefab: {fileID: 0}
+  gunSpawn: {fileID: 2906784696772930813}
+  projectileSpeed: 10
+  FireRate: 1
+  range: 100
+  MaxAmmo: 30
+  reloadTime: 1.5
+  allowFire: 0
+  isReloading: 0
+  nextFireTime: 0
+  NewData: {fileID: 0}
 --- !u!1 &8750189888384081813
 GameObject:
   m_ObjectHideFlags: 0

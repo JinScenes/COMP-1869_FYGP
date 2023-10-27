@@ -28,7 +28,7 @@ public class GunBase : MonoBehaviour
     [SerializeField] bool isReloading = false;
     [SerializeField] float nextFireTime = 0f;
 
-    [SerializeField] GunData NewData;
+    public  GunData NewData;
     #endregion
 
     #region Generic Functions
@@ -37,7 +37,11 @@ public class GunBase : MonoBehaviour
     private void Start()
     {
         currentAmmo = MaxAmmo;
-        Initialize(NewData);
+        if(NewData != null)
+        {
+            Initialize(NewData);
+        }
+        
     }
 
     private void Update()
@@ -164,11 +168,24 @@ public class GunBase : MonoBehaviour
 
     }
 
+    public void EquipGun(GunData gunData)
+    {
+        NewData = gunData;  // Set the NewData to the given gunData
+        Initialize(NewData);  // Reinitialize the gun with the new data
+    }
+
+    public GunData UnequipGun()
+    {
+        GunData unequippedGun = NewData;
+        NewData = null;
+        return unequippedGun;
+    }
+
 
     #endregion
 
     #region Damage
-   
+
     #endregion
 
 }

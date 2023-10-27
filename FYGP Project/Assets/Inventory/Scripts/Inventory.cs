@@ -17,13 +17,15 @@ public class Inventory
     private ItemData weightItem;
     public InventoryItem[] inventory = new InventoryItem[4];
     private Dictionary<int, InventoryItem> itemDictionary = new Dictionary<int, InventoryItem>();
-
+    public GunBase gunBase;
     private InventoryUI inventoryUI;
-
+   
     public Inventory(InventoryUI inventoryUI, ItemData weightItem)
     {
         this.inventoryUI = inventoryUI;
         this.weightItem = weightItem;
+        
+        
     }
     
     public int GetCount()
@@ -300,29 +302,14 @@ public class Inventory
         }
     }
 
-    public void Consume(int index, GunHolder gunHolder)
+    public void Consume(int index)
     {
         InventoryItem item = inventory[index];
         if (item != null)
         {
-            if (isItemAGun(item.itemData))
-            {
-                // Swap guns
-                GunData currentlyEquippedGun = gunHolder.equippedGun;
-                gunHolder.equippedGun = item.itemData as GunData;
-
-                if (currentlyEquippedGun != null)
-                {
-                    // Place currently equipped gun back to inventory
-                    Add(currentlyEquippedGun);
-                }
-
-                RemoveFromIndex(index);
-            }
-            else if (item.itemData.consumable == true)
+            if (item.itemData.consumable)
             {
                 string itemName = item.itemData.name;
-
                 switch (itemName)
                 {
                     case "Medkit":
@@ -335,10 +322,26 @@ public class Inventory
 
                 RemoveFromIndex(index);
             }
+            else if (isItemAGun(item.itemData))
+            {
+                if (gunBase != null)
+                {
+                    gunBase.NewData = item.itemData as GunData;  
+                    gunBase.EquipGun(gunBase.NewData); 
+                }
+                else
+                {
+                    Debug.LogError("No GunBase found on the player!");
+                }
+
+                RemoveFromIndex(index);
+            }
             else
             {
                 Debug.Log("Item is not consumable or null");
             }
         }
     }
+
+
 }

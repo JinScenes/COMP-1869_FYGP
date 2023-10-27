@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10197418, g: 0.13746095, b: 0.28705907, a: 1}
+  m_IndirectSpecularColor: {r: 0.10205827, g: 0.13745385, b: 0.287068, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -534,6 +534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e14e697f99964d48b77bec90438eb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory:
+    gunBase: {fileID: 0}
   playerIndex: 0
   weightItem: {fileID: 0}
   addInven: {fileID: 11400000, guid: b9ceeadecefcdf94d9c1decbade2af28, type: 2}
@@ -1913,6 +1915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1498815696004592394, guid: 79c465c778b047c44b9af293a4123eb4, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 90f044c2e593752429249b52cf75fe51, type: 2}
     - target: {fileID: 7376589775511148340, guid: 79c465c778b047c44b9af293a4123eb4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.6
@@ -2477,6 +2483,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 1498815696004592394, guid: 79c465c778b047c44b9af293a4123eb4, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e8b21631afdb294da20d54dc4abd0ea, type: 2}
     - target: {fileID: 7376589775511148340, guid: 79c465c778b047c44b9af293a4123eb4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.08

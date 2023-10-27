@@ -12,12 +12,7 @@ public class ItemCollection : MonoBehaviour, ICollectable
 
     private void Start()
     {
-        if(isGun == true)
-        {
-            //gunholder = gameObject.GetComponent<GunHolder>();
-            GDT = gameObject.GetComponent<GunDataTransmiitter>();
-            gun = GDT.HeldGun;
-        }
+       
     }
     public void Collect(object plrStats)
     {
