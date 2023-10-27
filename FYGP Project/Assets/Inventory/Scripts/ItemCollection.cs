@@ -7,7 +7,18 @@ public class ItemCollection : MonoBehaviour, ICollectable
     public ItemData item;
 
     private bool collected;
+    private bool equppefull;
 
+
+    private void Start()
+    {
+        if(isGun == true)
+        {
+            //gunholder = gameObject.GetComponent<GunHolder>();
+            GDT = gameObject.GetComponent<GunDataTransmiitter>();
+            gun = GDT.HeldGun;
+        }
+    }
     public void Collect(object plrStats)
     {
         if (!collected)
@@ -24,6 +35,6 @@ public class ItemCollection : MonoBehaviour, ICollectable
             }
             
         }
-     
+        
     }
 }
