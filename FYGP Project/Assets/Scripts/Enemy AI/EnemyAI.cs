@@ -157,7 +157,6 @@ public class EnemyAI : MonoBehaviour
 
             //ENUM STATES
             MovementFunction();
-            //HealthUIFunction();
         }
         
         DeathFunction();
