@@ -8,6 +8,9 @@ public class E_Health
     public E_Health(EnemyFSM enemy)
     {
         this.enemy = enemy;
+        enemy.maxHealth = enemy.health;
+        enemy.healthBarUI.maxValue = 1;
+        enemy.healthBarUI.value = Mathf.Clamp01(enemy.health / enemy.maxHealth);
     }
 
     public void HealthUpdater()
@@ -16,9 +19,9 @@ public class E_Health
         HealthUIFunction();
     }
 
-    public float GetHealth()
+    private void UpdateHealthBar()
     {
-        return enemy.health;
+        enemy.healthBarUI.value = Mathf.Clamp01(enemy.health / enemy.maxHealth);
     }
 
     private void HealthUIFunction()
@@ -44,6 +47,7 @@ public class E_Health
     public void EnemyDamage(float damage)
     {
         enemy.health -= damage;
+        UpdateHealthBar();
         enemy.IsMove = true;
     }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4017864698545171449}
   - component: {fileID: 6667237648607116590}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HealthBar_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 249378155553373372}
   m_FillRect: {fileID: 1765545993053671741}
   m_HandleRect: {fileID: 3808409233076943380}
-  m_Direction: 0
+  m_Direction: 1
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
@@ -494,7 +494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
+  m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6151283206246923794
@@ -602,7 +602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6434892218847302745}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9778269, z: -0, w: 0.20941508}
+  m_LocalRotation: {x: 0, y: 0.9778272, z: 0, w: 0.20941381}
   m_LocalPosition: {x: 2.128, y: 0.55, z: -1.068}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0

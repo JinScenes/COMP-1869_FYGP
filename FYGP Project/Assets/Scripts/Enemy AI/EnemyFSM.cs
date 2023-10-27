@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -19,6 +20,7 @@ public class EnemyFSM : MonoBehaviour
     public Slider healthBarUI;
 
     [Header("Common Variables")]
+    [Range(0, 200)] public float maxHealth;
     [Range(0, 200)] public float health;
     [Range(0, 10)] public float speed;
     [Range(0, 100)] public float loudness;
@@ -65,6 +67,10 @@ public class EnemyFSM : MonoBehaviour
             movementModule.MovementUpdater();
             healthModule.HealthUpdater();
             attackModule.AttackUpdater();
+        }
+        else
+        {
+            Destroy(gameObject, 0.1f);
         }
     }
 
