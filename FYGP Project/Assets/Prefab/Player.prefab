@@ -360,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   playerHeightOffset: 0.5
+  playerHealth: 100
   gunRef: {fileID: 2216582859822329882}
 --- !u!114 &2414527904058510173
 MonoBehaviour:

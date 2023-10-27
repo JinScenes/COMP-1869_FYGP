@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField, Range(0, 20)] private float speed;
     [SerializeField, Range(0, 10)] private float playerHeightOffset;
+    public float playerHealth;
 
     [SerializeField] private GameObject gunRef;
 
@@ -82,8 +83,6 @@ public class PlayerController : MonoBehaviour
         RestrictMovementWithinCameraView();
     }
 
-
-
     private void HandleRotation()
     {
         if (controllerInput.RotationInput.sqrMagnitude > 0.01f)
@@ -152,6 +151,17 @@ public class PlayerController : MonoBehaviour
 
         transform.position = Camera.main.ViewportToWorldPoint(viewPos);
     }
+
+    public void ApplyDamage(float damageAmount)
+    {
+        playerHealth -= damageAmount;
+
+        if (playerHealth <= 0)
+        {
+            Die();
+        }
+    }
+
     private void EnsureGrounded()
     {
         RaycastHit hit; 
@@ -160,5 +170,10 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = hit.point + Vector3.up * playerHeightOffset;
         }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Player Died!");
     }
 }
