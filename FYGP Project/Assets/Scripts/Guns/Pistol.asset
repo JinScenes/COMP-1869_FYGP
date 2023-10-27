@@ -14,12 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Pistol
   icon: {fileID: 0}
-  canStack: 0
-  consumable: 0
-  gunPrefab: {fileID: 919132149155446097, guid: 6773bf2bf26cbfe41879ef7fbd88362b, type: 3}
-  ammoType: {fileID: 6331301418382354269, guid: 7a78e108e59a5be4189de98192c7ead8, type: 3}
+  canStack: 1
+  gunModel: {fileID: 4559701832784666115, guid: 008e7caa57665db498b248cdabad1e7e, type: 3}
   maxAmmo: 30
   firerate: 1.07
   reload: {fileID: 0}
   fire: {fileID: 0}
-  type: 1
+  gunSpawn: {fileID: 0}

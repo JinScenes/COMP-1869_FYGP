@@ -1,67 +1,66 @@
-    using System.Collections;
-    using System.Collections.Generic;
-    using Unity.VisualScripting.FullSerializer;
-    using UnityEngine;
-    using UnityEngine.UIElements;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 
 
-    public class PlayerStats
+public class PlayerStats
+{
+    public Inventory inventory;
+    public PlayerAmmo playerAmmo;
+  
+    public static int currency;
+    public float health;
+    public float speed;
+
+    public InventoryUI UIHandle;
+
+    public PlayerStats(int playerIndex, ItemData weightItem)
     {
-        public Inventory inventory;
-        public PlayerAmmo playerAmmo;
-        
-       
-        public static int currency;
-        public float health;
-        public float speed;
+        UIHandle = new InventoryUI(playerIndex);
+        inventory = new Inventory(UIHandle, weightItem);
+        playerAmmo = new PlayerAmmo(UIHandle);
+    }
+}
 
-        public InventoryUI UIHandle;
+public class Ammo
+{
+    private PlayerAmmo playerAmmo;
 
-        public PlayerStats(int playerIndex, ItemData weightItem)
-        {
-            UIHandle = new InventoryUI(playerIndex);
-            inventory = new Inventory(UIHandle, weightItem);
-            playerAmmo = new PlayerAmmo(UIHandle);
-        }
+    private int Ammount;
+    public int ammount { 
+        get { return Ammount; } 
+        set {
+            Debug.Log("Trying to change ammo amount");
+            Ammount = value;
+            playerAmmo.UIHandle.UpdateAllAmmo(playerAmmo);
+        } 
     }
 
-    public class Ammo
+    public Ammo(PlayerAmmo UIHandle)
     {
-        private PlayerAmmo playerAmmo;
+        playerAmmo = UIHandle;
+    }
+}
 
-        private int Ammount;
-        public int ammount { 
-            get { return Ammount; } 
-            set {
-                Debug.Log("Trying to change ammo amount");
-                Ammount = value;
-                playerAmmo.UIHandle.UpdateAllAmmo(playerAmmo);
-            } 
-        }
+public class PlayerAmmo 
+{
 
-        public Ammo(PlayerAmmo UIHandle)
-        {
-            playerAmmo = UIHandle;
-        }
+    public InventoryUI UIHandle;
+
+    public Ammo smallAmmo;
+    public Ammo mediumAmmo;
+    public Ammo largeAmmo;
+
+    public PlayerAmmo(InventoryUI UIHandle)
+    {
+        this.UIHandle = UIHandle;
+
+        smallAmmo = new Ammo(this);
+        mediumAmmo = new Ammo(this);
+        largeAmmo = new Ammo(this);
     }
 
-    public class PlayerAmmo 
-    {
-
-        public InventoryUI UIHandle;
-
-        public Ammo smallAmmo;
-        public Ammo mediumAmmo;
-        public Ammo largeAmmo;
-
-        public PlayerAmmo(InventoryUI UIHandle)
-        {
-            this.UIHandle = UIHandle;
-
-            smallAmmo = new Ammo(this);
-            mediumAmmo = new Ammo(this);
-            largeAmmo = new Ammo(this);
-        }
-
-    }
+}

@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "New Gun", menuName = "Gun Object")  ]
-public class GunData : ItemData 
+public class GunData : ItemData
 {
     // Start is called before the first frame update
-    public GameObject gunPrefab;
-    public GameObject ammoType;
+    public GameObject gunModel;
     public int maxAmmo;
     public float firerate;
     public AnimationClip reload, fire;
-    public AmmoType type;
+    
     public enum rarity { Common, Uncommon, Rare, Epic , Legendary};
     public enum fireType { Hitscan, Projectile};
 

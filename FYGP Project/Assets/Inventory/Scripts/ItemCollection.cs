@@ -5,40 +5,25 @@ using UnityEngine;
 public class ItemCollection : MonoBehaviour, ICollectable
 {
     public ItemData item;
-    [SerializeField] bool isGun = false;
-    private GunDataTransmiitter GDT;
-    private GunHolder gunholder;
-    private GunData gun;
-    private bool collected;
-    private bool equppefull;
 
-    private void Start()
-    {
-        if(isGun == true)
-        {
-            gunholder = gameObject.GetComponent<GunHolder>();
-            GDT = gameObject.GetComponent<GunDataTransmiitter>();
-            gun = GDT.HeldGun;
-        }
-    }
+    private bool collected;
+
     public void Collect(object plrStats)
     {
         if (!collected)
         {
             collected = true;
             PlayerStats playerStats = plrStats as PlayerStats;
-
-            if (isGun)
+            
+            if (playerStats.inventory.Add(item))
             {
-                // Simply add the gun to the player's inventory.
-                playerStats.inventory.Add(gun);
                 Destroy(gameObject);
+            } else {
+                Debug.Log("Player could not pick up so not removed!");
+                collected = false;
             }
-            else
-            {
-                // Handle collection of other item types if needed.
-                // For now, I'm leaving it blank.
-            }
+            
         }
+     
     }
 }
