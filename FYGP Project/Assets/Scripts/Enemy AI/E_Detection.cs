@@ -21,18 +21,30 @@ public class E_Detection
     private bool CanSeePlayer()
     {
         Transform closestPlayer = GetClosestPlayer();
-        if (closestPlayer == null) return false;
+        if (closestPlayer == null)
+        {
+            enemy.canSee = false;
+            enemy.IsMove = false;
+            return false;
+        }
 
         Vector3 fromPos = enemy.originPos.transform.position;
         Vector3 toPos = new Vector3(closestPlayer.position.x, closestPlayer.position.y + 1, closestPlayer.position.z);
         Vector3 dir = toPos - fromPos;
 
-        if (Physics.Raycast(enemy.originPos.position, dir, out RaycastHit hit, enemy.sightRange))
+        if (Physics.Raycast(enemy.originPos.position, dir.normalized, out RaycastHit hit, enemy.sightRange))
         {
-            return hit.transform.gameObject.name == enemy.playerObjectName;
+            enemy.canSee = hit.transform.gameObject.name == enemy.playerObjectName;
+            Debug.Log($"Can see player: {enemy.canSee}");
         }
-        return false;
+        else
+        {
+            enemy.canSee = false;
+            Debug.Log("Raycast did not hit player");
+        }
+        return enemy.canSee;
     }
+
 
     private void HearingRange()
     {
@@ -100,5 +112,17 @@ public class E_Detection
                 enemy.IsMove = true;
             }
         }
+    }
+
+    public bool IsPlayerInSightOrDetectionRange()
+    {
+        Transform closestPlayer = enemy.GetClosestPlayer();
+        if (closestPlayer == null)
+        {
+            return false;
+        }
+
+        float distanceToClosestPlayer = Vector3.Distance(enemy.transform.position, closestPlayer.position);
+        return distanceToClosestPlayer <= enemy.sightRange || distanceToClosestPlayer <= enemy.detectionRange;
     }
 }

@@ -22,30 +22,26 @@ public class E_Movement
 
     public void MovementFunction()
     {
-        if (enemy.numberMovement == 0)
+        if (enemy.numberMovement == 0 && enemy.detectionModule.IsPlayerInSightOrDetectionRange() && !IsPlayerInAttackRange())
         {
-            if (enemy.IsMove && !IsPlayerInAttackRange())
+            Transform closestPlayer = enemy.GetClosestPlayer();
+            if (closestPlayer == null)
             {
-                Transform closestPlayer = enemy.GetClosestPlayer();
-                if (closestPlayer == null)
-                {
-                    return;
-                }
-                enemy.navMesh.speed = enemy.speed;
-                enemy.navMesh.destination = closestPlayer.position;
-
-                if (enemy.timeSinceLastStep >= enemy.minStepInterval)
-                {
-                    enemy.timeSinceLastStep = 0f;
-                }
-
-                enemy.timeSinceLastStep += Time.deltaTime;
+                return;
             }
-            else
+            enemy.navMesh.speed = enemy.speed;
+            enemy.navMesh.destination = closestPlayer.position;
+
+            if (enemy.timeSinceLastStep >= enemy.minStepInterval)
             {
-                enemy.navMesh.speed = 0;
+                enemy.timeSinceLastStep = 0f;
             }
+
+            enemy.timeSinceLastStep += Time.deltaTime;
+        }
+        else
+        {
+            enemy.navMesh.speed = 0;
         }
     }
-
 }
