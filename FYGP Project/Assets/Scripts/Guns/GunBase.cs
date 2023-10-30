@@ -6,8 +6,9 @@ using UnityEngine;
 public class GunBase : MonoBehaviour
 {
     #region Variables
-
-
+    [SerializeField] Inventory inventory;
+    public gunHolder GunHolder;
+    private GunData previousGunData;
     public enum FireMode { Hitscan, Projectile }
 
     [SerializeField] FireMode fireMode = FireMode.Hitscan;
@@ -22,7 +23,7 @@ public class GunBase : MonoBehaviour
     [SerializeField] int MaxAmmo = 30;
     [SerializeField] float reloadTime = 1.5f;
 
-
+    public PlayerStats playerStats;
     [SerializeField] bool allowFire;
     protected int currentAmmo;
     [SerializeField] bool isReloading = false;
@@ -36,18 +37,24 @@ public class GunBase : MonoBehaviour
 
     private void Start()
     {
+        /*inventory = gameObject.GetComponent<Inventory>();
         currentAmmo = MaxAmmo;
-        if(NewData != null)
+        if (NewData != null)
         {
             Initialize(NewData);
         }
-        
+*/
     }
 
     private void Update()
     {
-        
-
+        //GunData currentGun = playerStats.EquippedGun;
+       
+        /*if (GunHolder.CurrentGunData != previousGunData)
+        {
+            EquipGun(GunHolder.CurrentGunData);
+            previousGunData = GunHolder.CurrentGunData;
+        }*/
         /*if (currentAmmo <= 0)
         {
             if (Input.GetKey(KeyCode.Mouse0))
@@ -56,11 +63,11 @@ public class GunBase : MonoBehaviour
             }
         }*/
 
-       /* if (Input.GetKey(KeyCode.Mouse0) )
-        {
-            nextFireTime = Time.time + 1f / FireRate;
-            Fire();
-        }*/
+        /* if (Input.GetKey(KeyCode.Mouse0) )
+         {
+             nextFireTime = Time.time + 1f / FireRate;
+             Fire();
+         }*/
     }
 
     public void Fire()
@@ -142,15 +149,15 @@ public class GunBase : MonoBehaviour
 
     #region Scriptable object Loading
 
-     GameObject GunModel;
-     
+    public GameObject GunModel;
+     public GameObject instGun;
     
      AnimationClip AnimFire,AnimReload;
 
-     void Initialize(GunData gunData)
+    public GameObject Initialize(GunData gunData)
     {
         GunModel = gunData.gunModel;
-        
+        projectilePrefab = gunData.projectile;
         MaxAmmo = gunData.maxAmmo;
         FireRate = gunData.firerate;
         AnimFire = gunData.fire;
@@ -161,25 +168,38 @@ public class GunBase : MonoBehaviour
         print(MaxAmmo.ToString());
         print(FireRate.ToString());
 
-        GameObject instGun = Instantiate(GunModel, gunSpawn.position, Quaternion.identity);
+        instGun = Instantiate(GunModel, gunSpawn.position, gunSpawn.rotation);
         instGun.transform.SetParent(gunSpawn);
-        instGun.transform.Rotate(new Vector3(0f, 180f,0f));
+        instGun.transform.Rotate(new Vector3(0f, 180f, 0f));
+
+        return instGun;
 
 
     }
 
-    public void EquipGun(GunData gunData)
+    /*public void EquipGun(GunData gunData)
     {
-        NewData = gunData;  // Set the NewData to the given gunData
-        Initialize(NewData);  // Reinitialize the gun with the new data
-    }
+        Debug.Log(gunData);
+        NewData = gunData;
+        (GunData oldGunData, GameObject oldGunGameObject) = GunHolder.SwapGun(NewData);  // Call SwapGun method and get the old gun data and object
 
-    public GunData UnequipGun()
+        if (oldGunData != null && inventory.Add(oldGunData))  // Check if oldGunData is not null and if it can be added to the inventory
+        {
+            // Successfully added the old gun back to the inventory
+        }
+        else
+        {
+            Debug.LogWarning("Failed to add the old gun back to the inventory");
+        }
+        // Additional code to update the UI or other gameplay elements if needed
+    }*/
+
+    /*public GunData UnequipGun()
     {
         GunData unequippedGun = NewData;
         NewData = null;
         return unequippedGun;
-    }
+    }*/
 
 
     #endregion

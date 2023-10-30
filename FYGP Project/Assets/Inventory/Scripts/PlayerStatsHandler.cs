@@ -12,15 +12,15 @@ public class PlayerStatsHandler : MonoBehaviour
     public Inventory playerInventory;
     public int playerIndex;
     public ItemData weightItem;
-
+    public gunHolder holder;
     public GameEvent addInven;
-
+    [SerializeField]public GunBase gunBase;
 
     // Awake because some scripts will need this on Start()
     void Awake()
     {
         playerIndex = GetComponent<GamepadInput>().playerIndex;
-        playerStats = new PlayerStats(playerIndex, weightItem);
+        playerStats = new PlayerStats(playerIndex, weightItem,holder,gunBase);
         playerInventory = playerStats.inventory;
         //print("Got player index" + playerIndex);
         //addInven.Raise(this, player1.inventory);

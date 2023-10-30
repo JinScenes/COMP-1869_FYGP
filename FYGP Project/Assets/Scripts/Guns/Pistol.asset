@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   displayName: Pistol
-  icon: {fileID: 0}
-  canStack: 1
-  gunModel: {fileID: 4559701832784666115, guid: 008e7caa57665db498b248cdabad1e7e, type: 3}
+  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  canStack: 0
+  consumable: 0
+  gunModel: {fileID: 2919659897700484028, guid: c8a7e9e58f1057b45b928f4d59838c94, type: 3}
   maxAmmo: 30
   firerate: 1.07
   reload: {fileID: 0}
   fire: {fileID: 0}
-  gunSpawn: {fileID: 0}
+  projectile: {fileID: 9022550822510155415, guid: 987df3fa24680af479a8eb80327d266d, type: 3}

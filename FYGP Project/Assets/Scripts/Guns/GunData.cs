@@ -9,7 +9,7 @@ public class GunData : ItemData
     public int maxAmmo;
     public float firerate;
     public AnimationClip reload, fire;
-    
+    public GameObject projectile;
     public enum rarity { Common, Uncommon, Rare, Epic , Legendary};
     public enum fireType { Hitscan, Projectile};
 

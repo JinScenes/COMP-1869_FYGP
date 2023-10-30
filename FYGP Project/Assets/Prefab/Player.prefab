@@ -286,11 +286,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e14e697f99964d48b77bec90438eb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventory:
-    gunBase: {fileID: 2665637513138450411}
   playerIndex: 0
   weightItem: {fileID: 11400000, guid: 3444206ceaab67f4bb4f4db78f3878e6, type: 2}
+  holder: {fileID: 7684766328792628636}
   addInven: {fileID: 0}
+  gunBase: {fileID: 2665637513138450411}
 --- !u!114 &8870401425019402303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4052e758ad8e14f4797fff51e48cf5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentGunData: {fileID: 0}
+  PreviousGunData: {fileID: 0}
+  CurrentGunGameObject: {fileID: 0}
+  gunBase: {fileID: 2665637513138450411}
 --- !u!1 &5879646302308247235
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7064307165186188835}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.98294824, z: -0, w: 0.18388285}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.86, y: 0, z: 0}
   m_LocalScale: {x: 1.9999989, y: 1, z: 1.9999989}
   m_ConstrainProportionsScale: 0
@@ -404,7 +408,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942b24614542d2c4ca7757ec2f59bf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireMode: 0
+  GunHolder: {fileID: 7684766328792628636}
+  fireMode: 1
   firePoint: {fileID: 5161532608062770549}
   projectilePrefab: {fileID: 0}
   gunSpawn: {fileID: 2906784696772930813}

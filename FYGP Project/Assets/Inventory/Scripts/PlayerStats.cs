@@ -10,19 +10,22 @@ public class PlayerStats
 {
     public Inventory inventory;
     public PlayerAmmo playerAmmo;
-  
+    
     public static int currency;
     public float health;
     public float speed;
-
+   
     public InventoryUI UIHandle;
 
-    public PlayerStats(int playerIndex, ItemData weightItem)
+    public PlayerStats(int playerIndex, ItemData weightItem, gunHolder holder, GunBase gunBase)
     {
         UIHandle = new InventoryUI(playerIndex);
-        inventory = new Inventory(UIHandle, weightItem);
+        inventory = new Inventory(UIHandle, weightItem, holder,gunBase);
         playerAmmo = new PlayerAmmo(UIHandle);
     }
+
+
+    
 }
 
 public class Ammo
