@@ -22,3 +22,5 @@ MonoBehaviour:
   reload: {fileID: 0}
   fire: {fileID: 0}
   projectile: {fileID: 9022550822510155415, guid: 987df3fa24680af479a8eb80327d266d, type: 3}
+  rarity: 0
+  type: 0

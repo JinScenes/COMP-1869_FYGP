@@ -47,7 +47,26 @@ public class gunHolder : MonoBehaviour
             CurrentGunData = newGunData;
             Destroy(CurrentGunGameObject);
             gunBase.Initialize(CurrentGunData);
-            playerStats.inventory.Add(PreviousGunData as ItemData);
+            GameObject gunFloorLootPrefab = Resources.Load<GameObject>("GunFloorLoot");
+            GameObject spawnedLoot = Instantiate(gunFloorLootPrefab, new Vector3(transform.position.x, transform.position.y+ 3, transform.position.z ), Quaternion.identity);
+            Rigidbody rb = spawnedLoot.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Vector3 shootDirection = transform.forward + Vector3.up;  // Adjust for desired direction (more upward force for a higher arc)
+                rb.AddForce(shootDirection * 3f, ForceMode.Impulse);
+            }
+            // Get the ItemCollection component and set its item to the previous gun data
+            ItemCollection itemCollection = spawnedLoot.GetComponent<ItemCollection>();
+            if (itemCollection != null)
+            {
+                itemCollection.item = PreviousGunData;
+            }
+            else
+            {
+                Debug.LogError("GunFloorLoot prefab does not have ItemCollection script attached!");
+            }
+            
+            //playerStats.inventory.Add(PreviousGunData as ItemData);
             CurrentGunGameObject = gunBase.instGun;
             //inventory.Add(PreviousGunData as ItemData);  // Return the old gun to the inventory
 

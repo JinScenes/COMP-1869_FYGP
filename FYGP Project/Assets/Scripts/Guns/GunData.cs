@@ -10,7 +10,8 @@ public class GunData : ItemData
     public float firerate;
     public AnimationClip reload, fire;
     public GameObject projectile;
-    public enum rarity { Common, Uncommon, Rare, Epic , Legendary};
+    public rarity rarity;
+    public AmmoType type;
     public enum fireType { Hitscan, Projectile};
 
     // Update is called once per frame
