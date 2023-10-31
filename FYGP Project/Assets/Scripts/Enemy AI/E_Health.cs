@@ -3,7 +3,7 @@ using UnityEngine;
 public class E_Health
 {
     EnemyFSM enemy;
-    bool hasTakenDamage = false;
+    public bool hasTakenDamage = false;
     
     public E_Health(EnemyFSM enemy)
     {
