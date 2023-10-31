@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
             {
                 Debug.Log("EnemyHit");
                 enemyFSM.healthModule.EnemyDamage(bDamage);
+                enemyFSM.healthModule.ShowHealthBar();
             }
         }
     }

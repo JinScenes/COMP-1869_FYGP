@@ -1,16 +1,17 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class E_Health
 {
     EnemyFSM enemy;
-
+    bool hasTakenDamage = false;
+    
     public E_Health(EnemyFSM enemy)
     {
         this.enemy = enemy;
         enemy.maxHealth = enemy.health;
         enemy.healthBarUI.maxValue = 1;
         enemy.healthBarUI.value = Mathf.Clamp01(enemy.health / enemy.maxHealth);
+        enemy.healthBarUI.gameObject.SetActive(false);
     }
 
     public void HealthUpdater()
@@ -19,20 +20,16 @@ public class E_Health
         HealthUIFunction();
     }
 
-    private void UpdateHealthBar()
+    public void ShowHealthBar()
     {
-        enemy.healthBarUI.value = Mathf.Clamp01(enemy.health / enemy.maxHealth);
+        enemy.healthBarUI.gameObject.SetActive(true);
     }
 
     private void HealthUIFunction()
     {
-        if (enemy.numberHealth == 0 && enemy.health > 0)
+        if (hasTakenDamage)
         {
             enemy.healthBarUI.gameObject.SetActive(true);
-        }
-        if (enemy.numberHealth == 1 && enemy.health > 0)
-        {
-            enemy.healthBarUI.gameObject.SetActive(false);
         }
     }
 
@@ -47,7 +44,8 @@ public class E_Health
     public void EnemyDamage(float damage)
     {
         enemy.health -= damage;
-        UpdateHealthBar();
+        enemy.healthBarUI.value = Mathf.Clamp01(enemy.health / enemy.maxHealth);
+        hasTakenDamage = true;
         enemy.IsMove = true;
     }
 
