@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Coke
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   displayName: Coke
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 2020491171, guid: be3ac75d448c7414b9ee5f8bbbc08a4b, type: 3}
   canStack: 1
   consumable: 0

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Weight
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   displayName: Weight
-  icon: {fileID: 21300000, guid: 5c7b429f5506c7243b8cf75a8c16df2e, type: 3}
+  icon: {fileID: -1917697817, guid: be3ac75d448c7414b9ee5f8bbbc08a4b, type: 3}
   canStack: 0
   consumable: 0
