@@ -15,7 +15,7 @@ public class gunHolder : MonoBehaviour
     public PlayerStats playerStats;
     void Start()
     {
-        playerStats = GetComponentInParent<PlayerStats>();
+        //playerStats = GetComponentInParent<PlayerStats>();
     }
     /*public void EquipGun(GunData newGunData)
     {
@@ -52,7 +52,7 @@ public class gunHolder : MonoBehaviour
             Rigidbody rb = spawnedLoot.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                Vector3 shootDirection = transform.forward + Vector3.up;  // Adjust for desired direction (more upward force for a higher arc)
+                Vector3 shootDirection = Vector3.up;  // Adjust for desired direction (more upward force for a higher arc)
                 rb.AddForce(shootDirection * 3f, ForceMode.Impulse);
             }
             // Get the ItemCollection component and set its item to the previous gun data
