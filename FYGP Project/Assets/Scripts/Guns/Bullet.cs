@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
 
-        if (other.transform.CompareTag("Enemy"));
+        if (other.transform.CompareTag("Enemy"))
         {
             
             GameObject enemy = other.gameObject;

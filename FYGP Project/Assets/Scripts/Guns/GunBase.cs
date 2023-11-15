@@ -28,6 +28,8 @@ public class GunBase : MonoBehaviour
     protected int currentAmmo;
     [SerializeField] bool isReloading = false;
     [SerializeField] float nextFireTime = 0f;
+    
+    private AmmoType currentAmmoType;
 
     public  GunData NewData;
     #endregion
@@ -37,6 +39,7 @@ public class GunBase : MonoBehaviour
 
     private void Start()
     {
+        playerStats = gameObject.GetComponentInParent<PlayerStatsHandler>().playerStats;
         /*inventory = gameObject.GetComponent<Inventory>();
         currentAmmo = MaxAmmo;
         if (NewData != null)
@@ -100,7 +103,7 @@ public class GunBase : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        currentAmmo = MaxAmmo;
+        //currentAmmo = playerStats.playerAmmo.amount;
         isReloading = false;
         Debug.Log("Reloaded");
     }
@@ -124,12 +127,14 @@ public class GunBase : MonoBehaviour
                 Debug.DrawLine(ray.origin, hit.point, Color.red, 0.1f);
             }
         }
-        currentAmmo--;
+
+        
+
     }
     #endregion
 
     #region Projectile Code
-    protected virtual void LaunchProjectile()
+    public void LaunchProjectile()
     {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
@@ -143,7 +148,23 @@ public class GunBase : MonoBehaviour
         {
             Debug.LogWarning("ProjectilePrefab does not have a Rigidbody component.");
         }
-        currentAmmo--;
+        switch (currentAmmoType)
+        {
+            case AmmoType.SmallAmmo:
+                playerStats.playerAmmo.smallAmmo.ammount--;
+
+                break;
+            case AmmoType.MediumAmmo:
+                playerStats.playerAmmo.mediumAmmo.ammount--;
+                break;
+            case AmmoType.LargeAmmo:
+                playerStats.playerAmmo.largeAmmo.ammount--;
+                break;
+            default:
+                print("Ammo type not found");
+                break;
+        }
+        playerStats.UIHandle.UpdateAllAmmo(playerStats.playerAmmo);
     }
     #endregion
 
@@ -152,17 +173,18 @@ public class GunBase : MonoBehaviour
     public GameObject GunModel;
      public GameObject instGun;
     
-     AnimationClip AnimFire,AnimReload;
+     //AnimationClip AnimFire,AnimReload;
 
     public GameObject Initialize(GunData gunData)
     {
-        GunModel = gunData.gunModel;
         projectilePrefab = gunData.projectile;
+        GunModel = gunData.gunModel;
+        
         MaxAmmo = gunData.maxAmmo;
         FireRate = gunData.firerate;
-        AnimFire = gunData.fire;
-        AnimReload = gunData.reload;
-
+        //AnimFire = gunData.fire;
+        //AnimReload = gunData.reload;
+       
         print(GunModel);
         
         print(MaxAmmo.ToString());
@@ -171,7 +193,8 @@ public class GunBase : MonoBehaviour
         instGun = Instantiate(GunModel, gunSpawn.position, gunSpawn.rotation);
         instGun.transform.SetParent(gunSpawn);
         instGun.transform.Rotate(new Vector3(0f, 180f, 0f));
-
+        currentAmmoType = gunData.type;
+        print(currentAmmoType);
         return instGun;
 
 
