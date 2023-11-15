@@ -5,13 +5,13 @@ ROLES:
 <br><br>
 Jin: Programmer
 <br>
-Ben: Designer|Programmer
+Ben: Designer | Programmer
 <br>
-Hsi Wei: Artist|Designer
+Hsi Wei: Artist | Designer
 <br>
 JJ: Programmer
 <br>
-Chris: Programmer|Artist
+Chris: Programmer | Artist
 <br><br><br>
 ASSETS:
 <br><br>
