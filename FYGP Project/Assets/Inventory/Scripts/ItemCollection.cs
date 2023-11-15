@@ -32,4 +32,15 @@ public class ItemCollection : MonoBehaviour, ICollectable
         }
         
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer.ToString() == "Ground")
+        {
+            GetComponent<Collider>().isTrigger = true;
+            GetComponent<Rigidbody>().isKinematic = true;
+
+        }
+
+    }
+
 }
