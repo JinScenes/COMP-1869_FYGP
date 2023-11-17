@@ -9,9 +9,9 @@ public class GunData : ItemData
     public int maxAmmo;
     public float firerate;
     public AnimationClip reload, fire;
-    public Quaternion rotationOffset;
-    
-    public enum rarity { Common, Uncommon, Rare, Epic , Legendary};
+    public GameObject projectile;
+    public rarity rarity;
+    public AmmoType type;
     public enum fireType { Hitscan, Projectile};
 
     // Update is called once per frame

@@ -1,26 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    // Start is called before the first frame update
     [SerializeField] private float bDamage;
+    
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 
     private void OnCollisionEnter(Collision other)
     {
+
         if (other.transform.CompareTag("Enemy"))
         {
-            EnemyFSM enemyFSM = other.gameObject.GetComponent<EnemyFSM>();
-
-            if (enemyFSM.healthModule.IsDead())
+            
+            GameObject enemy = other.gameObject;
+            if (enemy.GetComponent<EnemyAI>().health <= 0)
             {
                 Debug.Log("dead");
                 return;
             }
-            else
+            else if(enemy.GetComponent<EnemyAI>().health > 0)
             {
                 Debug.Log("EnemyHit");
-                enemyFSM.healthModule.EnemyDamage(bDamage);
-                enemyFSM.healthModule.ShowHealthBar();
+                enemy.GetComponent<EnemyAI>().EnemyDamage(bDamage);
             }
+
+                
+            
         }
     }
+  
 }
