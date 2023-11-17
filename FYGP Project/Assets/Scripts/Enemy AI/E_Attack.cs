@@ -27,7 +27,7 @@ public class E_Attack
         }
     }
 
-    private bool IsPlayerInAttackRange()
+    public bool IsPlayerInAttackRange()
     {
         Collider[] hitPlayers = Physics.OverlapSphere(enemy.attackPoint.position, enemy.attackRange, enemy.playerMask);
         return hitPlayers.Length > 0;
