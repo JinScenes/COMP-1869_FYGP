@@ -35,12 +35,12 @@ public class E_Detection
         if (Physics.Raycast(enemy.originPos.position, dir.normalized, out RaycastHit hit, enemy.sightRange))
         {
             enemy.canSee = hit.transform.gameObject.name == enemy.playerObjectName;
-            Debug.Log($"Can see player: {enemy.canSee}");
+            //Debug.Log($"Can see player: {enemy.canSee}");
         }
         else
         {
             enemy.canSee = false;
-            Debug.Log("Raycast did not hit player");
+            //Debug.Log("Raycast did not hit player");
         }
         return enemy.canSee;
     }

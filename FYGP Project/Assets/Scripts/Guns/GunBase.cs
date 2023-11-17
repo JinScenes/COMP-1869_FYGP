@@ -105,7 +105,7 @@ public class GunBase : MonoBehaviour
 
         //currentAmmo = playerStats.playerAmmo.amount;
         isReloading = false;
-        Debug.Log("Reloaded");
+        //Debug.Log("Reloaded");
     }
 
     #endregion

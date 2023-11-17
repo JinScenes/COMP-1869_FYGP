@@ -1,19 +1,19 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Extraction : MonoBehaviour
 {
-    public GameObject flare, extractionSpawners;
+    public GameObject flare; // extractionSpawners
     private HashSet<GameObject> playersInTrigger = new HashSet<GameObject>();
-    private int requiredPlayers = 2; // I needa make this dynamic ??
+    private int requiredPlayers = 2; // I needa make this dynamic 💀
     private Coroutine extractionCoroutine;
     public float extractionDuration = 20f; 
 
     void Start()
     {
         flare.SetActive(false);
-        extractionSpawners.SetActive(false);
+        //extractionSpawners.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -43,7 +43,7 @@ public class Extraction : MonoBehaviour
                 StopCoroutine(extractionCoroutine);
                 extractionCoroutine = null;
                 flare.SetActive(false);
-                extractionSpawners.SetActive(false);
+                //extractionSpawners.SetActive(true);
             }
         }
     }
@@ -51,7 +51,7 @@ public class Extraction : MonoBehaviour
     private IEnumerator ExtractionCoroutine()
     {
         flare.SetActive(true);
-        extractionSpawners.SetActive(true);
+        //extractionSpawners.SetActive(true);
 
         float timeRemaining = extractionDuration;
         while (timeRemaining > 0)
@@ -61,11 +61,11 @@ public class Extraction : MonoBehaviour
             {
                 // Not enough players, abort extraction
                 flare.SetActive(false);
-                extractionSpawners.SetActive(false);
+                //extractionSpawners.SetActive(false);
                 yield break;
             }
             timeRemaining -= 1f;
-            print(timeRemaining);
+            Debug.Log(timeRemaining);
         }
         Extracting(); // this could be the shop stuff maybe? 
     }
