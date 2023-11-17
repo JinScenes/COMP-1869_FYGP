@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using System.Runtime.CompilerServices;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(GamepadInput))]
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         controllerInput = GetComponent<GamepadInput>();
         playerCamera = FindObjectOfType<PlayerCamera>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void CheckShooting()
