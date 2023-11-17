@@ -3043,6 +3043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flare: {fileID: 2095538143}
+  extractionSpawners: {fileID: 0}
 --- !u!1 &1317181375
 GameObject:
   m_ObjectHideFlags: 0
@@ -3758,8 +3759,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.771885, y: 1, z: 1}
-  m_Center: {x: 0.8255596, y: 0, z: 0}
+  m_Size: {x: 6.771885, y: 1.2225428, z: 1}
+  m_Center: {x: 0.8255596, y: 0.11127147, z: 0}
 --- !u!4 &1973266789
 Transform:
   m_ObjectHideFlags: 0
