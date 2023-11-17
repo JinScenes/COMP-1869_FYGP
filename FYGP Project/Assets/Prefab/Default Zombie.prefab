@@ -684,11 +684,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6581765067845446243}
+  - component: {fileID: 3617914501138216464}
   - component: {fileID: 6150664749126084218}
   - component: {fileID: 5517284352726753206}
   - component: {fileID: 1775512372541544640}
   - component: {fileID: 4996235930817343976}
-  - component: {fileID: 3617914501138216464}
   m_Layer: 0
   m_Name: Default Zombie
   m_TagString: Untagged
@@ -716,6 +716,27 @@ Transform:
   - {fileID: 3660043743501097180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!95 &3617914501138216464
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882902812136128507}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b20a3c10714a6ac439af479e3273de65, type: 3}
+  m_Controller: {fileID: 9100000, guid: e18e395a64ec9a34390756cb0dd9121a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!136 &6150664749126084218
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -829,27 +850,6 @@ MonoBehaviour:
   canSee: 0
   ready: 0
   IsMove: 0
---- !u!95 &3617914501138216464
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1882902812136128507}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b20a3c10714a6ac439af479e3273de65, type: 3}
-  m_Controller: {fileID: 9100000, guid: e18e395a64ec9a34390756cb0dd9121a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1905280161365872904
 GameObject:
   m_ObjectHideFlags: 0
