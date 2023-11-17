@@ -6,7 +6,7 @@ public class Extraction : MonoBehaviour
 {
     public GameObject flare; // extractionSpawners
     private HashSet<GameObject> playersInTrigger = new HashSet<GameObject>();
-    private int requiredPlayers = 2; // I needa make this dynamic 💀
+    public int requiredPlayers = 0; // I needa make this dynamic 💀
     private Coroutine extractionCoroutine;
     public float extractionDuration = 20f; 
 
@@ -14,10 +14,6 @@ public class Extraction : MonoBehaviour
     {
         flare.SetActive(false);
         //extractionSpawners.SetActive(false);
-    }
-
-    private void FixedUpdate()
-    {
     }
 
     private void OnTriggerStay(Collider other)

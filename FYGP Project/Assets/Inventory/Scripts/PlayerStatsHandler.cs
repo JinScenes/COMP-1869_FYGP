@@ -19,6 +19,8 @@ public class PlayerStatsHandler : MonoBehaviour
     // Awake because some scripts will need this on Start()
     void Awake()
     {
+        GameObject.Find("Extraction").GetComponent<Extraction>().requiredPlayers++;
+
         playerIndex = GetComponent<GamepadInput>().playerIndex;
         playerStats = new PlayerStats(playerIndex, weightItem,holder,gunBase);
         playerInventory = playerStats.inventory;
