@@ -3599,7 +3599,7 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: -6265707474447949522, guid: 3e6fe446dc51e2f4b8d512191e951d79, type: 3}
-  m_PlayerPrefab: {fileID: 3925136280284502299, guid: d1fd953ca8bcae043946c62b8fe82b9b, type: 3}
+  m_PlayerPrefab: {fileID: 3550866125981978962, guid: fabc292005e24d64ea1607c6d984a5c2, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -9086,6 +9086,26 @@ PrefabInstance:
     - target: {fileID: 2077604865535252625, guid: 59429bc7e3abe554f8beb0f51ea1b8a3, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323576942764944477, guid: 59429bc7e3abe554f8beb0f51ea1b8a3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.018979123
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323576942764944477, guid: 59429bc7e3abe554f8beb0f51ea1b8a3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323576942764944477, guid: 59429bc7e3abe554f8beb0f51ea1b8a3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9998199
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323576942764944477, guid: 59429bc7e3abe554f8beb0f51ea1b8a3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323576942764944477, guid: 59429bc7e3abe554f8beb0f51ea1b8a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 182.175
       objectReference: {fileID: 0}
     - target: {fileID: 4555238132745938176, guid: 59429bc7e3abe554f8beb0f51ea1b8a3, type: 3}
       propertyPath: m_AnchorMax.x

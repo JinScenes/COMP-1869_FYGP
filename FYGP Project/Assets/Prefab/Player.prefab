@@ -278,6 +278,7 @@ MonoBehaviour:
   playerHeightOffset: 0.5
   playerHealth: 100
   gunRef: {fileID: 5644530419408921868}
+  raycastLength: 2
 --- !u!114 &4823587540387633666
 MonoBehaviour:
   m_ObjectHideFlags: 0

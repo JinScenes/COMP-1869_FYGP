@@ -14,10 +14,15 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject gunRef;
 
+    private Rigidbody rb;
     private GamepadInput controllerInput;
     private PlayerCamera playerCamera;
     private List<GameObject> previouslyHitObjects = new List<GameObject>();
 
+    [SerializeField] private float raycastLength;
+    private float gravitationalForce = -9.81f;
+    
+    private bool isGrounded = false;
 
     private void Start()
     {
@@ -164,12 +169,38 @@ public class PlayerController : MonoBehaviour
 
     private void EnsureGrounded()
     {
-        RaycastHit hit; 
+        RaycastHit hit;
+        LayerMask ground = LayerMask.GetMask("Ground");
+        Vector3 rayStart = transform.position;
+        Vector3 rayDir = -Vector3.up;
 
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, 2f))
+        Color rayColour = isGrounded ? Color.yellow : Color.red;
+        Debug.DrawRay(rayStart, rayDir, rayColour);
+
+        if (Physics.Raycast(rayStart, rayDir, out hit, raycastLength, ground))
         {
+            if (!isGrounded)
+            {
+                isGrounded = true;
+            }
+
             transform.position = hit.point + Vector3.up * playerHeightOffset;
         }
+        else
+        {
+            if (isGrounded)
+            {
+                isGrounded = false;
+            }
+
+            ApplyGravitationalForce();
+        }
+    }
+
+    private void ApplyGravitationalForce()
+    {
+        rb.AddForce(new Vector3(0, gravitationalForce * Time.deltaTime, 0), 
+            ForceMode.VelocityChange);
     }
 
     private void Die()
