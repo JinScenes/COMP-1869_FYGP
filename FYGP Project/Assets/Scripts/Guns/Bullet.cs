@@ -22,15 +22,15 @@ public class Bullet : MonoBehaviour
         {
             
             GameObject enemy = other.gameObject;
-            if (enemy.GetComponent<EnemyAI>().health <= 0)
+            if (enemy.GetComponent<EnemyFSM>().health <= 0)
             {
                 Debug.Log("dead");
                 return;
             }
-            else if(enemy.GetComponent<EnemyAI>().health > 0)
+            else if(enemy.GetComponent<EnemyFSM>().health > 0)
             {
                 Debug.Log("EnemyHit");
-                enemy.GetComponent<EnemyAI>().EnemyDamage(bDamage);
+                enemy.GetComponent<EnemyFSM>().healthModule.EnemyDamage(bDamage);
             }
 
                 
