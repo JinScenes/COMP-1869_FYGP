@@ -298,6 +298,7 @@ public class Inventory
     }
 
 
+    // Using this one rn in InventoryInput
     public void DropItem(int index, Transform playerTransform)
     {
         InventoryItem item = inventory[index];
@@ -309,7 +310,7 @@ public class Inventory
             }
             float dropDistance = 1.5f;
 
-            Vector3 dropLocation = playerTransform.position + playerTransform.forward * dropDistance;
+            Vector3 dropLocation = playerTransform.position + -playerTransform.up * dropDistance;
             Debug.Log($"Attempting to drop item {item.itemData.displayName}");
 
             GameObject.Instantiate(Resources.Load(item.itemData.name), dropLocation, Quaternion.identity);

@@ -292,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIndex: 0
   weightItem: {fileID: 11400000, guid: 3444206ceaab67f4bb4f4db78f3878e6, type: 2}
-  holder: {fileID: 0}
+  holder: {fileID: 7675872400785697}
   addInven: {fileID: 0}
   gunBase: {fileID: 2307104756910953348}
 --- !u!114 &6818682735888272472
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942b24614542d2c4ca7757ec2f59bf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GunHolder: {fileID: 0}
+  GunHolder: {fileID: 7675872400785697}
   fireMode: 1
   firePoint: {fileID: 1396807459051869088}
   projectilePrefab: {fileID: 8272325939475155795, guid: 11eea38531b507c4b997d9762c8077e5, type: 3}
