@@ -6,17 +6,17 @@ public class Extraction : MonoBehaviour
 {
     public GameObject flare, extractionSpawners;
     private HashSet<GameObject> playersInTrigger = new HashSet<GameObject>();
-    private int requiredPlayers = 2; // Set this to the number of players required for extraction
+    private int requiredPlayers = 2; // I needa make this dynamic ??
+    private Coroutine extractionCoroutine;
+    public float extractionDuration = 20f; 
 
-    // Start is called before the first frame update
     void Start()
     {
         flare.SetActive(false);
         extractionSpawners.SetActive(false);
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
     }
 
@@ -24,14 +24,11 @@ public class Extraction : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // Add the player to the HashSet
             playersInTrigger.Add(other.gameObject);
 
-            // Check if the required number of players are in the trigger
-            if (playersInTrigger.Count == requiredPlayers)
+            if (playersInTrigger.Count == requiredPlayers && extractionCoroutine == null)
             {
-                flare.SetActive(true);
-                Extracting();
+                extractionCoroutine = StartCoroutine(ExtractionCoroutine());
             }
         }
     }
@@ -40,15 +37,41 @@ public class Extraction : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // Remove the player from the HashSet
-            flare.SetActive(false);
-
             playersInTrigger.Remove(other.gameObject);
+            if (playersInTrigger.Count < requiredPlayers && extractionCoroutine != null)
+            {
+                StopCoroutine(extractionCoroutine);
+                extractionCoroutine = null;
+                flare.SetActive(false);
+                extractionSpawners.SetActive(false);
+            }
         }
     }
 
-    public void Extracting()
+    private IEnumerator ExtractionCoroutine()
     {
-        // Extraction logic here
+        flare.SetActive(true);
+        extractionSpawners.SetActive(true);
+
+        float timeRemaining = extractionDuration;
+        while (timeRemaining > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            if (playersInTrigger.Count < requiredPlayers)
+            {
+                // Not enough players, abort extraction
+                flare.SetActive(false);
+                extractionSpawners.SetActive(false);
+                yield break;
+            }
+            timeRemaining -= 1f;
+            print(timeRemaining);
+        }
+        Extracting(); // this could be the shop stuff maybe? 
+    }
+
+    private void Extracting()
+    {
+        Debug.Log("Extraction Complete!");
     }
 }
