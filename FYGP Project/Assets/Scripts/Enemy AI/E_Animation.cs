@@ -33,6 +33,8 @@ public interface EnemyState
     void ExitState(EnemyFSM enemyFSM);
 }
 
+#region Idle
+
 public class IdleState : EnemyState
 {
     public void EnterState(EnemyFSM enemyFSM)
@@ -45,7 +47,14 @@ public class IdleState : EnemyState
     {
         if (enemyFSM.IsMove)
         {
-            enemyFSM.animationModule.ChangeState(new MovingState());
+            if(enemyFSM.speed >= 5f)
+            {
+                enemyFSM.animationModule.ChangeState(new RunningState());
+            }
+            else
+            {
+                enemyFSM.animationModule.ChangeState(new WalkingState());
+            }
         }
     }
 
@@ -55,7 +64,11 @@ public class IdleState : EnemyState
     }
 }
 
-public class MovingState : EnemyState
+#endregion
+
+#region Walking
+
+public class WalkingState : EnemyState
 {
     public void EnterState(EnemyFSM enemyFSM)
     {
@@ -69,13 +82,22 @@ public class MovingState : EnemyState
         {
             enemyFSM.animationModule.ChangeState(new IdleState());
         }
+        else if (enemyFSM.speed >= 5)
+        {
+            enemyFSM.animationModule.ChangeState(new RunningState());
+        }
     }
+
 
     public void ExitState(EnemyFSM enemyFSM)
     {
 
     }
 }
+
+#endregion
+
+#region Attacking
 
 public class AttackingState : EnemyState
 {
@@ -96,7 +118,7 @@ public class AttackingState : EnemyState
         {
             if (enemyFSM.detectionModule.IsPlayerInSightOrDetectionRange())
             {
-                enemyFSM.animationModule.ChangeState(new MovingState());
+                enemyFSM.animationModule.ChangeState(new WalkingState());
             }
             else
             {
@@ -110,3 +132,54 @@ public class AttackingState : EnemyState
         //enemyFSM.anim.SetBool("IsAttacking", false);
     }
 }
+
+#endregion
+
+#region Running
+
+public class RunningState : EnemyState
+{
+    public void EnterState(EnemyFSM enemyFSM)
+    {
+        enemyFSM.anim.SetBool("isRunning", true);
+        enemyFSM.anim.SetBool("isWalking", false);
+        enemyFSM.anim.SetBool("isIdle", false);
+    }
+
+    public void UpdateState(EnemyFSM enemyFSM)
+    {
+        if (!enemyFSM)
+        {
+
+        }
+    }
+
+    public void ExitState(EnemyFSM enemyFSM)
+    {
+
+    }
+}
+
+#endregion
+
+#region Death
+
+public class DeathState : EnemyState
+{
+    public void EnterState(EnemyFSM enemyFSM)
+    {
+        enemyFSM.anim.SetTrigger("isDead");
+    }
+
+    public void UpdateState(EnemyFSM enemyFSM)
+    {
+        //IMPLEMENT LOGIC
+    }
+
+    public void ExitState(EnemyFSM enemyFSM)
+    {
+        
+    }
+}
+
+#endregion
