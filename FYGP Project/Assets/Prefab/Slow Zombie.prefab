@@ -365,7 +365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240183056451427568}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.8047622, z: -0, w: 0.59359735}
+  m_LocalRotation: {x: 0, y: 0.80476433, z: 0, w: 0.5935945}
   m_LocalPosition: {x: -1.4942356, y: 0.01627922, z: -1.1964349}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -376,7 +376,7 @@ Transform:
   - {fileID: 6284315184579916137}
   - {fileID: 1769067856008443478}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 107.175, z: 0}
 --- !u!95 &6420604744909000560
 Animator:
   serializedVersion: 5
@@ -446,7 +446,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!195 &7578392920953974252
 NavMeshAgent:
@@ -482,6 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9de5043fc257145b2899c9dfa710f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 6420604744909000560}
   playerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -1512,7 +1513,7 @@ Transform:
   m_GameObject: {fileID: 6371839739745105815}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5337208, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1974,14 +1975,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7725589500430489993}
-  m_LocalRotation: {x: 0.21445084, y: -0.75040877, z: 0.29073897, w: 0.5535056}
+  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -0.016485995, y: -0.012744229, z: -0.023969531}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1767809577988096665}
   m_Father: {fileID: 4323576942764944477}
-  m_LocalEulerAnglesHint: {x: 42.357, y: 133.695, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 2.0337207}
@@ -2467,7 +2468,7 @@ Transform:
   m_GameObject: {fileID: 9202048964884242318}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5337208, z: 0.4005}
+  m_LocalPosition: {x: 0, y: 1, z: 0.5}
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []

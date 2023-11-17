@@ -6,7 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private float bDamage;
+    [SerializeField] private float damage;
     
 
     // Update is called once per frame
@@ -17,7 +17,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-
         if (other.transform.CompareTag("Enemy"))
         {
             
@@ -30,12 +29,8 @@ public class Bullet : MonoBehaviour
             else if(enemy.GetComponent<EnemyFSM>().health > 0)
             {
                 Debug.Log("EnemyHit");
-                enemy.GetComponent<EnemyFSM>().healthModule.EnemyDamage(bDamage);
+                enemy.GetComponent<EnemyFSM>().healthModule.EnemyDamage(damage);
             }
-
-                
-            
         }
     }
-  
 }
