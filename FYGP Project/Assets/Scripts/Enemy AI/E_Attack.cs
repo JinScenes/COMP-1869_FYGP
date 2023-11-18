@@ -20,7 +20,7 @@ public class E_Attack
         float range = 1.3f;
         if (Physics.Raycast(enemy.originPos.position, enemy.originPos.transform.TransformDirection(Vector3.forward), out hit, range))
         {
-            if (hit.transform.gameObject.name == enemy.playerObjectName)
+            if (enemy.playerObjectNames.Contains(hit.transform.gameObject.name))
             {
                 hit.transform.gameObject.SendMessage("ApplyDamage", enemy.damage);
             }

@@ -14,11 +14,11 @@ public class EnemyFSM : MonoBehaviour
 
     [Header("Components")]
     public Animator anim;
-    public LayerMask playerMask;
-    public string playerObjectName = "Player(Clone)";
     public NavMeshAgent navMesh;
     public Transform attackPoint;
     public Slider healthBarUI;
+    public LayerMask playerMask;
+    public List<string> playerObjectNames = new List<string>();
 
     [Header("Common Variables")]
     [Range(0, 200)] public float maxHealth;
@@ -57,6 +57,7 @@ public class EnemyFSM : MonoBehaviour
         animationModule = new E_Animation(this);
 
         if (originPos == null) originPos = transform.Find("Pos");
+        if (playerObjectNames == null) playerObjectNames = new List<string>();
         if (attackPoint == null) attackPoint = transform.Find("AttackPoint");
         if (healthBarUI == null) healthBarUI = transform.Find("HealthBar_Canvas/Slider").GetComponent<Slider>();
     }

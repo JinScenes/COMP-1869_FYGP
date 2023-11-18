@@ -34,7 +34,7 @@ public class E_Detection
 
         if (Physics.Raycast(enemy.originPos.position, dir.normalized, out RaycastHit hit, enemy.sightRange))
         {
-            enemy.canSee = hit.transform.gameObject.name == enemy.playerObjectName;
+            enemy.canSee = enemy.playerObjectNames.Contains(hit.transform.gameObject.name);
             //Debug.Log($"Can see player: {enemy.canSee}");
         }
         else
@@ -51,9 +51,10 @@ public class E_Detection
         Collider[] hitColliders = Physics.OverlapSphere(enemy.transform.position, enemy.loudness);
         foreach (Collider hitCol in hitColliders)
         {
-            if (hitCol.gameObject.name == enemy.playerObjectName)
+            if (enemy.playerObjectNames.Contains(hitCol.gameObject.name))
             {
                 enemy.ready = true;
+                break;
             }
         }
     }
@@ -106,10 +107,11 @@ public class E_Detection
         Collider[] playerCheckRange = Physics.OverlapSphere(enemy.transform.position, enemy.detectionRange);
         foreach (Collider player in playerCheckRange)
         {
-            if (player.gameObject.name == enemy.playerObjectName && enemy.numberMovement != 0)
+            if (enemy.playerObjectNames.Contains(player.gameObject.name) && enemy.numberMovement != 0)
             {
                 enemy.numberMovement = 0;
                 enemy.IsMove = true;
+                break;
             }
         }
     }

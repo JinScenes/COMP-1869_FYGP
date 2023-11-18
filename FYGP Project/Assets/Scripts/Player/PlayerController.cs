@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
-using System.Runtime.CompilerServices;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(GamepadInput))]
@@ -97,7 +96,7 @@ public class PlayerController : MonoBehaviour
             float angle = Mathf.Atan2(controllerInput.RotationInput.x,
                 controllerInput.RotationInput.y) * Mathf.Rad2Deg;
 
-            transform.rotation = Quaternion.Euler(-90f, angle, 0);
+            transform.rotation = Quaternion.Euler(0, angle, 0);
         }
     }
 

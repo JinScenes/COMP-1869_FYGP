@@ -2219,7 +2219,7 @@ GameObject:
   - component: {fileID: 3514745288196517796}
   m_Layer: 0
   m_Name: Quick Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2350,13 +2350,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4565835858075300557}
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  playerObjectName: Player(Clone)
   navMesh: {fileID: 5938534645920470187}
   attackPoint: {fileID: 7762696115660538907}
   healthBarUI: {fileID: 5597179828180916842}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  playerObjectNames:
+  - Player 1(Clone)
+  - Player 2(Clone)
+  - Player 3(Clone)
+  - Player 4(Clone)
   maxHealth: 0
   health: 50
   speed: 5.5

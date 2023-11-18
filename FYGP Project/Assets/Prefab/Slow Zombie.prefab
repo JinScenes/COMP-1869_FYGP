@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 2570003050336110559}
   m_Layer: 0
   m_Name: Slow Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -483,13 +483,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 6420604744909000560}
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  playerObjectName: Player(Clone)
   navMesh: {fileID: 7578392920953974252}
   attackPoint: {fileID: 1293499407117911668}
   healthBarUI: {fileID: 2435382335932380523}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  playerObjectNames:
+  - Player 1(Clone)
+  - Player 2(Clone)
+  - Player 3(Clone)
+  - Player 4(Clone)
   maxHealth: 0
   health: 100
   speed: 2.5

@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 4996235930817343976}
   m_Layer: 0
   m_Name: Default Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -822,13 +822,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 3617914501138216464}
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  playerObjectName: Player(Clone)
   navMesh: {fileID: 1775512372541544640}
   attackPoint: {fileID: 4723286112556729746}
   healthBarUI: {fileID: 7439327344063841153}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  playerObjectNames:
+  - Player 1(Clone)
+  - Player 2(Clone)
+  - Player 3(Clone)
+  - Player 4(Clone)
   maxHealth: 0
   health: 100
   speed: 4
