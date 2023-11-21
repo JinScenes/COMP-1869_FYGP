@@ -28,9 +28,9 @@ public class GunBase : MonoBehaviour
     protected int currentAmmo;
     [SerializeField] bool isReloading = false;
     [SerializeField] float nextFireTime = 0f;
-    
+    private Animator animator;
     private AmmoType currentAmmoType;
-
+    
     public  GunData NewData;
     #endregion
 
@@ -39,7 +39,9 @@ public class GunBase : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponentInParent<Animator>();
         playerStats = gameObject.GetComponentInParent<PlayerStatsHandler>().playerStats;
+        currentAmmo = MaxAmmo;
         /*inventory = gameObject.GetComponent<Inventory>();
         currentAmmo = MaxAmmo;
         if (NewData != null)
@@ -75,35 +77,36 @@ public class GunBase : MonoBehaviour
 
     public void Fire()
     {
-        if (isReloading)
-        {
-            return;
-        }
+        
 
-        if (fireMode == FireMode.Hitscan)
+        /*if (fireMode == FireMode.Hitscan)
         {
             ShootHitscan();
-        }
-        else if (fireMode == FireMode.Projectile && Time.time >= nextFireTime)
+        }*/
+         if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
         {
             nextFireTime = Time.time + 1f / FireRate;
             LaunchProjectile();
-        } else if(currentAmmo <= 0)
+            currentAmmo--;
+        } 
+        
+        if(currentAmmo <= 0)
         {
+            isReloading = true;
             StartCoroutine(Reload());
-            return;
+            
 
         }
     }
 
     IEnumerator Reload()
     {
-        isReloading = true;
+        
         Debug.Log("Reloading...");
 
         yield return new WaitForSeconds(reloadTime);
 
-        //currentAmmo = playerStats.playerAmmo.amount;
+        currentAmmo = MaxAmmo;
         isReloading = false;
         //Debug.Log("Reloaded");
     }
@@ -177,9 +180,10 @@ public class GunBase : MonoBehaviour
 
     public GameObject Initialize(GunData gunData)
     {
+        animator.SetBool("isShooting", true);
         projectilePrefab = gunData.projectile;
         GunModel = gunData.gunModel;
-        
+        reloadTime = gunData.reloadTime;
         MaxAmmo = gunData.maxAmmo;
         FireRate = gunData.firerate;
         //AnimFire = gunData.fire;

@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 20)] private float speed;
     [SerializeField, Range(0, 10)] private float playerHeightOffset;
     public float playerHealth;
-
+    [SerializeField] private animState animState;
     [SerializeField] private GameObject gunRef;
 
     private Rigidbody rb;
@@ -73,20 +73,37 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
+        bool isMoving = false;
+        //animState.animator.SetBool("isWalking", true);
         Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 
             0, controllerInput.MovementInput.y);
+
+        if(moveDir.sqrMagnitude > 0.01){
+            isMoving = true;
+        }
+       
+
 
         Vector3 moveOffset = moveDir * speed * Time.deltaTime;
         Vector3 newPos = transform.position + moveOffset;
         Vector3 viewPos = Camera.main.WorldToViewportPoint(newPos);
+        if (isMoving)
+        {
+            animState.animator.SetBool("isWalking", true);
+        } else
+        {
+            animState.animator.SetBool("isWalking", false);
 
-        viewPos.x = Mathf.Clamp(viewPos.x, 0.05f, 0.95f);
-        viewPos.y = Mathf.Clamp(viewPos.y, 0.05f, 0.95f);
+        }
+            viewPos.x = Mathf.Clamp(viewPos.x, 0.05f, 0.95f);
+            viewPos.y = Mathf.Clamp(viewPos.y, 0.05f, 0.95f);
 
-        newPos = Camera.main.ViewportToWorldPoint(viewPos);
-        transform.position = newPos;
+            newPos = Camera.main.ViewportToWorldPoint(viewPos);
+            transform.position = newPos;
 
-        RestrictMovementWithinCameraView();
+
+            RestrictMovementWithinCameraView();
+        
     }
 
     private void HandleRotation()
