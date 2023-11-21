@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: 
   displayName: Rifle
-  icon: {fileID: 0}
-  canStack: 1
+  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  canStack: 0
+  consumable: 0
   gunModel: {fileID: 919132149155446097, guid: 6773bf2bf26cbfe41879ef7fbd88362b, type: 3}
   maxAmmo: 24
   firerate: 10.48
   reload: {fileID: -1407466678795768306, guid: 7b492790d36c0f0489d2c9e90e865048, type: 3}
   fire: {fileID: -382410650019994693, guid: 7b492790d36c0f0489d2c9e90e865048, type: 3}
-  rotationOffset: {x: 0, y: 0, z: 0, w: 1}
+  projectile: {fileID: 9022550822510155415, guid: 987df3fa24680af479a8eb80327d266d, type: 3}
+  rarity: 2
+  type: 1
