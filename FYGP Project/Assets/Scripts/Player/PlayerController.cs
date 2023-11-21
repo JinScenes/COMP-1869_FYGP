@@ -161,12 +161,15 @@ public class PlayerController : MonoBehaviour
     public void ApplyDamage(float damageAmount)
     {
         playerHealth -= damageAmount;
+        Debug.Log(gameObject.name + " health is now: " + playerHealth);
 
         if (playerHealth <= 0)
         {
             Die();
         }
     }
+
+
 
     private void EnsureGrounded()
     {

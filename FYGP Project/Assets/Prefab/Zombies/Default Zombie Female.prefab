@@ -1321,9 +1321,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3886301
-  m_Height: 1.5747802
+  m_Height: 1.5930699
   m_Direction: 1
-  m_Center: {x: 0.000027537359, y: 0.7854202, z: 0.007573366}
+  m_Center: {x: 0.00002753733, y: 0.77627474, z: 0.0075733666}
 --- !u!54 &4511431470316589250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1654,12 +1654,12 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 9054928168843377129, guid: 32c1a68f2b92e8f4bb6feb632a2be59d, type: 3}
-  - {fileID: 4835078630258379571, guid: 32c1a68f2b92e8f4bb6feb632a2be59d, type: 3}
+  - {fileID: 2100000, guid: 5165e62d666a76e4eb25eddf883139a1, type: 2}
   - {fileID: -5637652675625914632, guid: 32c1a68f2b92e8f4bb6feb632a2be59d, type: 3}
   - {fileID: -7320176457369531542, guid: 32c1a68f2b92e8f4bb6feb632a2be59d, type: 3}
   - {fileID: -331609850623604216, guid: 32c1a68f2b92e8f4bb6feb632a2be59d, type: 3}
   - {fileID: -6249586809504412163, guid: 32c1a68f2b92e8f4bb6feb632a2be59d, type: 3}
-  - {fileID: -2274090305892019849, guid: 32c1a68f2b92e8f4bb6feb632a2be59d, type: 3}
+  - {fileID: 2100000, guid: 108f18b7e78c9ce4aa1014f390757380, type: 2}
   - {fileID: -4288583467269203127, guid: 32c1a68f2b92e8f4bb6feb632a2be59d, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0

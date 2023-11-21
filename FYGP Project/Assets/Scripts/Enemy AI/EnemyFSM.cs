@@ -67,6 +67,11 @@ public class EnemyFSM : MonoBehaviour
 
     private void Update()
     {
+        GrabBehvaiours();
+    }
+
+    private void GrabBehvaiours()
+    {
         if (!healthModule.IsDead())
         {
             detectionModule.DetectionUpdater();

@@ -502,9 +502,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.33457738
-  m_Height: 1.5767761
+  m_Height: 1.612101
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8109445, z: 0}
+  m_Center: {x: 0, y: 0.7932821, z: 0}
 --- !u!114 &8612065690212763503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  playerHeightOffset: 0.5
+  playerHeightOffset: 0
   playerHealth: 100
   gunRef: {fileID: 0}
   raycastLength: 2
