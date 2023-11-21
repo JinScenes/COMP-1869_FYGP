@@ -12,7 +12,7 @@ public class InventoryInput : MonoBehaviour
 
     private GamepadInput controllerInput;
     private PlayerStatsHandler playerStatsHandler;
-
+    //[SerializeField] public GunHolder gunHolder;
     private int playerIndex;
 
     // Values to prevent inputs happening too fast
