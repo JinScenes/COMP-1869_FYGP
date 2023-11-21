@@ -7,7 +7,13 @@ public class ItemCollection : MonoBehaviour, ICollectable
     public ItemData item;
 
     private bool collected;
+    private bool equppefull;
 
+
+    private void Start()
+    {
+       
+    }
     public void Collect(object plrStats)
     {
         if (!collected)
@@ -24,6 +30,17 @@ public class ItemCollection : MonoBehaviour, ICollectable
             }
             
         }
-     
+        
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer.ToString() == "Ground")
+        {
+            GetComponent<Collider>().isTrigger = true;
+            GetComponent<Rigidbody>().isKinematic = true;
+
+        }
+
+    }
+
 }

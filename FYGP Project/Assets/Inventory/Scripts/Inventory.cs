@@ -8,6 +8,8 @@ using UnityEngine.InputSystem.Controls;
 using System.Xml;
 using Unity.VisualScripting.FullSerializer;
 using static UnityEditor.Progress;
+using UnityEngine.Events;
+using UnityEngine.WSA;
 
 [System.Serializable]
 public class Inventory
@@ -17,15 +19,20 @@ public class Inventory
     private ItemData weightItem;
     public InventoryItem[] inventory = new InventoryItem[4];
     private Dictionary<int, InventoryItem> itemDictionary = new Dictionary<int, InventoryItem>();
-
+    //public GunBase gunBase;
     private InventoryUI inventoryUI;
-
-    public Inventory(InventoryUI inventoryUI, ItemData weightItem)
+    private gunHolder GunHolder;
+    private GunBase gunBase;
+    public PlayerStats playerStats;
+    public Inventory(InventoryUI inventoryUI, ItemData weightItem, gunHolder holder, GunBase gunBase)
     {
         this.inventoryUI = inventoryUI;
         this.weightItem = weightItem;
+        GunHolder = holder;
+        this.gunBase = gunBase;
+
     }
-    
+   // public class GunEvent : UnityEvent<GunData> { }
     public int GetCount()
     {
         int objCount = 0;
@@ -86,14 +93,16 @@ public class Inventory
             inventory[newIndex] = newItem;
             itemDictionary.Add(newIndex, newItem);
 
-            if (isAGun){
+            if (isAGun)
+            {
                 AddWeight(newItem);
             }
 
             //Debug.Log($"{itemData.displayName} has now been added to the inventory");
             inventoryUI.UpdateAll(this);
             return true;
-        } else
+        }
+        else
         {
             Debug.Log($"Could not add item {itemData.displayName} to inventory bc it is full!");
             return false;
@@ -103,9 +112,27 @@ public class Inventory
 
     private InventoryItem FindItem(ItemData itemData)
     {
+        if (isItemAGun(itemData))
+        {
+            Debug.LogWarning("The item is a gun. Skipping logic.");
+            return null;  // or handle accordingly if necessary
+        }
+        Debug.Log(itemDictionary);
         foreach (KeyValuePair<int, InventoryItem> item in itemDictionary)
         {
-            if(item.Value.itemData == itemData)
+            
+
+            if (item.Value == null)
+            {
+                Debug.LogError("item.Value is null");
+                continue;  // Skip to the next iteration
+            }
+            if (item.Value.itemData == null)
+            {
+                Debug.LogError("item.Value.itemData is null");
+                continue;  // Skip to the next iteration
+            }
+            if (item.Value.itemData == itemData)
             {
                 //Debug.Log($"Found {item.Value.itemData.displayName} in inventory!");
                 return item.Value;
@@ -127,7 +154,7 @@ public class Inventory
             if (itemValue.itemData == itemData)
             {
                 //Debug.Log($"Found {item.Value.itemData.displayName} in inventory!");
-                if(itemValue.stackSize < maxStack)
+                if (itemValue.stackSize < maxStack)
                 {
                     //Debug.Log($"Found {itemValue.itemData.displayName} in inventory and its stackable! ({itemValue.stackSize})");
                     return itemValue;
@@ -136,7 +163,7 @@ public class Inventory
                 {
                     continue;
                 }
-               
+
             }
             //Debug.Log("This");
         }
@@ -148,48 +175,56 @@ public class Inventory
 
     public bool Add(ItemData itemData)
     {
+        Debug.Log(inventory);
         // If Item is in inventory
-        InventoryItem item = FindItem(itemData);
-        if (item != null)
-        {
-            // If item can stack, add a stack
-            if (item.itemData.canStack)
+       
+            InventoryItem item = FindItem(itemData);
+        
+            if (item != null)
             {
-                if (item.stackSize >= maxStack)
+                // If item can stack, add a stack
+                if (item.itemData.canStack)
                 {
-                    InventoryItem stackableItem = FindItemThatsStackable(itemData);
-                    if(stackableItem != null)
+                    if (item.stackSize >= maxStack)
                     {
-                        stackableItem.AddToStack();
-                        inventoryUI.UpdateAll(this);
-                        return true;
+                        InventoryItem stackableItem = FindItemThatsStackable(itemData);
+                        if (stackableItem != null)
+                        {
+                            stackableItem.AddToStack();
+                            inventoryUI.UpdateAll(this);
+                            return true;
+                        }
+                        else
+                        {
+                            return AddItem(itemData);
+                        }
+
                     }
                     else
                     {
-                        return AddItem(itemData);
+                        item.AddToStack();
+                        //Debug.Log($"INVENTORY : {itemData.displayName} total stack is now {item.stackSize}");
+                        inventoryUI.UpdateAll(this);
+                        return true;
                     }
-                    
+
+
+                    // if an item can't stack, attempt to add
                 }
                 else
                 {
-                    item.AddToStack();
-                    //Debug.Log($"INVENTORY : {itemData.displayName} total stack is now {item.stackSize}");
-                    inventoryUI.UpdateAll(this);
-                    return true;
+                    //Debug.Log("Item can't stack, attempt to create new instance");
+                    return AddItem(itemData);
                 }
-              
-
-            // if an item can't stack, attempt to add
-            } else  {
-                //Debug.Log("Item can't stack, attempt to create new instance");
+                // Add Item to inventory bc it is not in inventory
+            }
+            else
+            {
                 return AddItem(itemData);
             }
-        // Add Item to inventory bc it is not in inventory
-        } else {
-          return AddItem(itemData);
-        }
 
-        //Debug.Log($"Inventory has {GetCount()} instances");
+            //Debug.Log($"Inventory has {GetCount()} instances");
+        
     }
 
     public void RemoveFromIndex(int index)
@@ -232,7 +267,7 @@ public class Inventory
                     break;
                 }
             }
-           
+
         }
         inventoryUI.UpdateAll(this);
 
@@ -263,6 +298,7 @@ public class Inventory
     }
 
 
+    // Using this one rn in InventoryInput
     public void DropItem(int index, Transform playerTransform)
     {
         InventoryItem item = inventory[index];
@@ -274,9 +310,9 @@ public class Inventory
             }
             float dropDistance = 1.5f;
 
-            Vector3 dropLocation = playerTransform.position + playerTransform.forward * dropDistance;
+            Vector3 dropLocation = playerTransform.position + -playerTransform.up * dropDistance;
             Debug.Log($"Attempting to drop item {item.itemData.displayName}");
-            
+
             GameObject.Instantiate(Resources.Load(item.itemData.name), dropLocation, Quaternion.identity);
             RemoveFromIndex(index);
 
@@ -303,24 +339,35 @@ public class Inventory
     public void Consume(int index)
     {
         InventoryItem item = inventory[index];
-        if (item != null && item.itemData.consumable == true)
+        if (item != null)
         {
-            string itemName = item.itemData.name;
-            switch (itemName)
+            if (item.itemData.consumable)
             {
-                case "Medkit":
-                    Debug.Log("+100 HP");
-                    break;
-                default:
-                    Debug.LogWarning($"Consumable item {itemName} is not in the switch list");
-                    break;
+                string itemName = item.itemData.name;
+                switch (itemName)
+                {
+                    case "Medkit":
+                        Debug.Log("+100 HP");
+                        break;
+                    default:
+                        Debug.LogWarning($"Consumable item {itemName} is not in the switch list");
+                        break;
+                }
+
+                RemoveFromIndex(index);
             }
-       
-            RemoveFromIndex(index);
-        }
-        else
-        {
-            Debug.Log("Item is not consumable or null");
+            else if (isItemAGun(item.itemData))
+            {
+                GunData gunData = (GunData)item.itemData;
+                RemoveFromIndex(index);
+                GunHolder.SwapGun(gunData);
+                HandleGunDrop(item);// Equip the new gun
+                  // remove the new gun from the inventory
+            }
         }
     }
 }
+
+
+    
+

@@ -50,7 +50,7 @@ public class InventoryUI
 
 
         // Set Player Index label
-        InvenUI.Find("PlayerIndex Label").GetComponent<TextMeshProUGUI>().text = $"Player {playerIndex+1}";
+        InvenUI.Find("PlayerIndex Label").GetComponent<TextMeshProUGUI>().text = $"Player {playerIndex + 1}";
         AmmoHUD = InvenUI.transform.Find("AmmoHUD");
     }
 
@@ -76,7 +76,7 @@ public class InventoryUI
 
         }
     }
-    
+
     public void UpdateAll(Inventory inventoryRef)
     {
         ResetUI(inventoryRef);
@@ -84,7 +84,7 @@ public class InventoryUI
         {
             // Check if item index exists in inventory
             InventoryItem invenItem = inventoryRef.inventory[i];
-            if(invenItem != null)
+            if (invenItem != null)
             {
                 // Confirm item
                 ItemData itemData = invenItem.itemData;
@@ -105,7 +105,8 @@ public class InventoryUI
                 StackUI.text = invenItem.stackSize.ToString();
                 DisplayName.text = itemData.name;
 
-                if (itemData.consumable){
+                if (itemData.consumable)
+                {
                     Consumable.GetComponent<Image>().enabled = true;
                 }
 
@@ -116,7 +117,7 @@ public class InventoryUI
 
     public void UpdateAllAmmo(PlayerAmmo playerAmmo)
     {
-        
+
         TextMeshProUGUI LargeAmmoUI = AmmoHUD.Find("Large Ammo").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI MediumAmmoUI = AmmoHUD.Find("Medium Ammo").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI SmallAmmoUI = AmmoHUD.Find("Small Ammo").GetComponent<TextMeshProUGUI>();
@@ -143,6 +144,7 @@ public class InventoryUI
         TextMeshProUGUI LargeAmmoUI = AmmoHUD.Find("Large Ammo").GetComponent<TextMeshProUGUI>();
         LargeAmmoUI.text = ammo.ToString();
     }
+
 
 
 }
