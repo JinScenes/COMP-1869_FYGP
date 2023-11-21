@@ -4416,7 +4416,7 @@ MonoBehaviour:
   rightBoundaryOffset: 0.05
   lerpSpeed: 5
   smoothTime: 0.3
-  cameraOffset: {x: 0, y: 8, z: -17}
+  cameraOffset: {x: 0, y: 8, z: -13}
   topBoundaryImage: {fileID: 266050217}
   leftBoundaryImage: {fileID: 291293081}
   rightBoundaryImage: {fileID: 1324844046}
