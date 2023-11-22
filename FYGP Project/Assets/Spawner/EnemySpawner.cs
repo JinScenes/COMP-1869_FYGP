@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private float spawnRate = 1f;
     [SerializeField] private GameObject[] enemyPrefabs;
-    private bool canSpawn = true;  
+    [SerializeField] private float spawnRate = 0.8f;
+    [SerializeField] private float coolDownRate = 2f;
+    [SerializeField] private int xPos = 0;
+    [SerializeField] private int zPos = 0;
+    [SerializeField] public int enemyMaxCount = 20;
+
+    protected int randomXpos;
+    protected int randomZpos;
+    protected int enemyCount = 0;
+
 
     void Start()
     {
@@ -15,15 +23,39 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator Spawner()
     {
-        WaitForSeconds wait = new WaitForSeconds (spawnRate);
-        while (canSpawn)
+        // Time for new enmey spawn
+        WaitForSeconds waitTime = new WaitForSeconds (spawnRate);
+        // Time for reseting spawn
+        WaitForSeconds cdTime = new WaitForSeconds (coolDownRate); 
+
+
+        while (enemyCount <= enemyMaxCount)
         {
-            yield return wait;
+            // Time between each spawn
+            yield return waitTime;
+
+            // Spawn a random enemy from assigned prefabs
             int random = Random.Range (0, enemyPrefabs.Length);
             GameObject enemyToSpawn = enemyPrefabs[random];
 
-            Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
-        }
-    }
+            //Setting random location
 
+            randomXpos = Random.Range(0, xPos);
+            randomZpos = Random.Range(0, zPos);
+
+            Instantiate(enemyToSpawn, new Vector3(randomXpos, 0, randomZpos), Quaternion.identity);
+
+            enemyCount++;
+
+
+            if (enemyCount == enemyMaxCount)
+            {
+                print("Goint to reset");
+                yield return cdTime;
+                print("resetting");
+                enemyCount = 0;
+            }
+        }
+
+    } 
 }
