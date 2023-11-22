@@ -21,7 +21,7 @@ public class Consumables : MonoBehaviour
     public bool doingAction = false;
     private string completedAction;
 
-    private float cancelDistance = .65f;
+    private float cancelDistance = 1.2f;
 
     private PlayerController playerController;
     private MessageBillboard messageBillboard;
@@ -58,7 +58,7 @@ public class Consumables : MonoBehaviour
         {
             waitActionObj.SetActive(true);
             waitActionDescription.GetComponent<TextMeshProUGUI>().text = desc;
-            waitActionObj.transform.position = gameObject.transform.position;
+            waitActionObj.transform.position = startingPos;
 
             WaitForSeconds incrementWaitTime = new WaitForSeconds(waitTime / divisionRate);
 
