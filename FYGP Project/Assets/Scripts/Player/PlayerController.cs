@@ -73,8 +73,13 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 
-            0, controllerInput.MovementInput.y);
+        Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 0, controllerInput.MovementInput.y);
+
+        if (moveDir.sqrMagnitude > 0.01f)
+        {
+            float movementAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, movementAngle, 0);
+        }
 
         Vector3 moveOffset = moveDir * speed * Time.deltaTime;
         Vector3 newPos = transform.position + moveOffset;
@@ -88,6 +93,7 @@ public class PlayerController : MonoBehaviour
 
         RestrictMovementWithinCameraView();
     }
+
 
     private void HandleRotation()
     {
@@ -168,8 +174,6 @@ public class PlayerController : MonoBehaviour
             Die();
         }
     }
-
-
 
     private void EnsureGrounded()
     {
