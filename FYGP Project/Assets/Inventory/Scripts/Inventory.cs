@@ -24,12 +24,19 @@ public class Inventory
     private gunHolder GunHolder;
     private GunBase gunBase;
     public PlayerStats playerStats;
-    public Inventory(InventoryUI inventoryUI, ItemData weightItem, gunHolder holder, GunBase gunBase)
+    private Consumables consumables;
+
+    // The index of the item currently being consumed
+    public int consumingIndex = -1;
+
+    public Inventory(InventoryUI inventoryUI, ItemData weightItem, gunHolder holder, GunBase gunBase, Consumables consumables)
     {
         this.inventoryUI = inventoryUI;
         this.weightItem = weightItem;
         GunHolder = holder;
         this.gunBase = gunBase;
+
+        this.consumables = consumables;
 
     }
    // public class GunEvent : UnityEvent<GunData> { }
@@ -117,7 +124,6 @@ public class Inventory
             Debug.LogWarning("The item is a gun. Skipping logic.");
             return null;  // or handle accordingly if necessary
         }
-        Debug.Log(itemDictionary);
         foreach (KeyValuePair<int, InventoryItem> item in itemDictionary)
         {
             
@@ -175,10 +181,8 @@ public class Inventory
 
     public bool Add(ItemData itemData)
     {
-        Debug.Log(inventory);
         // If Item is in inventory
-       
-            InventoryItem item = FindItem(itemData);
+        InventoryItem item = FindItem(itemData);
         
             if (item != null)
             {
@@ -302,7 +306,7 @@ public class Inventory
     public void DropItem(int index, Transform playerTransform)
     {
         InventoryItem item = inventory[index];
-        if (item != null && item.itemData != weightItem)
+        if (item != null && item.itemData != weightItem && index != consumingIndex)
         {
             if (isItemAGun(item.itemData))
             {
@@ -310,10 +314,10 @@ public class Inventory
             }
             float dropDistance = 1.5f;
 
-            Vector3 dropLocation = playerTransform.position + -playerTransform.up * dropDistance;
+            Vector3 dropLocation = playerTransform.position + playerTransform.up * 0.75f  +  playerTransform.forward * dropDistance;
             Debug.Log($"Attempting to drop item {item.itemData.displayName}");
 
-            GameObject.Instantiate(Resources.Load(item.itemData.name), dropLocation, Quaternion.identity);
+            GameObject.Instantiate(Resources.Load(item.itemData.displayName), dropLocation, Quaternion.identity);
             RemoveFromIndex(index);
 
         }
@@ -322,7 +326,7 @@ public class Inventory
     public void DropItem(int index, Vector3 dropLocation)
     {
         InventoryItem item = inventory[index];
-        if (item != null && item.itemData != weightItem)
+        if (item != null && item.itemData != weightItem && index != consumingIndex)
         {
             if (isItemAGun(item.itemData))
             {
@@ -334,6 +338,11 @@ public class Inventory
             RemoveFromIndex(index);
 
         }
+    }
+
+    private void Medkit()
+    {
+        Debug.Log("MEDKIT POGG");
     }
 
     public void Consume(int index)
@@ -343,18 +352,15 @@ public class Inventory
         {
             if (item.itemData.consumable)
             {
-                string itemName = item.itemData.name;
-                switch (itemName)
-                {
-                    case "Medkit":
-                        Debug.Log("+100 HP");
-                        break;
-                    default:
-                        Debug.LogWarning($"Consumable item {itemName} is not in the switch list");
-                        break;
-                }
+                string itemName =  item.itemData.name;
+                itemName = itemName.Replace(" ", ""); // removes spaces
 
-                RemoveFromIndex(index);
+                // Tells consumables what item needs to be removed
+                consumables.removeIndex = index;
+                consumingIndex = index;
+
+                // Invokes function by itemName
+                consumables?.Invoke(itemName, 0f);
             }
             else if (isItemAGun(item.itemData))
             {
