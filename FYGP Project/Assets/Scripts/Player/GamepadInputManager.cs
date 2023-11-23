@@ -5,8 +5,10 @@ using System;
 
 public class GamepadInputManager : MonoBehaviour
 {
-    public GameObject playerCamera;
-    public Transform[] spawnPoints;
+    [SerializeField] private GameObject playerCamera;
+    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private Material[] playerMaterials;
+    [SerializeField] private Color[] playerColours;
 
     private TransformManager transformManager;
     private PlayerInputManager playerInputManager;
@@ -59,22 +61,33 @@ public class GamepadInputManager : MonoBehaviour
         if (currentPlayerCount < spawnPoints.Length)
         {
             playerInput.transform.position = spawnPoints[currentPlayerCount].position;
+
+            if (currentPlayerCount < playerMaterials.Length)
+            {
+                SkinnedMeshRenderer skinnedMeshRenderer = playerInput.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+                if (skinnedMeshRenderer != null)
+                {
+                    skinnedMeshRenderer.material = playerMaterials[currentPlayerCount];
+                }
+            }
+
+            PlayerColourChanger colourChanger = playerInput.gameObject.GetComponentInChildren<PlayerColourChanger>();
+            if (colourChanger != null)
+            {
+                colourChanger.ChangeColour(playerColours[currentPlayerCount]);
+
+            }
+
             currentPlayerCount++;
         }
         else
         {
             Debug.LogWarning("All spawn points are occupied!");
-
         }
 
         if (transformManager)
         {
             transformManager.RegisterPlayer(playerInput.gameObject);
-        }
-        else
-        {
-            Debug.LogWarning("TransformManager not set in GamepadInputManager");
-
         }
 
         OnPlayerSpawn?.Invoke(playerInput.playerIndex, playerInput.transform);
