@@ -637,7 +637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   playerHeightOffset: 0.5
-  playerHealth: 100
+  playerHealth: 10000000
   gunRef: {fileID: 0}
   raycastLength: 2
 --- !u!114 &1347223737857227195

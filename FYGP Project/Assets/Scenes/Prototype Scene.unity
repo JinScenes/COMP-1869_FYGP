@@ -752,59 +752,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &278632455
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 278632456}
-  - component: {fileID: 278632457}
-  m_Layer: 0
-  m_Name: EnemySpawning
-  m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &278632456
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278632455}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1951932997}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &278632457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278632455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 464ccc90a2c0d604f976bc5450ae0107, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 1882902812136128507, guid: c50f00dd2f3f5ba45b77ee539bf0df0f, type: 3}
-  - {fileID: 8796365918507692697, guid: d4a7cb2136722f749ba0980c563a2cb8, type: 3}
-  - {fileID: 1240183056451427568, guid: 59429bc7e3abe554f8beb0f51ea1b8a3, type: 3}
-  spawnRate: 0.6
-  coolDownRate: 60
-  xPos: 25
-  zPos: 50
-  enemyMaxCount: 20
 --- !u!1 &339901865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,6 +1338,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a6d97ca0dc4454f44841ae455c49a5e3, type: 3}
   m_PrefabInstance: {fileID: 169180659}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &727077967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 727077969}
+  - component: {fileID: 727077968}
+  - component: {fileID: 727077970}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &727077968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727077967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464ccc90a2c0d604f976bc5450ae0107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 1882902812136128507, guid: c50f00dd2f3f5ba45b77ee539bf0df0f, type: 3}
+  - {fileID: 8796365918507692697, guid: d4a7cb2136722f749ba0980c563a2cb8, type: 3}
+  - {fileID: 1240183056451427568, guid: 59429bc7e3abe554f8beb0f51ea1b8a3, type: 3}
+  spawnRange: 5
+  spawnRate: 0.3
+  coolDownRate: 10
+  xPos: 15
+  zPos: 25
+  enemyMaxCount: 30
+  wavePenalty: 6
+--- !u!4 &727077969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727077967}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.56, y: 0, z: -6.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &727077970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727077967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be55b3c2a1bc32488b23aaa43b46d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootPrefab:
+  - {fileID: 5691099169173055985, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
+  - {fileID: 1569387696225274595, guid: 13a800f0c4fdeaa4ca95fdfc9fe84753, type: 3}
+  - {fileID: 2504860676715257273, guid: cd1dc12ed3e17de45a5cc9e1fd38ba66, type: 3}
+  - {fileID: 599083846393710439, guid: 23058a19c9daada449668f4f9c7204fb, type: 3}
+  - {fileID: 599083846393710439, guid: 57da45ed617abd941a74486c1e2cfdcd, type: 3}
+  - {fileID: 599083846393710439, guid: 210476b9402fc19478bb3af638b9fdaa, type: 3}
+  buildingPrefab:
+  - {fileID: 1326167086}
+  xPos: 15
+  zPos: 25
+  buildingPossiblity: 0.6
+  totalLoots: 12
 --- !u!1001 &727540348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2519,6 +2547,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Default Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 1882902812136128507, guid: c50f00dd2f3f5ba45b77ee539bf0df0f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2906478011961750329, guid: c50f00dd2f3f5ba45b77ee539bf0df0f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3261,6 +3293,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
+--- !u!1 &1326167086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4437479894261074437, guid: 4360d732cc895344c883737e0bddd7a3, type: 3}
+  m_PrefabInstance: {fileID: 727540348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1380012464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3688,7 +3725,6 @@ Transform:
   - {fileID: 1380012465}
   - {fileID: 1666762031}
   - {fileID: 7601927}
-  - {fileID: 278632456}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1951932998
@@ -9217,6 +9253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slow Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 1240183056451427568, guid: 59429bc7e3abe554f8beb0f51ea1b8a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4323576942764944477, guid: 59429bc7e3abe554f8beb0f51ea1b8a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4942356
@@ -9362,6 +9402,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quick Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 8796365918507692697, guid: d4a7cb2136722f749ba0980c563a2cb8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9391,6 +9435,7 @@ SceneRoots:
   - {fileID: 261565349}
   - {fileID: 1282596683}
   - {fileID: 1951932997}
+  - {fileID: 727077969}
   - {fileID: 701982074}
   - {fileID: 885842195}
   - {fileID: 246305876}
