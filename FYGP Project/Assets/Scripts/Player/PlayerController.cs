@@ -71,40 +71,77 @@ public class PlayerController : MonoBehaviour
         GamepadInputManager.OnPlayerSpawn?.Invoke(GetComponent<PlayerInput>().playerIndex, transform);
     }
 
+    /*  private void HandleMovement()
+      {
+          bool isMoving = false;
+          //animState.animator.SetBool("isWalking", true);
+          Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 
+              0, controllerInput.MovementInput.y);
+
+          if(moveDir.sqrMagnitude > 0.01){
+              isMoving = true;
+          }
+
+
+
+          Vector3 moveOffset = moveDir * speed * Time.deltaTime;
+          Vector3 newPos = transform.position + moveOffset;
+          Vector3 viewPos = Camera.main.WorldToViewportPoint(newPos);
+          if (isMoving)
+          {
+              animState.animator.SetBool("isWalking", true);
+          } else
+          {
+              animState.animator.SetBool("isWalking", false);
+
+          }
+              viewPos.x = Mathf.Clamp(viewPos.x, 0.05f, 0.95f);
+              viewPos.y = Mathf.Clamp(viewPos.y, 0.05f, 0.95f);
+
+              newPos = Camera.main.ViewportToWorldPoint(viewPos);
+              transform.position = newPos;
+
+
+              RestrictMovementWithinCameraView();
+
+      }*/
+
     private void HandleMovement()
     {
-        bool isMoving = false;
-        //animState.animator.SetBool("isWalking", true);
-        Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 
-            0, controllerInput.MovementInput.y);
+        Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 0, controllerInput.MovementInput.y);
 
-        if(moveDir.sqrMagnitude > 0.01){
+        bool isMoving = false;
+
+        if (moveDir.sqrMagnitude > 0.01f)
+        {
+            float movementAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, movementAngle, 0);
             isMoving = true;
         }
-       
 
-
-        Vector3 moveOffset = moveDir * speed * Time.deltaTime;
-        Vector3 newPos = transform.position + moveOffset;
-        Vector3 viewPos = Camera.main.WorldToViewportPoint(newPos);
         if (isMoving)
         {
             animState.animator.SetBool("isWalking", true);
-        } else
+        }
+        else
         {
             animState.animator.SetBool("isWalking", false);
 
         }
-            viewPos.x = Mathf.Clamp(viewPos.x, 0.05f, 0.95f);
-            viewPos.y = Mathf.Clamp(viewPos.y, 0.05f, 0.95f);
 
-            newPos = Camera.main.ViewportToWorldPoint(viewPos);
-            transform.position = newPos;
+        Vector3 moveOffset = moveDir * speed * Time.deltaTime;
+        Vector3 newPos = transform.position + moveOffset;
+        Vector3 viewPos = Camera.main.WorldToViewportPoint(newPos);
 
+        viewPos.x = Mathf.Clamp(viewPos.x, 0.05f, 0.95f);
+        viewPos.y = Mathf.Clamp(viewPos.y, 0.05f, 0.95f);
 
-            RestrictMovementWithinCameraView();
-        
+        newPos = Camera.main.ViewportToWorldPoint(viewPos);
+        transform.position = newPos;
+
+        RestrictMovementWithinCameraView();
     }
+
 
     private void HandleRotation()
     {
