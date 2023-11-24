@@ -8,7 +8,10 @@ using UnityEngine;
 [RequireComponent(typeof(GamepadInput))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField, Range(0, 20)] private float speed;
+    public float currentHealth = 100;
+    public float maxHealth = 100;
+
+    [SerializeField, Range(0, 20)] public float speed;
     [SerializeField, Range(0, 10)] private float playerHeightOffset;
     public float playerHealth;
     [SerializeField] private animState animState;
@@ -23,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private float gravitationalForce = -9.81f;
     
     private bool isGrounded = false;
+
+    private Consumables consumables;
 
     private void Start()
     {
@@ -45,6 +50,7 @@ public class PlayerController : MonoBehaviour
         controllerInput = GetComponent<GamepadInput>();
         playerCamera = FindObjectOfType<PlayerCamera>();
         rb = GetComponent<Rigidbody>();
+        consumables = GetComponent<Consumables>();
     }
 
     private void CheckShooting()
@@ -215,6 +221,7 @@ public class PlayerController : MonoBehaviour
     public void ApplyDamage(float damageAmount)
     {
         playerHealth -= damageAmount;
+        consumables.doingAction = false;
 
         if (playerHealth <= 0)
         {
@@ -262,4 +269,15 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player Died!");
     }
+
+    public void AddHealth(float amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+    }
+
+    public void IncreaseMaxHealth(float amount)
+    {
+        maxHealth += amount;
+    }
+
 }
