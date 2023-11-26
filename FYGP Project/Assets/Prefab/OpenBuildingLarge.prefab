@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 6134947714993281931}
   - component: {fileID: 686383065020441932}
   - component: {fileID: 1890264239235795200}
-  m_Layer: 2
+  - component: {fileID: 2089408998152789311}
+  - component: {fileID: 3287265954281453443}
+  m_Layer: 0
   m_Name: Spot Light (1)
-  m_TagString: EntranceLight
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +42,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385743572414207777}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
@@ -118,6 +120,39 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &2089408998152789311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385743572414207777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8307b2bc47e3b49a1aeb29b74ffdb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &3287265954281453443
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385743572414207777}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 503
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.056748785, y: 0.030497557, z: 0.05444249}
+  m_Center: {x: -0.010215515, y: 0.01570274, z: 0.011117788}
 --- !u!1 &3441256187202174411
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,9 +164,11 @@ GameObject:
   - component: {fileID: 8642106858197655491}
   - component: {fileID: 8130354505328544556}
   - component: {fileID: 829674296882782948}
-  m_Layer: 2
+  - component: {fileID: 1043156504967759476}
+  - component: {fileID: 2231262594919943283}
+  m_Layer: 0
   m_Name: Spot Light
-  m_TagString: EntranceLight
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +195,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3441256187202174411}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
@@ -236,6 +273,39 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &1043156504967759476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441256187202174411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8307b2bc47e3b49a1aeb29b74ffdb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &2231262594919943283
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441256187202174411}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 503
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.06753854, y: 0.03544297, z: 0.06743791}
+  m_Center: {x: 0.00884905, y: 0.0075094257, z: 0.014156343}
 --- !u!1 &6180574022877234914
 GameObject:
   m_ObjectHideFlags: 0
