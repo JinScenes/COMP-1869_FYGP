@@ -4921,7 +4921,10 @@ MonoBehaviour:
   riseDuration: 1.96
   particleSystemMaxScale: {x: 0.001, y: 0.001, z: 0.001}
   availableGuns:
+<<<<<<< HEAD
   - {fileID: 11400000, guid: 6e8b21631afdb294da20d54dc4abd0ea, type: 2}
+=======
+>>>>>>> BranchMerger
   - {fileID: 11400000, guid: 90f044c2e593752429249b52cf75fe51, type: 2}
   availableItems:
   - {fileID: 2504860676715257273, guid: cd1dc12ed3e17de45a5cc9e1fd38ba66, type: 3}

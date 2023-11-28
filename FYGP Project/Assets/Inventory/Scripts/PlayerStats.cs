@@ -12,20 +12,24 @@ public class PlayerStats
     public PlayerAmmo playerAmmo;
     
     public static int currency;
-    public float health;
     public float speed;
    
     public InventoryUI UIHandle;
 
-    public PlayerStats(int playerIndex, ItemData weightItem, gunHolder holder, GunBase gunBase)
+    public PlayerStats(int playerIndex, ItemData weightItem, gunHolder holder, GunBase gunBase, Consumables consumables)
     {
         UIHandle = new InventoryUI(playerIndex);
-        inventory = new Inventory(UIHandle, weightItem, holder,gunBase);
+        inventory = new Inventory(UIHandle, weightItem, holder, gunBase, consumables);
         playerAmmo = new PlayerAmmo(UIHandle);
     }
 
+    public void StartEvent(MonoBehaviour myMonoBehaviour, IEnumerator coroutine)
+    {
+        //Setup event parameters
+        myMonoBehaviour.StartCoroutine(coroutine);
+    }
 
-    
+
 }
 
 public class Ammo

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d6850c5f69c9642864be8683676fa1, type: 3}
+  m_Name: Sniper
+  m_EditorClassIdentifier: 
+  displayName: Sniper
+  icon: {fileID: 21300000, guid: 65bfcc2f3db3d454cb279abe0eb6c6c3, type: 3}
+  canStack: 0
+  consumable: 0
+  gunModel: {fileID: 6020633202862646584, guid: 3e5535e9035da7a4fbcd9c5046f9db84, type: 3}
+  maxAmmo: 4
+  firerate: 0.49
+  reload: {fileID: 0}
+  fire: {fileID: 0}
+  projectile: {fileID: 8272325939475155795, guid: c8424da92a895164eb8057276ea4cedf, type: 3}
+  rarity: 3
+  type: 2
+  reloadTime: 1

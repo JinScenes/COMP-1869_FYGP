@@ -8,10 +8,20 @@ using UnityEngine;
 [RequireComponent(typeof(GamepadInput))]
 public class PlayerController : MonoBehaviour
 {
+<<<<<<< HEAD
     [SerializeField, Range(0, 20)] private float speed;
     [SerializeField, Range(0, 10)] private float playerHeightOffset;
     public float playerHealth;
 
+=======
+    public float currentHealth = 100;
+    public float maxHealth = 100;
+
+    [SerializeField, Range(0, 20)] public float speed;
+    [SerializeField, Range(0, 10)] private float playerHeightOffset;
+    public float playerHealth;
+    [SerializeField] private animState animState;
+>>>>>>> BranchMerger
     [SerializeField] private GameObject gunRef;
 
     private Rigidbody rb;
@@ -23,6 +33,11 @@ public class PlayerController : MonoBehaviour
     private float gravitationalForce = -9.81f;
     
     private bool isGrounded = false;
+<<<<<<< HEAD
+=======
+
+    private Consumables consumables;
+>>>>>>> BranchMerger
 
     private void Start()
     {
@@ -45,6 +60,10 @@ public class PlayerController : MonoBehaviour
         controllerInput = GetComponent<GamepadInput>();
         playerCamera = FindObjectOfType<PlayerCamera>();
         rb = GetComponent<Rigidbody>();
+<<<<<<< HEAD
+=======
+        consumables = GetComponent<Consumables>();
+>>>>>>> BranchMerger
     }
 
     private void CheckShooting()
@@ -71,11 +90,70 @@ public class PlayerController : MonoBehaviour
         GamepadInputManager.OnPlayerSpawn?.Invoke(GetComponent<PlayerInput>().playerIndex, transform);
     }
 
+    /*  private void HandleMovement()
+      {
+          bool isMoving = false;
+          //animState.animator.SetBool("isWalking", true);
+          Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 
+              0, controllerInput.MovementInput.y);
+
+          if(moveDir.sqrMagnitude > 0.01){
+              isMoving = true;
+          }
+
+
+
+          Vector3 moveOffset = moveDir * speed * Time.deltaTime;
+          Vector3 newPos = transform.position + moveOffset;
+          Vector3 viewPos = Camera.main.WorldToViewportPoint(newPos);
+          if (isMoving)
+          {
+              animState.animator.SetBool("isWalking", true);
+          } else
+          {
+              animState.animator.SetBool("isWalking", false);
+
+          }
+              viewPos.x = Mathf.Clamp(viewPos.x, 0.05f, 0.95f);
+              viewPos.y = Mathf.Clamp(viewPos.y, 0.05f, 0.95f);
+
+              newPos = Camera.main.ViewportToWorldPoint(viewPos);
+              transform.position = newPos;
+
+
+              RestrictMovementWithinCameraView();
+
+      }*/
+
     private void HandleMovement()
     {
+<<<<<<< HEAD
         Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 
             0, controllerInput.MovementInput.y);
 
+=======
+        Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 0, controllerInput.MovementInput.y);
+
+        bool isMoving = false;
+
+        if (moveDir.sqrMagnitude > 0.01f)
+        {
+            float movementAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, movementAngle, 0);
+            isMoving = true;
+        }
+
+        if (isMoving)
+        {
+            animState.animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animState.animator.SetBool("isWalking", false);
+
+        }
+
+>>>>>>> BranchMerger
         Vector3 moveOffset = moveDir * speed * Time.deltaTime;
         Vector3 newPos = transform.position + moveOffset;
         Vector3 viewPos = Camera.main.WorldToViewportPoint(newPos);
@@ -88,6 +166,7 @@ public class PlayerController : MonoBehaviour
 
         RestrictMovementWithinCameraView();
     }
+
 
     private void HandleRotation()
     {
@@ -161,6 +240,10 @@ public class PlayerController : MonoBehaviour
     public void ApplyDamage(float damageAmount)
     {
         playerHealth -= damageAmount;
+<<<<<<< HEAD
+=======
+        consumables.doingAction = false;
+>>>>>>> BranchMerger
 
         if (playerHealth <= 0)
         {
@@ -208,4 +291,18 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player Died!");
     }
+<<<<<<< HEAD
+=======
+
+    public void AddHealth(float amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+    }
+
+    public void IncreaseMaxHealth(float amount)
+    {
+        maxHealth += amount;
+    }
+
+>>>>>>> BranchMerger
 }

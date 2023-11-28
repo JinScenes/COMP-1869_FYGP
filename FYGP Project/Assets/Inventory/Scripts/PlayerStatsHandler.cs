@@ -22,7 +22,7 @@ public class PlayerStatsHandler : MonoBehaviour
         GameObject.Find("Extraction").GetComponent<Extraction>().requiredPlayers++;
 
         playerIndex = GetComponent<GamepadInput>().playerIndex;
-        playerStats = new PlayerStats(playerIndex, weightItem,holder,gunBase);
+        playerStats = new PlayerStats(playerIndex, weightItem,holder, gunBase, gameObject.GetComponent<Consumables>());
         playerInventory = playerStats.inventory;
         //print("Got player index" + playerIndex);
         //addInven.Raise(this, player1.inventory);

@@ -16,6 +16,7 @@ public class E_Attack
 
     private void EventAttack()
     {
+<<<<<<< HEAD
         RaycastHit hit;
         float range = 1.3f;
         if (Physics.Raycast(enemy.originPos.position, enemy.originPos.transform.TransformDirection(Vector3.forward), out hit, range))
@@ -23,6 +24,17 @@ public class E_Attack
             if (enemy.playerObjectNames.Contains(hit.transform.gameObject.name))
             {
                 hit.transform.gameObject.SendMessage("ApplyDamage", enemy.damage);
+=======
+        Collider[] hitCols = Physics.OverlapSphere(enemy.attackPoint.position, enemy.attackRange, enemy.playerMask);
+        Debug.Log($"Attempting attack, found {hitCols.Length} colliders");
+
+        foreach (Collider hitCol in hitCols)
+        {
+            if (enemy.playerObjectNames.Contains(hitCol.transform.gameObject.name))
+            {
+                //Debug.Log("Applying damage");
+                hitCol.gameObject.GetComponent<PlayerController>().ApplyDamage(enemy.damage);
+>>>>>>> BranchMerger
             }
         }
     }

@@ -16,11 +16,22 @@ MonoBehaviour:
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   canStack: 0
   consumable: 0
+<<<<<<< HEAD
   gunModel: {fileID: 919132149155446097, guid: 6773bf2bf26cbfe41879ef7fbd88362b, type: 3}
+=======
+  gunModel: {fileID: 5107913567313283197, guid: c2964e67258b0d247b672f4676b07c4c, type: 3}
+>>>>>>> BranchMerger
   maxAmmo: 24
-  firerate: 10.48
+  firerate: 0.78
   reload: {fileID: -1407466678795768306, guid: 7b492790d36c0f0489d2c9e90e865048, type: 3}
   fire: {fileID: -382410650019994693, guid: 7b492790d36c0f0489d2c9e90e865048, type: 3}
+<<<<<<< HEAD
   projectile: {fileID: 9022550822510155415, guid: 987df3fa24680af479a8eb80327d266d, type: 3}
   rarity: 2
   type: 1
+=======
+  projectile: {fileID: 8272325939475155795, guid: d6b99e126806f6e42b76aeb2ca07b0b2, type: 3}
+  rarity: 1
+  type: 1
+  reloadTime: 2
+>>>>>>> BranchMerger

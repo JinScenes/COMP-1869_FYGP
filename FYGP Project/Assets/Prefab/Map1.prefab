@@ -1178,7 +1178,10 @@ Transform:
   - {fileID: 2059165352907988571}
   - {fileID: 2327199945815766672}
   - {fileID: 2774192018736546443}
+<<<<<<< HEAD
   - {fileID: 3953818384624177343}
+=======
+>>>>>>> BranchMerger
   - {fileID: 2139168277877934115}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5055,6 +5058,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d02d0c169106fb040b82052bdbe97b32, type: 3}
   m_PrefabInstance: {fileID: 3228067762609414721}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1001 &3554590947026384724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5273,6 +5277,8 @@ MonoBehaviour:
   materials: []
   pos: {x: 0, y: 0, z: 0}
   initialAlpha: 0
+=======
+>>>>>>> BranchMerger
 --- !u!1001 &3728488052866589984
 PrefabInstance:
   m_ObjectHideFlags: 0

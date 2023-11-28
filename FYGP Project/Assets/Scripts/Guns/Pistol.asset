@@ -17,10 +17,19 @@ MonoBehaviour:
   canStack: 0
   consumable: 0
   gunModel: {fileID: 2919659897700484028, guid: c8a7e9e58f1057b45b928f4d59838c94, type: 3}
+<<<<<<< HEAD
   maxAmmo: 30
   firerate: 1.07
+=======
+  maxAmmo: 16
+  firerate: 0.6
+>>>>>>> BranchMerger
   reload: {fileID: 0}
   fire: {fileID: 0}
   projectile: {fileID: 9022550822510155415, guid: 987df3fa24680af479a8eb80327d266d, type: 3}
   rarity: 0
   type: 0
+<<<<<<< HEAD
+=======
+  reloadTime: 0.87
+>>>>>>> BranchMerger

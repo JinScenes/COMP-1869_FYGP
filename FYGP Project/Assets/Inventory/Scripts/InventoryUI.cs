@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine.UI;
 using System.Linq;
 using Unity.VisualScripting;
+using System;
+using System.ComponentModel;
 
 public class InventoryUI 
 {
@@ -42,12 +44,13 @@ public class InventoryUI
         this.playerIndex = playerIndex;
 
         // Create a new inventory UI object for player
-        Object newInven = GameObject.Instantiate(Resources.Load("InventoryUITemplate"), GameObject.Find("Canvas").transform);
+        UnityEngine.Object newInven = GameObject.Instantiate(Resources.Load("InventoryUITemplate"), GameObject.Find("Canvas").transform);
         newInven.name = $"Inventory{playerIndex}";
         InvenUI = ((GameObject)newInven).transform;
 
         SetUIPosition(playerIndex, InvenUI);
 
+      
 
         // Set Player Index label
         InvenUI.Find("PlayerIndex Label").GetComponent<TextMeshProUGUI>().text = $"Player {playerIndex + 1}";

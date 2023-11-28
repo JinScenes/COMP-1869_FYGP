@@ -8,8 +8,12 @@ public class BillboardEffect : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< HEAD
         if (cam == null)
             cam = FindObjectOfType<Camera>().transform;
+=======
+        cam = Camera.main.transform;
+>>>>>>> BranchMerger
     }
 
     private void LateUpdate()

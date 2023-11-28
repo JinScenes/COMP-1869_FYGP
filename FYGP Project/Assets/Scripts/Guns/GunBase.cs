@@ -28,9 +28,15 @@ public class GunBase : MonoBehaviour
     protected int currentAmmo;
     [SerializeField] bool isReloading = false;
     [SerializeField] float nextFireTime = 0f;
+<<<<<<< HEAD
     
     private AmmoType currentAmmoType;
 
+=======
+    private Animator animator;
+    private AmmoType currentAmmoType;
+    
+>>>>>>> BranchMerger
     public  GunData NewData;
     #endregion
 
@@ -39,9 +45,17 @@ public class GunBase : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< HEAD
         playerStats = gameObject.GetComponentInParent<PlayerStatsHandler>().playerStats;
         /*inventory = gameObject.GetComponent<Inventory>();
         currentAmmo = MaxAmmo;
+=======
+        animator = GetComponentInParent<Animator>();
+        playerStats = gameObject.GetComponentInParent<PlayerStatsHandler>().playerStats;
+        currentAmmo = MaxAmmo;
+        /*inventory = gameObject.GetComponent<Inventory>();
+        currentAmmo = MaxAmmo;
+>>>>>>> BranchMerger
         if (NewData != null)
         {
             Initialize(NewData);
@@ -75,30 +89,35 @@ public class GunBase : MonoBehaviour
 
     public void Fire()
     {
-        if (isReloading)
-        {
-            return;
-        }
+        
 
-        if (fireMode == FireMode.Hitscan)
+        /*if (fireMode == FireMode.Hitscan)
         {
             ShootHitscan();
-        }
-        else if (fireMode == FireMode.Projectile && Time.time >= nextFireTime)
+        }*/
+         if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
         {
             nextFireTime = Time.time + 1f / FireRate;
             LaunchProjectile();
+<<<<<<< HEAD
         } else if(currentAmmo <= 0)
+=======
+            currentAmmo--;
+        } 
+        
+        if(currentAmmo <= 0)
+>>>>>>> BranchMerger
         {
+            isReloading = true;
             StartCoroutine(Reload());
-            return;
+            
 
         }
     }
 
     IEnumerator Reload()
     {
-        isReloading = true;
+        
         Debug.Log("Reloading...");
 
         yield return new WaitForSeconds(reloadTime);
@@ -177,9 +196,16 @@ public class GunBase : MonoBehaviour
 
     public GameObject Initialize(GunData gunData)
     {
+<<<<<<< HEAD
         projectilePrefab = gunData.projectile;
         GunModel = gunData.gunModel;
         
+=======
+        animator.SetBool("isShooting", true);
+        projectilePrefab = gunData.projectile;
+        GunModel = gunData.gunModel;
+        reloadTime = gunData.reloadTime;
+>>>>>>> BranchMerger
         MaxAmmo = gunData.maxAmmo;
         FireRate = gunData.firerate;
         //AnimFire = gunData.fire;

@@ -12,6 +12,10 @@ public class GunData : ItemData
     public GameObject projectile;
     public rarity rarity;
     public AmmoType type;
+<<<<<<< HEAD
+=======
+    public float reloadTime;
+>>>>>>> BranchMerger
     public enum fireType { Hitscan, Projectile};
 
     // Update is called once per frame

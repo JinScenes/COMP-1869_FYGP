@@ -3,7 +3,47 @@ guid: dd3c4cf712a131040a2a565d6f4f3c05
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Barrel
+    second: {fileID: 2100000, guid: 978447b114d9d55438d64547753c3881, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black
+    second: {fileID: 2100000, guid: 6030db1a6e4a2954591d34a62b52e90c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BulletOrange
+    second: {fileID: 2100000, guid: 8f4b3c90f123a3b4cb8cd264290106e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BulletYellow
+    second: {fileID: 2100000, guid: 6515bf5fef5a46b4588fb0b1abb5e13f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green
+    second: {fileID: 2100000, guid: b4c83b0ec7809444cb7f84af9d3a9176, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Magazine
+    second: {fileID: 2100000, guid: ce32152c89b59a14ab3548e348a8f61a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: c514d2c9b27e8e049bcb6b717d1774c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trigger
+    second: {fileID: 2100000, guid: 0c0ee991adab2d544a1ae8aa5dc89234, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -78,7 +118,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
