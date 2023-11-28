@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-using UnityEngine;
-using System.Collections.Generic;
-=======
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using System.Collections;
->>>>>>> BranchMerger
 
 public class PlayerCamera : MonoBehaviour
 {
@@ -21,15 +16,6 @@ public class PlayerCamera : MonoBehaviour
     [Range(0, 1), SerializeField] private float smoothTime;
     [SerializeField] private Vector3 cameraOffset;
 
-<<<<<<< HEAD
-    private List<Transform> playerTransforms = new List<Transform>();
-    private Vector3 lastAveragePosition;
-    private Vector3 currentVelocity;
-
-    private void Awake()
-    {
-        GamepadInputManager.OnPlayerSpawn += AddPlayerTransform;
-=======
     [Header("Boundary Alert")]
     [SerializeField] private Image topBoundaryImage;
     [SerializeField] private Image leftBoundaryImage;
@@ -53,7 +39,6 @@ public class PlayerCamera : MonoBehaviour
     private void Update()
     {
         CheckBoundaryCollision();
->>>>>>> BranchMerger
     }
 
     private void LateUpdate()
@@ -61,32 +46,6 @@ public class PlayerCamera : MonoBehaviour
         MoveCameraBasedOnPlayers();
     }
 
-<<<<<<< HEAD
-    public void AddPlayerTransform(int index, Transform playerTransform)
-    {
-        if (!playerTransforms.Contains(playerTransform))
-        {
-            playerTransforms.Add(playerTransform);
-        }
-    }
-
-    private void MoveCameraBasedOnPlayers()
-    {
-        if (playerTransforms.Count == 0) return;
-
-        Vector3 sumOfPositions = Vector3.zero;
-        Vector3 topmostPlayer = new Vector3(0, float.MinValue, 0);
-        Vector3 bottommostPlayer = new Vector3(0, float.MaxValue, 0);
-
-        foreach (var player in playerTransforms)
-        {
-            sumOfPositions += player.position;
-            if (player.position.y > topmostPlayer.y) topmostPlayer 
-                    = player.position;
-
-            if (player.position.y < bottommostPlayer.y) bottommostPlayer 
-                    = player.position;
-=======
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -100,15 +59,9 @@ public class PlayerCamera : MonoBehaviour
         if (!playerTransforms.Contains(playerTransform))
         {
             playerTransforms.Add(playerTransform);
->>>>>>> BranchMerger
         }
+    }
 
-<<<<<<< HEAD
-        Vector3 averagePosition = sumOfPositions / playerTransforms.Count;
-
-        if (topmostPlayer.y > lastAveragePosition.y + 0.1f)
-        {
-=======
     private void CheckBoundaryCollision()
     {
         foreach (var player in playerTransforms)
@@ -235,7 +188,6 @@ public class PlayerCamera : MonoBehaviour
 
         if (topmostPlayer.y > lastAveragePosition.y + 0.1f)
         {
->>>>>>> BranchMerger
             averagePosition = topmostPlayer;
         }
         else if (bottommostPlayer.y < lastAveragePosition.y - 0.1f)
@@ -243,11 +195,7 @@ public class PlayerCamera : MonoBehaviour
             averagePosition = bottommostPlayer;
         }
 
-<<<<<<< HEAD
-        transform.position = Vector3.SmoothDamp(transform.position, 
-=======
         transform.position = Vector3.SmoothDamp(transform.position,
->>>>>>> BranchMerger
             averagePosition + cameraOffset, ref currentVelocity, smoothTime);
 
         lastAveragePosition = averagePosition;

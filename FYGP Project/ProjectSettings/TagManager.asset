@@ -7,10 +7,7 @@ TagManager:
   - Enemy
   - GunFloor
   - Extraction
-<<<<<<< HEAD
-=======
   - EntranceLight
->>>>>>> BranchMerger
   layers:
   - Default
   - TransparentFX

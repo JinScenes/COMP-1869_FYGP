@@ -8,12 +8,6 @@ using UnityEngine;
 [RequireComponent(typeof(GamepadInput))]
 public class PlayerController : MonoBehaviour
 {
-<<<<<<< HEAD
-    [SerializeField, Range(0, 20)] private float speed;
-    [SerializeField, Range(0, 10)] private float playerHeightOffset;
-    public float playerHealth;
-
-=======
     public float currentHealth = 100;
     public float maxHealth = 100;
 
@@ -21,7 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0, 10)] private float playerHeightOffset;
     public float playerHealth;
     [SerializeField] private animState animState;
->>>>>>> BranchMerger
     [SerializeField] private GameObject gunRef;
 
     private Rigidbody rb;
@@ -33,11 +26,8 @@ public class PlayerController : MonoBehaviour
     private float gravitationalForce = -9.81f;
     
     private bool isGrounded = false;
-<<<<<<< HEAD
-=======
 
     private Consumables consumables;
->>>>>>> BranchMerger
 
     private void Start()
     {
@@ -60,10 +50,7 @@ public class PlayerController : MonoBehaviour
         controllerInput = GetComponent<GamepadInput>();
         playerCamera = FindObjectOfType<PlayerCamera>();
         rb = GetComponent<Rigidbody>();
-<<<<<<< HEAD
-=======
         consumables = GetComponent<Consumables>();
->>>>>>> BranchMerger
     }
 
     private void CheckShooting()
@@ -127,11 +114,6 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-<<<<<<< HEAD
-        Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 
-            0, controllerInput.MovementInput.y);
-
-=======
         Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 0, controllerInput.MovementInput.y);
 
         bool isMoving = false;
@@ -153,7 +135,6 @@ public class PlayerController : MonoBehaviour
 
         }
 
->>>>>>> BranchMerger
         Vector3 moveOffset = moveDir * speed * Time.deltaTime;
         Vector3 newPos = transform.position + moveOffset;
         Vector3 viewPos = Camera.main.WorldToViewportPoint(newPos);
@@ -240,10 +221,7 @@ public class PlayerController : MonoBehaviour
     public void ApplyDamage(float damageAmount)
     {
         playerHealth -= damageAmount;
-<<<<<<< HEAD
-=======
         consumables.doingAction = false;
->>>>>>> BranchMerger
 
         if (playerHealth <= 0)
         {
@@ -291,8 +269,6 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Player Died!");
     }
-<<<<<<< HEAD
-=======
 
     public void AddHealth(float amount)
     {
@@ -304,5 +280,4 @@ public class PlayerController : MonoBehaviour
         maxHealth += amount;
     }
 
->>>>>>> BranchMerger
 }

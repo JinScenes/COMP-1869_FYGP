@@ -7,24 +7,17 @@ public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private float damage;
-<<<<<<< HEAD
-=======
     private float timer =4f;
->>>>>>> BranchMerger
     
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
-        
-=======
         timer = Time.deltaTime;
         if(timer <= 0)
         {
             Destroy(gameObject);
         }
->>>>>>> BranchMerger
     }
 
     private void OnCollisionEnter(Collision other)
@@ -43,10 +36,7 @@ public class Bullet : MonoBehaviour
             {
                 Debug.Log("EnemyHit");
                 enemy.GetComponent<EnemyFSM>().healthModule.EnemyDamage(damage);
-<<<<<<< HEAD
-=======
                 Destroy(gameObject);
->>>>>>> BranchMerger
             }
         }
 
