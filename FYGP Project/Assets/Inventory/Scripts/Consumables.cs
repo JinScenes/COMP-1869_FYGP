@@ -54,6 +54,9 @@ public class Consumables : MonoBehaviour
         // Make success true if the item is instant use
         bool success = waitTime <= 0 ? true : false;
 
+        AudioManager.instance.PlayAudios(afterWaitFunction + " Consume");
+
+
         if (!success)
         {
             waitActionObj.SetActive(true);

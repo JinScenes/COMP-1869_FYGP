@@ -92,6 +92,7 @@ public class Inventory
     {
         bool isAGun = isItemAGun(itemData);
 
+
         if (GetCount() + (isAGun ? 1 : 0) < maxInventorySlots)
         {
             InventoryItem newItem = new InventoryItem(itemData);
@@ -183,54 +184,69 @@ public class Inventory
     {
         // If Item is in inventory
         InventoryItem item = FindItem(itemData);
-        
-            if (item != null)
-            {
-                // If item can stack, add a stack
-                if (item.itemData.canStack)
-                {
-                    if (item.stackSize >= maxStack)
-                    {
-                        InventoryItem stackableItem = FindItemThatsStackable(itemData);
-                        if (stackableItem != null)
-                        {
-                            stackableItem.AddToStack();
-                            inventoryUI.UpdateAll(this);
-                            return true;
-                        }
-                        else
-                        {
-                            return AddItem(itemData);
-                        }
 
-                    }
-                    else
+
+        if (item != null)
+        {
+            string itemName = item.itemData.name;
+            itemName = itemName.Replace(" ", ""); // removes spaces
+            // If item can stack, add a stack
+            if (item.itemData.canStack)
+            {
+                if (item.stackSize >= maxStack)
+                {
+                    InventoryItem stackableItem = FindItemThatsStackable(itemData);
+                    if (stackableItem != null)
                     {
-                        item.AddToStack();
-                        //Debug.Log($"INVENTORY : {itemData.displayName} total stack is now {item.stackSize}");
+
+                        stackableItem.AddToStack();
+                        AudioManager.instance.PlayAudios(itemName + " Pickup");
                         inventoryUI.UpdateAll(this);
                         return true;
                     }
+                    else
+                    {
+                        AudioManager.instance.PlayAudios(itemName + " Pickup");
+                        return AddItem(itemData);
+                    }
 
-
-                    // if an item can't stack, attempt to add
                 }
                 else
                 {
-                    //Debug.Log("Item can't stack, attempt to create new instance");
-                    return AddItem(itemData);
+                    AudioManager.instance.PlayAudios(itemName + " Pickup");
+                    item.AddToStack();
+                    //Debug.Log($"INVENTORY : {itemData.displayName} total stack is now {item.stackSize}");
+                    inventoryUI.UpdateAll(this);
+                    return true;
                 }
-                // Add Item to inventory bc it is not in inventory
+
+
+                // if an item can't stack, attempt to add
             }
             else
             {
+                //Debug.Log("Item can't stack, attempt to create new instance");
+                AudioManager.instance.PlayAudios(itemName + " Pickup");
                 return AddItem(itemData);
             }
+            // Add Item to inventory bc it is not in inventory
+        }
+        else
+        {
+            AudioManager.instance.PlayAudios(itemData.displayName + "" + " Pickup");
+            return AddItem(itemData);
+        }
 
-            //Debug.Log($"Inventory has {GetCount()} instances");
+        //Debug.Log($"Inventory has {GetCount()} instances");
         
     }
 
+    public void PlayAudio(InventoryItem item, string actionString)
+    {
+        string itemName = item.itemData.name;
+        itemName = itemName.Replace(" ", ""); // removes spaces
+        AudioManager.instance.PlayAudios(itemName + " " + actionString);
+    }
     public void RemoveFromIndex(int index)
     {
         InventoryItem item = inventory[index];
@@ -308,6 +324,12 @@ public class Inventory
         InventoryItem item = inventory[index];
         if (item != null && item.itemData != weightItem && index != consumingIndex)
         {
+
+            string itemName = item.itemData.name;
+            itemName = itemName.Replace(" ", ""); // removes spaces
+
+            PlayAudio(item, "Drop");
+
             if (isItemAGun(item.itemData))
             {
                 HandleGunDrop(item);
@@ -340,11 +362,6 @@ public class Inventory
         }
     }
 
-    private void Medkit()
-    {
-        Debug.Log("MEDKIT POGG");
-    }
-
     public void Consume(int index)
     {
         InventoryItem item = inventory[index];
@@ -354,6 +371,7 @@ public class Inventory
             {
                 string itemName =  item.itemData.name;
                 itemName = itemName.Replace(" ", ""); // removes spaces
+                
 
                 // Tells consumables what item needs to be removed
                 consumables.removeIndex = index;

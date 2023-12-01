@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,16 +8,9 @@ public class AudioManager : MonoBehaviour
     [System.Serializable]
     public class Sound
     {
-        [Tooltip("The name of the sound")]
         public string audioName;
-
-        [Tooltip("The audio clip of the sound")]
         public AudioClip clip;
-
-        [Tooltip("The type of the sound")]
         public SoundType type;
-
-        [Tooltip("The name of the sound")]
         public bool is3D;
     }
 
@@ -29,7 +21,14 @@ public class AudioManager : MonoBehaviour
         BGM,
     }
 
-    public List<Sound> sounds;
+    [System.Serializable]
+    public class SoundGroup
+    {
+        public string groupName;
+        public List<Sound> sounds;
+    }
+
+    public List<SoundGroup> soundGroups;
     private Dictionary<string, AudioSource> audioSources;
 
     private void Awake()
@@ -41,6 +40,10 @@ public class AudioManager : MonoBehaviour
             InitialiseAudioSources();
             LoadPlayerPrefs();
             AudioManager.instance.PlayAudios("Background Music", transform.position);
+            //foreach (var key in audioSources.Keys)
+            //{
+            //    Debug.Log("Audio source key: " + key);
+            //}
         }
         else
         {
@@ -52,25 +55,28 @@ public class AudioManager : MonoBehaviour
     {
         audioSources = new Dictionary<string, AudioSource>();
 
-        foreach (Sound sound in sounds)
+        foreach (SoundGroup group in soundGroups)
         {
-            GameObject soundObject = new GameObject($"AudioSource_{sound.audioName}");
-            soundObject.transform.SetParent(transform);
+            foreach (Sound sound in group.sounds)
+            {
+                GameObject soundObject = new GameObject($"AudioSource_{sound.audioName}");
+                soundObject.transform.SetParent(transform);
 
-            AudioSource source = soundObject.AddComponent<AudioSource>();
-            source.clip = sound.clip;
-            source.playOnAwake = false;
-            source.spatialBlend = sound.is3D ? 1 : 0;
+                AudioSource source = soundObject.AddComponent<AudioSource>();
+                source.clip = sound.clip;
+                source.playOnAwake = false;
+                source.spatialBlend = sound.is3D ? 1 : 0;
 
-            audioSources.Add(sound.audioName, source);
+                audioSources.Add(sound.audioName, source);
+            }
         }
     }
 
     private void LoadPlayerPrefs()
     {
-        SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 0.75f));
-        SetSoundEffectVolume(PlayerPrefs.GetFloat("SoundEffects", 075f));
-        SetBGMVolume(PlayerPrefs.GetFloat("UISoundsVolume", 0.75f));
+        SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 1f));
+        SetSoundEffectVolume(PlayerPrefs.GetFloat("SoundEffects", 5f));
+        SetBGMVolume(PlayerPrefs.GetFloat("UISoundsVolume", 1f));
     }
 
     public void PlayAudios(string soundName, Vector3 pos = default)
@@ -101,11 +107,12 @@ public class AudioManager : MonoBehaviour
         SetVolume(SoundType.SoundEffect, volume);
     }
 
+
     public void PlayAudioArray(string[] audioNames, Vector3 pos = default)
     {
         if (audioNames.Length > 0)
         {
-            int randomIndex = UnityEngine.Random.Range(0, audioNames.Length);
+            int randomIndex = Random.Range(0, audioNames.Length);
             string randomAudioName = audioNames[randomIndex];
             PlayAudios(randomAudioName, pos);
         }
@@ -113,11 +120,14 @@ public class AudioManager : MonoBehaviour
 
     private void SetVolume(SoundType type, float volume)
     {
-        foreach (KeyValuePair<string, AudioSource> entry in audioSources)
+        foreach (SoundGroup group in soundGroups)
         {
-            if (sounds.Find(sound => sound.audioName == entry.Key).type == type)
+            foreach (Sound sound in group.sounds)
             {
-                entry.Value.volume = volume;
+                if (sound.type == type && audioSources.ContainsKey(sound.audioName))
+                {
+                    audioSources[sound.audioName].volume = volume;
+                }
             }
         }
     }
