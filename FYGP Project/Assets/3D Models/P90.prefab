@@ -64,6 +64,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: P90
       objectReference: {fileID: 0}
+    - target: {fileID: 1754932305107366430, guid: 78d02f2657fc742479a6a90d39b0898c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -4973734387028869240, guid: 11618d0324678544788795ef3cc53993, type: 3}
+    - target: {fileID: 1754932305107366430, guid: 78d02f2657fc742479a6a90d39b0898c, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c514d2c9b27e8e049bcb6b717d1774c6, type: 2}
+    - target: {fileID: 1754932305107366430, guid: 78d02f2657fc742479a6a90d39b0898c, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b4d3ff9bda4945478d500085a2a94fb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

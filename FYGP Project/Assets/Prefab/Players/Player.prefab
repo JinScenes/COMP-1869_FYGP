@@ -1570,6 +1570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942b24614542d2c4ca7757ec2f59bf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reloadUIPrefab: {fileID: 4238093791019721853, guid: 9238ffd4e304673428c610a4b8f3c044, type: 3}
   inventory:
     consumingIndex: 0
   GunHolder: {fileID: 3554119091055565323}

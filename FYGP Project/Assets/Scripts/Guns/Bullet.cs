@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer = Time.deltaTime;
+        timer -= Time.deltaTime;
         if(timer <= 0)
         {
             Destroy(gameObject);
@@ -39,8 +39,11 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        if(other.gameObject.layer == 7 || other.gameObject.layer == 8)
+        {
+            Destroy(gameObject);
+        }
 
-
-        Destroy(gameObject);
+        
     }
 }

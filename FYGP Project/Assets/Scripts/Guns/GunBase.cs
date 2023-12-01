@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 //using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunBase : MonoBehaviour
 {
+
+    [SerializeField] private GameObject reloadUIPrefab;
     #region Variables
     [SerializeField] Inventory inventory;
     public gunHolder GunHolder;
     private GunData previousGunData;
-    public enum FireMode { Hitscan, Projectile }
+    public enum FireMode { Hitscan, Projectile, Cone }
 
-    [SerializeField] FireMode fireMode = FireMode.Hitscan;
+    [SerializeField] FireMode fireMode;
     public Transform firePoint;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform gunSpawn;
@@ -20,12 +23,12 @@ public class GunBase : MonoBehaviour
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float FireRate = 1f;
     [SerializeField] float range = 100f;
-    [SerializeField] int MaxAmmo = 30;
+    [SerializeField] int MaxAmmo;
     [SerializeField] float reloadTime = 1.5f;
 
     public PlayerStats playerStats;
     [SerializeField] bool allowFire;
-    protected int currentAmmo;
+    public int currentAmmo;
     [SerializeField] bool isReloading = false;
     [SerializeField] float nextFireTime = 0f;
     private Animator animator;
@@ -41,7 +44,7 @@ public class GunBase : MonoBehaviour
     {
         animator = GetComponentInParent<Animator>();
         playerStats = gameObject.GetComponentInParent<PlayerStatsHandler>().playerStats;
-        currentAmmo = MaxAmmo;
+        //currentAmmo = MaxAmmo;
         /*inventory = gameObject.GetComponent<Inventory>();
         currentAmmo = MaxAmmo;
         if (NewData != null)
@@ -77,38 +80,73 @@ public class GunBase : MonoBehaviour
 
     public void Fire()
     {
-        
+        /*if(NewData == null)
+        {
+            return;
+        }*/
 
+        if (currentAmmo <= 0)
+        {
+            isReloading = true;
+            Debug.Log("Reloading...");
+            StartCoroutine(Reload());
+
+            return;
+        }
         /*if (fireMode == FireMode.Hitscan)
         {
             ShootHitscan();
         }*/
-         if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
+        if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
         {
             nextFireTime = Time.time + 1f / FireRate;
             LaunchProjectile();
             currentAmmo--;
         } 
-        
-        if(currentAmmo <= 0)
-        {
-            isReloading = true;
-            StartCoroutine(Reload());
-            
 
+        if(fireMode == FireMode.Cone && Time.time >= nextFireTime && !isReloading)
+        {
+            nextFireTime = Time.time + 1f / FireRate;
+            ShotgunFire();
+            currentAmmo--;
         }
+
+        
+        
+        
     }
 
     IEnumerator Reload()
     {
         
+        Vector3 reloadUIPosition = gameObject.transform.parent.position+ new Vector3(0, 2, 0);
+
+        
+        GameObject reloadUIInstance = Instantiate(reloadUIPrefab, reloadUIPosition, Quaternion.identity);
+        reloadUIInstance.transform.SetParent(this.transform); // To make sure it follows the player if they move
+
+        Slider reloadSlider = reloadUIInstance.GetComponentInChildren<Slider>(); // Assuming the Slider component is a child
+
+        
+
         Debug.Log("Reloading...");
+        float startTime = Time.time;
 
-        yield return new WaitForSeconds(reloadTime);
+        while (Time.time - startTime < reloadTime)
+        {
+            float progress = (Time.time - startTime) / reloadTime;
+            reloadSlider.value = progress;
+            yield return null;
+        }
 
+        reloadSlider.value = 1f; 
+
+       
         currentAmmo = MaxAmmo;
         isReloading = false;
-        //Debug.Log("Reloaded");
+
+        // Destroy the reload UI
+        Destroy(reloadUIInstance);
     }
 
     #endregion
@@ -139,6 +177,46 @@ public class GunBase : MonoBehaviour
     #region Projectile Code
     public void LaunchProjectile()
     {
+
+        int ammoCount = 0;
+        switch (currentAmmoType)
+        {
+            case AmmoType.SmallAmmo:
+                ammoCount = playerStats.playerAmmo.smallAmmo.ammount;
+                break;
+            case AmmoType.MediumAmmo:
+                ammoCount = playerStats.playerAmmo.mediumAmmo.ammount;
+                break;
+            case AmmoType.LargeAmmo:
+                ammoCount = playerStats.playerAmmo.largeAmmo.ammount;
+                break;
+            default:
+                print("Ammo type not found");
+                return; 
+        }
+        if (ammoCount <= 0)
+        {
+            Debug.Log("Out of Ammo!");
+            return;
+        }
+
+        switch (currentAmmoType)
+        {
+            case AmmoType.SmallAmmo:
+                playerStats.playerAmmo.smallAmmo.ammount--;
+                break;
+            case AmmoType.MediumAmmo:
+                playerStats.playerAmmo.mediumAmmo.ammount--;
+                break;
+            case AmmoType.LargeAmmo:
+                playerStats.playerAmmo.largeAmmo.ammount--;
+                break;
+            default:
+                print("Ammo type not found");
+                break;
+        }
+        
+        
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
@@ -151,11 +229,39 @@ public class GunBase : MonoBehaviour
         {
             Debug.LogWarning("ProjectilePrefab does not have a Rigidbody component.");
         }
+        
+        playerStats.UIHandle.UpdateAllAmmo(playerStats.playerAmmo);
+    }
+
+    private void ShotgunFire()
+    {
+        Debug.Log("Shotgun initialised");
+        int ammoCount = 0;
+        switch (currentAmmoType)
+        {
+            case AmmoType.SmallAmmo:
+                ammoCount = playerStats.playerAmmo.smallAmmo.ammount;
+                break;
+            case AmmoType.MediumAmmo:
+                ammoCount = playerStats.playerAmmo.mediumAmmo.ammount;
+                break;
+            case AmmoType.LargeAmmo:
+                ammoCount = playerStats.playerAmmo.largeAmmo.ammount;
+                break;
+            default:
+                print("Ammo type not found");
+                return;
+        }
+        if (ammoCount <= 0)
+        {
+            Debug.Log("Out of Ammo!");
+            return;
+        }
+
         switch (currentAmmoType)
         {
             case AmmoType.SmallAmmo:
                 playerStats.playerAmmo.smallAmmo.ammount--;
-
                 break;
             case AmmoType.MediumAmmo:
                 playerStats.playerAmmo.mediumAmmo.ammount--;
@@ -167,7 +273,28 @@ public class GunBase : MonoBehaviour
                 print("Ammo type not found");
                 break;
         }
-        playerStats.UIHandle.UpdateAllAmmo(playerStats.playerAmmo);
+
+        int pelletsPerShot = 6; 
+        float spreadAngle = 2f; 
+
+        for (int i = 0; i < pelletsPerShot; i++)
+        {
+            
+            Quaternion pelletRotation = Quaternion.Euler(Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle), 0) * firePoint.rotation;
+
+            
+            GameObject pellet = Instantiate(projectilePrefab, firePoint.position, pelletRotation);
+
+            
+            Rigidbody rb = pellet.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.velocity = pellet.transform.forward * projectileSpeed;
+            }
+            playerStats.UIHandle.UpdateAllAmmo(playerStats.playerAmmo);
+        }
+
+        Debug.Log("Shotgun fired");
     }
     #endregion
 
@@ -186,6 +313,10 @@ public class GunBase : MonoBehaviour
         reloadTime = gunData.reloadTime;
         MaxAmmo = gunData.maxAmmo;
         FireRate = gunData.firerate;
+        if (gunData.isCone == true)
+        {
+            fireMode = FireMode.Cone;
+        } else { fireMode = FireMode.Projectile; }
         //AnimFire = gunData.fire;
         //AnimReload = gunData.reload;
        
