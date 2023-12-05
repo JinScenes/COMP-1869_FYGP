@@ -1,46 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private float damage;
-    private float timer =4f;
-    
+    [SerializeField] private float speed = 100f;
+    [SerializeField] private float maxDistance = 100f;
 
-    // Update is called once per frame
+    private Vector3 startPosition;
+
+    void Start()
+    {
+        startPosition = transform.position;
+    }
+
     void Update()
     {
-        timer = Time.deltaTime;
-        if(timer <= 0)
+        float distanceThisFrame = speed * Time.deltaTime;
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, distanceThisFrame))
+        {
+            if (hit.transform.CompareTag("Enemy"))
+            {
+                var enemy = hit.transform.GetComponent<EnemyFSM>();
+                if (enemy != null)
+                {
+                    Debug.Log("Enemy Hit");
+                    enemy.healthModule.EnemyDamage(damage);
+                }
+            }
+            Destroy(gameObject);
+        }
+
+        transform.Translate(Vector3.forward * distanceThisFrame);
+        if (Vector3.Distance(startPosition, transform.position) >= maxDistance)
         {
             Destroy(gameObject);
         }
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.transform.CompareTag("Enemy"))
-        {
-            
-            GameObject enemy = other.gameObject;
-            if (enemy.GetComponent<EnemyFSM>().health <= 0)
-            {
-                Debug.Log("dead");
-                Destroy(gameObject);
-                return;
-            }
-            else if(enemy.GetComponent<EnemyFSM>().health > 0)
-            {
-                Debug.Log("EnemyHit");
-                enemy.GetComponent<EnemyFSM>().healthModule.EnemyDamage(damage);
-                Destroy(gameObject);
-            }
-        }
-
-
-        Destroy(gameObject);
     }
 }

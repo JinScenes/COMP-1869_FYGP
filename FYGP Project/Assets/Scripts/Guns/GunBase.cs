@@ -1,3 +1,4 @@
+using Andtech.ProTracer;
 using System.Collections;
 using System.Collections.Generic;
 //using Unity.VisualScripting;
@@ -12,8 +13,8 @@ public class GunBase : MonoBehaviour
     public enum FireMode { Hitscan, Projectile }
 
     [SerializeField] FireMode fireMode = FireMode.Hitscan;
+    [SerializeField] GameObject[] muzzleFlashPrefabs;
     public Transform firePoint;
-    [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform gunSpawn;
 
     [Tooltip("Configurable Variables"),Space(5)]
@@ -32,6 +33,37 @@ public class GunBase : MonoBehaviour
     private AmmoType currentAmmoType;
     
     public  GunData NewData;
+
+    public float Speed => 10.0F + (tracerSpeed - 1) * 50.0F;
+    public float RotationSpeed => 72.0F;
+    public float TimeBetweenShots => 1.0F / FireRate;
+
+    [Header("Prefabs")]
+    [SerializeField]
+    [Tooltip("The Bullet prefab to spawn.")]
+    private ShotBullet bulletPrefab = default;
+    [SerializeField]
+    [Tooltip("The Smoke Trail prefab to spawn.")]
+    private SmokeTrail smokeTrailPrefab = default;
+    [Header("Demo Settings")]
+    [SerializeField]
+    [Tooltip("Rotate the spawn point?")]
+    private bool spin = true;
+    [Header("Raycast Settings")]
+    [SerializeField]
+    [Tooltip("The maximum raycast distance.")]
+    private float maxQueryDistance = 300.0F;
+    [Header("Tracer Settings")]
+    [SerializeField]
+    [Tooltip("The speed of the tracer graphics.")]
+    [Range(1, 10)]
+    private int tracerSpeed = 3;
+    [SerializeField]
+    [Tooltip("Should tracer graphics use gravity while moving?")]
+    private bool useGravity = false;
+    [SerializeField]
+    [Tooltip("If enabled, a random offset is applied to the spawn point. (This eliminates the \"Wagon-Wheel\" effect)")]
+    private bool applyStrobeOffset = true;
     #endregion
 
     #region Generic Functions
@@ -87,6 +119,7 @@ public class GunBase : MonoBehaviour
         {
             nextFireTime = Time.time + 1f / FireRate;
             LaunchProjectile();
+            ShowMuzzleFlash();
             currentAmmo--;
         } 
         
@@ -139,17 +172,46 @@ public class GunBase : MonoBehaviour
     #region Projectile Code
     public void LaunchProjectile()
     {
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-
-        if (rb != null)
+        float speed = Speed;
+        float offset;
+        if (applyStrobeOffset)
         {
-            rb.velocity = firePoint.forward * projectileSpeed;
-            
+            offset = Random.Range(0.0F, CalculateStroboscopicOffset(speed));
         }
         else
         {
-            Debug.LogWarning("ProjectilePrefab does not have a Rigidbody component.");
+            offset = 0.0F;
+        }
+
+        // Instantiate the tracer graphics
+        ShotBullet bullet = Instantiate(bulletPrefab);
+        SmokeTrail smokeTrail = Instantiate(smokeTrailPrefab);
+
+        // Setup callbacks
+        bullet.Completed += OnCompleted;
+        smokeTrail.Completed += OnCompleted;
+
+        // Use different tracer drawing methods depending on the raycast
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxQueryDistance))
+        {
+            // Since start and end point are known, use DrawLine
+            bullet.DrawLine(transform.position, hitInfo.point, speed, offset);
+            smokeTrail.DrawLine(transform.position, hitInfo.point, speed, offset);
+
+            // Setup impact callback
+            bullet.Arrived += OnImpact;
+
+            void OnImpact(object sender, System.EventArgs e)
+            {
+                // Handle impact event here
+                Debug.DrawRay(hitInfo.point, hitInfo.normal, Color.red, 0.5F);
+            }
+        }
+        else
+        {
+            // Since we have no end point, use DrawRay
+            bullet.DrawRay(transform.position, transform.forward, speed, maxQueryDistance, offset, useGravity);
+            smokeTrail.DrawRay(transform.position, transform.forward, speed, 25.0F, offset);
         }
         switch (currentAmmoType)
         {
@@ -169,6 +231,28 @@ public class GunBase : MonoBehaviour
         }
         playerStats.UIHandle.UpdateAllAmmo(playerStats.playerAmmo);
     }
+
+    private void ShowMuzzleFlash()
+    {
+        if (muzzleFlashPrefabs != null && muzzleFlashPrefabs.Length > 0)
+        {
+            int index = Random.Range(0, muzzleFlashPrefabs.Length);
+            GameObject flash = Instantiate(muzzleFlashPrefabs[index], firePoint.position, firePoint.rotation);
+            Destroy(flash, 0.1f);
+        }
+    }
+
+    private void OnCompleted(object sender, System.EventArgs e)
+    {
+        // Handle complete event here
+        if (sender is TracerObject tracerObject)
+        {
+            Destroy(tracerObject.gameObject);
+        }
+    }
+
+    private float CalculateStroboscopicOffset(float speed) => speed * Time.smoothDeltaTime;
+
     #endregion
 
     #region Scriptable object Loading
@@ -181,7 +265,6 @@ public class GunBase : MonoBehaviour
     public GameObject Initialize(GunData gunData)
     {
         animator.SetBool("isShooting", true);
-        projectilePrefab = gunData.projectile;
         GunModel = gunData.gunModel;
         reloadTime = gunData.reloadTime;
         MaxAmmo = gunData.maxAmmo;

@@ -34,7 +34,7 @@ public class TracerDemo : MonoBehaviour
 	private int tracerSpeed = 3;
 	[SerializeField]
 	[Tooltip("Should tracer graphics use gravity while moving?")]
-	private bool useGravity = true;
+	private bool useGravity = false;
 	[SerializeField]
 	[Tooltip("If enabled, a random offset is applied to the spawn point. (This eliminates the \"Wagon-Wheel\" effect)")]
 	private bool applyStrobeOffset = true;
@@ -110,6 +110,8 @@ public class TracerDemo : MonoBehaviour
 		{
 			Destroy(tracerObject.gameObject);
 		}
+
+
 	}
 
 	private IEnumerator Firing()

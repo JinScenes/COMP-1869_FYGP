@@ -21,7 +21,7 @@ MonoBehaviour:
   firerate: 20.1
   reload: {fileID: 0}
   fire: {fileID: 0}
-  projectile: {fileID: 8272325939475155795, guid: 11eea38531b507c4b997d9762c8077e5, type: 3}
+  projectile: {fileID: 7342047996656630216, guid: f2fac571dc6c5464eac9f9e45cb7702b, type: 3}
   rarity: 1
   type: 0
   reloadTime: 2
