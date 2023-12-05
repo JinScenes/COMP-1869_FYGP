@@ -47,6 +47,15 @@ public class E_Health
         enemy.healthBarUI.value = Mathf.Clamp01(enemy.health / enemy.maxHealth);
         hasTakenDamage = true;
         enemy.IsMove = true;
+
+        if (enemy.bloodEffectPrefabs != null && enemy.bloodEffectPrefabs.Length > 0)
+        {
+            int randomIndex = Random.Range(0, enemy.bloodEffectPrefabs.Length);
+            GameObject bloodEffect = GameObject.Instantiate(enemy.bloodEffectPrefabs[randomIndex],
+                enemy.transform.position, Quaternion.identity);
+
+            GameObject.Destroy(bloodEffect, 2f);
+        }
     }
 
     public bool IsDead()

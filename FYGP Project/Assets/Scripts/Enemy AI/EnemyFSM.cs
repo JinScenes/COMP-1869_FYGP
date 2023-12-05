@@ -18,7 +18,9 @@ public class EnemyFSM : MonoBehaviour
     public Transform attackPoint;
     public Slider healthBarUI;
     public LayerMask playerMask;
+    public GameObject[] bloodEffectPrefabs;
     public List<string> playerObjectNames = new List<string>();
+
 
     [Header("Common Variables")]
     [Range(0, 200)] public float maxHealth;
