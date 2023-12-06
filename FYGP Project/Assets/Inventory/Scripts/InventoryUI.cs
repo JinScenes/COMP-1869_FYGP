@@ -53,7 +53,7 @@ public class InventoryUI
       
 
         // Set Player Index label
-        InvenUI.Find("PlayerIndex Label").GetComponent<TextMeshProUGUI>().text = $"Player {playerIndex + 1}";
+        InvenUI.Find("PlayerIndex Label").GetComponent<TextMeshProUGUI>().text = $"{playerIndex + 1}";
         AmmoHUD = InvenUI.transform.Find("AmmoHUD");
     }
 
