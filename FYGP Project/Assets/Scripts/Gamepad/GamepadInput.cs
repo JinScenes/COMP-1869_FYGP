@@ -52,6 +52,8 @@ public class GamepadInput : MonoBehaviour
     //TOUCHPAD (PS EXCLUSIVE)
     public bool TouchPadButton { get; private set; }
 
+    public bool Pause {  get; private set; }
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -119,7 +121,7 @@ public class GamepadInput : MonoBehaviour
         playerInput.actions["D-Pad Right"].canceled += ctx => DPadInput = Vector2.zero;
 
     }
-
+    
     private void ShoulderButtons()
     {
         //LEFT SHOULDER
