@@ -1,49 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private float damage;
-    private float timer =4f;
-    
+    [SerializeField] private float speed = 100f;
+    [SerializeField] private float maxDistance = 100f;
 
-    // Update is called once per frame
-    void Update()
+    private Vector3 startPosition;
+
+    void Start()
     {
-        timer -= Time.deltaTime;
-        if(timer <= 0)
-        {
-            Destroy(gameObject);
-        }
+        startPosition = transform.position;
     }
 
-    private void OnCollisionEnter(Collision other)
+    void Update()
     {
-        if (other.transform.CompareTag("Enemy"))
+        float distanceThisFrame = speed * Time.deltaTime;
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, distanceThisFrame))
         {
-            
-            GameObject enemy = other.gameObject;
-            if (enemy.GetComponent<EnemyFSM>().health <= 0)
+            if (hit.transform.CompareTag("Enemy"))
             {
-                Debug.Log("dead");
-                Destroy(gameObject);
-                return;
+                var enemy = hit.transform.GetComponent<EnemyFSM>();
+                if (enemy != null)
+                {
+                    Debug.Log("Enemy Hit");
+                    enemy.healthModule.EnemyDamage(damage);
+                }
             }
-            else if(enemy.GetComponent<EnemyFSM>().health > 0)
-            {
-                Debug.Log("EnemyHit");
-                enemy.GetComponent<EnemyFSM>().healthModule.EnemyDamage(damage);
-                Destroy(gameObject);
-            }
-        }
-        if(other.gameObject.layer == 7 || other.gameObject.layer == 8)
-        {
+
             Destroy(gameObject);
         }
 
-        
+        transform.Translate(Vector3.forward * distanceThisFrame);
+        if (Vector3.Distance(startPosition, transform.position) >= maxDistance)
+        {
+            Destroy(gameObject);
+        }
     }
 }
