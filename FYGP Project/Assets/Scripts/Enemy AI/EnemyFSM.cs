@@ -49,12 +49,18 @@ public class EnemyFSM : MonoBehaviour
     [HideInInspector] public bool ready;
     [HideInInspector] public bool IsMove;
 
+
+    //Currency
+
+    CurrencyHandler currencyHandler;
+
     private void Awake()
     {
         detectionModule = new E_Detection(this);
         movementModule = new E_Movement(this);
         attackModule = new E_Attack(this);
         healthModule = new E_Health(this);
+
 
         if (originPos == null) originPos = transform.Find("Pos");
         if (playerObjectNames == null) playerObjectNames = new List<string>();
@@ -73,6 +79,7 @@ public class EnemyFSM : MonoBehaviour
         }
         else
         {
+            //currencyHandler.OnEnemyDefeated();
             Destroy(gameObject, 0.1f);
         }
     }

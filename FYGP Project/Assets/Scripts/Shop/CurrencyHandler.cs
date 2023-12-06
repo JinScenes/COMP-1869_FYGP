@@ -1,50 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CurrencyHandler : MonoBehaviour
 {
-    public PlayerStatsHandler playerStatsHandler;
-    public int currencyPerEnemy = 10;
-    public GameObject enemies;
+    [SerializeField] TextMeshProUGUI moneyText;
+    [SerializeField] int currencyPerEnemy = 10;
+    int totalMoney;
+    //public int currencyPerEnemy = 10;
 
     void Awake()
     {
-        // Initialize or link to PlayerStatsHandler, if necessary
-        // For example, you might find it like this if it's attached to the same GameObject:
-        playerStatsHandler = GetComponent<PlayerStatsHandler>();
+        totalMoney = 0;
+        moneyText = GetComponentInChildren<TextMeshProUGUI>();
+            //.Find("txtAmount").GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
     {
-        // enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        //if 
+        moneyText.text = totalMoney.ToString();
     }
 
     // Method when an enemy is defeated
     public void OnEnemyDefeated()
     {
-        PlayerStats.currency += currencyPerEnemy;
-        UpdateCurrencyUI();
+        totalMoney += currencyPerEnemy;
     }
 
-    // Method to spend currency in the shop
-    public bool TrySpendCurrency(int amount)
-    {
-        if (PlayerStats.currency >= amount)
-        {
-            PlayerStats.currency -= amount;
-            UpdateCurrencyUI();
-            return true; 
-        }
+    //// Method to spend currency in the shop
+    //public bool TrySpendCurrency(int amount)
+    //{
+    //    if (PlayerStats.currency >= amount)
+    //    {
+    //        PlayerStats.currency -= amount;
+    //        UpdateCurrencyUI();
+    //        return true; 
+    //    }
 
-        return false; // Not enough currency
-    }
-
-    // Update the UI to reflect the current currency amount
-    private void UpdateCurrencyUI()
-    {
-        // Assuming you have a method in PlayerStatsHandler or somewhere similar to update the UI
-        //playerStatsHandler.UpdateCurrencyUI(PlayerStats.currency);
-    }
+    //    return false; // Not enough currency
+    //}
 }
