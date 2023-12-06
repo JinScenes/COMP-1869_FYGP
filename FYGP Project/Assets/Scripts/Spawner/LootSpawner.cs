@@ -7,13 +7,13 @@ public class LootSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] lootPrefab;
     [SerializeField] private GameObject[] buildingPrefab;
-    [SerializeField] private float xPos = 0;
-    [SerializeField] private float zPos = 0;
+    [SerializeField] private int xPos = 0;
+    [SerializeField] private int zPos = 0;
     [SerializeField] private float buildingPossiblity = 0.6f;
     [SerializeField] public int totalLoots = 20;
-    
-    protected float randomXpos;
-    protected float randomZpos;
+   
+    //protected float randomXpos;
+    //protected float randomZpos;
     
     protected const float lootSpawnTime = 0.2f; 
     protected const float minDistanceBetweenLoots = 5f; 
@@ -40,8 +40,12 @@ public class LootSpawner : MonoBehaviour
             // Try to find a valid position for loot
             while (!positionValid)
             {
-                randomXpos = Random.Range(-xPos, xPos);
-                randomZpos = Random.Range(-zPos, zPos);
+                //randomXpos = Random.Range(-xPos, xPos);
+                //randomZpos = Random.Range(-zPos, zPos);
+
+                int randomXpos = Random.Range(-xPos, xPos) + (int)transform.position.x;
+                int randomZpos = Random.Range(-zPos, zPos) + (int)transform.position.z;
+
                 spawnPosition = new Vector3(randomXpos, 0.5f, randomZpos);
 
                 // Check distance with existing loot positions
@@ -49,6 +53,8 @@ public class LootSpawner : MonoBehaviour
             }
 
             // Check if the loot is inside an enterable building based on the probability
+
+          
             if (Random.value < buildingPossiblity)
             {
                 // Spawn inside a building
@@ -56,7 +62,7 @@ public class LootSpawner : MonoBehaviour
                 GameObject building = GetBuilding();
                 spawnPosition = GetPosition(building);
             }
-
+            
             // Instantiate loot at the valid position
             Instantiate(lootToSpawn, spawnPosition, Quaternion.identity);
             spawnedLootPositions.Add(spawnPosition);
