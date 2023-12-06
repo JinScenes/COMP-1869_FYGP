@@ -93,6 +93,7 @@ public class Consumables : MonoBehaviour
             Invoke(afterWaitFunction, 0f);
         }
 
+        inventory.consumingIndex = -1;
         doingAction = false;
 
 
@@ -123,6 +124,11 @@ public class Consumables : MonoBehaviour
     private void AddHP(float amount)
     {
         playerController.AddHealth(amount);
+        if(playerController.speed <= 2)
+        {
+            playerController.speed = 6;
+            print("Reset speed after healing");
+        }
     }
 
     private void ConsumeItem()

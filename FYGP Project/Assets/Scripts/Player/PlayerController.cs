@@ -219,7 +219,7 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyDamage(float damageAmount)
     {
-        currentHealth -= damageAmount;
+        currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, 1000);
         consumables.doingAction = false;
 
         if (currentHealth <= 0)
@@ -266,7 +266,7 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Player Died!");
+        speed = 2f;
     }
 
     public void AddHealth(float amount)

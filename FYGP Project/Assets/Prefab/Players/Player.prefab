@@ -570,6 +570,7 @@ GameObject:
   - component: {fileID: 7913251890018393789}
   - component: {fileID: 7949332990224149174}
   - component: {fileID: 2453681096068290393}
+  - component: {fileID: 5931288463620798138}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -930,6 +931,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   removeIndex: 0
   doingAction: 0
+--- !u!114 &5931288463620798138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4133449409595100725}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce102135b2bc6c4ebef353982864db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5091323345597774486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,12 +1588,8 @@ MonoBehaviour:
     consumingIndex: 0
   GunHolder: {fileID: 3554119091055565323}
   fireMode: 1
-  muzzleFlashPrefabs:
-  - {fileID: 8464769304469127210, guid: f756a738c8eca6c4ab36213a6de9467f, type: 3}
-  - {fileID: 5003852882262614846, guid: 5a56038d1c6e03646843676eec56570a, type: 3}
-  - {fileID: 7399497820619339352, guid: 2611ababf8ba24248b7131ec28c25d61, type: 3}
-  - {fileID: 6745696777292782077, guid: cff849d41e084ce4fa147f9f1dadc736, type: 3}
   firePoint: {fileID: 3734370037534172893}
+  projectilePrefab: {fileID: 0}
   gunSpawn: {fileID: 1915346331358427009}
   projectileSpeed: 10
   FireRate: 1
@@ -1588,16 +1597,10 @@ MonoBehaviour:
   MaxAmmo: 30
   reloadTime: 1.5
   allowFire: 0
+  currentAmmo: 0
   isReloading: 0
   nextFireTime: 0
   NewData: {fileID: 0}
-  bulletPrefab: {fileID: 2835626156260311781, guid: c7ed5ad9208d4014f821037758c7bd7c, type: 3}
-  smokeTrailPrefab: {fileID: 5841007807818134380, guid: e094f15cb2f20164c95adfd4e200b185, type: 3}
-  spin: 1
-  maxQueryDistance: 300
-  tracerSpeed: 3
-  useGravity: 0
-  applyStrobeOffset: 1
   GunModel: {fileID: 0}
   instGun: {fileID: 0}
 --- !u!1 &8674451701817226345

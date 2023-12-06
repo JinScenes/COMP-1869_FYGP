@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   displayName: Pistol
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 1394029974, guid: be3ac75d448c7414b9ee5f8bbbc08a4b, type: 3}
   canStack: 0
   consumable: 0
   gunModel: {fileID: 2919659897700484028, guid: c8a7e9e58f1057b45b928f4d59838c94, type: 3}
@@ -25,3 +25,4 @@ MonoBehaviour:
   rarity: 0
   type: 2
   reloadTime: 0.87
+  isCone: 0
