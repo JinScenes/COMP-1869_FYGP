@@ -782,7 +782,6 @@ MonoBehaviour:
   maxHealth: 100
   speed: 5
   playerHeightOffset: 0.5
-  playerHealth: 100
   animState: {fileID: 7913251890018393789}
   gunRef: {fileID: 8671839643475109080}
   raycastLength: 2
@@ -1589,7 +1588,11 @@ MonoBehaviour:
   GunHolder: {fileID: 3554119091055565323}
   fireMode: 1
   firePoint: {fileID: 3734370037534172893}
-  projectilePrefab: {fileID: 0}
+  muzzleFlashPrefabs:
+  - {fileID: 8464769304469127210, guid: f756a738c8eca6c4ab36213a6de9467f, type: 3}
+  - {fileID: 5003852882262614846, guid: 5a56038d1c6e03646843676eec56570a, type: 3}
+  - {fileID: 7399497820619339352, guid: 2611ababf8ba24248b7131ec28c25d61, type: 3}
+  - {fileID: 6745696777292782077, guid: cff849d41e084ce4fa147f9f1dadc736, type: 3}
   gunSpawn: {fileID: 1915346331358427009}
   projectileSpeed: 10
   FireRate: 1
@@ -1601,6 +1604,13 @@ MonoBehaviour:
   isReloading: 0
   nextFireTime: 0
   NewData: {fileID: 0}
+  bulletPrefab: {fileID: 2835626156260311781, guid: c7ed5ad9208d4014f821037758c7bd7c, type: 3}
+  smokeTrailPrefab: {fileID: 5841007807818134380, guid: e094f15cb2f20164c95adfd4e200b185, type: 3}
+  spin: 1
+  maxQueryDistance: 300
+  tracerSpeed: 3
+  useGravity: 0
+  applyStrobeOffset: 1
   GunModel: {fileID: 0}
   instGun: {fileID: 0}
 --- !u!1 &8674451701817226345

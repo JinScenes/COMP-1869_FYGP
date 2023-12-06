@@ -54,7 +54,7 @@ public class E_Health
             GameObject bloodEffect = GameObject.Instantiate(enemy.bloodEffectPrefabs[randomIndex],
                 enemy.transform.position, Quaternion.identity);
 
-            GameObject.Destroy(bloodEffect, 2f);
+            GameObject.Destroy(bloodEffect, 0.2f);
         }
     }
 
