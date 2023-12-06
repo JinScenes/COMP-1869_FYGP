@@ -497,7 +497,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2318753914648394743}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: fd1b4e7aab2f4b6479103f72d6844628, type: 3}
   m_Controller: {fileID: 9100000, guid: e18e395a64ec9a34390756cb0dd9121a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -555,10 +555,10 @@ MonoBehaviour:
   - {fileID: 1855497614338780, guid: 3e8e0375b4f242a4780822801b2df1c4, type: 3}
   - {fileID: 1855497614338780, guid: c96a345c5c267934982b4910917181e6, type: 3}
   playerObjectNames:
-  - Player 1(Clone)
-  - Player 2(Clone)
-  - Player 3(Clone)
-  - Player 4(Clone)
+  - Player(Clone)
+  - Player(Clone)
+  - Player(Clone)
+  - Player(Clone)
   maxHealth: 0
   health: 50
   speed: 5.5

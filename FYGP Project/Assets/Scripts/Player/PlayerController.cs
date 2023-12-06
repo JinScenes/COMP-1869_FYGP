@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField, Range(0, 20)] public float speed;
     [SerializeField, Range(0, 10)] private float playerHeightOffset;
-    public float playerHealth;
     [SerializeField] private animState animState;
     [SerializeField] private GameObject gunRef;
 
@@ -220,10 +219,10 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyDamage(float damageAmount)
     {
-        playerHealth -= damageAmount;
+        currentHealth -= damageAmount;
         consumables.doingAction = false;
 
-        if (playerHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }

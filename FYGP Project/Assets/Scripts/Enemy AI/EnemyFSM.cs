@@ -10,7 +10,6 @@ public class EnemyFSM : MonoBehaviour
     public E_Movement movementModule;
     public E_Attack attackModule;
     public E_Health healthModule;
-    public E_Animation animationModule;
 
     [Header("Components")]
     public Animator anim;
@@ -56,7 +55,6 @@ public class EnemyFSM : MonoBehaviour
         movementModule = new E_Movement(this);
         attackModule = new E_Attack(this);
         healthModule = new E_Health(this);
-        animationModule = new E_Animation(this);
 
         if (originPos == null) originPos = transform.Find("Pos");
         if (playerObjectNames == null) playerObjectNames = new List<string>();
