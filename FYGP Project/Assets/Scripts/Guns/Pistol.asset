@@ -17,11 +17,11 @@ MonoBehaviour:
   canStack: 0
   consumable: 0
   gunModel: {fileID: 2919659897700484028, guid: c8a7e9e58f1057b45b928f4d59838c94, type: 3}
-  maxAmmo: 16
+  maxAmmo: 1
   firerate: 0.6
   reload: {fileID: 0}
   fire: {fileID: 0}
   projectile: {fileID: 7342047996656630216, guid: d108d4b918f334f4c8b226b154009c6b, type: 3}
   rarity: 0
-  type: 0
+  type: 2
   reloadTime: 0.87

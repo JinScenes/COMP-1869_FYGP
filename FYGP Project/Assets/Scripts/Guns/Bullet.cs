@@ -1,39 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    // Start is called before the first frame update
     [SerializeField] private float damage;
-    [SerializeField] private float speed = 100f;
-    [SerializeField] private float maxDistance = 100f;
+    private float timer =4f;
+    
 
-    private Vector3 startPosition;
-
-    void Start()
-    {
-        startPosition = transform.position;
-    }
-
+    // Update is called once per frame
     void Update()
     {
-        float distanceThisFrame = speed * Time.deltaTime;
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, distanceThisFrame))
+        timer -= Time.deltaTime;
+        if(timer <= 0)
         {
-            if (hit.transform.CompareTag("Enemy"))
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.transform.CompareTag("Enemy"))
+        {
+            
+            GameObject enemy = other.gameObject;
+            if (enemy.GetComponent<EnemyFSM>().health <= 0)
             {
-                var enemy = hit.transform.GetComponent<EnemyFSM>();
-                if (enemy != null)
-                {
-                    Debug.Log("Enemy Hit");
-                    enemy.healthModule.EnemyDamage(damage);
-                }
+                Debug.Log("dead");
+                Destroy(gameObject);
+                return;
             }
+            else if(enemy.GetComponent<EnemyFSM>().health > 0)
+            {
+                Debug.Log("EnemyHit");
+                enemy.GetComponent<EnemyFSM>().healthModule.EnemyDamage(damage);
+                Destroy(gameObject);
+            }
+        }
+        if(other.gameObject.layer == 7 || other.gameObject.layer == 8)
+        {
             Destroy(gameObject);
         }
 
-        transform.Translate(Vector3.forward * distanceThisFrame);
-        if (Vector3.Distance(startPosition, transform.position) >= maxDistance)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 }

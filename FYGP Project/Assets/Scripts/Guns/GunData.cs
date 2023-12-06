@@ -13,6 +13,7 @@ public class GunData : ItemData
     public rarity rarity;
     public AmmoType type;
     public float reloadTime;
+    public bool isCone = false;
     public enum fireType { Hitscan, Projectile};
 
     // Update is called once per frame

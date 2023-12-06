@@ -1,69 +1,40 @@
-using Andtech.ProTracer;
 using System.Collections;
 using System.Collections.Generic;
 //using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunBase : MonoBehaviour
 {
+
+    [SerializeField] private GameObject reloadUIPrefab;
     #region Variables
     [SerializeField] Inventory inventory;
     public gunHolder GunHolder;
     private GunData previousGunData;
-    public enum FireMode { Hitscan, Projectile }
+    public enum FireMode { Hitscan, Projectile, Cone }
 
-    [SerializeField] FireMode fireMode = FireMode.Hitscan;
-    [SerializeField] GameObject[] muzzleFlashPrefabs;
+    [SerializeField] FireMode fireMode;
     public Transform firePoint;
+    [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform gunSpawn;
 
     [Tooltip("Configurable Variables"),Space(5)]
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float FireRate = 1f;
     [SerializeField] float range = 100f;
-    [SerializeField] int MaxAmmo = 30;
+    [SerializeField] int MaxAmmo;
     [SerializeField] float reloadTime = 1.5f;
 
     public PlayerStats playerStats;
     [SerializeField] bool allowFire;
-    protected int currentAmmo;
+    public int currentAmmo;
     [SerializeField] bool isReloading = false;
     [SerializeField] float nextFireTime = 0f;
     private Animator animator;
     private AmmoType currentAmmoType;
     
     public  GunData NewData;
-
-    public float Speed => 10.0F + (tracerSpeed - 1) * 50.0F;
-    public float RotationSpeed => 72.0F;
-    public float TimeBetweenShots => 1.0F / FireRate;
-
-    [Header("Prefabs")]
-    [SerializeField]
-    [Tooltip("The Bullet prefab to spawn.")]
-    private ShotBullet bulletPrefab = default;
-    [SerializeField]
-    [Tooltip("The Smoke Trail prefab to spawn.")]
-    private SmokeTrail smokeTrailPrefab = default;
-    [Header("Demo Settings")]
-    [SerializeField]
-    [Tooltip("Rotate the spawn point?")]
-    private bool spin = true;
-    [Header("Raycast Settings")]
-    [SerializeField]
-    [Tooltip("The maximum raycast distance.")]
-    private float maxQueryDistance = 300.0F;
-    [Header("Tracer Settings")]
-    [SerializeField]
-    [Tooltip("The speed of the tracer graphics.")]
-    [Range(1, 10)]
-    private int tracerSpeed = 3;
-    [SerializeField]
-    [Tooltip("Should tracer graphics use gravity while moving?")]
-    private bool useGravity = false;
-    [SerializeField]
-    [Tooltip("If enabled, a random offset is applied to the spawn point. (This eliminates the \"Wagon-Wheel\" effect)")]
-    private bool applyStrobeOffset = true;
     #endregion
 
     #region Generic Functions
@@ -73,7 +44,7 @@ public class GunBase : MonoBehaviour
     {
         animator = GetComponentInParent<Animator>();
         playerStats = gameObject.GetComponentInParent<PlayerStatsHandler>().playerStats;
-        currentAmmo = MaxAmmo;
+        //currentAmmo = MaxAmmo;
         /*inventory = gameObject.GetComponent<Inventory>();
         currentAmmo = MaxAmmo;
         if (NewData != null)
@@ -109,39 +80,73 @@ public class GunBase : MonoBehaviour
 
     public void Fire()
     {
-        
+        /*if(NewData == null)
+        {
+            return;
+        }*/
 
+        if (currentAmmo <= 0)
+        {
+            isReloading = true;
+            Debug.Log("Reloading...");
+            StartCoroutine(Reload());
+
+            return;
+        }
         /*if (fireMode == FireMode.Hitscan)
         {
             ShootHitscan();
         }*/
-         if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
+        if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
         {
             nextFireTime = Time.time + 1f / FireRate;
             LaunchProjectile();
-            ShowMuzzleFlash();
             currentAmmo--;
         } 
-        
-        if(currentAmmo <= 0)
-        {
-            isReloading = true;
-            StartCoroutine(Reload());
-            
 
+        if(fireMode == FireMode.Cone && Time.time >= nextFireTime && !isReloading)
+        {
+            nextFireTime = Time.time + 1f / FireRate;
+            ShotgunFire();
+            currentAmmo--;
         }
+
+        
+        
+        
     }
 
     IEnumerator Reload()
     {
         
+        Vector3 reloadUIPosition = gameObject.transform.parent.position+ new Vector3(0, 2, 0);
+
+        
+        GameObject reloadUIInstance = Instantiate(reloadUIPrefab, reloadUIPosition, Quaternion.identity);
+        reloadUIInstance.transform.SetParent(this.transform); // To make sure it follows the player if they move
+
+        Slider reloadSlider = reloadUIInstance.GetComponentInChildren<Slider>(); // Assuming the Slider component is a child
+
+        
+
         Debug.Log("Reloading...");
+        float startTime = Time.time;
 
-        yield return new WaitForSeconds(reloadTime);
+        while (Time.time - startTime < reloadTime)
+        {
+            float progress = (Time.time - startTime) / reloadTime;
+            reloadSlider.value = progress;
+            yield return null;
+        }
 
+        reloadSlider.value = 1f; 
+
+       
         currentAmmo = MaxAmmo;
         isReloading = false;
-        //Debug.Log("Reloaded");
+
+        // Destroy the reload UI
+        Destroy(reloadUIInstance);
     }
 
     #endregion
@@ -172,52 +177,33 @@ public class GunBase : MonoBehaviour
     #region Projectile Code
     public void LaunchProjectile()
     {
-        float speed = Speed;
-        float offset;
-        if (applyStrobeOffset)
+
+        int ammoCount = 0;
+        switch (currentAmmoType)
         {
-            offset = Random.Range(0.0F, CalculateStroboscopicOffset(speed));
+            case AmmoType.SmallAmmo:
+                ammoCount = playerStats.playerAmmo.smallAmmo.ammount;
+                break;
+            case AmmoType.MediumAmmo:
+                ammoCount = playerStats.playerAmmo.mediumAmmo.ammount;
+                break;
+            case AmmoType.LargeAmmo:
+                ammoCount = playerStats.playerAmmo.largeAmmo.ammount;
+                break;
+            default:
+                print("Ammo type not found");
+                return; 
         }
-        else
+        if (ammoCount <= 0)
         {
-            offset = 0.0F;
+            Debug.Log("Out of Ammo!");
+            return;
         }
 
-        // Instantiate the tracer graphics
-        ShotBullet bullet = Instantiate(bulletPrefab);
-        SmokeTrail smokeTrail = Instantiate(smokeTrailPrefab);
-
-        // Setup callbacks
-        bullet.Completed += OnCompleted;
-        smokeTrail.Completed += OnCompleted;
-
-        // Use different tracer drawing methods depending on the raycast
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxQueryDistance))
-        {
-            // Since start and end point are known, use DrawLine
-            bullet.DrawLine(transform.position, hitInfo.point, speed, offset);
-            smokeTrail.DrawLine(transform.position, hitInfo.point, speed, offset);
-
-            // Setup impact callback
-            bullet.Arrived += OnImpact;
-
-            void OnImpact(object sender, System.EventArgs e)
-            {
-                // Handle impact event here
-                Debug.DrawRay(hitInfo.point, hitInfo.normal, Color.red, 0.5F);
-            }
-        }
-        else
-        {
-            // Since we have no end point, use DrawRay
-            bullet.DrawRay(transform.position, transform.forward, speed, maxQueryDistance, offset, useGravity);
-            smokeTrail.DrawRay(transform.position, transform.forward, speed, 25.0F, offset);
-        }
         switch (currentAmmoType)
         {
             case AmmoType.SmallAmmo:
                 playerStats.playerAmmo.smallAmmo.ammount--;
-
                 break;
             case AmmoType.MediumAmmo:
                 playerStats.playerAmmo.mediumAmmo.ammount--;
@@ -229,30 +215,87 @@ public class GunBase : MonoBehaviour
                 print("Ammo type not found");
                 break;
         }
+        
+        
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            rb.velocity = firePoint.forward * projectileSpeed;
+            
+        }
+        else
+        {
+            Debug.LogWarning("ProjectilePrefab does not have a Rigidbody component.");
+        }
+        
         playerStats.UIHandle.UpdateAllAmmo(playerStats.playerAmmo);
     }
 
-    private void ShowMuzzleFlash()
+    private void ShotgunFire()
     {
-        if (muzzleFlashPrefabs != null && muzzleFlashPrefabs.Length > 0)
+        Debug.Log("Shotgun initialised");
+        int ammoCount = 0;
+        switch (currentAmmoType)
         {
-            int index = Random.Range(0, muzzleFlashPrefabs.Length);
-            GameObject flash = Instantiate(muzzleFlashPrefabs[index], firePoint.position, firePoint.rotation);
-            Destroy(flash, 0.1f);
+            case AmmoType.SmallAmmo:
+                ammoCount = playerStats.playerAmmo.smallAmmo.ammount;
+                break;
+            case AmmoType.MediumAmmo:
+                ammoCount = playerStats.playerAmmo.mediumAmmo.ammount;
+                break;
+            case AmmoType.LargeAmmo:
+                ammoCount = playerStats.playerAmmo.largeAmmo.ammount;
+                break;
+            default:
+                print("Ammo type not found");
+                return;
         }
-    }
-
-    private void OnCompleted(object sender, System.EventArgs e)
-    {
-        // Handle complete event here
-        if (sender is TracerObject tracerObject)
+        if (ammoCount <= 0)
         {
-            Destroy(tracerObject.gameObject);
+            Debug.Log("Out of Ammo!");
+            return;
         }
+
+        switch (currentAmmoType)
+        {
+            case AmmoType.SmallAmmo:
+                playerStats.playerAmmo.smallAmmo.ammount--;
+                break;
+            case AmmoType.MediumAmmo:
+                playerStats.playerAmmo.mediumAmmo.ammount--;
+                break;
+            case AmmoType.LargeAmmo:
+                playerStats.playerAmmo.largeAmmo.ammount--;
+                break;
+            default:
+                print("Ammo type not found");
+                break;
+        }
+
+        int pelletsPerShot = 6; 
+        float spreadAngle = 2f; 
+
+        for (int i = 0; i < pelletsPerShot; i++)
+        {
+            
+            Quaternion pelletRotation = Quaternion.Euler(Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle), 0) * firePoint.rotation;
+
+            
+            GameObject pellet = Instantiate(projectilePrefab, firePoint.position, pelletRotation);
+
+            
+            Rigidbody rb = pellet.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.velocity = pellet.transform.forward * projectileSpeed;
+            }
+            playerStats.UIHandle.UpdateAllAmmo(playerStats.playerAmmo);
+        }
+
+        Debug.Log("Shotgun fired");
     }
-
-    private float CalculateStroboscopicOffset(float speed) => speed * Time.smoothDeltaTime;
-
     #endregion
 
     #region Scriptable object Loading
@@ -265,10 +308,15 @@ public class GunBase : MonoBehaviour
     public GameObject Initialize(GunData gunData)
     {
         animator.SetBool("isShooting", true);
+        projectilePrefab = gunData.projectile;
         GunModel = gunData.gunModel;
         reloadTime = gunData.reloadTime;
         MaxAmmo = gunData.maxAmmo;
         FireRate = gunData.firerate;
+        if (gunData.isCone == true)
+        {
+            fireMode = FireMode.Cone;
+        } else { fireMode = FireMode.Projectile; }
         //AnimFire = gunData.fire;
         //AnimReload = gunData.reload;
        
