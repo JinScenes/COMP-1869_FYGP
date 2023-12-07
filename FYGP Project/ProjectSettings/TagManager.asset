@@ -8,6 +8,7 @@ TagManager:
   - GunFloor
   - Extraction
   - EntranceLight
+  - StreetLight
   layers:
   - Default
   - TransparentFX
