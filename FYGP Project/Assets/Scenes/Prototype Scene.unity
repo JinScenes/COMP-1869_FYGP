@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1040074916}
-  totalMoney: 0
+  totalMoney: 3000
 --- !u!114 &113722793 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6906166266710731078, guid: 9908befa5ac335f4c91523e3a62ae09e, type: 3}
@@ -3386,7 +3386,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &836132635
 Transform:
   m_ObjectHideFlags: 0
@@ -4922,7 +4922,7 @@ Transform:
   m_GameObject: {fileID: 1389244221}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.6, y: 3.0308294, z: 112.78}
+  m_LocalPosition: {x: 12.4, y: 0.07, z: -4.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5088,6 +5088,7 @@ GameObject:
   - component: {fileID: 1505070834}
   - component: {fileID: 1505070833}
   - component: {fileID: 1505070832}
+  - component: {fileID: 1505070835}
   m_Layer: 0
   m_Name: Moo
   m_TagString: Untagged
@@ -5104,7 +5105,7 @@ Transform:
   m_GameObject: {fileID: 1505070830}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.83, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5183,6 +5184,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505070830}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1505070835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505070830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92bebcaff991244e854056ea2be195b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootPrefab:
+  - {fileID: 5691099169173055985, guid: 2ce837f430f942146a3766b3d40f74be, type: 3}
+  xPos: 10
+  zPos: 10
+  totalLoots: 12
+  safeDistance: 2
 --- !u!4 &1552832833 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2618356069414544418, guid: 4360d732cc895344c883737e0bddd7a3, type: 3}
