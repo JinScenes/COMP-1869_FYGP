@@ -17,18 +17,17 @@ public class CurrencyHandler : MonoBehaviour
 
     private void Update()
     {
+        moneyText.text = totalMoney.ToString();
     }
 
     public void AddMoney(int amount)
     {
         totalMoney += amount;
-        moneyText.text = totalMoney.ToString();
-        //UpdateMoneyText(totalMoney);
     }
 
-    private void UpdateMoneyText(int amount)
-    {
-        moneyText.text = amount.ToString();
-    }
+    //private void UpdateMoneyText(int amount)
+    //{
+    //    moneyText.text = amount.ToString();
+    //}
        
 }

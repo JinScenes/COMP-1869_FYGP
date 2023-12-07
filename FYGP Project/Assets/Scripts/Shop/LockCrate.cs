@@ -1,37 +1,90 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEditor.Progress;
 using static Crate;
 
 public class LockCrate : MonoBehaviour
 {
     //Modify From Chris
-    private GameObject gunFloorLootPrefab;
+    public float launchForce = 5f;
     private GunData selectedGun;
+    private GameObject gunPrefab;
+    private GameObject gunFloorLootPrefab;
     [SerializeField] private ParticleSystem chestParticleSystem; // Assign in the inspector
     [SerializeField] private float riseHeight = 1.0f; 
     [SerializeField] private float riseDuration = 0.8f;
-    [SerializeField] private Vector3 particleSystemMaxScale = new Vector3(1.0f, 1.0f, 1.0f); // Max scale for the particle system
-    private GameObject gunPrefab;
+    [SerializeField] private Vector3 particleSystemMaxScale = new Vector3(1.0f, 1.0f, 1.0f); 
     [SerializeField] private List<GunData> availableGuns;
     [SerializeField] private List<GameObject> availableItems;
 
+    //New Added
+
+    [SerializeField] public int cratePrice = 100; 
+
+    private bool isPlayerNear = false;
+    private GameObject player; 
+    private CurrencyHandler currencyHandler;
+    //----
 
     //Base Function
     private void Awake()
     {
         gunFloorLootPrefab = Resources.Load<GameObject>("GunFloorLoot");
+
+        // new
+        currencyHandler = FindObjectOfType<CurrencyHandler>();
+        if (currencyHandler == null)
+        {
+            Debug.LogError("CurrencyHandler not found in the scene.");
+        }
     }
 
-    public float launchForce = 5f;
-    // Start is called before the first frame update
-    void OnTriggerEnter(Collider other)
+
+    private void Update()
+    {
+        if (isPlayerNear)
+        {
+            GamepadInput playerInput = player.GetComponent<GamepadInput>();
+            if (playerInput != null && playerInput.ButtonNorth)
+            {
+                TryOpenCrate();
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(RiseAndExpand());
+            isPlayerNear = true;
+            player = other.gameObject; // Store the player reference
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isPlayerNear = false;
+            player = null; 
+        }
+    }
+
+    private void TryOpenCrate()
+    {
+        if (currencyHandler != null && currencyHandler.totalMoney >= cratePrice)
+        {
+            currencyHandler.AddMoney(-cratePrice);
+            StartCoroutine(RiseAndExpand());
+        }
+        else
+        {
+            Debug.Log("Not enough money to open the crate.");
+        }
+    }
+
 
     void OpenChest()
     {
