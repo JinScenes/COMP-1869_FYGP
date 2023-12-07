@@ -15,6 +15,6 @@ public class CratePrice : MonoBehaviour
         lockCrate = GetComponent<LockCrate>();
 
         
-        txtPrice.text = "To Purchase:\n" + lockCrate.cratePrice.ToString();
+        txtPrice.text = "Click Y To Purchase:\n" + lockCrate.cratePrice.ToString();
     }
 }

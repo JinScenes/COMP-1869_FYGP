@@ -13,6 +13,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] public int enemyMaxCount = 20;
     [SerializeField] public int wavePenalty = 6; // when wave reach the set time (reduce the coolDownRate)
 
+    [SerializeField] public bool autoOff = false;
+    [SerializeField] public int finishWave = 2;
+
     private GameObject player;
     protected int randomXpos;
     protected int randomZpos;
@@ -35,7 +38,6 @@ public class EnemySpawner : MonoBehaviour
             distanceToPlayer = Vector3.Distance(player.transform.position, new Vector3(randomXpos, 0, randomZpos));
         }
 
-        //Debug.Log("Distance to player" + distanceToPlayer);
     }
 
     private IEnumerator E_Spawner()
@@ -43,8 +45,9 @@ public class EnemySpawner : MonoBehaviour
         // Time for new enmey spawn
         WaitForSeconds waitTime = new WaitForSeconds (spawnRate);
         // Time for reseting spawn
-        WaitForSeconds cdTime = new WaitForSeconds (coolDownRate); 
+        WaitForSeconds cdTime = new WaitForSeconds (coolDownRate);
 
+        int waveToFinish = wavePenalty + finishWave;
 
         while (enemyCount <= enemyMaxCount)
         {
@@ -72,31 +75,39 @@ public class EnemySpawner : MonoBehaviour
 
                 if (enemyCount == enemyMaxCount)
                 {
-                    Debug.Log("Wave" + waveCount + "start");
+                    //Debug.Log("Wave" + waveCount + "start");
+                    //Debug.Log(waveCount);
                     waveCount++;
-                    Debug.Log(waveCount);
                     
-                    if(waveCount >= wavePenalty)
+                    if (autoOff = true && waveCount >= waveToFinish)
                     {
-                        //print("wave count >= wave penaly");
-                        for(int i = 0; i < waveCount; i++)
+                        Destroy(this.gameObject);
+                    }
+                    else
+                    {
+                        if(waveCount >= wavePenalty)
                         {
-                            //print("start looping for once");
-                            if(coolDownRate <= 0.5f)
+                            //print("wave count >= wave penaly");
+                            for(int i = 0; i < waveCount; i++)
                             {
-                                cdTime = new WaitForSeconds(0.5f);
-                            }
-                            else
-                            {
-                                if (i >= 1)
+                                //print("start looping for once");
+                                if(coolDownRate <= 0.5f)
                                 {
-                                    cdTime = new WaitForSeconds(coolDownRate -= 0.5f);
+                                    cdTime = new WaitForSeconds(0.5f);
+                                }
+                                else
+                                {
+                                    if (i >= 1)
+                                    {
+                                        cdTime = new WaitForSeconds(coolDownRate -= 0.5f);
                                 
-                                    break;
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
+
 
                     yield return cdTime;
 
@@ -105,6 +116,5 @@ public class EnemySpawner : MonoBehaviour
 
             }
         }
-
     } 
 }

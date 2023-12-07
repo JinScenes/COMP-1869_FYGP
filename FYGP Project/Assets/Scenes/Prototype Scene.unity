@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1040074916}
-  totalMoney: 3000
+  totalMoney: 0
 --- !u!114 &113722793 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6906166266710731078, guid: 9908befa5ac335f4c91523e3a62ae09e, type: 3}
@@ -3386,7 +3386,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &836132635
 Transform:
   m_ObjectHideFlags: 0
@@ -3422,12 +3422,14 @@ MonoBehaviour:
   - {fileID: 3687906279373907380, guid: 0adf558db0de1e146a90bb10ea98c534, type: 3}
   - {fileID: 2553114667187843083, guid: 5779897d21956f14f8b8a60658597804, type: 3}
   spawnRange: 5
-  spawnRate: 0.8
-  coolDownRate: 20
+  spawnRate: 0.1
+  coolDownRate: 1
   xPos: 15
   zPos: 25
-  enemyMaxCount: 20
-  wavePenalty: 8
+  enemyMaxCount: 3
+  wavePenalty: 2
+  autoOff: 1
+  finishWave: 1
 --- !u!114 &836132637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6417,13 +6419,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
+      propertyPath: availableItems.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
       propertyPath: availableGuns.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 90f044c2e593752429249b52cf75fe51, type: 2}
+      objectReference: {fileID: 11400000, guid: 79166e9a3b35f7f49b244c41289ebbaa, type: 2}
     - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
       propertyPath: availableGuns.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 90f044c2e593752429249b52cf75fe51, type: 2}
+    - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
+      propertyPath: availableItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 599083846393710439, guid: 210476b9402fc19478bb3af638b9fdaa, type: 3}
+    - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
+      propertyPath: availableItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 599083846393710439, guid: 23058a19c9daada449668f4f9c7204fb, type: 3}
+    - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
+      propertyPath: availableItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 599083846393710439, guid: 57da45ed617abd941a74486c1e2cfdcd, type: 3}
+    - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
+      propertyPath: availableItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 599083846393710439, guid: 57da45ed617abd941a74486c1e2cfdcd, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
