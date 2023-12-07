@@ -238,8 +238,8 @@ GameObject:
   - component: {fileID: 1826234921569714100}
   - component: {fileID: 8886929487082634486}
   - component: {fileID: 5491919070553087905}
-  - component: {fileID: 5274424274928035762}
   - component: {fileID: 2319537497996811040}
+  - component: {fileID: 5274424274928035762}
   m_Layer: 6
   m_Name: Soldier Slow Zombie
   m_TagString: Enemy
@@ -337,6 +337,29 @@ NavMeshAgent:
   m_BaseOffset: -0.015
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &2319537497996811040
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2553114667187843083}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3886301
+  m_Height: 1.5518687
+  m_Direction: 1
+  m_Center: {x: 0.00002753733, y: 0.79686975, z: 0.0075733666}
 --- !u!114 &5274424274928035762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,6 +400,7 @@ MonoBehaviour:
   minStepInterval: 0.137
   numberHealth: 0
   numberMovement: 0
+  moneyLoot: 20
   playerTransforms: []
   originPos: {fileID: 0}
   nextAttackTime: 0
@@ -387,29 +411,6 @@ MonoBehaviour:
   canSee: 0
   ready: 0
   IsMove: 0
---- !u!136 &2319537497996811040
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2553114667187843083}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3886301
-  m_Height: 1.5518687
-  m_Direction: 1
-  m_Center: {x: 0.00002753733, y: 0.79686975, z: 0.0075733666}
 --- !u!1 &3055495431444717439
 GameObject:
   m_ObjectHideFlags: 0

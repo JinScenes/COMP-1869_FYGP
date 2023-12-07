@@ -35,6 +35,10 @@ public class EnemyFSM : MonoBehaviour
     [Range(0, 5)] public int numberHealth;
     [Range(0, 20)] public int numberMovement;
 
+    //new
+    [Range(0, 100)] public int moneyLoot;
+
+
     //HIDDEN VARIABLES
     [HideInInspector] public List<Transform> playerTransforms = new List<Transform>();
     [HideInInspector] public Transform originPos;
@@ -49,10 +53,7 @@ public class EnemyFSM : MonoBehaviour
     [HideInInspector] public bool ready;
     [HideInInspector] public bool IsMove;
 
-
-    //Currency
-
-    CurrencyHandler currencyHandler;
+    private CurrencyHandler currencyHandler;
 
     private void Awake()
     {
@@ -66,6 +67,9 @@ public class EnemyFSM : MonoBehaviour
         if (playerObjectNames == null) playerObjectNames = new List<string>();
         if (attackPoint == null) attackPoint = transform.Find("AttackPoint");
         if (healthBarUI == null) healthBarUI = transform.Find("HealthBar_Canvas/Slider").GetComponent<Slider>();
+
+        //added
+        currencyHandler = FindObjectOfType<CurrencyHandler>();
     }
 
     private void Update()
@@ -79,11 +83,18 @@ public class EnemyFSM : MonoBehaviour
         }
         else
         {
-            //currencyHandler.OnEnemyDefeated();
+            //added 
+
+            if (currencyHandler != null)
+            {
+                currencyHandler.AddMoney(moneyLoot);
+            }
+            //
             Destroy(gameObject, 0.1f);
+           
         }
     }
-
+    
     public Transform GetClosestPlayer()
     {
         return detectionModule.GetClosestPlayer();
