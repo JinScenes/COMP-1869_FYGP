@@ -1,19 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Extraction : MonoBehaviour
 {
-    public GameObject flare; // extractionSpawners
+    public GameObject flare, tpLoc; 
     private HashSet<GameObject> playersInTrigger = new HashSet<GameObject>();
-    public int requiredPlayers = 0; // I needa make this dynamic 💀
+    public int requiredPlayers = 0; 
     private Coroutine extractionCoroutine;
-    public float extractionDuration = 20f; 
+    public float extractionDuration = 20f;
+    public GameObject[] extractionSpawners;
+    public TextMeshProUGUI extractionText;
 
     void Start()
     {
+        extractionText.enabled = false;
         flare.SetActive(false);
-        //extractionSpawners.SetActive(false);
+        foreach (GameObject spawner in extractionSpawners)
+        {
+            spawner.SetActive(false);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -25,6 +32,7 @@ public class Extraction : MonoBehaviour
             if (playersInTrigger.Count == requiredPlayers && extractionCoroutine == null)
             {
                 extractionCoroutine = StartCoroutine(ExtractionCoroutine());
+                extractionText.enabled = true;
             }
         }
     }
@@ -39,7 +47,11 @@ public class Extraction : MonoBehaviour
                 StopCoroutine(extractionCoroutine);
                 extractionCoroutine = null;
                 flare.SetActive(false);
-                //extractionSpawners.SetActive(true);
+                extractionText.enabled = false;
+                foreach (GameObject spawner in extractionSpawners)
+                {
+                    spawner.SetActive(true);
+                }
             }
         }
     }
@@ -53,6 +65,12 @@ public class Extraction : MonoBehaviour
         while (timeRemaining > 0)
         {
             yield return new WaitForSeconds(1f);
+            // Enables the spawners so more zombies spawn while extracting
+            foreach (GameObject spawner in extractionSpawners)
+            {
+                spawner.SetActive(true);
+            }
+
             if (playersInTrigger.Count < requiredPlayers)
             {
                 // Not enough players, abort extraction
@@ -61,7 +79,9 @@ public class Extraction : MonoBehaviour
                 yield break;
             }
             timeRemaining -= 1f;
+            extractionText.text = "Extraction Complete in: " + timeRemaining;
             Debug.Log(timeRemaining);
+
         }
         Extracting(); // this could be the shop stuff maybe? 
     }
@@ -69,5 +89,13 @@ public class Extraction : MonoBehaviour
     private void Extracting()
     {
         Debug.Log("Extraction Complete!");
+        Destroy(this.gameObject);
+        foreach (GameObject spawner in extractionSpawners)
+        {
+            // TP Camera & Players
+            //GameObject.FindGameObjectWithTag("MainCamera").transform.position = ;
+            spawner.SetActive(false);
+        }
+        
     }
 }

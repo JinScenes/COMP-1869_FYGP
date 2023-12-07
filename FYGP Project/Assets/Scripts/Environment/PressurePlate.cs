@@ -6,6 +6,7 @@ public class PressurePlate : MonoBehaviour
 {
     [Tooltip("Unique identifier for a pair of pressure plates. Pressure plates with the same ID form a pair.")]
     public string pairID;
+    public GameObject cDoor1, cDoor2, oDoor1, oDoor2;
 
     [SerializeField] private float initialTimeFrame = 2.0f;
 
@@ -19,6 +20,15 @@ public class PressurePlate : MonoBehaviour
         if (string.IsNullOrEmpty(pairID))
         {
             Debug.LogWarning("You need to put a number for PairID");
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (ActionOn == true)
+        {
+            powerOn();
+            ActionOn = false;
         }
     }
 
@@ -103,5 +113,19 @@ public class PressurePlate : MonoBehaviour
 
         Debug.Log("All pairs activated.");
         ActionOn = true;
+    }
+
+    private void powerOn()
+    {
+        cDoor1.SetActive(false);
+        cDoor2.SetActive(false);
+        oDoor1.SetActive(true);
+        oDoor2.SetActive(true);
+
+        GameObject[] lights = GameObject.FindGameObjectsWithTag("StreetLight");
+        foreach (GameObject light in lights)
+        {
+            light.SetActive(true);
+        }
     }
 }
