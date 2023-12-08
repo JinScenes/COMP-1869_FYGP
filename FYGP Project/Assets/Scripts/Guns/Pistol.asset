@@ -17,7 +17,7 @@ MonoBehaviour:
   canStack: 0
   consumable: 0
   gunModel: {fileID: 2919659897700484028, guid: c8a7e9e58f1057b45b928f4d59838c94, type: 3}
-  maxAmmo: 1
+  maxAmmo: 20
   firerate: 0.6
   reload: {fileID: 0}
   fire: {fileID: 0}

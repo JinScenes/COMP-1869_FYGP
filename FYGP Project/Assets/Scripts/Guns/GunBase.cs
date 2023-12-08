@@ -142,7 +142,7 @@ public class GunBase : MonoBehaviour
                 nextFireTime = Time.time + 1f / FireRate;
                 LaunchProjectile();
                 ShowMuzzleFlash();
-                // currentAmmo--;
+                 currentAmmo--;
                 gamepadInput.VibrateForDuration(0.75f, 0.75f, 0.1f);
                 Debug.Log("Vibration called for Projectile Fire");
             }
@@ -152,7 +152,7 @@ public class GunBase : MonoBehaviour
                 nextFireTime = Time.time + 1f / FireRate;
                 ShotgunFire();
                 ShowMuzzleFlash();
-                //currentAmmo--;
+                currentAmmo--;
                 gamepadInput.VibrateForDuration(0.75f, 0.75f, 0.1f);
                 Debug.Log("Vibration called for Projectile Fire");
             }
@@ -224,7 +224,7 @@ public class GunBase : MonoBehaviour
     public void LaunchProjectile()
     {
 
-        int ammoCount = 0;
+        //int ammoCount = 0;
         float speed = Speed;
         float offset;
         if (applyStrobeOffset)
