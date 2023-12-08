@@ -4,16 +4,16 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class Extraction : MonoBehaviour
+public class FinalExtraction : MonoBehaviour
 {
-    public GameObject flare, tpLoc, tpOrigin; 
+    public GameObject flare, tpLoc; 
     private HashSet<GameObject> playersInTrigger = new HashSet<GameObject>();
     public int requiredPlayers = 0; 
     private Coroutine extractionCoroutine;
     public float extractionDuration = 20f;
     public GameObject[] extractionSpawners;
     public TextMeshProUGUI extractionText;
-    
+    public bool isFinalExtractor = true;
 
     void Start()
     {
@@ -90,16 +90,15 @@ public class Extraction : MonoBehaviour
 
     private void Extracting()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject pl in players)
+        if (isFinalExtractor == true)
         {
-            pl.transform.position = tpLoc.transform.position;
+            SceneManager.LoadScene("EndScreen");
         }
-
         Debug.Log("Extraction Complete!");
         Destroy(this.gameObject);
         foreach (GameObject spawner in extractionSpawners)
         {
+            // TP Camera & Players
             //GameObject.FindGameObjectWithTag("MainCamera").transform.position = ;
             spawner.SetActive(false);
         }

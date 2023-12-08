@@ -20,6 +20,7 @@ public class PlayerStatsHandler : MonoBehaviour
     void Awake()
     {
         GameObject.Find("Extraction").GetComponent<Extraction>().requiredPlayers++;
+        GameObject.Find("FinalExtraction").GetComponent<FinalExtraction>().requiredPlayers++;
 
         playerIndex = GetComponent<GamepadInput>().playerIndex;
         playerStats = new PlayerStats(playerIndex, weightItem,holder, gunBase, gameObject.GetComponent<Consumables>());
