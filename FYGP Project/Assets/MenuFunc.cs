@@ -42,10 +42,15 @@ public class MenuFunc : MonoBehaviour
         }
     }
 
-    public void  QuitGame()
+    public void  QuitLevel()
     {
         SceneManager.LoadScene(0);
     }
+
+    public void quitGame()
+    {
+        Application.Quit();
+    } 
     public void StartGame()
     {
         SceneManager.LoadScene(1);
