@@ -136,69 +136,23 @@ public class GunBase : MonoBehaviour
             {
                 ShootHitscan();
             }*/
-
-
-            print("CUR GUN: " + currentGunName);
             if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
             {
-
-                switch (currentGunName)
-                {
-                    case "Pistol":
-                        AudioManager.instance.PlayAudios("Pistol Dry Shot");
-                        break;
-                    case "Rifle":
-                        AudioManager.instance.PlayAudios("Assault Rifle Shot");
-                        break;
-                    case "Smg":
-                        AudioManager.instance.PlayAudios("SMG Dry Shot");
-                        break;
-                    case "Sniper":
-                        AudioManager.instance.PlayAudios("Sniper Dry Shot");
-                        break;
-                    case "Shotgun":
-                        AudioManager.instance.PlayAudios("Shotgun Dry Shot");
-                        break;
-                    default:
-                        break;
-                }
+                AudioManager.instance.PlayAudios("Assault Rifle Dry Shot");
                 nextFireTime = Time.time + 1f / FireRate;
                 LaunchProjectile();
                 ShowMuzzleFlash();
-                // currentAmmo--;
+                 currentAmmo--;
                 gamepadInput.VibrateForDuration(0.75f, 0.75f, 0.1f);
                 Debug.Log("Vibration called for Projectile Fire");
-
-
             }
 
             if (fireMode == FireMode.Cone && Time.time >= nextFireTime && !isReloading)
             {
-
-                switch (currentGunName)
-                {
-                    case "Pistol":
-                        AudioManager.instance.PlayAudios("Pistol Dry Shot");
-                        break;
-                    case "Rifle":
-                        AudioManager.instance.PlayAudios("Assault Rifle Shot");
-                        break;
-                    case "Smg":
-                        AudioManager.instance.PlayAudios("SMG Dry Shot");
-                        break;
-                    case "Sniper":
-                        AudioManager.instance.PlayAudios("Sniper Dry Shot");
-                        break;
-                    case "Shotgun":
-                        AudioManager.instance.PlayAudios("Shotgun Dry Shot");
-                        break;
-                    default:
-                        break;
-                }
                 nextFireTime = Time.time + 1f / FireRate;
                 ShotgunFire();
                 ShowMuzzleFlash();
-                //currentAmmo--;
+                currentAmmo--;
                 gamepadInput.VibrateForDuration(0.75f, 0.75f, 0.1f);
                 Debug.Log("Vibration called for Projectile Fire");
             }
@@ -210,26 +164,7 @@ public class GunBase : MonoBehaviour
 
     IEnumerator Reload()
     {
-        switch (currentGunName)
-        {
-            case "Pistol":
-                AudioManager.instance.PlayAudios("Pistol Reload");
-                break;
-            case "Rifle":
-                AudioManager.instance.PlayAudios("Assault Rifle Reload");
-                break;
-            case "Smg":
-                AudioManager.instance.PlayAudios("SMG Reload");
-                break;
-            case "Sniper":
-                AudioManager.instance.PlayAudios("Sniper Reload");
-                break;
-            case "Shotgun":
-                AudioManager.instance.PlayAudios("Shotgun Reload");
-                break;
-            default:
-                break;
-        }
+        AudioManager.instance.PlayAudios("Assault Rifle Reload");
         Vector3 reloadUIPosition = gameObject.transform.parent.position+ new Vector3(0, 2, 0);
 
         
