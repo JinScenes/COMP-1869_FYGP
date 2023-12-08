@@ -706,6 +706,285 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
+--- !u!1 &216665262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 216665264}
+  - component: {fileID: 216665263}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &216665263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216665262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf333907a62fce48b7e3b4e4e860643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundGroups:
+  - groupName: Weapons
+    sounds:
+    - audioName: Drop Weapon
+      clip: {fileID: 8300000, guid: 6e2d815da8a1f294495a22da1574c56c, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Assault Rifle Dry Shot
+      clip: {fileID: 8300000, guid: 90d3ce364ff527847bfda48f8d9e54db, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Pistol Dry Shot
+      clip: {fileID: 8300000, guid: e186d52ec6ff352439f3a5f160e24eb3, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Rocket Launcher Dry Shot
+      clip: {fileID: 8300000, guid: 378a1bf232ef6e6438920b96e4a705f2, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Shotgun Dry Shot
+      clip: {fileID: 8300000, guid: ae953875c64287f428b188320d62e020, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: SMG Dry Shot
+      clip: {fileID: 8300000, guid: ac2dc06e522e40e43a53efadaf9ed2fd, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Sniper Dry Shot
+      clip: {fileID: 8300000, guid: 26709cde0ea16804290e70143f127c4a, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Assault Rifle Pickup
+      clip: {fileID: 8300000, guid: 6b84e5ade1a26bb40bbda085ecf332ad, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Pistol Pickup
+      clip: {fileID: 8300000, guid: afe655ac7c5cc314398a0b1b5a37f9b0, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Rocket Launcher Pickup
+      clip: {fileID: 8300000, guid: 26709cde0ea16804290e70143f127c4a, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Shotgun Pickup
+      clip: {fileID: 8300000, guid: 1a3c9eb4c87252f4fb6a631053061626, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: SMG Pickup
+      clip: {fileID: 8300000, guid: edb05b4cef2c515489b803f4aaf970e0, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Sniper Pickup
+      clip: {fileID: 8300000, guid: 440fc72ee60fcc84ebf9a8117dc00724, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Assault Rifle Reload
+      clip: {fileID: 8300000, guid: 793907e6c1912b64288deb03719536cd, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Pistol Reload
+      clip: {fileID: 8300000, guid: d1249365f876f01498053b866a325fb1, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Rocket Launcher Reload
+      clip: {fileID: 8300000, guid: 1a9585ef28ebf3346ad48f07e8ccf714, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Shotgun Reload
+      clip: {fileID: 8300000, guid: 01eddfc9715451c41b1e508b286029ee, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: SMG Reload
+      clip: {fileID: 8300000, guid: 793907e6c1912b64288deb03719536cd, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Sniper Reload
+      clip: {fileID: 8300000, guid: ca92693ba84da1f47bcc1ac3180d8c56, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Assault Rifle Shot
+      clip: {fileID: 8300000, guid: 7f2806fde3a255649a7791ff4f595ec8, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Pistol Shot
+      clip: {fileID: 8300000, guid: 9bad92f21b96c8843a53c0febad2eea3, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Rocket Launcher Shot
+      clip: {fileID: 8300000, guid: 2f0597ee5f143514c872b5a03787e820, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Shotgun Shot
+      clip: {fileID: 8300000, guid: bdea9327989c6284ba99d807d21ac3a5, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: SMG Shot
+      clip: {fileID: 8300000, guid: fe2a57540cf224a4093334f08e20e49c, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Sniper Shot
+      clip: {fileID: 8300000, guid: e83381717127af9449ebac4691448c07, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Cocking Sniper
+      clip: {fileID: 8300000, guid: 50595859e6b13d54cac61a7edac789f1, type: 3}
+      type: 1
+      is3D: 0
+  - groupName: Zombies
+    sounds:
+    - audioName: Zombie Attack
+      clip: {fileID: 8300000, guid: 68e32901b6ca5cd48b0c37126c8ffe20, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Zombie Death
+      clip: {fileID: 8300000, guid: bbf8c768abb25a04d8ea9df56e3a7be8, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Zombiei Growl
+      clip: {fileID: 8300000, guid: 419da09234d66194db9880f8055527c1, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Zombie Hurt
+      clip: {fileID: 8300000, guid: d72ef8f736feab04fa14d55ff638d9e2, type: 3}
+      type: 1
+      is3D: 0
+  - groupName: Items
+    sounds:
+    - audioName: Cancel Item
+      clip: {fileID: 8300000, guid: a6805235c305df24f919665e6896c7ad, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: BodyArmor Consume
+      clip: {fileID: 8300000, guid: 61eaf234509f0084dac3133751bd9900, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Bandage Consume
+      clip: {fileID: 8300000, guid: 7591fcd9eaefecb4aae8d3b504b123e8, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: EnergyDrink Consume
+      clip: {fileID: 8300000, guid: eaa751cb60043a34f83acd79f3e37ab1, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Medkit Consume
+      clip: {fileID: 8300000, guid: 1d059f549282c39429ea8334dca45e30, type: 3}
+      type: 1
+      is3D: 1
+    - audioName: Rollerskates Consume
+      clip: {fileID: 8300000, guid: 31e9c8b9d31606f4dbe07a6160f776d1, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: SuperSyringe Consume
+      clip: {fileID: 8300000, guid: ea492b7a683e8a641818a6e3e0680471, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Syringe Consume
+      clip: {fileID: 8300000, guid: b878618b77aed5b41b4b64d78f21cc29, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: BodyArmor Pickup
+      clip: {fileID: 8300000, guid: 3e0e4bce5857095448d5fb3a8f18d7de, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Bandage Pickup
+      clip: {fileID: 8300000, guid: 9222fc499799b814c8f409bcebf5563f, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: EnergyDrink Pickup
+      clip: {fileID: 8300000, guid: 17825e243e8cf6d43882b29eab7552d5, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Medkit Pickup
+      clip: {fileID: 8300000, guid: 34398fb01f73f554caa53d1c188c4444, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Rollerskates Pickup
+      clip: {fileID: 8300000, guid: 481cfa1de6c059b4f88d409b4eb3156b, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: SuperSyringe Pickup
+      clip: {fileID: 8300000, guid: 7c7d4af5416c57345a82ddff5e3ddd54, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Syringe Pickup
+      clip: {fileID: 8300000, guid: 4e527c387cc69064fb36d8b58db5262d, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Bandage Drop
+      clip: {fileID: 8300000, guid: 7a7aac6e945563046829219d53303cec, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: BodyArmor Drop
+      clip: {fileID: 8300000, guid: 6de83648672980249adbbb918a2f8578, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: EnergyDrink Drop
+      clip: {fileID: 8300000, guid: 4bfb0820c46c848449e6390fa8856112, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Medkit Drop
+      clip: {fileID: 8300000, guid: 08b7c6683196bd74db6162760e69ae13, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Rollerskates Drop
+      clip: {fileID: 8300000, guid: 3f1c065b277995448b8e30e7676713f8, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: SuperSyringe Drop
+      clip: {fileID: 8300000, guid: e260e4cba4fc3dd47bfee7d7da3ff5f4, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Syringe Drop
+      clip: {fileID: 8300000, guid: c0c21ec935a995f488627578b6482532, type: 3}
+      type: 1
+      is3D: 0
+  - groupName: Player
+    sounds:
+    - audioName: Player Footstep
+      clip: {fileID: 8300000, guid: eebfba800ebcdb84e94c9a76b60d62ed, type: 3}
+      type: 0
+      is3D: 0
+    - audioName: Player Death
+      clip: {fileID: 8300000, guid: 2b9695c8de50d01499466785ee6318ea, type: 3}
+      type: 0
+      is3D: 0
+    - audioName: Player Damaged
+      clip: {fileID: 8300000, guid: 4fc552df03792ac41bdbd0ba31fe4d01, type: 3}
+      type: 0
+      is3D: 0
+  - groupName: Misc
+    sounds:
+    - audioName: Crate Opening
+      clip: {fileID: 8300000, guid: cc26a8402baaab441a74affe082d79c8, type: 3}
+      type: 1
+      is3D: 0
+--- !u!4 &216665264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216665262}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &230208560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6807,6 +7086,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.050000004, y: 0.026928011, z: 0.0743172}
   m_Center: {x: 0.0000000019477455, y: -0.011535998, z: 0.012158599}
+--- !u!1 &1358540715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358540716}
+  m_Layer: 0
+  m_Name: ----------------------------------- (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1358540716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358540715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1363992462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14006,7 +14316,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1951932997}
   - component: {fileID: 1951932998}
-  - component: {fileID: 1951933000}
   - component: {fileID: 1951932999}
   - component: {fileID: 1951933001}
   m_Layer: 0
@@ -14099,253 +14408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e58617477c0b1e419a4608124584e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1951933000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1951932995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdf333907a62fce48b7e3b4e4e860643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundGroups:
-  - groupName: Weapons
-    sounds:
-    - audioName: Drop Weapon
-      clip: {fileID: 8300000, guid: 6e2d815da8a1f294495a22da1574c56c, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Assault Rifle Dry Shot
-      clip: {fileID: 8300000, guid: 90d3ce364ff527847bfda48f8d9e54db, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Pistol Dry Shot
-      clip: {fileID: 8300000, guid: e186d52ec6ff352439f3a5f160e24eb3, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Rocket Launcher Dry Shot
-      clip: {fileID: 8300000, guid: 378a1bf232ef6e6438920b96e4a705f2, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Shotgun Dry Shot
-      clip: {fileID: 8300000, guid: ae953875c64287f428b188320d62e020, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: SMG Dry Shot
-      clip: {fileID: 8300000, guid: ac2dc06e522e40e43a53efadaf9ed2fd, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Sniper Dry Shot
-      clip: {fileID: 8300000, guid: 26709cde0ea16804290e70143f127c4a, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Assault Rifle Pickup
-      clip: {fileID: 8300000, guid: 6b84e5ade1a26bb40bbda085ecf332ad, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Pistol Pickup
-      clip: {fileID: 8300000, guid: afe655ac7c5cc314398a0b1b5a37f9b0, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Rocket Launcher Pickup
-      clip: {fileID: 8300000, guid: 26709cde0ea16804290e70143f127c4a, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Shotgun Pickup
-      clip: {fileID: 8300000, guid: 1a3c9eb4c87252f4fb6a631053061626, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: SMG Pickup
-      clip: {fileID: 8300000, guid: edb05b4cef2c515489b803f4aaf970e0, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Sniper Pickup
-      clip: {fileID: 8300000, guid: 440fc72ee60fcc84ebf9a8117dc00724, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Assault Rifle Reload
-      clip: {fileID: 8300000, guid: 793907e6c1912b64288deb03719536cd, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Pistol Reload
-      clip: {fileID: 8300000, guid: d1249365f876f01498053b866a325fb1, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Rocket Launcher Reload
-      clip: {fileID: 8300000, guid: 1a9585ef28ebf3346ad48f07e8ccf714, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Shotgun Reload
-      clip: {fileID: 8300000, guid: 01eddfc9715451c41b1e508b286029ee, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: SMG Reload
-      clip: {fileID: 8300000, guid: 793907e6c1912b64288deb03719536cd, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Sniper Reload
-      clip: {fileID: 8300000, guid: ca92693ba84da1f47bcc1ac3180d8c56, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Assault Rifle Shot
-      clip: {fileID: 8300000, guid: 7f2806fde3a255649a7791ff4f595ec8, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Pistol Shot
-      clip: {fileID: 8300000, guid: 9bad92f21b96c8843a53c0febad2eea3, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Rocket Launcher Shot
-      clip: {fileID: 8300000, guid: 2f0597ee5f143514c872b5a03787e820, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Shotgun Shot
-      clip: {fileID: 8300000, guid: bdea9327989c6284ba99d807d21ac3a5, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: SMG Shot
-      clip: {fileID: 8300000, guid: fe2a57540cf224a4093334f08e20e49c, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Sniper Shot
-      clip: {fileID: 8300000, guid: e83381717127af9449ebac4691448c07, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Cocking Sniper
-      clip: {fileID: 8300000, guid: 50595859e6b13d54cac61a7edac789f1, type: 3}
-      type: 1
-      is3D: 0
-  - groupName: Zombies
-    sounds:
-    - audioName: Zombie Attack
-      clip: {fileID: 8300000, guid: 68e32901b6ca5cd48b0c37126c8ffe20, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Zombie Death
-      clip: {fileID: 8300000, guid: bbf8c768abb25a04d8ea9df56e3a7be8, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Zombiei Growl
-      clip: {fileID: 8300000, guid: 419da09234d66194db9880f8055527c1, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Zombie Hurt
-      clip: {fileID: 8300000, guid: d72ef8f736feab04fa14d55ff638d9e2, type: 3}
-      type: 1
-      is3D: 0
-  - groupName: Items
-    sounds:
-    - audioName: Cancel Item
-      clip: {fileID: 8300000, guid: a6805235c305df24f919665e6896c7ad, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: BodyArmor Consume
-      clip: {fileID: 8300000, guid: 61eaf234509f0084dac3133751bd9900, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Bandage Consume
-      clip: {fileID: 8300000, guid: 7591fcd9eaefecb4aae8d3b504b123e8, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: EnergyDrink Consume
-      clip: {fileID: 8300000, guid: eaa751cb60043a34f83acd79f3e37ab1, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Medkit Consume
-      clip: {fileID: 8300000, guid: 1d059f549282c39429ea8334dca45e30, type: 3}
-      type: 1
-      is3D: 1
-    - audioName: Rollerskates Consume
-      clip: {fileID: 8300000, guid: 31e9c8b9d31606f4dbe07a6160f776d1, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: SuperSyringe Consume
-      clip: {fileID: 8300000, guid: ea492b7a683e8a641818a6e3e0680471, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Syringe Consume
-      clip: {fileID: 8300000, guid: b878618b77aed5b41b4b64d78f21cc29, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: BodyArmor Pickup
-      clip: {fileID: 8300000, guid: 3e0e4bce5857095448d5fb3a8f18d7de, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Bandage Pickup
-      clip: {fileID: 8300000, guid: 9222fc499799b814c8f409bcebf5563f, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: EnergyDrink Pickup
-      clip: {fileID: 8300000, guid: 17825e243e8cf6d43882b29eab7552d5, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Medkit Pickup
-      clip: {fileID: 8300000, guid: 34398fb01f73f554caa53d1c188c4444, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Rollerskates Pickup
-      clip: {fileID: 8300000, guid: 481cfa1de6c059b4f88d409b4eb3156b, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: SuperSyringe Pickup
-      clip: {fileID: 8300000, guid: 7c7d4af5416c57345a82ddff5e3ddd54, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Syringe Pickup
-      clip: {fileID: 8300000, guid: 4e527c387cc69064fb36d8b58db5262d, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Bandage Drop
-      clip: {fileID: 8300000, guid: 7a7aac6e945563046829219d53303cec, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: BodyArmor Drop
-      clip: {fileID: 8300000, guid: 6de83648672980249adbbb918a2f8578, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: EnergyDrink Drop
-      clip: {fileID: 8300000, guid: 4bfb0820c46c848449e6390fa8856112, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Medkit Drop
-      clip: {fileID: 8300000, guid: 08b7c6683196bd74db6162760e69ae13, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Rollerskates Drop
-      clip: {fileID: 8300000, guid: 3f1c065b277995448b8e30e7676713f8, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: SuperSyringe Drop
-      clip: {fileID: 8300000, guid: e260e4cba4fc3dd47bfee7d7da3ff5f4, type: 3}
-      type: 1
-      is3D: 0
-    - audioName: Syringe Drop
-      clip: {fileID: 8300000, guid: c0c21ec935a995f488627578b6482532, type: 3}
-      type: 1
-      is3D: 0
-  - groupName: Player
-    sounds:
-    - audioName: Player Footstep
-      clip: {fileID: 8300000, guid: eebfba800ebcdb84e94c9a76b60d62ed, type: 3}
-      type: 0
-      is3D: 0
-    - audioName: Player Death
-      clip: {fileID: 8300000, guid: 2b9695c8de50d01499466785ee6318ea, type: 3}
-      type: 0
-      is3D: 0
-    - audioName: Player Damaged
-      clip: {fileID: 8300000, guid: 4fc552df03792ac41bdbd0ba31fe4d01, type: 3}
-      type: 0
-      is3D: 0
-  - groupName: Misc
-    sounds:
-    - audioName: Crate Opening
-      clip: {fileID: 8300000, guid: cc26a8402baaab441a74affe082d79c8, type: 3}
-      type: 1
-      is3D: 0
 --- !u!114 &1951933001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20521,6 +20583,8 @@ SceneRoots:
   - {fileID: 261565349}
   - {fileID: 1282596683}
   - {fileID: 1951932997}
+  - {fileID: 216665264}
+  - {fileID: 1358540716}
   - {fileID: 701982074}
   - {fileID: 885842195}
   - {fileID: 246305876}

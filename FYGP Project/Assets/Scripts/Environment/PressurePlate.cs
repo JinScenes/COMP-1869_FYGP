@@ -18,12 +18,19 @@ public class PressurePlate : MonoBehaviour
     private bool isDeactivationDelayed = false;
     private float deactivationDelay = 0.5f;
 
+    private GamepadInputManager gamepadInput;
     private Renderer plateRenderer;
 
     public static bool ActionOn { get; private set; }
 
+    private void Awake()
+    {
+        gamepadInput = FindObjectOfType<GamepadInputManager>();
+    }
+
     private void Start()
     {
+
         if (string.IsNullOrEmpty(pairID))
         {
             Debug.LogWarning("Pressure Plate requires a non-empty pairID.");
@@ -69,7 +76,7 @@ public class PressurePlate : MonoBehaviour
 
     private void ManageActivationTimer()
     {
-        int playerCount = Mathf.Max(1, GamepadInputManager.currentPlayerCount);
+        int playerCount = Mathf.Max(1, gamepadInput.currentPlayerCount);
         float adjustedTimeFrame = initialTimeFrame / playerCount;
 
         if (activatedPlates[pairID] == 1)
