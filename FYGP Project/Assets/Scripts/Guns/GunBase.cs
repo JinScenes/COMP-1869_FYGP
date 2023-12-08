@@ -136,6 +136,7 @@ public class GunBase : MonoBehaviour
             }*/
             if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
             {
+                AudioManager.instance.PlayAudios("Assault Rifle Dry Shot");
                 nextFireTime = Time.time + 1f / FireRate;
                 LaunchProjectile();
                 ShowMuzzleFlash();
@@ -161,7 +162,7 @@ public class GunBase : MonoBehaviour
 
     IEnumerator Reload()
     {
-        
+        AudioManager.instance.PlayAudios("Assault Rifle Reload");
         Vector3 reloadUIPosition = gameObject.transform.parent.position+ new Vector3(0, 2, 0);
 
         
@@ -402,7 +403,7 @@ public class GunBase : MonoBehaviour
 
     public GameObject Initialize(GunData gunData)
     {
-
+        AudioManager.instance.PlayAudios("Drop Weapon");
         animator.SetBool("isShooting", true);
         GunModel = gunData.gunModel;
         reloadTime = gunData.reloadTime;
