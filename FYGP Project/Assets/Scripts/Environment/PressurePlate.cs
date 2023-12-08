@@ -4,14 +4,16 @@ using System.Collections.Generic;
 
 public class PressurePlate : MonoBehaviour
 {
-    [Tooltip("Unique identifier for a pair of pressure plates. Pressure plates with the same ID form a pair.")]
-    public string pairID;
     public GameObject cDoor1, cDoor2, oDoor1, oDoor2;
+    [Space(20)] public string pairID;
 
     [SerializeField] private float initialTimeFrame = 2.0f;
 
     private static Dictionary<string, int> activatedPlates = new Dictionary<string, int>();
     private static Dictionary<string, Coroutine> activationTimers = new Dictionary<string, Coroutine>();
+
+    private bool isDeactivationDelayed = false;
+    private float deactivationDelay = 0.5f;
 
     public static bool ActionOn { get; private set; }
 
@@ -19,7 +21,7 @@ public class PressurePlate : MonoBehaviour
     {
         if (string.IsNullOrEmpty(pairID))
         {
-            Debug.LogWarning("You need to put a number for PairID");
+            Debug.LogWarning("Pressure Plate requires a non-empty pairID.");
         }
     }
 
@@ -27,7 +29,7 @@ public class PressurePlate : MonoBehaviour
     {
         if (ActionOn == true)
         {
-            powerOn();
+            PowerOn();
             ActionOn = false;
         }
     }
@@ -41,6 +43,7 @@ public class PressurePlate : MonoBehaviour
                 activatedPlates[pairID] = 0;
             }
             activatedPlates[pairID]++;
+            Debug.Log("Plate " + pairID + " activated. Current count: " + activatedPlates[pairID]);
             ManageActivationTimer();
         }
     }
@@ -49,20 +52,23 @@ public class PressurePlate : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>() != null && activatedPlates.ContainsKey(pairID))
         {
-            activatedPlates[pairID]--;
-            ManageActivationTimer();
+            if (!isDeactivationDelayed)
+            {
+                StartCoroutine(DelayDeactivation(pairID));
+            }
         }
     }
 
     private void ManageActivationTimer()
     {
-        float adjustedTimeFrame = initialTimeFrame / (GamepadInputManager.currentPlayerCount + 1);
+        int playerCount = Mathf.Max(1, GamepadInputManager.currentPlayerCount);
+        float adjustedTimeFrame = initialTimeFrame / playerCount;
 
         if (activatedPlates[pairID] == 1)
         {
-            if (activationTimers.ContainsKey(pairID))
+            if (activationTimers.ContainsKey(pairID) && activationTimers[pairID] != null)
             {
-                StopCoroutineSafe(pairID);
+                StopCoroutine(activationTimers[pairID]);
             }
             activationTimers[pairID] = StartCoroutine(ActivationTimer(pairID, adjustedTimeFrame));
         }
@@ -74,26 +80,35 @@ public class PressurePlate : MonoBehaviour
         CheckPairs();
     }
 
+    private IEnumerator DelayDeactivation(string id)
+    {
+        isDeactivationDelayed = true;
+        yield return new WaitForSeconds(deactivationDelay);
+        if (activatedPlates[id] > 0)
+        {
+            activatedPlates[id]--;
+        }
+        Debug.Log("Plate " + id + " deactivated after delay. Current count: " + activatedPlates[id]);
+        ManageActivationTimer();
+        isDeactivationDelayed = false;
+    }
+
     private IEnumerator ActivationTimer(string id, float timeFrame)
     {
-        Debug.Log($"Starting timer for {id} with time frame: {timeFrame}");
         yield return new WaitForSeconds(timeFrame);
 
         if (activatedPlates.ContainsKey(id) && activatedPlates[id] < 2)
         {
-            Debug.Log($"Timer expired for {id}, resetting activation.");
             activatedPlates[id] = 0;
             activationTimers[id] = null;
+            CheckPairs();
         }
-
-        CheckPairs();
     }
 
     private void StopCoroutineSafe(string id)
     {
-        if (activationTimers[id] != null)
+        if (activationTimers.ContainsKey(id) && activationTimers[id] != null)
         {
-            Debug.Log($"Stopping timer for {id}");
             StopCoroutine(activationTimers[id]);
             activationTimers[id] = null;
         }
@@ -101,21 +116,21 @@ public class PressurePlate : MonoBehaviour
 
     private static void CheckPairs()
     {
+        ActionOn = true;
         foreach (var pair in activatedPlates)
         {
             if (pair.Value < 2)
             {
+                Debug.Log("pair value is " + pair.Value);
                 ActionOn = false;
-                Debug.Log("Not all pairs are activated.");
-                return;
+                break;
             }
         }
 
-        Debug.Log("All pairs activated.");
-        ActionOn = true;
+        Debug.Log(ActionOn ? "All pairs activated." : "Not all pairs are activated.");
     }
 
-    private void powerOn()
+    private void PowerOn()
     {
         cDoor1.SetActive(false);
         cDoor2.SetActive(false);

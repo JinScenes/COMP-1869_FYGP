@@ -25,6 +25,11 @@ public class GamepadInputManager : MonoBehaviour
         PlayerManagerInstanceInitialiser();
     }
 
+    private void Update()
+    {
+        Debug.Log(currentPlayerCount);
+    }
+
     private void VarSetups()
     {
         transformManager = GetComponent<TransformManager>();
