@@ -26,6 +26,7 @@ public class PlayerStatsHandler : MonoBehaviour
         playerStats = new PlayerStats(playerIndex, weightItem,holder, gunBase, gameObject.GetComponent<Consumables>());
         playerInventory = playerStats.inventory;
         GetComponent<UpdateHealthUI>().enabled = true;
+        GameObject.Find("GameOverObj").GetComponent<GameOverHandler>().playerObjs.Add(gameObject);
         //print("Got player index" + playerIndex);
         //addInven.Raise(this, player1.inventory);
     }

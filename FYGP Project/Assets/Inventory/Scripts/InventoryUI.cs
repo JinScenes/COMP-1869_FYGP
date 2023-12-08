@@ -22,15 +22,27 @@ public class InventoryUI
         {
             case 0:
                 newInventoryUI.GetComponent<RectTransform>().localPosition = new Vector3(-850, 400, 0);
+                InvenUI.Find("PlayerIndex Label").GetComponent<TextMeshProUGUI>().color = new Color32(53, 170, 241, 255);
+                InvenUI.Find("PlayerIndex Label").Find("ImgPlayer").GetComponent<Image>().color = new Color32(53, 170, 241, 255);
+                Debug.Log("SET p1 COLOR");
                 break;
             case 1:
                 newInventoryUI.GetComponent<RectTransform>().localPosition = new Vector3(620, 400, 0);
+                InvenUI.Find("PlayerIndex Label").GetComponent<TextMeshProUGUI>().color = new Color32(243, 81, 27, 255);
+                InvenUI.Find("PlayerIndex Label").Find("ImgPlayer").GetComponent<Image>().color = new Color32(243, 81, 27, 255);
+                Debug.Log("SET p2 COLOR");
                 break;
             case 2:
                 newInventoryUI.GetComponent<RectTransform>().localPosition = new Vector3(-850, -400, 0);
+                InvenUI.Find("PlayerIndex Label").GetComponent<TextMeshProUGUI>().color = new Color32(25, 231, 62, 255);
+                InvenUI.Find("PlayerIndex Label").Find("ImgPlayer").GetComponent<Image>().color = new Color32(25, 231, 62, 255);
+                Debug.Log("SET p3 COLOR");
                 break;
             case 3:
                 newInventoryUI.GetComponent<RectTransform>().localPosition = new Vector3(620, -400, 0);
+                InvenUI.Find("PlayerIndex Label").GetComponent<TextMeshProUGUI>().color = new Color32(231, 225, 25, 255);
+                InvenUI.Find("PlayerIndex Label").Find("ImgPlayer").GetComponent<Image>().color = new Color32(231, 255, 25, 255);
+                Debug.Log("SET p4 COLOR");
                 break;
             default:
                 break;
