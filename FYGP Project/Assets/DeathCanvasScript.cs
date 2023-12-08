@@ -12,11 +12,7 @@ public class DeathCanvasScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-<<<<<<< Updated upstream
-    public  void QuitGame()
-=======
     public void QuitGame()
->>>>>>> Stashed changes
     {
         Application.Quit();
     }
