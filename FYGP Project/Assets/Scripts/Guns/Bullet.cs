@@ -55,7 +55,6 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("Enemy Hit by Raycast");
             enemy.healthModule.EnemyDamage(damage);
-            print(damage);
         }
         Destroy(gameObject);
     }
@@ -67,7 +66,6 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("Enemy Hit by SphereCollider");
             enemy.healthModule.EnemyDamage(damage);
-
         }
         Destroy(gameObject);
     }

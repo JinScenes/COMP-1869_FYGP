@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7342047996656630222}
   - component: {fileID: 2835626156260311781}
-  - component: {fileID: 6340422667309626564}
+  - component: {fileID: 6427075213714658560}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -134,7 +134,7 @@ MonoBehaviour:
   maxLength: 3
   maxWidth: 0.01
   light: {fileID: 2195005351327618771}
---- !u!114 &6340422667309626564
+--- !u!114 &6427075213714658560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,10 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463233bc18663dc4abed5cc1f7a5ba0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 50
   speed: 100
   maxDistance: 100
-  radius: 5.2
 --- !u!1 &8733511632541648662
 GameObject:
   m_ObjectHideFlags: 0

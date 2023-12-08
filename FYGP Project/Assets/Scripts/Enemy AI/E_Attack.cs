@@ -19,11 +19,12 @@ public class E_Attack
         Collider[] hitCols = Physics.OverlapSphere(enemy.attackPoint.position, enemy.attackRange, enemy.playerMask);
         Debug.Log($"Attempting attack, found {hitCols.Length} colliders");
 
+        AudioManager.instance.PlayAudios("Zombie Attack");
+
         foreach (Collider hitCol in hitCols)
         {
             if (enemy.playerObjectNames.Contains(hitCol.transform.gameObject.name))
             {
-                //Debug.Log("Applying damage");
                 hitCol.gameObject.GetComponent<PlayerController>().ApplyDamage(enemy.damage);
             }
         }
