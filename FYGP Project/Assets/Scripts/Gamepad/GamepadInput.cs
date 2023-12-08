@@ -2,6 +2,7 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.InputSystem.Android;
 using System.Collections;
+using System.Linq;
 
 [RequireComponent(typeof(PlayerInput))]
 public class GamepadInput : MonoBehaviour
@@ -200,14 +201,37 @@ public class GamepadInput : MonoBehaviour
 
     public void Vibrate(float leftMotor, float rightMotor)
     {
-        if (gamepad == null) return;
+        Gamepad currentGamepad = 
+            Gamepad.all.FirstOrDefault(gp => gp.deviceId == playerInput.devices.FirstOrDefault()?.deviceId);
 
-        gamepad.SetMotorSpeeds(leftMotor, rightMotor);
+        if (currentGamepad != null)
+        {
+            currentGamepad.SetMotorSpeeds(leftMotor, rightMotor);
+        }
+        else
+        {
+            Debug.LogWarning("Gamepad not found for vibration.");
+        }
+    }
+
+    public void VibrateForDuration(float leftMotor, float rightMotor, float duration)
+    {
+        StartCoroutine(VibrationCoroutine(leftMotor, rightMotor, duration));
+    }
+
+    private IEnumerator VibrationCoroutine(float leftMotor, float rightMotor, float duration)
+    {
+        Vibrate(leftMotor, rightMotor);
+        yield return new WaitForSeconds(duration);
+        StopVibration();
     }
 
     public void StopVibration()
     {
-        if (gamepad != null) gamepad.SetMotorSpeeds(0, 0);
+        foreach (var gamepad in Gamepad.all)
+        {
+            gamepad.SetMotorSpeeds(0, 0);
+        }
     }
 
     #endregion
@@ -252,16 +276,16 @@ public class GamepadInput : MonoBehaviour
         //Debug.Log("Touchpad Button" + TouchPadButton);
 
         //VIBRATION TEST
-        if (RightTrigger > 0 && Time.time > nextVibrationTime)
-        {
-            Vibrate(0.75f, 0.75f);
-            isVibrating = true;
-            nextVibrationTime = Time.time + vibrationDelay;
-        }
-        else if (RightTrigger <= 0 && isVibrating)
-        {
-            StopVibration();
-            isVibrating = false;
-        }
+        //if (RightTrigger > 0 && Time.time > nextVibrationTime)
+        //{
+        //    Vibrate(0.75f, 0.75f);
+        //    isVibrating = true;
+        //    nextVibrationTime = Time.time + vibrationDelay;
+        //}
+        //else if (RightTrigger <= 0 && isVibrating)
+        //{
+        //    StopVibration();
+        //    isVibrating = false;
+        //}
     }
 }

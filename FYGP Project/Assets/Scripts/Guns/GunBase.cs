@@ -40,6 +40,8 @@ public class GunBase : MonoBehaviour
     public float RotationSpeed => 72.0F;
     public float TimeBetweenShots => 1.0F / FireRate;
 
+    private GamepadInput gamepadInput;
+
     [Header("Prefabs")]
     [SerializeField]
     [Tooltip("The Bullet prefab to spawn.")]
@@ -70,6 +72,10 @@ public class GunBase : MonoBehaviour
 
     #region Generic Functions
 
+    private void Awake()
+    {
+        gamepadInput = GetComponentInParent<GamepadInput>();
+    }
 
     private void Start()
     {
@@ -130,10 +136,12 @@ public class GunBase : MonoBehaviour
         }*/
         if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
         {
-            nextFireTime = Time.time + 1f / FireRate;
+            nextFireTime = Time.time + 1f / FireRate;   
             LaunchProjectile();
             ShowMuzzleFlash();
             currentAmmo--;
+            gamepadInput.VibrateForDuration(0.75f, 0.75f, 0.1f);
+            Debug.Log("Vibration called for Projectile Fire");
         } 
 
         if(fireMode == FireMode.Cone && Time.time >= nextFireTime && !isReloading)
@@ -142,6 +150,8 @@ public class GunBase : MonoBehaviour
             ShotgunFire();
             ShowMuzzleFlash();
             currentAmmo--;
+            gamepadInput.VibrateForDuration(0.75f, 0.75f, 0.1f);
+            Debug.Log("Vibration called for Projectile Fire");
         }
 
         
