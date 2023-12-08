@@ -571,6 +571,7 @@ MonoBehaviour:
   minStepInterval: 0.137
   numberHealth: 0
   numberMovement: 0
+  moneyLoot: 30
   playerTransforms: []
   originPos: {fileID: 0}
   nextAttackTime: 0

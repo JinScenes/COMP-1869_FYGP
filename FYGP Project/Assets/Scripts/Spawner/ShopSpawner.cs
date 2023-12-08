@@ -22,6 +22,7 @@ public class ShopSpawner : MonoBehaviour
 
     private IEnumerator S_Spawner()
     {
+
         while (lootCount < totalLoots)
         {
             yield return new WaitForSeconds(lootSpawnTime);
@@ -39,10 +40,12 @@ public class ShopSpawner : MonoBehaviour
             }
             while (!isPositionSafe);
 
-            Instantiate(lootPrefab[Random.Range(0, lootPrefab.Length)], spawnPosition, Quaternion.identity);
+            Instantiate(lootPrefab[Random.Range(0, lootPrefab.Length)], spawnPosition, Quaternion.Euler(-90f, 0f, 0f));
             spawnedPositions.Add(spawnPosition);
             lootCount++;
         }
+
+        //Destroy(gameObject);
     }
 
     private bool IsSafeSpawnPosition(Vector3 position)

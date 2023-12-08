@@ -17,4 +17,7 @@ public class EnemyStats : ScriptableObject
     [Range(0, 1)] public float minStepInterval;
     [Range(0, 5)] public int numberHealth;
     [Range(0, 20)] public int numberMovement;
+
+    //new
+    [Range(0, 100)] public int moneyloot;
 }

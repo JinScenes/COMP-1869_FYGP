@@ -1,50 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CurrencyHandler : MonoBehaviour
 {
-    public PlayerStatsHandler playerStatsHandler;
-    public int currencyPerEnemy = 10;
-    public GameObject enemies;
+    [SerializeField] TextMeshProUGUI moneyText;
+    public int totalMoney;
 
     void Awake()
     {
-        // Initialize or link to PlayerStatsHandler, if necessary
-        // For example, you might find it like this if it's attached to the same GameObject:
-        playerStatsHandler = GetComponent<PlayerStatsHandler>();
+        totalMoney = 0;
+        moneyText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Update()
     {
-        // enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        //if 
+        moneyText.text = totalMoney.ToString();
     }
 
-    // Method when an enemy is defeated
-    public void OnEnemyDefeated()
+    public void AddMoney(int amount)
     {
-        PlayerStats.currency += currencyPerEnemy;
-        UpdateCurrencyUI();
+        totalMoney += amount;
     }
 
-    // Method to spend currency in the shop
-    public bool TrySpendCurrency(int amount)
-    {
-        if (PlayerStats.currency >= amount)
-        {
-            PlayerStats.currency -= amount;
-            UpdateCurrencyUI();
-            return true; 
-        }
-
-        return false; // Not enough currency
-    }
-
-    // Update the UI to reflect the current currency amount
-    private void UpdateCurrencyUI()
-    {
-        // Assuming you have a method in PlayerStatsHandler or somewhere similar to update the UI
-        //playerStatsHandler.UpdateCurrencyUI(PlayerStats.currency);
-    }
+    //private void UpdateMoneyText(int amount)
+    //{
+    //    moneyText.text = amount.ToString();
+    //}
+       
 }
