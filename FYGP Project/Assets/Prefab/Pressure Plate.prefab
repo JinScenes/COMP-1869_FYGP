@@ -118,5 +118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66383800838d1084f9c5881162a4ad9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cDoor1: {fileID: 0}
+  cDoor2: {fileID: 0}
+  oDoor1: {fileID: 0}
+  oDoor2: {fileID: 0}
   pairID: 1
+  activatedMaterial: {fileID: 2100000, guid: 5165e62d666a76e4eb25eddf883139a1, type: 2}
+  deactivatedMaterial: {fileID: 2100000, guid: dbb4bb64f68ad1748808e900bdf93d21, type: 2}
   initialTimeFrame: 2
