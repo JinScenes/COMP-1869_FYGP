@@ -5494,7 +5494,7 @@ MonoBehaviour:
       type: 1
       is3D: 0
     - audioName: Shotgun Dry Shot
-      clip: {fileID: 8300000, guid: ae953875c64287f428b188320d62e020, type: 3}
+      clip: {fileID: 8300000, guid: b1531dab3d474ca43b475018fa006c4c, type: 3}
       type: 1
       is3D: 0
     - audioName: SMG Dry Shot
@@ -5502,7 +5502,7 @@ MonoBehaviour:
       type: 1
       is3D: 0
     - audioName: Sniper Dry Shot
-      clip: {fileID: 8300000, guid: 26709cde0ea16804290e70143f127c4a, type: 3}
+      clip: {fileID: 8300000, guid: 40f59dfe924931b45ad538d51771d007, type: 3}
       type: 1
       is3D: 0
     - audioName: Assault Rifle Pickup
@@ -5554,7 +5554,7 @@ MonoBehaviour:
       type: 1
       is3D: 0
     - audioName: Assault Rifle Shot
-      clip: {fileID: 8300000, guid: 7f2806fde3a255649a7791ff4f595ec8, type: 3}
+      clip: {fileID: 8300000, guid: 85bf6cf6092bba7469a59db4b824afc2, type: 3}
       type: 1
       is3D: 0
     - audioName: Pistol Shot
@@ -10968,7 +10968,7 @@ PrefabInstance:
     - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
       propertyPath: availableGuns.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 90f044c2e593752429249b52cf75fe51, type: 2}
+      objectReference: {fileID: 11400000, guid: 6e8b21631afdb294da20d54dc4abd0ea, type: 2}
     - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
       propertyPath: availableGuns.Array.data[1]
       value: 
