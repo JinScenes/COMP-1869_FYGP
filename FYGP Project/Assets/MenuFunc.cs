@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine;
 
 public class MenuFunc : MonoBehaviour
 {
@@ -13,7 +10,6 @@ public class MenuFunc : MonoBehaviour
     public Button Quit;
     public Button StartButton;
     [SerializeField] private GameObject pauseMenuUI;
-    private GamepadInput pInput;
     [SerializeField] private Slider Volume;
     
     void Start()
