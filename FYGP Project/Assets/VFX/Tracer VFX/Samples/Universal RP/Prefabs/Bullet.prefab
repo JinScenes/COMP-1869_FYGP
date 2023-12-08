@@ -149,6 +149,7 @@ MonoBehaviour:
   damage: 10
   speed: 100
   maxDistance: 100
+  radius: 5.2
 --- !u!1 &8733511632541648662
 GameObject:
   m_ObjectHideFlags: 0

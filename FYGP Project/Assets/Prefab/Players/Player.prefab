@@ -1603,7 +1603,7 @@ MonoBehaviour:
   currentAmmo: 0
   isReloading: 0
   nextFireTime: 0
-  NewData: {fileID: 0}
+  NewData: {fileID: 11400000, guid: 90f044c2e593752429249b52cf75fe51, type: 2}
   bulletPrefab: {fileID: 2835626156260311781, guid: c7ed5ad9208d4014f821037758c7bd7c, type: 3}
   smokeTrailPrefab: {fileID: 5841007807818134380, guid: e094f15cb2f20164c95adfd4e200b185, type: 3}
   spin: 1

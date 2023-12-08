@@ -14,7 +14,7 @@ public class GunBase : MonoBehaviour
     public gunHolder GunHolder;
     private GunData previousGunData;
     public enum FireMode { Hitscan, Projectile, Cone }
-
+    private bool gameStart= false;
     [SerializeField] FireMode fireMode;
     public Transform firePoint;
     [SerializeField] GameObject[] muzzleFlashPrefabs;
@@ -81,6 +81,7 @@ public class GunBase : MonoBehaviour
     {
         animator = GetComponentInParent<Animator>();
         playerStats = gameObject.GetComponentInParent<PlayerStatsHandler>().playerStats;
+        StartInit(NewData);
         //currentAmmo = MaxAmmo;
         /*inventory = gameObject.GetComponent<Inventory>();
         currentAmmo = MaxAmmo;
@@ -401,6 +402,7 @@ public class GunBase : MonoBehaviour
 
     public GameObject Initialize(GunData gunData)
     {
+
         animator.SetBool("isShooting", true);
         GunModel = gunData.gunModel;
         reloadTime = gunData.reloadTime;
@@ -428,6 +430,34 @@ public class GunBase : MonoBehaviour
        
 
         return instGun;
+    }
+
+    void StartInit(GunData gunData)
+    {
+        animator.SetBool("isShooting", true);
+        GunModel = gunData.gunModel;
+        reloadTime = gunData.reloadTime;
+        MaxAmmo = gunData.maxAmmo;
+        FireRate = gunData.firerate;
+        if (gunData.isCone == true)
+        {
+            fireMode = FireMode.Cone;
+        }
+        else { fireMode = FireMode.Projectile; }
+        //AnimFire = gunData.fire;
+        //AnimReload = gunData.reload;
+
+        print(GunModel);
+
+        print(MaxAmmo.ToString());
+        print(FireRate.ToString());
+
+        instGun = Instantiate(GunModel, gunSpawn.position, gunSpawn.rotation);
+        instGun.transform.SetParent(gunSpawn);
+        instGun.transform.Rotate(new Vector3(0f, 180f, 0f));
+        currentAmmoType = gunData.type;
+        print(currentAmmoType);
+        CheckAmmo();
     }
     void CheckAmmo()
     {
