@@ -224,7 +224,7 @@ public class GunBase : MonoBehaviour
     public void LaunchProjectile()
     {
 
-        //int ammoCount = 0;
+        int ammoCount = 0;
         float speed = Speed;
         float offset;
         if (applyStrobeOffset)
