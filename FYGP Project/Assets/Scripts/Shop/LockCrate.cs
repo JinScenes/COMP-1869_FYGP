@@ -24,6 +24,7 @@ public class LockCrate : MonoBehaviour
     [SerializeField] public int cratePrice = 100; 
 
     private bool isPlayerNear = false;
+    private bool brought = false;
     private GameObject player; 
     private CurrencyHandler currencyHandler;
     //----
@@ -74,8 +75,9 @@ public class LockCrate : MonoBehaviour
 
     private void TryOpenCrate()
     {
-        if (currencyHandler != null && currencyHandler.totalMoney >= cratePrice)
+        if (currencyHandler != null && currencyHandler.totalMoney >= cratePrice && !brought)
         {
+            brought = true;
             currencyHandler.AddMoney(-cratePrice);
             StartCoroutine(RiseAndExpand());
         }
