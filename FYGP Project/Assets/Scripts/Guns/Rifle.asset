@@ -23,6 +23,6 @@ MonoBehaviour:
   fire: {fileID: -382410650019994693, guid: 7b492790d36c0f0489d2c9e90e865048, type: 3}
   projectile: {fileID: 8272325939475155795, guid: d6b99e126806f6e42b76aeb2ca07b0b2, type: 3}
   rarity: 1
-  type: 2
+  type: 1
   reloadTime: 2
   isCone: 0

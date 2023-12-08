@@ -502,6 +502,7 @@ public class GunBase : MonoBehaviour
                 print("Ammo type not found");
                 break;
         }
+         playerStats.UIHandle.UpdateAllAmmo(playerStats.playerAmmo);
     }
     /*public void EquipGun(GunData gunData)
     {
