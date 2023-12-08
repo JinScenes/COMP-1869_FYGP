@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * distanceThisFrame, Color.red);
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, distanceThisFrame))
         {
-            HitDetected(hit);
+            HitDetectedR(hit);
         }
     }
 
@@ -44,11 +44,11 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            HitDetected(other);
+            HitDetectedC(other);
         }
     }
 
-    private void HitDetected(RaycastHit hit)
+    private void HitDetectedR(RaycastHit hit)
     {
         var enemy = hit.transform.GetComponent<EnemyFSM>();
         if (enemy != null)
@@ -60,14 +60,14 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void HitDetected(Collider other)
+    private void HitDetectedC(Collider other)
     {
         var enemy = other.GetComponent<EnemyFSM>();
         if (enemy != null)
         {
             Debug.Log("Enemy Hit by SphereCollider");
             enemy.healthModule.EnemyDamage(damage);
-            print(damage);
+
         }
         Destroy(gameObject);
     }
