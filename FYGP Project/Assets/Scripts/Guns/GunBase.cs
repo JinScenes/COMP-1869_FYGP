@@ -389,18 +389,19 @@ public class GunBase : MonoBehaviour
         }
 
         int pelletsPerShot = 6; 
-        float spreadAngle = 2f; 
+        float spreadAngle = 5f;
 
         for (int i = 0; i < pelletsPerShot; i++)
         {
-            int index = Random.Range(0, muzzleFlashPrefabs.Length);
-            Quaternion pelletRotation = Quaternion.Euler(Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle), 0) * firePoint.rotation;
-            GameObject pellet = Instantiate(muzzleFlashPrefabs[index], firePoint.position, pelletRotation);
-            
-            playerStats.UIHandle.UpdateAllAmmo(playerStats.playerAmmo);
-        }
+            float spreadX = Random.Range(-spreadAngle, spreadAngle);
+            float spreadY = Random.Range(-spreadAngle, spreadAngle);
+            Quaternion pelletRotation = Quaternion.Euler(spreadX, spreadY, 0) * firePoint.rotation;
 
-        Debug.Log("Shotgun fired");
+            ShotBullet pelletShot = Instantiate(bulletPrefab, firePoint.position, pelletRotation);
+            pelletShot.GetComponent<Bullet>().damage = 18f;
+
+            Debug.Log("Shotgun fired");
+        }
     }
 
     private void OnCompleted(object sender, System.EventArgs e)
