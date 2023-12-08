@@ -36,7 +36,7 @@ public class Ammo
 {
     private PlayerAmmo playerAmmo;
 
-    private int Ammount = 60;
+    private int Ammount = 3000;
     public int ammount { 
         get { return Ammount; } 
         set {

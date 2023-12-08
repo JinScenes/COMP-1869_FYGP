@@ -4921,12 +4921,12 @@ MonoBehaviour:
   riseDuration: 1.96
   particleSystemMaxScale: {x: 0.001, y: 0.001, z: 0.001}
   availableGuns:
-  - {fileID: 11400000, guid: f31e0742a4d72fe41ac4e8279f2e00f6, type: 2}
   - {fileID: 11400000, guid: 6e8b21631afdb294da20d54dc4abd0ea, type: 2}
   - {fileID: 11400000, guid: 6e8b21631afdb294da20d54dc4abd0ea, type: 2}
-  - {fileID: 11400000, guid: 79166e9a3b35f7f49b244c41289ebbaa, type: 2}
-  - {fileID: 11400000, guid: 79166e9a3b35f7f49b244c41289ebbaa, type: 2}
   - {fileID: 11400000, guid: 811c9aec8e4e6934a9296a7d641eb711, type: 2}
+  - {fileID: 11400000, guid: 811c9aec8e4e6934a9296a7d641eb711, type: 2}
+  - {fileID: 11400000, guid: f31e0742a4d72fe41ac4e8279f2e00f6, type: 2}
+  - {fileID: 11400000, guid: f31e0742a4d72fe41ac4e8279f2e00f6, type: 2}
   availableItems:
   - {fileID: 599083846393710439, guid: 210476b9402fc19478bb3af638b9fdaa, type: 3}
   - {fileID: 599083846393710439, guid: 210476b9402fc19478bb3af638b9fdaa, type: 3}
