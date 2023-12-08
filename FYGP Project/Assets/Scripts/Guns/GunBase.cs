@@ -34,7 +34,7 @@ public class GunBase : MonoBehaviour
     [SerializeField] float nextFireTime = 0f;
     private Animator animator;
     private AmmoType currentAmmoType;
-    
+    int ammoCount = 0;
     public  GunData NewData;
     public float Speed => 10.0F + (tracerSpeed - 1) * 50.0F;
     public float RotationSpeed => 72.0F;
@@ -117,45 +117,44 @@ public class GunBase : MonoBehaviour
 
     public void Fire()
     {
-        /*if(NewData == null)
+        CheckAmmo();
+        if (ammoCount > 0)
         {
-            return;
-        }*/
 
-        if (currentAmmo <= 0)
-        {
-            isReloading = true;
-            Debug.Log("Reloading...");
-            StartCoroutine(Reload());
+            if (currentAmmo <= 0 && !isReloading)
+            {
+                isReloading = true;
+                Debug.Log("Reloading...");
+                StartCoroutine(Reload());
 
-            return;
+                return;
+            }
+            /*if (fireMode == FireMode.Hitscan)
+            {
+                ShootHitscan();
+            }*/
+            if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
+            {
+                nextFireTime = Time.time + 1f / FireRate;
+                LaunchProjectile();
+                ShowMuzzleFlash();
+                // currentAmmo--;
+                gamepadInput.VibrateForDuration(0.75f, 0.75f, 0.1f);
+                Debug.Log("Vibration called for Projectile Fire");
+            }
+
+            if (fireMode == FireMode.Cone && Time.time >= nextFireTime && !isReloading)
+            {
+                nextFireTime = Time.time + 1f / FireRate;
+                ShotgunFire();
+                ShowMuzzleFlash();
+                //currentAmmo--;
+                gamepadInput.VibrateForDuration(0.75f, 0.75f, 0.1f);
+                Debug.Log("Vibration called for Projectile Fire");
+            }
+
+
         }
-        /*if (fireMode == FireMode.Hitscan)
-        {
-            ShootHitscan();
-        }*/
-        if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
-        {
-            nextFireTime = Time.time + 1f / FireRate;   
-            LaunchProjectile();
-            ShowMuzzleFlash();
-            currentAmmo--;
-            gamepadInput.VibrateForDuration(0.75f, 0.75f, 0.1f);
-            Debug.Log("Vibration called for Projectile Fire");
-        } 
-
-        if(fireMode == FireMode.Cone && Time.time >= nextFireTime && !isReloading)
-        {
-            nextFireTime = Time.time + 1f / FireRate;
-            ShotgunFire();
-            ShowMuzzleFlash();
-            currentAmmo--;
-            gamepadInput.VibrateForDuration(0.75f, 0.75f, 0.1f);
-            Debug.Log("Vibration called for Projectile Fire");
-        }
-
-        
-        
         
     }
 
@@ -221,7 +220,7 @@ public class GunBase : MonoBehaviour
     public void LaunchProjectile()
     {
 
-        int ammoCount = 0;
+        //int ammoCount = 0;
         float speed = Speed;
         float offset;
         if (applyStrobeOffset)
@@ -258,26 +257,8 @@ public class GunBase : MonoBehaviour
             }
         }
 
-        switch (currentAmmoType)
-        {
-            case AmmoType.SmallAmmo:
-                ammoCount = playerStats.playerAmmo.smallAmmo.ammount;
-                break;
-            case AmmoType.MediumAmmo:
-                ammoCount = playerStats.playerAmmo.mediumAmmo.ammount;
-                break;
-            case AmmoType.LargeAmmo:
-                ammoCount = playerStats.playerAmmo.largeAmmo.ammount;
-                break;
-            default:
-                print("Ammo type not found");
-                return; 
-        }
-        if (ammoCount <= 0)
-        {
-            Debug.Log("Out of Ammo!");
-            return;
-        }
+        
+        
 
         switch (currentAmmoType)
         {
@@ -311,7 +292,7 @@ public class GunBase : MonoBehaviour
     private void ShotgunFire()
     {
         Debug.Log("Shotgun initialised");
-        int ammoCount = 0;
+        
         float speed = Speed;
         float offset;
         if (applyStrobeOffset)
@@ -442,11 +423,30 @@ public class GunBase : MonoBehaviour
         instGun.transform.Rotate(new Vector3(0f, 180f, 0f));
         currentAmmoType = gunData.type;
         print(currentAmmoType);
+        CheckAmmo();
+
+       
+
         return instGun;
-
-
     }
-
+    void CheckAmmo()
+    {
+        switch (currentAmmoType)
+        {
+            case AmmoType.SmallAmmo:
+                ammoCount = playerStats.playerAmmo.smallAmmo.ammount;
+                break;
+            case AmmoType.MediumAmmo:
+                ammoCount = playerStats.playerAmmo.mediumAmmo.ammount;
+                break;
+            case AmmoType.LargeAmmo:
+                ammoCount = playerStats.playerAmmo.largeAmmo.ammount;
+                break;
+            default:
+                print("Ammo type not found");
+                break;
+        }
+    }
     /*public void EquipGun(GunData gunData)
     {
         Debug.Log(gunData);
