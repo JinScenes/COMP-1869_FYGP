@@ -48,7 +48,10 @@ public class E_Health
         enemy.health -= damage;
         enemy.healthBarUI.value = Mathf.Clamp01(enemy.health / enemy.maxHealth);
         hasTakenDamage = true;
-        AudioManager.instance.PlayAudios("Zombie Hurt");
+        if(Random.Range(0, 11) == 1)
+        {
+            AudioManager.instance.PlayAudios("Zombie Hurt");
+        }
         enemy.IsMove = true;
 
         if (enemy.bloodEffectPrefabs != null && enemy.bloodEffectPrefabs.Length > 0)
