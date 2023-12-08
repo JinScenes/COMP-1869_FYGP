@@ -13,6 +13,7 @@ public class GunBase : MonoBehaviour
     [SerializeField] Inventory inventory;
     public gunHolder GunHolder;
     private GunData previousGunData;
+    int ammoCount = 0;
     public enum FireMode { Hitscan, Projectile, Cone }
 
     [SerializeField] FireMode fireMode;
@@ -83,6 +84,8 @@ public class GunBase : MonoBehaviour
             Initialize(NewData);
         }
 */
+
+        
     }
 
     private void Update()
@@ -128,7 +131,7 @@ public class GunBase : MonoBehaviour
         {
             ShootHitscan();
         }*/
-        if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
+        if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading && currentAmmo > 0)
         {
             nextFireTime = Time.time + 1f / FireRate;
             LaunchProjectile();
@@ -211,7 +214,7 @@ public class GunBase : MonoBehaviour
     public void LaunchProjectile()
     {
 
-        int ammoCount = 0;
+        
         float speed = Speed;
         float offset;
         if (applyStrobeOffset)
@@ -247,7 +250,6 @@ public class GunBase : MonoBehaviour
                 Debug.DrawRay(hitInfo.point, hitInfo.normal, Color.red, 0.5F);
             }
         }
-
         switch (currentAmmoType)
         {
             case AmmoType.SmallAmmo:
@@ -261,8 +263,9 @@ public class GunBase : MonoBehaviour
                 break;
             default:
                 print("Ammo type not found");
-                return; 
+                return;
         }
+
         if (ammoCount <= 0)
         {
             Debug.Log("Out of Ammo!");
@@ -432,6 +435,8 @@ public class GunBase : MonoBehaviour
         instGun.transform.Rotate(new Vector3(0f, 180f, 0f));
         currentAmmoType = gunData.type;
         print(currentAmmoType);
+
+
         return instGun;
 
 
