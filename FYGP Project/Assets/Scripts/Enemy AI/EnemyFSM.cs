@@ -57,12 +57,16 @@ public class EnemyFSM : MonoBehaviour
 
     private CurrencyHandler currencyHandler;
 
+    public E_Animation animationModule;
+
+
     private void Awake()
     {
         detectionModule = new E_Detection(this);
         movementModule = new E_Movement(this);
         attackModule = new E_Attack(this);
         healthModule = new E_Health(this);
+        animationModule = new E_Animation(this);
 
 
         if (originPos == null) originPos = transform.Find("Pos");
@@ -76,6 +80,9 @@ public class EnemyFSM : MonoBehaviour
 
     private void Update()
     {
+        anim = gameObject.GetComponent<Animator>();
+        animationModule.StateUpdater();
+
         if (!healthModule.IsDead())
         {
             detectionModule.DetectionUpdater();
