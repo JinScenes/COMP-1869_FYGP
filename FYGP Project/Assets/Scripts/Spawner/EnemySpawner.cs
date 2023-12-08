@@ -60,11 +60,11 @@ public class EnemySpawner : MonoBehaviour
                 //Debug.Log("Wave" + waveCount + "start");
                 //Debug.Log(waveCount);
                 waveCount++;
-                Debug.Log(waveCount);
+                //Debug.Log(waveCount);
                     
                 if (autoOff = true && waveCount >= waveToFinish)
                 {
-                    Debug.Log("truning off");
+                    //Debug.Log("truning off");
                     Destroy(this.gameObject);
                 }
                 else

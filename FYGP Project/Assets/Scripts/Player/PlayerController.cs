@@ -124,11 +124,12 @@ public class PlayerController : MonoBehaviour
             isMoving = true;
         }
 
-        if (isMoving)
+        if (isMoving && !animState.animator.GetBool("isWalking"))
         {
             animState.animator.SetBool("isWalking", true);
+            AudioManager.instance.PlayAudios("Player Footstep");
         }
-        else
+        else if (!isMoving && animState.animator.GetBool("isWalking"))
         {
             animState.animator.SetBool("isWalking", false);
 
@@ -220,6 +221,7 @@ public class PlayerController : MonoBehaviour
     public void ApplyDamage(float damageAmount)
     {
         currentHealth = Mathf.Clamp(currentHealth - damageAmount, 0, 1000);
+        AudioManager.instance.PlayAudios("Player Damaged", transform.position);
         consumables.doingAction = false;
 
         if (currentHealth <= 0)
@@ -267,6 +269,7 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         speed = 2f;
+        AudioManager.instance.PlayAudios("Player Death", transform.position);
     }
 
     public void AddHealth(float amount)

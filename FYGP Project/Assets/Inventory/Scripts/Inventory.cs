@@ -311,7 +311,7 @@ public class Inventory
 
     public void HandleGunDrop(InventoryItem gunItem)
     {
-        Debug.Log($"Attempting to remove weight from index ({gunItem.weightIndex})");
+        //Debug.Log($"Attempting to remove weight from index ({gunItem.weightIndex})");
         RemoveFromIndex(gunItem.weightIndex);
     }
 

@@ -33,6 +33,7 @@ public class Crate : MonoBehaviour
 
     void OpenChest()
     {
+        AudioManager.instance.PlayAudios("Crate Opening");
         selectedGun = SelectRandomGun(availableGuns);
         GameObject selectedItem = SelectRandomItem(availableItems);
 

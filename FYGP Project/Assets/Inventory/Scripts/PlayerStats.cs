@@ -40,7 +40,7 @@ public class Ammo
     public int ammount { 
         get { return Ammount; } 
         set {
-            Debug.Log("Trying to change ammo amount");
+            //Debug.Log("Trying to change ammo amount");
             Ammount = value;
             playerAmmo.UIHandle.UpdateAllAmmo(playerAmmo);
         } 
