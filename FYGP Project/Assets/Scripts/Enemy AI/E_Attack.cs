@@ -3,6 +3,7 @@ using UnityEngine;
 public class E_Attack
 {
     EnemyFSM enemy;
+    public bool attacking;
 
     public E_Attack(EnemyFSM enemy)
     {
@@ -40,6 +41,7 @@ public class E_Attack
     {
         if (IsPlayerInAttackRange())
         {
+            attacking = true;
             if (Time.time >= enemy.nextAttackTime)
             {
                 EventAttack();
@@ -52,6 +54,7 @@ public class E_Attack
         else
         {
             enemy.IsMove = true;
+            attacking = false;
         }
     }   
 }
