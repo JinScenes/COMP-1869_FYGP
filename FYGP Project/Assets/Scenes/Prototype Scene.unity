@@ -5709,6 +5709,18 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: cc26a8402baaab441a74affe082d79c8, type: 3}
       type: 1
       is3D: 0
+    - audioName: Extraction Heli
+      clip: {fileID: 8300000, guid: d7be1cafb0395c240932f5c72aeeec83, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Purchase Sound
+      clip: {fileID: 8300000, guid: 0747e83eb01aee9448a2fb9676923059, type: 3}
+      type: 1
+      is3D: 0
+    - audioName: Generator On
+      clip: {fileID: 8300000, guid: 242470bbbaf19ec40aeb76eb00169e50, type: 3}
+      type: 1
+      is3D: 0
 --- !u!4 &216665264
 Transform:
   m_ObjectHideFlags: 0
