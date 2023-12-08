@@ -11090,12 +11090,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
       propertyPath: availableGuns.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
       propertyPath: availableGuns.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 6e8b21631afdb294da20d54dc4abd0ea, type: 2}
+      objectReference: {fileID: 11400000, guid: 90f044c2e593752429249b52cf75fe51, type: 2}
     - target: {fileID: 8144786454939734642, guid: 8cda14b9abac5c742b1a4c4a0f7bef5e, type: 3}
       propertyPath: availableGuns.Array.data[1]
       value: 
@@ -25715,9 +25715,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootPrefab:
   - {fileID: 5691099169173055985, guid: 2ce837f430f942146a3766b3d40f74be, type: 3}
-  xPos: 15
-  zPos: 15
-  totalLoots: 12
+  xPos: 12
+  zPos: 6
+  totalLoots: 18
   safeDistance: 2
 --- !u!4 &2060165926
 Transform:
@@ -25728,7 +25728,7 @@ Transform:
   m_GameObject: {fileID: 2060165924}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -110.41, y: 0.43869054, z: -41.34}
+  m_LocalPosition: {x: -110.41, y: 0.43869054, z: -33.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

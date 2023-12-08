@@ -250,7 +250,7 @@ public class GunBase : MonoBehaviour
                 bullet.GetComponent<Bullet>().damage = 25f;
                 break;
             case "Smg":
-                bullet.GetComponent<Bullet>().damage = 5f;
+                bullet.GetComponent<Bullet>().damage = 15f;
                 break;
             case "Sniper":
                 bullet.GetComponent<Bullet>().damage = 150f;

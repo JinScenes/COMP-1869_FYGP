@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   displayName: Sniper
-  icon: {fileID: 21300000, guid: 65bfcc2f3db3d454cb279abe0eb6c6c3, type: 3}
+  icon: {fileID: 1213442687, guid: 00bf0cbc9064cd443967a59b68d266a1, type: 3}
   canStack: 0
   consumable: 0
   gunModel: {fileID: 6020633202862646584, guid: 3e5535e9035da7a4fbcd9c5046f9db84, type: 3}
@@ -25,3 +25,4 @@ MonoBehaviour:
   rarity: 3
   type: 2
   reloadTime: 1
+  isCone: 0

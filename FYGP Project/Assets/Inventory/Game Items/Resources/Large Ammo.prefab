@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: {fileID: 11400000, guid: f31afe0a5878e3942a0b5c7ead5a5110, type: 2}
-  amount: 50
+  amount: 30
 --- !u!54 &-3084457393282504477
 Rigidbody:
   m_ObjectHideFlags: 0
