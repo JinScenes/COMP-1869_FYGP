@@ -83,11 +83,11 @@ public class EnemyFSM : MonoBehaviour
             movementModule.MovementUpdater();
             healthModule.HealthUpdater();
             attackModule.AttackUpdater();
+            animationModule.StateUpdater();
         }
         else
         {
             //added 
-            AudioManager.instance.PlayAudios("Zombie Death");
 
             if (currencyHandler != null && !gaveCurrency)
             {
@@ -95,8 +95,9 @@ public class EnemyFSM : MonoBehaviour
                 currencyHandler.AddMoney(moneyLoot);
             }
             //
+
+            AudioManager.instance.PlayAudios("Zombie Death");
             Destroy(gameObject, 0.1f);
-           
         }
     }
     
