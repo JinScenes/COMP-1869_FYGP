@@ -335,9 +335,17 @@ public class Inventory
             float dropDistance = 1.5f;
 
             Vector3 dropLocation = playerTransform.position + playerTransform.up * 0.75f  +  playerTransform.forward * dropDistance;
-            Debug.Log($"Attempting to drop item {item.itemData.displayName}");
 
-            GameObject.Instantiate(Resources.Load(item.itemData.displayName), dropLocation, Quaternion.identity);
+            Debug.Log($"Attempting to drop item {item.itemData.displayName}");
+            if (isItemAGun(item.itemData))
+            {
+                GameObject gunFloorLootPrefab = (GameObject)GameObject.Instantiate(Resources.Load("GunFloorLoot"), dropLocation, Quaternion.identity);
+                gunFloorLootPrefab.GetComponent<ItemCollection>().item = item.itemData;
+            } else
+            {
+                GameObject.Instantiate(Resources.Load(item.itemData.displayName), dropLocation, Quaternion.identity);
+
+            }
             RemoveFromIndex(index);
 
         }

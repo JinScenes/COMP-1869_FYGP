@@ -38,7 +38,7 @@ public class gunHolder : MonoBehaviour
 
     public void SwapGun(GunData newGunData)
     {
-        if (CurrentGunData != null)  // Handling the first gun being consumed
+        if (CurrentGunData != null)  
         {
 
 
