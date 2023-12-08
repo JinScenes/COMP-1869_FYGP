@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2291164164496490783}
   - component: {fileID: 416134806107000049}
   m_Layer: 0
-  m_Name: Coke
+  m_Name: Energy Drink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

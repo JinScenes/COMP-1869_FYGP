@@ -27,7 +27,7 @@ public class GamepadInputManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(currentPlayerCount);
+        //Debug.Log(currentPlayerCount);
     }
 
     private void VarSetups()

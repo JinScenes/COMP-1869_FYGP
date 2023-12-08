@@ -1,6 +1,5 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
-using UnityEngine.InputSystem.Android;
 using System.Collections;
 
 [RequireComponent(typeof(PlayerInput))]

@@ -247,4 +247,46 @@ public class Consumables : MonoBehaviour
             StartCoroutine(WaitAction(3f, "This is going to be awesome!", methodName));
         }
     }
+
+    IEnumerator TempSpeedBoost(float tempTime, float increase)
+    {
+        playerController.speed += increase;
+
+        while ( playerController.speed > 2 && tempTime > 0)
+        {
+            yield return new WaitForSeconds(.1f);
+            tempTime -= .1f;
+            print(tempTime);
+        }
+
+        if(playerController.speed > 2)
+        {
+            playerController.speed -= increase;
+            print("Lost speed");
+        }
+        else
+        {
+            print("cancaled!!");
+        }
+
+
+        print("Speed decreased");
+    }
+
+    public void EnergyDrink()
+    {
+        string methodName = MethodBase.GetCurrentMethod().Name;
+
+        if (completedAction == methodName)
+        {
+            ConsumeItem();
+            StartCoroutine(TempSpeedBoost(5f, 2f));
+            return;
+        }
+
+        if (doingAction == false)
+        {
+            StartCoroutine(WaitAction(.65f, "I feel quicker already!", methodName));
+        }
+    }
 }
