@@ -67,6 +67,11 @@ public class AudioManager : MonoBehaviour
                 source.playOnAwake = false;
                 source.spatialBlend = sound.is3D ? 1 : 0;
 
+                if (sound.audioName == "Background Music")
+                {
+                    source.loop = true;
+                }
+
                 audioSources.Add(sound.audioName, source);
             }
         }
