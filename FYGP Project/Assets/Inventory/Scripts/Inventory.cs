@@ -7,9 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine.InputSystem.Controls;
 using System.Xml;
 using Unity.VisualScripting.FullSerializer;
-using static UnityEditor.Progress;
 using UnityEngine.Events;
-using UnityEngine.WSA;
 
 [System.Serializable]
 public class Inventory

@@ -9,11 +9,16 @@ public class PressurePlate : MonoBehaviour
 
     [SerializeField] private float initialTimeFrame = 2.0f;
 
+    [SerializeField] private Material activatedMaterial;
+    [SerializeField] private Material deactivatedMaterial;
+
     private static Dictionary<string, int> activatedPlates = new Dictionary<string, int>();
     private static Dictionary<string, Coroutine> activationTimers = new Dictionary<string, Coroutine>();
 
     private bool isDeactivationDelayed = false;
     private float deactivationDelay = 0.5f;
+
+    private Renderer plateRenderer;
 
     public static bool ActionOn { get; private set; }
 
@@ -23,6 +28,8 @@ public class PressurePlate : MonoBehaviour
         {
             Debug.LogWarning("Pressure Plate requires a non-empty pairID.");
         }
+
+        plateRenderer = GetComponent<Renderer>();
     }
 
     private void FixedUpdate()
@@ -45,6 +52,7 @@ public class PressurePlate : MonoBehaviour
             activatedPlates[pairID]++;
             Debug.Log("Plate " + pairID + " activated. Current count: " + activatedPlates[pairID]);
             ManageActivationTimer();
+            plateRenderer.material = activatedMaterial;
         }
     }
 
@@ -82,6 +90,7 @@ public class PressurePlate : MonoBehaviour
 
     private IEnumerator DelayDeactivation(string id)
     {
+        RevertColor();
         isDeactivationDelayed = true;
         yield return new WaitForSeconds(deactivationDelay);
         if (activatedPlates[id] > 0)
@@ -102,6 +111,7 @@ public class PressurePlate : MonoBehaviour
             activatedPlates[id] = 0;
             activationTimers[id] = null;
             CheckPairs();
+            plateRenderer.material = deactivatedMaterial;
         }
     }
 
@@ -128,6 +138,14 @@ public class PressurePlate : MonoBehaviour
         }
 
         Debug.Log(ActionOn ? "All pairs activated." : "Not all pairs are activated.");
+    }
+
+    private void RevertColor()
+    {
+        if (plateRenderer != null)
+        {
+            plateRenderer.material = deactivatedMaterial;
+        }
     }
 
     private void PowerOn()
