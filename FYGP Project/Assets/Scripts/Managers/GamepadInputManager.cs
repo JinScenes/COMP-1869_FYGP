@@ -14,7 +14,7 @@ public class GamepadInputManager : MonoBehaviour
     private TransformManager transformManager;
     private PlayerInputManager playerInputManager;
 
-    public static int currentPlayerCount { get; private set; } = 0;
+    public int currentPlayerCount { get; private set; } = 0;
 
     public static Action<int, Transform> OnPlayerSpawn;
 
