@@ -41,9 +41,9 @@ public class E_Attack
     {
         if (IsPlayerInAttackRange())
         {
-            attacking = true;
             if (Time.time >= enemy.nextAttackTime)
             {
+            attacking = true;
                 EventAttack();
 
                 enemy.IsMove = false;

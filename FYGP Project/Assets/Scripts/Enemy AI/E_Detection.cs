@@ -3,6 +3,7 @@ using UnityEngine;
 public class E_Detection
 {
     EnemyFSM enemy;
+    
 
     public E_Detection(EnemyFSM enemy)
     {
@@ -18,7 +19,7 @@ public class E_Detection
         WithinRange();
     }
 
-    private bool CanSeePlayer()
+    public bool CanSeePlayer()
     {
         Transform closestPlayer = GetClosestPlayer();
         if (closestPlayer == null)

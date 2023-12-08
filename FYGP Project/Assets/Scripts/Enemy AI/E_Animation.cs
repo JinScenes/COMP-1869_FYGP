@@ -39,6 +39,7 @@ public class IdleState : EnemyState
     {
         enemyFSM.anim.SetBool("isIdle", true);
         enemyFSM.anim.SetBool("isWalking", false);
+        enemyFSM.anim.SetBool("isAttacking", false);
     }
 
     public void UpdateState(EnemyFSM enemyFSM)
@@ -69,6 +70,7 @@ public class WalkingState : EnemyState
     {
         enemyFSM.anim.SetBool("isIdle", false);
         enemyFSM.anim.SetBool("isWalking", true);
+        enemyFSM.anim.SetBool("isAttacking", false);
     }
 
     public void UpdateState(EnemyFSM enemyFSM)
@@ -112,7 +114,7 @@ public class AttackingState : EnemyState
         }
         else
         {
-            if (enemyFSM.detectionModule.IsPlayerInSightOrDetectionRange())
+            if (enemyFSM.detectionModule.CanSeePlayer())
             {
                 enemyFSM.animationModule.ChangeState(new WalkingState());
             }
