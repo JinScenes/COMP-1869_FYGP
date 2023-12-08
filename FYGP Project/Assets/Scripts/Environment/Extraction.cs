@@ -91,6 +91,7 @@ public class Extraction : MonoBehaviour
     private void Extracting()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        GameObject.FindGameObjectWithTag("MainCamera").transform.position = tpLoc.transform.position;
         foreach (GameObject pl in players)
         {
             pl.transform.position = tpLoc.transform.position;
