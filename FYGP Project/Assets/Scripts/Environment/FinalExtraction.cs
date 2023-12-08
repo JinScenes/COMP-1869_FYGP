@@ -35,6 +35,7 @@ public class FinalExtraction : MonoBehaviour
             {
                 extractionCoroutine = StartCoroutine(ExtractionCoroutine());
                 extractionText.enabled = true;
+                AudioManager.instance.PlayAudios("Extraction Heli");
             }
         }
     }

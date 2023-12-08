@@ -33,6 +33,7 @@ public class Extraction : MonoBehaviour
 
             if (playersInTrigger.Count == requiredPlayers && extractionCoroutine == null)
             {
+                AudioManager.instance.PlayAudios("Extraction Heli");
                 extractionCoroutine = StartCoroutine(ExtractionCoroutine());
                 extractionText.enabled = true;
             }

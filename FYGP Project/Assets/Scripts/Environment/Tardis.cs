@@ -30,6 +30,7 @@ public class Tardis : MonoBehaviour
             {
                 extractionCoroutine = StartCoroutine(ExtractionCoroutine());
                 extractionText.enabled = true;
+                AudioManager.instance.PlayAudios("Extraction Heli");
             }
         }
     }

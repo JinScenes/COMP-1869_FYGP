@@ -157,6 +157,7 @@ public class PressurePlate : MonoBehaviour
 
     private void PowerOn()
     {
+        AudioManager.instance.PlayAudios("Generator On");
         cDoor1.SetActive(false);
         cDoor2.SetActive(false);
         oDoor1.SetActive(true);

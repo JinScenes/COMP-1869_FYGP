@@ -78,6 +78,7 @@ public class LockCrate : MonoBehaviour
         {
             brought = true;
             currencyHandler.AddMoney(-cratePrice);
+            AudioManager.instance.PlayAudios("Purchase Sound");
             StartCoroutine(RiseAndExpand());
         }
         else
