@@ -713,6 +713,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pressure Plate (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2519088952917142224, guid: d674ae6c927411a46a88b07044f33a92, type: 3}
+      propertyPath: cDoor1
+      value: 
+      objectReference: {fileID: 396521277}
+    - target: {fileID: 2519088952917142224, guid: d674ae6c927411a46a88b07044f33a92, type: 3}
+      propertyPath: cDoor2
+      value: 
+      objectReference: {fileID: 1860622147}
+    - target: {fileID: 2519088952917142224, guid: d674ae6c927411a46a88b07044f33a92, type: 3}
+      propertyPath: oDoor1
+      value: 
+      objectReference: {fileID: 1172241623}
+    - target: {fileID: 2519088952917142224, guid: d674ae6c927411a46a88b07044f33a92, type: 3}
+      propertyPath: oDoor2
+      value: 
+      objectReference: {fileID: 243778322}
     - target: {fileID: 4904617417388900226, guid: d674ae6c927411a46a88b07044f33a92, type: 3}
       propertyPath: m_LocalPosition.x
       value: 77.396
@@ -927,6 +943,11 @@ Transform:
 --- !u!4 &243778321 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8650204796012433908, guid: 3dd71b3b23b358347b5b37f4380931ce, type: 3}
+  m_PrefabInstance: {fileID: 243778319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &243778322 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5862260202851015030, guid: 3dd71b3b23b358347b5b37f4380931ce, type: 3}
   m_PrefabInstance: {fileID: 243778319}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &246305873
@@ -7562,6 +7583,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pressure Plate
       objectReference: {fileID: 0}
+    - target: {fileID: 2519088952917142224, guid: d674ae6c927411a46a88b07044f33a92, type: 3}
+      propertyPath: cDoor1
+      value: 
+      objectReference: {fileID: 396521277}
+    - target: {fileID: 2519088952917142224, guid: d674ae6c927411a46a88b07044f33a92, type: 3}
+      propertyPath: cDoor2
+      value: 
+      objectReference: {fileID: 1860622147}
+    - target: {fileID: 2519088952917142224, guid: d674ae6c927411a46a88b07044f33a92, type: 3}
+      propertyPath: oDoor1
+      value: 
+      objectReference: {fileID: 1172241623}
+    - target: {fileID: 2519088952917142224, guid: d674ae6c927411a46a88b07044f33a92, type: 3}
+      propertyPath: oDoor2
+      value: 
+      objectReference: {fileID: 243778322}
     - target: {fileID: 4904617417388900226, guid: d674ae6c927411a46a88b07044f33a92, type: 3}
       propertyPath: m_LocalPosition.x
       value: 77.33
