@@ -52,6 +52,8 @@ public class EnemyFSM : MonoBehaviour
     [HideInInspector] public bool canSee;
     [HideInInspector] public bool ready;
     [HideInInspector] public bool IsMove;
+    
+    private bool gaveCurrency = false;
 
     private CurrencyHandler currencyHandler;
 
@@ -85,8 +87,9 @@ public class EnemyFSM : MonoBehaviour
         {
             //added 
 
-            if (currencyHandler != null)
+            if (currencyHandler != null && !gaveCurrency)
             {
+                gaveCurrency = true;
                 currencyHandler.AddMoney(moneyLoot);
             }
             //
