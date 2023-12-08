@@ -68,6 +68,8 @@ public class GunBase : MonoBehaviour
     [SerializeField]
     [Tooltip("If enabled, a random offset is applied to the spawn point. (This eliminates the \"Wagon-Wheel\" effect)")]
     private bool applyStrobeOffset = true;
+
+    string currentGunName;
     #endregion
 
     #region Generic Functions
@@ -238,6 +240,25 @@ public class GunBase : MonoBehaviour
         ShotBullet bullet = Instantiate(bulletPrefab);
         SmokeTrail smokeTrail = Instantiate(smokeTrailPrefab);
 
+        print("Currently shooting: " + currentGunName);
+        switch (currentGunName)
+        {
+            case "Pistol":
+                bullet.GetComponent<Bullet>().damage = 20f;
+                break;
+            case "Rifle":
+                bullet.GetComponent<Bullet>().damage = 25f;
+                break;
+            case "Smg":
+                bullet.GetComponent<Bullet>().damage = 5f;
+                break;
+            case "Sniper":
+                bullet.GetComponent<Bullet>().damage = 150f;
+                break;
+            default:
+                break;
+        }
+
         // Setup callbacks
         bullet.Completed += OnCompleted;
         smokeTrail.Completed += OnCompleted;
@@ -309,7 +330,7 @@ public class GunBase : MonoBehaviour
         // Instantiate the tracer graphics
         ShotBullet bullet = Instantiate(bulletPrefab);
         SmokeTrail smokeTrail = Instantiate(smokeTrailPrefab);
-
+        bullet.GetComponent<Bullet>().damage = 18f;
         // Setup callbacks
         bullet.Completed += OnCompleted;
         smokeTrail.Completed += OnCompleted;
@@ -409,6 +430,8 @@ public class GunBase : MonoBehaviour
         reloadTime = gunData.reloadTime;
         MaxAmmo = gunData.maxAmmo;
         FireRate = gunData.firerate;
+        currentGunName = gunData.displayName;
+        
         if (gunData.isCone == true)
         {
             fireMode = FireMode.Cone;
@@ -425,7 +448,7 @@ public class GunBase : MonoBehaviour
         instGun.transform.SetParent(gunSpawn);
         instGun.transform.Rotate(new Vector3(0f, 180f, 0f));
         currentAmmoType = gunData.type;
-        print(currentAmmoType);
+
         CheckAmmo();
 
        
@@ -440,6 +463,8 @@ public class GunBase : MonoBehaviour
         reloadTime = gunData.reloadTime;
         MaxAmmo = gunData.maxAmmo;
         FireRate = gunData.firerate;
+        currentGunName = gunData.displayName;
+
         if (gunData.isCone == true)
         {
             fireMode = FireMode.Cone;

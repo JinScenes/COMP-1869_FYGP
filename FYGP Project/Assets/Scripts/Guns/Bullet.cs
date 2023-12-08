@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float damage;
+     public float damage;
     [SerializeField] private float speed = 100f;
     [SerializeField] private float maxDistance = 100f;
+    bool hitTarget = false;
     //[SerializeField] private float radius; // Radius for SphereCollider
     private Vector3 startPosition;
 
@@ -14,7 +15,6 @@ public class Bullet : MonoBehaviour
 
         // Add a SphereCollider for proximity detection
         var collider = gameObject.AddComponent<SphereCollider>();
-        collider.isTrigger = true;
         //collider.radius = radius;
 
     }
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         float distanceThisFrame = speed * Time.deltaTime;
-        RaycastCheck(distanceThisFrame);
+        //RaycastCheck(distanceThisFrame);
         transform.Translate(Vector3.forward * distanceThisFrame);
 
         if (Vector3.Distance(startPosition, transform.position) >= maxDistance)
@@ -63,10 +63,12 @@ public class Bullet : MonoBehaviour
     private void HitDetectedC(Collider other)
     {
         var enemy = other.GetComponent<EnemyFSM>();
-        if (enemy != null)
+        if (enemy != null && !hitTarget)
         {
-            Debug.Log("Enemy Hit by SphereCollider");
+            hitTarget = true;
+            Debug.Log("Enemy Hit for: " + damage);
             enemy.healthModule.EnemyDamage(damage);
+            
 
         }
         Destroy(gameObject);
