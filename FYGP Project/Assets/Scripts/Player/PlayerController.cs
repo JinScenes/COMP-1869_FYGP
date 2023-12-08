@@ -22,8 +22,12 @@ public class PlayerController : MonoBehaviour
     private List<GameObject> previouslyHitObjects = new List<GameObject>();
 
     [SerializeField] private float raycastLength;
+
     private float gravitationalForce = -9.81f;
-    
+    private float baseFootstepCooldown = 0.4f;
+    private float footstepCooldown;
+    private float nextFootstepTime = 0f;
+
     private bool isGrounded = false;
 
     private Consumables consumables;
@@ -76,63 +80,31 @@ public class PlayerController : MonoBehaviour
         GamepadInputManager.OnPlayerSpawn?.Invoke(GetComponent<PlayerInput>().playerIndex, transform);
     }
 
-    /*  private void HandleMovement()
-      {
-          bool isMoving = false;
-          //animState.animator.SetBool("isWalking", true);
-          Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 
-              0, controllerInput.MovementInput.y);
-
-          if(moveDir.sqrMagnitude > 0.01){
-              isMoving = true;
-          }
-
-
-
-          Vector3 moveOffset = moveDir * speed * Time.deltaTime;
-          Vector3 newPos = transform.position + moveOffset;
-          Vector3 viewPos = Camera.main.WorldToViewportPoint(newPos);
-          if (isMoving)
-          {
-              animState.animator.SetBool("isWalking", true);
-          } else
-          {
-              animState.animator.SetBool("isWalking", false);
-
-          }
-              viewPos.x = Mathf.Clamp(viewPos.x, 0.05f, 0.95f);
-              viewPos.y = Mathf.Clamp(viewPos.y, 0.05f, 0.95f);
-
-              newPos = Camera.main.ViewportToWorldPoint(viewPos);
-              transform.position = newPos;
-
-
-              RestrictMovementWithinCameraView();
-
-      }*/
-
     private void HandleMovement()
     {
         Vector3 moveDir = new Vector3(controllerInput.MovementInput.x, 0, controllerInput.MovementInput.y);
+        bool isMoving = moveDir.sqrMagnitude > 0.01f;
 
-        bool isMoving = false;
+        float speedFactor = Mathf.InverseLerp(1, 20, speed);
+        footstepCooldown = Mathf.Lerp(baseFootstepCooldown, 0.1f, speedFactor);
 
-        if (moveDir.sqrMagnitude > 0.01f)
+        if (isMoving)
         {
             float movementAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, movementAngle, 0);
-            isMoving = true;
-        }
 
-        if (isMoving && !animState.animator.GetBool("isWalking"))
-        {
+            if (Time.time >= nextFootstepTime)
+            {
+                AudioManager.instance.PlayAudios("Player Footstep", transform.position);
+                nextFootstepTime = Time.time + footstepCooldown;
+            }
+
             animState.animator.SetBool("isWalking", true);
-            AudioManager.instance.PlayAudios("Player Footstep");
         }
-        else if (!isMoving && animState.animator.GetBool("isWalking"))
+        else
         {
             animState.animator.SetBool("isWalking", false);
-
+            nextFootstepTime = Time.time + footstepCooldown;
         }
 
         Vector3 moveOffset = moveDir * speed * Time.deltaTime;
@@ -147,6 +119,7 @@ public class PlayerController : MonoBehaviour
 
         RestrictMovementWithinCameraView();
     }
+
 
 
     private void HandleRotation()
