@@ -43,9 +43,13 @@ public class IdleState : EnemyState
 
     public void UpdateState(EnemyFSM enemyFSM)
     {
-        if (enemyFSM.IsMove)
+        if (enemyFSM.navMesh.speed != 0)
         {
             enemyFSM.animationModule.ChangeState(new WalkingState());
+        }
+        else if (enemyFSM.attackModule.attacking == true)
+        {
+            enemyFSM.animationModule.ChangeState(new AttackingState());
         }
     }
 
@@ -63,15 +67,19 @@ public class WalkingState : EnemyState
 {
     public void EnterState(EnemyFSM enemyFSM)
     {
-        enemyFSM.anim.SetBool("isWalking", true);
         enemyFSM.anim.SetBool("isIdle", false);
+        enemyFSM.anim.SetBool("isWalking", true);
     }
 
     public void UpdateState(EnemyFSM enemyFSM)
     {
-        if (!enemyFSM.IsMove)
+        if (enemyFSM.navMesh.speed == 0)
         {
             enemyFSM.animationModule.ChangeState(new IdleState());
+        }
+        else if (enemyFSM.attackModule.attacking == true)
+        {
+            enemyFSM.animationModule.ChangeState(new AttackingState());
         }
     }
 
@@ -91,15 +99,16 @@ public class AttackingState : EnemyState
     public void EnterState(EnemyFSM enemyFSM)
     {
         enemyFSM.anim.SetBool("isMoving", false);
-        enemyFSM.anim.SetBool("isIdle", true);
+        enemyFSM.anim.SetBool("isIdle", false);
         enemyFSM.anim.SetBool("isAttacking", true);
     }
 
     public void UpdateState(EnemyFSM enemyFSM)
     {
-        if (enemyFSM.attackModule.IsPlayerInAttackRange())
+        if (enemyFSM.attackModule.attacking == true)
         {
             //CONTINUE ATTACKING THE PLAYER
+            enemyFSM.anim.SetBool("isAttacking", true);
         }
         else
         {
@@ -133,7 +142,7 @@ public class DeathState : EnemyState
 
     public void UpdateState(EnemyFSM enemyFSM)
     {
-        //IMPLEMENT LOGIC
+        
     }
 
     public void ExitState(EnemyFSM enemyFSM)
