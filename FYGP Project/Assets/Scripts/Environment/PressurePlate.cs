@@ -165,7 +165,9 @@ public class PressurePlate : MonoBehaviour
         GameObject[] lights = GameObject.FindGameObjectsWithTag("StreetLight");
         foreach (GameObject light in lights)
         {
-            light.SetActive(true);
+            light.GetComponent<Light>().enabled = true;
+            print(light.name + " turned on");
         }
+        print("There were " + lights.Length + " lights to turn on yoo!");
     }
 }

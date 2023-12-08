@@ -4878,7 +4878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5b3d912328c82624181d630a3c5b1725, type: 3}
       propertyPath: m_Name
-      value: Crate
+      value: itemCrate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4921,14 +4921,20 @@ MonoBehaviour:
   riseDuration: 1.96
   particleSystemMaxScale: {x: 0.001, y: 0.001, z: 0.001}
   availableGuns:
-  - {fileID: 11400000, guid: 90f044c2e593752429249b52cf75fe51, type: 2}
   - {fileID: 11400000, guid: 79166e9a3b35f7f49b244c41289ebbaa, type: 2}
+  - {fileID: 11400000, guid: 90f044c2e593752429249b52cf75fe51, type: 2}
   availableItems:
   - {fileID: 2504860676715257273, guid: cd1dc12ed3e17de45a5cc9e1fd38ba66, type: 3}
+  - {fileID: 2504860676715257273, guid: cd1dc12ed3e17de45a5cc9e1fd38ba66, type: 3}
+  - {fileID: 1569387696225274595, guid: d1a79af4776dea24abd20d137427807a, type: 3}
+  - {fileID: 1569387696225274595, guid: d1a79af4776dea24abd20d137427807a, type: 3}
   - {fileID: 1569387696225274595, guid: 87aac15cf7706e1469716f43b2804493, type: 3}
-  - {fileID: 599083846393710439, guid: 210476b9402fc19478bb3af638b9fdaa, type: 3}
-  - {fileID: 599083846393710439, guid: 23058a19c9daada449668f4f9c7204fb, type: 3}
-  - {fileID: 599083846393710439, guid: 57da45ed617abd941a74486c1e2cfdcd, type: 3}
+  - {fileID: 1569387696225274595, guid: 87aac15cf7706e1469716f43b2804493, type: 3}
+  - {fileID: 1569387696225274595, guid: 1e0bf895f0f38534bae1b7e9a8d8e5f9, type: 3}
+  - {fileID: 1569387696225274595, guid: 1e0bf895f0f38534bae1b7e9a8d8e5f9, type: 3}
+  - {fileID: 1569387696225274595, guid: 6ca7ca2786b48b847bf1b54c6cbe187a, type: 3}
+  - {fileID: 1569387696225274595, guid: c3abd1eb1883fff4294beef5c05d3c2c, type: 3}
+  - {fileID: 1569387696225274595, guid: 13a800f0c4fdeaa4ca95fdfc9fe84753, type: 3}
   launchForce: 4.05
 --- !u!65 &2255007711178797914
 BoxCollider:

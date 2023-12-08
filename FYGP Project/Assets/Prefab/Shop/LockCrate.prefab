@@ -314,7 +314,6 @@ MonoBehaviour:
   riseDuration: 0.8
   particleSystemMaxScale: {x: 0.001, y: 0.001, z: 1}
   availableGuns:
-  - {fileID: 11400000, guid: 90f044c2e593752429249b52cf75fe51, type: 2}
   - {fileID: 11400000, guid: 6e8b21631afdb294da20d54dc4abd0ea, type: 2}
   - {fileID: 11400000, guid: f31e0742a4d72fe41ac4e8279f2e00f6, type: 2}
   - {fileID: 11400000, guid: 79166e9a3b35f7f49b244c41289ebbaa, type: 2}
@@ -324,7 +323,6 @@ MonoBehaviour:
   - {fileID: 1569387696225274595, guid: 1e0bf895f0f38534bae1b7e9a8d8e5f9, type: 3}
   - {fileID: 1569387696225274595, guid: c3abd1eb1883fff4294beef5c05d3c2c, type: 3}
   - {fileID: 1569387696225274595, guid: d1a79af4776dea24abd20d137427807a, type: 3}
-  - {fileID: 1569387696225274595, guid: 87aac15cf7706e1469716f43b2804493, type: 3}
   - {fileID: 1569387696225274595, guid: 87aac15cf7706e1469716f43b2804493, type: 3}
   - {fileID: 1569387696225274595, guid: 13a800f0c4fdeaa4ca95fdfc9fe84753, type: 3}
   - {fileID: 1569387696225274595, guid: 13a800f0c4fdeaa4ca95fdfc9fe84753, type: 3}

@@ -5,13 +5,14 @@ using TMPro;
 
 public class Tardis : MonoBehaviour
 {
-    public GameObject tpOrigin;
+    public GameObject tpOrigin, newTP;
     // Start is called before the first frame update
     private HashSet<GameObject> playersInTrigger = new HashSet<GameObject>();
     public int requiredPlayers = 0;
     private Coroutine extractionCoroutine;
     public float extractionDuration = 3f;
     public TextMeshProUGUI extractionText;
+    private bool newExt = false;
 
 
     void Start()
@@ -72,12 +73,10 @@ public class Tardis : MonoBehaviour
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         GameObject.FindGameObjectWithTag("MainCamera").transform.position = tpOrigin.transform.position;
-        foreach (GameObject pl in players)
-        {
-            pl.transform.position = tpOrigin.transform.position;
-        }
+            foreach (GameObject pl in players)
+            {
+                pl.transform.position = tpOrigin.transform.position;
+            }
 
-        Debug.Log("Extraction Complete!");
-        Destroy(this.gameObject);
     }
 }

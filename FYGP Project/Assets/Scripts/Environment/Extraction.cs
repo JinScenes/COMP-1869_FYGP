@@ -98,7 +98,10 @@ public class Extraction : MonoBehaviour
         }
 
         Debug.Log("Extraction Complete!");
-        Destroy(this.gameObject);
+        if(gameObject.name != "goToShop")
+        {
+            Destroy(this.gameObject);
+        }
         foreach (GameObject spawner in extractionSpawners)
         {
             //GameObject.FindGameObjectWithTag("MainCamera").transform.position = ;

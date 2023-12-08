@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemyPrefabs;
-    [SerializeField] private float spawnRange = 5.0f;
+    //[SerializeField] private float spawnRange = 5.0f;
     [SerializeField] private float spawnRate = 0.8f;
     [SerializeField] private float coolDownRate = 10f;
     [SerializeField] private int xPos = 0;
@@ -17,27 +17,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] public int finishWave = 2;
 
     private GameObject player;
-    protected int randomXpos;
-    protected int randomZpos;
     protected int enemyCount = 0;
     protected int waveCount = 0; // wave have spawn
-    protected float distanceToPlayer;
 
     void Start()
     {
-        waveCount = 0;
-        StartCoroutine(E_Spawner());
-    }
-
-    private void FindDistance()
-    {
         player = GameObject.FindGameObjectWithTag("Player");
-
-        if (player != null)
-        {
-            distanceToPlayer = Vector3.Distance(player.transform.position, new Vector3(randomXpos, 0, randomZpos));
-        }
-
+        StartCoroutine(E_Spawner());
     }
 
     private IEnumerator E_Spawner()
@@ -51,69 +37,64 @@ public class EnemySpawner : MonoBehaviour
 
         while (enemyCount <= enemyMaxCount)
         {
-
             // Time between each spawn
             yield return waitTime;
 
             // Spawn a random enemy from assigned prefabs
             int random = Random.Range (0, enemyPrefabs.Length);
             GameObject enemyToSpawn = enemyPrefabs[random];
+          
+            // Setting random location
+            int randomXpos = Random.Range(-xPos, xPos) + (int)transform.position.x;
+            int randomZpos = Random.Range(-zPos, zPos) + (int)transform.position.z;
 
-            // Check the distance of player
-            FindDistance();
+            Vector3 spawnPosition;
+            spawnPosition = new Vector3(randomXpos, transform.position.y, randomZpos);
 
-            if (distanceToPlayer >= spawnRange)
+            // Spawning
+            Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+            enemyCount++;
+
+            if (enemyCount == enemyMaxCount)
             {
-                // Setting random location
-                randomXpos = Random.Range(-xPos, xPos);
-                randomZpos = Random.Range(-zPos, zPos);
-
-                // Spawning
-                Instantiate(enemyToSpawn, new Vector3(randomXpos, 0, randomZpos), Quaternion.identity);
-
-                enemyCount++;
-
-                if (enemyCount == enemyMaxCount)
-                {
-                    //Debug.Log("Wave" + waveCount + "start");
-                    //Debug.Log(waveCount);
-                    waveCount++;
+                //Debug.Log("Wave" + waveCount + "start");
+                //Debug.Log(waveCount);
+                waveCount++;
+                Debug.Log(waveCount);
                     
-                    if (autoOff = true && waveCount >= waveToFinish)
+                if (autoOff = true && waveCount >= waveToFinish)
+                {
+                    Debug.Log("truning off");
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    if(waveCount >= wavePenalty)
                     {
-                        Destroy(this.gameObject);
-                    }
-                    else
-                    {
-                        if(waveCount >= wavePenalty)
+                        //print("wave count >= wave penaly");
+                        for(int i = 0; i < waveCount; i++)
                         {
-                            //print("wave count >= wave penaly");
-                            for(int i = 0; i < waveCount; i++)
+                            //print("start looping for once");
+                            if(coolDownRate <= 0.5f)
                             {
-                                //print("start looping for once");
-                                if(coolDownRate <= 0.5f)
+                                cdTime = new WaitForSeconds(0.5f);
+                            }
+                            else
+                            {
+                                if (i >= 1)
                                 {
-                                    cdTime = new WaitForSeconds(0.5f);
-                                }
-                                else
-                                {
-                                    if (i >= 1)
-                                    {
-                                        cdTime = new WaitForSeconds(coolDownRate -= 0.5f);
+                                    cdTime = new WaitForSeconds(coolDownRate -= 0.5f);
                                 
-                                        break;
-                                    }
+                                    break;
                                 }
                             }
                         }
                     }
-
-
-                    yield return cdTime;
-
-                    enemyCount = 0;
                 }
 
+                yield return cdTime;
+
+                enemyCount = 0;
             }
         }
     } 
