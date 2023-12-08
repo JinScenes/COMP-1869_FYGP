@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Extraction : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Extraction : MonoBehaviour
     public float extractionDuration = 20f;
     public GameObject[] extractionSpawners;
     public TextMeshProUGUI extractionText;
+    public bool isFinalExtractor = false;
 
     void Start()
     {
@@ -88,6 +90,10 @@ public class Extraction : MonoBehaviour
 
     private void Extracting()
     {
+        if (isFinalExtractor == true)
+        {
+            SceneManager.LoadScene("EndScreen");
+        }
         Debug.Log("Extraction Complete!");
         Destroy(this.gameObject);
         foreach (GameObject spawner in extractionSpawners)
