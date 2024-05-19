@@ -5875,6 +5875,12 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: 242470bbbaf19ec40aeb76eb00169e50, type: 3}
       type: 1
       is3D: 0
+  - groupName: BGM
+    sounds:
+    - audioName: Background Music
+      clip: {fileID: 8300000, guid: 1034c0a786771a5408feec6ca0dc4d51, type: 3}
+      type: 1
+      is3D: 0
 --- !u!4 &216665264
 Transform:
   m_ObjectHideFlags: 0
