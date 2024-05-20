@@ -8,10 +8,11 @@ public class CurrencyHandler : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI moneyText;
     public int totalMoney;
+    public int initialMoney = 500;
 
     void Awake()
     {
-        totalMoney = 0;
+        totalMoney = initialMoney;
         moneyText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
@@ -24,10 +25,5 @@ public class CurrencyHandler : MonoBehaviour
     {
         totalMoney += amount;
     }
-
-    //private void UpdateMoneyText(int amount)
-    //{
-    //    moneyText.text = amount.ToString();
-    //}
        
 }
