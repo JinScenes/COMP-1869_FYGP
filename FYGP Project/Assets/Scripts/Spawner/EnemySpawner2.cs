@@ -10,7 +10,9 @@ public class EnemySpawner2 : MonoBehaviour
     [SerializeField] private int safeDistance = 10; // Safe distance from the player
     [SerializeField] private int xPos = 10; // Range for spawning on the X-axis
     [SerializeField] private int zPos = 10; // Range for spawning on the Z-axis
-    [SerializeField] public int enemyMaxCount = 20;
+    [SerializeField] public int enemyTotalCount = 0;
+    [SerializeField] public int enemyTotalMaxCount = 100;
+    [SerializeField] public int enemyWaveCount = 20;
     [SerializeField] public int wavePenalty = 6;
 
     private GameObject player;
@@ -32,46 +34,66 @@ public class EnemySpawner2 : MonoBehaviour
         return distanceToPlayer >= safeDistance;
     }
 
+    private bool IsOkayToSpawn(int enemyCount)
+    {
+        if (enemyTotalMaxCount <= enemyCount)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private IEnumerator ESpawner()
     {
         WaitForSeconds waitTime = new WaitForSeconds(spawnRate);
         WaitForSeconds cdTime = new WaitForSeconds(coolDownRate);
 
-        while (enemyCount <= enemyMaxCount)
+        IsOkayToSpawn(enemyTotalCount);
+
+        if (true)
         {
-            yield return waitTime;
-
-            int random = Random.Range(0, enemyPrefabs.Length);
-            GameObject enemyToSpawn = enemyPrefabs[random];
-
-            Vector3 spawnPosition;
-            bool safeToSpawn;
-
-            do
+            while (enemyCount <= enemyWaveCount)
             {
-                int randomXpos = Random.Range(-xPos, xPos) + (int)transform.position.x;
-                int randomZpos = Random.Range(-zPos, zPos) + (int)transform.position.z;
-                spawnPosition = new Vector3(randomXpos, transform.position.y, randomZpos);
+                yield return waitTime;
 
-                safeToSpawn = IsSafeSpawnPosition(spawnPosition);
-            }
-            while (!safeToSpawn);
+                int random = Random.Range(0, enemyPrefabs.Length);
+                GameObject enemyToSpawn = enemyPrefabs[random];
 
-            Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
-            enemyCount++;
+                Vector3 spawnPosition;
+                bool safeToSpawn;
 
-            if (enemyCount == enemyMaxCount)
-            {
-                waveCount++;
-
-                if (waveCount >= wavePenalty && coolDownRate > 0.5f)
+                #region Spawn Place
+                do
                 {
-                    coolDownRate -= 0.5f;
-                }
-                cdTime = new WaitForSeconds(coolDownRate > 0.5f ? coolDownRate : 0.5f);
+                    int randomXpos = Random.Range(-xPos, xPos) + (int)transform.position.x;
+                    int randomZpos = Random.Range(-zPos, zPos) + (int)transform.position.z;
+                    spawnPosition = new Vector3(randomXpos, transform.position.y, randomZpos);
 
-                yield return cdTime;
-                enemyCount = 0;
+                    safeToSpawn = IsSafeSpawnPosition(spawnPosition);
+                }
+                while (!safeToSpawn);
+                #endregion
+
+                if (enemyCount == enemyWaveCount)
+                {
+                    waveCount++;
+
+                    if (waveCount >= wavePenalty && coolDownRate > 0.5f)
+                    {
+                        coolDownRate -= 0.5f;
+                    }
+                    cdTime = new WaitForSeconds(coolDownRate > 0.5f ? coolDownRate : 0.5f);
+
+                    yield return cdTime;
+                    enemyCount = 0;
+                }
+
+                Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
+                enemyCount++;
+                enemyTotalCount++;
             }
         }
     }
