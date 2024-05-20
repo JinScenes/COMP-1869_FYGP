@@ -5988,11 +5988,11 @@ MonoBehaviour:
       type: 1
       is3D: 0
     - audioName: Assault Rifle Dry Shot
-      clip: {fileID: 8300000, guid: 90d3ce364ff527847bfda48f8d9e54db, type: 3}
+      clip: {fileID: 8300000, guid: 7f2806fde3a255649a7791ff4f595ec8, type: 3}
       type: 1
       is3D: 0
     - audioName: Pistol Dry Shot
-      clip: {fileID: 8300000, guid: e186d52ec6ff352439f3a5f160e24eb3, type: 3}
+      clip: {fileID: 8300000, guid: 9bad92f21b96c8843a53c0febad2eea3, type: 3}
       type: 1
       is3D: 0
     - audioName: Rocket Launcher Dry Shot
@@ -6000,15 +6000,15 @@ MonoBehaviour:
       type: 1
       is3D: 0
     - audioName: Shotgun Dry Shot
-      clip: {fileID: 8300000, guid: b1531dab3d474ca43b475018fa006c4c, type: 3}
+      clip: {fileID: 8300000, guid: bdea9327989c6284ba99d807d21ac3a5, type: 3}
       type: 1
       is3D: 0
     - audioName: SMG Dry Shot
-      clip: {fileID: 8300000, guid: ac2dc06e522e40e43a53efadaf9ed2fd, type: 3}
+      clip: {fileID: 8300000, guid: fe2a57540cf224a4093334f08e20e49c, type: 3}
       type: 1
       is3D: 0
     - audioName: Sniper Dry Shot
-      clip: {fileID: 8300000, guid: 40f59dfe924931b45ad538d51771d007, type: 3}
+      clip: {fileID: 8300000, guid: e83381717127af9449ebac4691448c07, type: 3}
       type: 1
       is3D: 0
     - audioName: Assault Rifle Pickup
@@ -6060,7 +6060,7 @@ MonoBehaviour:
       type: 1
       is3D: 0
     - audioName: Assault Rifle Shot
-      clip: {fileID: 8300000, guid: 85bf6cf6092bba7469a59db4b824afc2, type: 3}
+      clip: {fileID: 8300000, guid: 7f2806fde3a255649a7791ff4f595ec8, type: 3}
       type: 1
       is3D: 0
     - audioName: Pistol Shot
