@@ -6004,7 +6004,7 @@ MonoBehaviour:
       type: 1
       is3D: 0
     - audioName: SMG Dry Shot
-      clip: {fileID: 8300000, guid: fe2a57540cf224a4093334f08e20e49c, type: 3}
+      clip: {fileID: 8300000, guid: 7890c87e5cccffa4f8c081fb67735768, type: 3}
       type: 1
       is3D: 0
     - audioName: Sniper Dry Shot
