@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static AudioManager;
 
 public class AudioManager : MonoBehaviour
 {
@@ -91,6 +92,22 @@ public class AudioManager : MonoBehaviour
             AudioSource source = audioSources[soundName];
             source.transform.position = pos == default ? transform.position : pos;
             source.Play();
+        }
+    }
+
+    public void PlayGunAudios(string soundName, Vector3 pos = default)
+    {
+        if (audioSources.ContainsKey(soundName))
+        {
+            AudioSource newSource = gameObject.AddComponent<AudioSource>();
+            newSource.clip = audioSources[soundName].clip;
+            // newSource.playOnAwake = false;
+
+            //AudioSource source = audioSources[soundName];
+            //source.transform.position = pos == default ? transform.position : pos;
+            newSource.Play();
+            Destroy(newSource, newSource.clip.length);
+            print($"Played from here, destorying {newSource.clip.length}");
         }
     }
 

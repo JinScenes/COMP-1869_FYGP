@@ -139,22 +139,24 @@ public class GunBase : MonoBehaviour
 
 
             print("CUR GUN: " + currentGunName);
+
+            //USE THIS IF LAG > PlayAudios
             if (fireMode == FireMode.Projectile && Time.time >= nextFireTime && !isReloading)
             {
 
                 switch (currentGunName)
                 {
                     case "Pistol":
-                        AudioManager.instance.PlayAudios("Pistol Dry Shot");
+                        AudioManager.instance.PlayGunAudios("Pistol Dry Shot");
                         break;
                     case "Rifle":
-                        AudioManager.instance.PlayAudios("Assault Rifle Shot");
+                        AudioManager.instance.PlayGunAudios("Assault Rifle Shot");
                         break;
                     case "Smg":
-                        AudioManager.instance.PlayAudios("SMG Dry Shot");
+                        AudioManager.instance.PlayGunAudios("SMG Dry Shot");
                         break;
                     case "Sniper":
-                        AudioManager.instance.PlayAudios("Sniper Dry Shot");
+                        AudioManager.instance.PlayGunAudios("Sniper Dry Shot");
                         break;
                     case "Shotgun":
                         AudioManager.instance.PlayAudios("Shotgun Dry Shot");
